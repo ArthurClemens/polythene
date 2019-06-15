@@ -4,12 +4,6 @@ var app = (function () {
     'use strict';
 
     function noop() { }
-    function assign(tar, src) {
-        // @ts-ignore
-        for (const k in src)
-            tar[k] = src[k];
-        return tar;
-    }
     function add_location(element, file, line, column, char) {
         element.__svelte_meta = {
             loc: { file, line, column, char }
@@ -40,29 +34,6 @@ var app = (function () {
         component.$$.on_destroy.push(unsub.unsubscribe
             ? () => unsub.unsubscribe()
             : unsub);
-    }
-    function create_slot(definition, ctx, fn) {
-        if (definition) {
-            const slot_ctx = get_slot_context(definition, ctx, fn);
-            return definition[0](slot_ctx);
-        }
-    }
-    function get_slot_context(definition, ctx, fn) {
-        return definition[1]
-            ? assign({}, assign(ctx.$$scope.ctx, definition[1](fn ? fn(ctx) : {})))
-            : ctx.$$scope.ctx;
-    }
-    function get_slot_changes(definition, ctx, changed, fn) {
-        return definition[1]
-            ? assign({}, assign(ctx.$$scope.changed || {}, definition[1](fn ? fn(changed) : {})))
-            : ctx.$$scope.changed || {};
-    }
-    function exclude_internal_props(props) {
-        const result = {};
-        for (const k in props)
-            if (k[0] !== '$')
-                result[k] = props[k];
-        return result;
     }
 
     function append(target, node) {
@@ -105,19 +76,6 @@ var app = (function () {
         else
             node.setAttribute(attribute, value);
     }
-    function set_attributes(node, attributes) {
-        for (const key in attributes) {
-            if (key === 'style') {
-                node.style.cssText = attributes[key];
-            }
-            else if (key in node) {
-                node[key] = attributes[key];
-            }
-            else {
-                attr(node, key, attributes[key]);
-            }
-        }
-    }
     function children(element) {
         return Array.from(element.childNodes);
     }
@@ -133,14 +91,6 @@ var app = (function () {
     let current_component;
     function set_current_component(component) {
         current_component = component;
-    }
-    function get_current_component() {
-        if (!current_component)
-            throw new Error(`Function called outside component initialization`);
-        return current_component;
-    }
-    function onMount(fn) {
-        get_current_component().$$.on_mount.push(fn);
     }
 
     const dirty_components = [];
@@ -210,40 +160,6 @@ var app = (function () {
     }
     function on_outro(callback) {
         outros.callbacks.push(callback);
-    }
-
-    function get_spread_update(levels, updates) {
-        const update = {};
-        const to_null_out = {};
-        const accounted_for = { $$scope: 1 };
-        let i = levels.length;
-        while (i--) {
-            const o = levels[i];
-            const n = updates[i];
-            if (n) {
-                for (const key in o) {
-                    if (!(key in n))
-                        to_null_out[key] = 1;
-                }
-                for (const key in n) {
-                    if (!accounted_for[key]) {
-                        update[key] = n[key];
-                        accounted_for[key] = 1;
-                    }
-                }
-                levels[i] = n;
-            }
-            else {
-                for (const key in o) {
-                    accounted_for[key] = 1;
-                }
-            }
-        }
-        for (const key in to_null_out) {
-            if (!(key in update))
-                update[key] = undefined;
-        }
-        return update;
     }
     function mount_component(component, target, anchor) {
         const { fragment, on_mount, on_destroy, after_render } = component.$$;
@@ -834,6 +750,876 @@ var app = (function () {
     	}
     }
 
+    function noop$1() { }
+    function assign(tar, src) {
+        // @ts-ignore
+        for (const k in src)
+            tar[k] = src[k];
+        return tar;
+    }
+    function run$1(fn) {
+        return fn();
+    }
+    function blank_object$1() {
+        return Object.create(null);
+    }
+    function run_all$1(fns) {
+        fns.forEach(run$1);
+    }
+    function is_function$1(thing) {
+        return typeof thing === 'function';
+    }
+    function safe_not_equal$1(a, b) {
+        return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+    }
+    function subscribe$1(component, store, callback) {
+        const unsub = store.subscribe(callback);
+        component.$$.on_destroy.push(unsub.unsubscribe
+            ? () => unsub.unsubscribe()
+            : unsub);
+    }
+    function create_slot(definition, ctx, fn) {
+        if (definition) {
+            const slot_ctx = get_slot_context(definition, ctx, fn);
+            return definition[0](slot_ctx);
+        }
+    }
+    function get_slot_context(definition, ctx, fn) {
+        return definition[1]
+            ? assign({}, assign(ctx.$$scope.ctx, definition[1](fn ? fn(ctx) : {})))
+            : ctx.$$scope.ctx;
+    }
+    function get_slot_changes(definition, ctx, changed, fn) {
+        return definition[1]
+            ? assign({}, assign(ctx.$$scope.changed || {}, definition[1](fn ? fn(changed) : {})))
+            : ctx.$$scope.changed || {};
+    }
+    function exclude_internal_props(props) {
+        const result = {};
+        for (const k in props)
+            if (k[0] !== '$')
+                result[k] = props[k];
+        return result;
+    }
+
+    function append$1(target, node) {
+        target.appendChild(node);
+    }
+    function insert$1(target, node, anchor) {
+        target.insertBefore(node, anchor || null);
+    }
+    function detach$1(node) {
+        node.parentNode.removeChild(node);
+    }
+    function element$1(name) {
+        return document.createElement(name);
+    }
+    function svg_element$1(name) {
+        return document.createElementNS('http://www.w3.org/2000/svg', name);
+    }
+    function text$1(data) {
+        return document.createTextNode(data);
+    }
+    function space$1() {
+        return text$1(' ');
+    }
+    function attr$1(node, attribute, value) {
+        if (value == null)
+            node.removeAttribute(attribute);
+        else
+            node.setAttribute(attribute, value);
+    }
+    function set_attributes(node, attributes) {
+        for (const key in attributes) {
+            if (key === 'style') {
+                node.style.cssText = attributes[key];
+            }
+            else if (key in node) {
+                node[key] = attributes[key];
+            }
+            else {
+                attr$1(node, key, attributes[key]);
+            }
+        }
+    }
+    function children$1(element) {
+        return Array.from(element.childNodes);
+    }
+    function set_data$1(text, data) {
+        data = '' + data;
+        if (text.data !== data)
+            text.data = data;
+    }
+
+    let current_component$1;
+    function set_current_component$1(component) {
+        current_component$1 = component;
+    }
+    function get_current_component() {
+        if (!current_component$1)
+            throw new Error(`Function called outside component initialization`);
+        return current_component$1;
+    }
+    function onMount(fn) {
+        get_current_component().$$.on_mount.push(fn);
+    }
+
+    const dirty_components$1 = [];
+    const resolved_promise$1 = Promise.resolve();
+    let update_scheduled$1 = false;
+    const binding_callbacks$1 = [];
+    const render_callbacks$1 = [];
+    const flush_callbacks$1 = [];
+    function schedule_update$1() {
+        if (!update_scheduled$1) {
+            update_scheduled$1 = true;
+            resolved_promise$1.then(flush$1);
+        }
+    }
+    function add_render_callback$1(fn) {
+        render_callbacks$1.push(fn);
+    }
+    function flush$1() {
+        const seen_callbacks = new Set();
+        do {
+            // first, call beforeUpdate functions
+            // and update components
+            while (dirty_components$1.length) {
+                const component = dirty_components$1.shift();
+                set_current_component$1(component);
+                update$1(component.$$);
+            }
+            while (binding_callbacks$1.length)
+                binding_callbacks$1.shift()();
+            // then, once components are updated, call
+            // afterUpdate functions. This may cause
+            // subsequent updates...
+            while (render_callbacks$1.length) {
+                const callback = render_callbacks$1.pop();
+                if (!seen_callbacks.has(callback)) {
+                    callback();
+                    // ...so guard against infinite loops
+                    seen_callbacks.add(callback);
+                }
+            }
+        } while (dirty_components$1.length);
+        while (flush_callbacks$1.length) {
+            flush_callbacks$1.pop()();
+        }
+        update_scheduled$1 = false;
+    }
+    function update$1($$) {
+        if ($$.fragment) {
+            $$.update($$.dirty);
+            run_all$1($$.before_render);
+            $$.fragment.p($$.dirty, $$.ctx);
+            $$.dirty = null;
+            $$.after_render.forEach(add_render_callback$1);
+        }
+    }
+    let outros$1;
+    function group_outros$1() {
+        outros$1 = {
+            remaining: 0,
+            callbacks: []
+        };
+    }
+    function check_outros$1() {
+        if (!outros$1.remaining) {
+            run_all$1(outros$1.callbacks);
+        }
+    }
+    function on_outro$1(callback) {
+        outros$1.callbacks.push(callback);
+    }
+
+    function get_spread_update(levels, updates) {
+        const update = {};
+        const to_null_out = {};
+        const accounted_for = { $$scope: 1 };
+        let i = levels.length;
+        while (i--) {
+            const o = levels[i];
+            const n = updates[i];
+            if (n) {
+                for (const key in o) {
+                    if (!(key in n))
+                        to_null_out[key] = 1;
+                }
+                for (const key in n) {
+                    if (!accounted_for[key]) {
+                        update[key] = n[key];
+                        accounted_for[key] = 1;
+                    }
+                }
+                levels[i] = n;
+            }
+            else {
+                for (const key in o) {
+                    accounted_for[key] = 1;
+                }
+            }
+        }
+        for (const key in to_null_out) {
+            if (!(key in update))
+                update[key] = undefined;
+        }
+        return update;
+    }
+    function mount_component$1(component, target, anchor) {
+        const { fragment, on_mount, on_destroy, after_render } = component.$$;
+        fragment.m(target, anchor);
+        // onMount happens after the initial afterUpdate. Because
+        // afterUpdate callbacks happen in reverse order (inner first)
+        // we schedule onMount callbacks before afterUpdate callbacks
+        add_render_callback$1(() => {
+            const new_on_destroy = on_mount.map(run$1).filter(is_function$1);
+            if (on_destroy) {
+                on_destroy.push(...new_on_destroy);
+            }
+            else {
+                // Edge case - component was destroyed immediately,
+                // most likely as a result of a binding initialising
+                run_all$1(new_on_destroy);
+            }
+            component.$$.on_mount = [];
+        });
+        after_render.forEach(add_render_callback$1);
+    }
+    function destroy$1(component, detaching) {
+        if (component.$$) {
+            run_all$1(component.$$.on_destroy);
+            component.$$.fragment.d(detaching);
+            // TODO null out other refs, including component.$$ (but need to
+            // preserve final state?)
+            component.$$.on_destroy = component.$$.fragment = null;
+            component.$$.ctx = {};
+        }
+    }
+    function make_dirty$1(component, key) {
+        if (!component.$$.dirty) {
+            dirty_components$1.push(component);
+            schedule_update$1();
+            component.$$.dirty = blank_object$1();
+        }
+        component.$$.dirty[key] = true;
+    }
+    function init$1(component, options, instance, create_fragment, not_equal$$1, prop_names) {
+        const parent_component = current_component$1;
+        set_current_component$1(component);
+        const props = options.props || {};
+        const $$ = component.$$ = {
+            fragment: null,
+            ctx: null,
+            // state
+            props: prop_names,
+            update: noop$1,
+            not_equal: not_equal$$1,
+            bound: blank_object$1(),
+            // lifecycle
+            on_mount: [],
+            on_destroy: [],
+            before_render: [],
+            after_render: [],
+            context: new Map(parent_component ? parent_component.$$.context : []),
+            // everything else
+            callbacks: blank_object$1(),
+            dirty: null
+        };
+        let ready = false;
+        $$.ctx = instance
+            ? instance(component, props, (key, value) => {
+                if ($$.ctx && not_equal$$1($$.ctx[key], $$.ctx[key] = value)) {
+                    if ($$.bound[key])
+                        $$.bound[key](value);
+                    if (ready)
+                        make_dirty$1(component, key);
+                }
+            })
+            : props;
+        $$.update();
+        ready = true;
+        run_all$1($$.before_render);
+        $$.fragment = create_fragment($$.ctx);
+        if (options.target) {
+            if (options.hydrate) {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment.l(children$1(options.target));
+            }
+            else {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment.c();
+            }
+            if (options.intro && component.$$.fragment.i)
+                component.$$.fragment.i();
+            mount_component$1(component, options.target, options.anchor);
+            flush$1();
+        }
+        set_current_component$1(parent_component);
+    }
+    class SvelteComponent$1 {
+        $destroy() {
+            destroy$1(this, true);
+            this.$destroy = noop$1;
+        }
+        $on(type, callback) {
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set() {
+            // overridden by instance, if it has props
+        }
+    }
+
+    var url = 'bjectSymhasOwnProp-0123456789ABCDEFGHIJKLMNQRTUVWXYZ_dfgiklquvxz';
+
+    /**
+     * Generate URL-friendly unique ID. This method use non-secure predictable
+     * random generator.
+     *
+     * By default, ID will have 21 symbols to have a collision probability similar
+     * to UUID v4.
+     *
+     * @param {number} [size=21] The number of symbols in ID.
+     *
+     * @return {string} Random string.
+     *
+     * @example
+     * const nanoid = require('nanoid/non-secure')
+     * model.id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqL"
+     *
+     * @name nonSecure
+     * @function
+     */
+    var nonSecure = function (size) {
+      size = size || 21;
+      var id = '';
+      while (0 < size--) {
+        id += url[Math.random() * 64 | 0];
+      }
+      return id
+    };
+
+    /**
+     * 
+     * @param {{[s: string]: string}} classes 
+     * @returns {{[s: string]: string}}
+     */
+
+    var sizeClasses = function sizeClasses(classes) {
+      return {
+        small: classes.small,
+        regular: classes.regular,
+        medium: classes.medium,
+        large: classes.large,
+        fab: classes.fab
+      };
+    };
+    /**
+     * 
+     * @param {{[s: string]: string}} classes 
+     * @param {string} [size] 
+     * @returns {object}
+     */
+
+
+    var classForSize = function classForSize(classes) {
+      var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "regular";
+      return sizeClasses(classes)[size];
+    };
+
+    var isClient = typeof document !== "undefined";
+    var isServer = !isClient;
+
+    // @ts-check
+    /**
+     * @type {{[s: string]: string}} evts
+     */
+
+    var evts = {
+      "animation": "animationend",
+      "OAnimation": "oAnimationEnd",
+      "MozAnimation": "animationend",
+      "WebkitAnimation": "webkitAnimationEnd"
+    };
+    var getAnimationEndEvent = function getAnimationEndEvent() {
+      if (isClient) {
+        var el = document.createElement("fakeelement");
+        /**
+         * @type {string} a
+         */
+
+        for (var a in evts) {
+          /**
+           * @type {object} style
+           */
+          var style = el.style;
+
+          if (style[a] !== undefined) {
+            return evts[a];
+          }
+        }
+      }
+    };
+
+    // @ts-check
+    var isTouch = isServer ? false : "ontouchstart" in document.documentElement;
+    var pointerEndEvent = isTouch ? ["click", "mouseup"] : ["mouseup"];
+
+    if (isClient) {
+      var htmlElement = document.querySelector("html");
+
+      if (htmlElement) {
+        htmlElement.classList.add(isTouch ? "pe-touch" : "pe-no-touch");
+      }
+    }
+
+    // @ts-check
+    /**
+     * @type {{[s: string]: Array<function>}} listeners
+     */
+
+    var listeners = {};
+    /**
+     * 
+     * @param {string} eventName 
+     * @param {object} event 
+     */
+
+    var emit = function emit(eventName, event) {
+      if (!listeners[eventName]) {
+        return;
+      }
+
+      listeners[eventName].forEach(function (listener) {
+        return listener(event);
+      });
+    };
+
+    if (isClient) {
+      window.addEventListener("resize", function (e) {
+        return emit("resize", e);
+      });
+      window.addEventListener("scroll", function (e) {
+        return emit("scroll", e);
+      });
+      window.addEventListener("keydown", function (e) {
+        return emit("keydown", e);
+      });
+      pointerEndEvent.forEach(function (eventName) {
+        return window.addEventListener(eventName, function (e) {
+          return emit(eventName, e);
+        });
+      });
+    }
+
+    var classes = {
+      component: "pe-svg"
+    };
+
+    /* src/svg/SVG.svelte generated by Svelte v3.5.1 */
+
+    const get_after_slot_changes = ({}) => ({});
+    const get_after_slot_context = ({}) => ({});
+
+    const get_before_slot_changes = ({}) => ({});
+    const get_before_slot_context = ({}) => ({});
+
+    function create_fragment$1(ctx) {
+    	var div, t0, t1, current;
+
+    	const before_slot_1 = ctx.$$slots.before;
+    	const before_slot = create_slot(before_slot_1, ctx, get_before_slot_context);
+
+    	const default_slot_1 = ctx.$$slots.default;
+    	const default_slot = create_slot(default_slot_1, ctx, null);
+
+    	const after_slot_1 = ctx.$$slots.after;
+    	const after_slot = create_slot(after_slot_1, ctx, get_after_slot_context);
+
+    	var div_levels = [
+    		{ "data-uid": ctx.uid },
+    		{ class: ctx.R_classNames },
+    		(ctx.style && {style: ctx.style}),
+    		(ctx.id && { 'id': ctx.id }),
+    		{ 'data-test-id': ctx.testId },
+    		ctx.events
+    	];
+
+    	var div_data = {};
+    	for (var i = 0; i < div_levels.length; i += 1) {
+    		div_data = assign(div_data, div_levels[i]);
+    	}
+
+    	return {
+    		c() {
+    			div = element$1("div");
+
+    			if (before_slot) before_slot.c();
+    			t0 = space$1();
+
+    			if (default_slot) default_slot.c();
+    			t1 = space$1();
+
+    			if (after_slot) after_slot.c();
+
+    			set_attributes(div, div_data);
+    		},
+
+    		l(nodes) {
+    			if (before_slot) before_slot.l(div_nodes);
+
+    			if (default_slot) default_slot.l(div_nodes);
+
+    			if (after_slot) after_slot.l(div_nodes);
+    		},
+
+    		m(target, anchor) {
+    			insert$1(target, div, anchor);
+
+    			if (before_slot) {
+    				before_slot.m(div, null);
+    			}
+
+    			append$1(div, t0);
+
+    			if (default_slot) {
+    				default_slot.m(div, null);
+    			}
+
+    			append$1(div, t1);
+
+    			if (after_slot) {
+    				after_slot.m(div, null);
+    			}
+
+    			current = true;
+    		},
+
+    		p(changed, ctx) {
+    			if (before_slot && before_slot.p && changed.$$scope) {
+    				before_slot.p(get_slot_changes(before_slot_1, ctx, changed, get_before_slot_changes), get_slot_context(before_slot_1, ctx, get_before_slot_context));
+    			}
+
+    			if (default_slot && default_slot.p && changed.$$scope) {
+    				default_slot.p(get_slot_changes(default_slot_1, ctx, changed, null), get_slot_context(default_slot_1, ctx, null));
+    			}
+
+    			if (after_slot && after_slot.p && changed.$$scope) {
+    				after_slot.p(get_slot_changes(after_slot_1, ctx, changed, get_after_slot_changes), get_slot_context(after_slot_1, ctx, get_after_slot_context));
+    			}
+
+    			set_attributes(div, get_spread_update(div_levels, [
+    				(changed.uid) && { "data-uid": ctx.uid },
+    				(changed.R_classNames) && { class: ctx.R_classNames },
+    				(changed.style) && (ctx.style && {style: ctx.style}),
+    				(changed.id) && (ctx.id && { 'id': ctx.id }),
+    				(changed.testId) && { 'data-test-id': ctx.testId },
+    				(changed.events) && ctx.events
+    			]));
+    		},
+
+    		i(local) {
+    			if (current) return;
+    			if (before_slot && before_slot.i) before_slot.i(local);
+    			if (default_slot && default_slot.i) default_slot.i(local);
+    			if (after_slot && after_slot.i) after_slot.i(local);
+    			current = true;
+    		},
+
+    		o(local) {
+    			if (before_slot && before_slot.o) before_slot.o(local);
+    			if (default_slot && default_slot.o) default_slot.o(local);
+    			if (after_slot && after_slot.o) after_slot.o(local);
+    			current = false;
+    		},
+
+    		d(detaching) {
+    			if (detaching) {
+    				detach$1(div);
+    			}
+
+    			if (before_slot) before_slot.d(detaching);
+
+    			if (default_slot) default_slot.d(detaching);
+
+    			if (after_slot) after_slot.d(detaching);
+    		}
+    	};
+    }
+
+    function instance$1($$self, $$props, $$invalidate) {
+    	
+
+      // DOM bindings
+      let domElement;
+      const uid = nonSecure();
+
+      // Common vars
+      let { className = "", events = {}, id = undefined, style = undefined, testId = undefined, tone = undefined } = $$props;
+      
+      onMount(() => {
+        console.log("SVG onMount");
+        domElement = document.querySelector(`[data-uid="${uid}"]`);
+        console.log("SVG domElement=", domElement);
+        if (domElement && domElement.querySelector) {
+          const svgElement = domElement.querySelector("svg");
+          if (svgElement) {
+            svgElement.setAttribute("focusable", "false");
+          }
+        }
+      });
+
+    	let { $$slots = {}, $$scope } = $$props;
+
+    	$$self.$set = $$props => {
+    		if ('className' in $$props) $$invalidate('className', className = $$props.className);
+    		if ('events' in $$props) $$invalidate('events', events = $$props.events);
+    		if ('id' in $$props) $$invalidate('id', id = $$props.id);
+    		if ('style' in $$props) $$invalidate('style', style = $$props.style);
+    		if ('testId' in $$props) $$invalidate('testId', testId = $$props.testId);
+    		if ('tone' in $$props) $$invalidate('tone', tone = $$props.tone);
+    		if ('$$scope' in $$props) $$invalidate('$$scope', $$scope = $$props.$$scope);
+    	};
+
+    	let R_classNames;
+
+    	$$self.$$.update = ($$dirty = { tone: 1, className: 1 }) => {
+    		if ($$dirty.tone || $$dirty.className) { $$invalidate('R_classNames', R_classNames = [
+            classes.component,
+            tone === "dark" ? "pe-dark-tone" : undefined,
+            tone === "light" ? "pe-light-tone" : undefined,
+            className,
+          ].join(" ")); }
+    	};
+
+    	return {
+    		uid,
+    		className,
+    		events,
+    		id,
+    		style,
+    		testId,
+    		tone,
+    		R_classNames,
+    		$$slots,
+    		$$scope
+    	};
+    }
+
+    class SVG extends SvelteComponent$1 {
+    	constructor(options) {
+    		super();
+    		init$1(this, options, instance$1, create_fragment$1, safe_not_equal$1, ["className", "events", "id", "style", "testId", "tone"]);
+    	}
+    }
+
+    var classes$1 = {
+      component: "pe-icon",
+
+      // states
+      avatar:    "pe-icon--avatar",
+      large:     "pe-icon--large",
+      medium:    "pe-icon--medium",
+      regular:   "pe-icon--regular",
+      small:     "pe-icon--small",
+    };
+
+    /* src/icon/Icon.svelte generated by Svelte v3.5.1 */
+
+    // (38:2) <SVG {...svg}>
+    function create_default_slot(ctx) {
+    	var current;
+
+    	const default_slot_1 = ctx.$$slots.default;
+    	const default_slot = create_slot(default_slot_1, ctx, null);
+
+    	return {
+    		c() {
+    			if (default_slot) default_slot.c();
+    		},
+
+    		l(nodes) {
+    			if (default_slot) default_slot.l(nodes);
+    		},
+
+    		m(target, anchor) {
+    			if (default_slot) {
+    				default_slot.m(target, anchor);
+    			}
+
+    			current = true;
+    		},
+
+    		p(changed, ctx) {
+    			if (default_slot && default_slot.p && changed.$$scope) {
+    				default_slot.p(get_slot_changes(default_slot_1, ctx, changed, null), get_slot_context(default_slot_1, ctx, null));
+    			}
+    		},
+
+    		i(local) {
+    			if (current) return;
+    			if (default_slot && default_slot.i) default_slot.i(local);
+    			current = true;
+    		},
+
+    		o(local) {
+    			if (default_slot && default_slot.o) default_slot.o(local);
+    			current = false;
+    		},
+
+    		d(detaching) {
+    			if (default_slot) default_slot.d(detaching);
+    		}
+    	};
+    }
+
+    function create_fragment$1$1(ctx) {
+    	var div, current;
+
+    	var svg_1_spread_levels = [
+    		ctx.svg
+    	];
+
+    	let svg_1_props = {
+    		$$slots: { default: [create_default_slot] },
+    		$$scope: { ctx }
+    	};
+    	for (var i = 0; i < svg_1_spread_levels.length; i += 1) {
+    		svg_1_props = assign(svg_1_props, svg_1_spread_levels[i]);
+    	}
+    	var svg_1 = new SVG({ props: svg_1_props });
+
+    	var div_levels = [
+    		{ class: ctx.R_classNames },
+    		(ctx.style && {style: ctx.style}),
+    		(ctx.id && { 'id': ctx.id }),
+    		{ 'data-test-id': ctx.testId },
+    		ctx.events
+    	];
+
+    	var div_data = {};
+    	for (var i = 0; i < div_levels.length; i += 1) {
+    		div_data = assign(div_data, div_levels[i]);
+    	}
+
+    	return {
+    		c() {
+    			div = element$1("div");
+    			svg_1.$$.fragment.c();
+    			set_attributes(div, div_data);
+    		},
+
+    		m(target, anchor) {
+    			insert$1(target, div, anchor);
+    			mount_component$1(svg_1, div, null);
+    			current = true;
+    		},
+
+    		p(changed, ctx) {
+    			var svg_1_changes = changed.svg ? get_spread_update(svg_1_spread_levels, [
+    				ctx.svg
+    			]) : {};
+    			if (changed.$$scope) svg_1_changes.$$scope = { changed, ctx };
+    			svg_1.$set(svg_1_changes);
+
+    			set_attributes(div, get_spread_update(div_levels, [
+    				(changed.R_classNames) && { class: ctx.R_classNames },
+    				(changed.style) && (ctx.style && {style: ctx.style}),
+    				(changed.id) && (ctx.id && { 'id': ctx.id }),
+    				(changed.testId) && { 'data-test-id': ctx.testId },
+    				(changed.events) && ctx.events
+    			]));
+    		},
+
+    		i(local) {
+    			if (current) return;
+    			svg_1.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o(local) {
+    			svg_1.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d(detaching) {
+    			if (detaching) {
+    				detach$1(div);
+    			}
+
+    			svg_1.$destroy();
+    		}
+    	};
+    }
+
+    function instance$1$1($$self, $$props, $$invalidate) {
+    	
+
+      // Common vars
+      let { className = "", events = {}, id = undefined, style = undefined, testId = undefined, tone = undefined, alt = "", avatar = false, size = undefined, src = undefined, svg = {} } = $$props;
+
+    	let { $$slots = {}, $$scope } = $$props;
+
+    	$$self.$set = $$props => {
+    		if ('className' in $$props) $$invalidate('className', className = $$props.className);
+    		if ('events' in $$props) $$invalidate('events', events = $$props.events);
+    		if ('id' in $$props) $$invalidate('id', id = $$props.id);
+    		if ('style' in $$props) $$invalidate('style', style = $$props.style);
+    		if ('testId' in $$props) $$invalidate('testId', testId = $$props.testId);
+    		if ('tone' in $$props) $$invalidate('tone', tone = $$props.tone);
+    		if ('alt' in $$props) $$invalidate('alt', alt = $$props.alt);
+    		if ('avatar' in $$props) $$invalidate('avatar', avatar = $$props.avatar);
+    		if ('size' in $$props) $$invalidate('size', size = $$props.size);
+    		if ('src' in $$props) $$invalidate('src', src = $$props.src);
+    		if ('svg' in $$props) $$invalidate('svg', svg = $$props.svg);
+    		if ('$$scope' in $$props) $$invalidate('$$scope', $$scope = $$props.$$scope);
+    	};
+
+    	let R_classNames;
+
+    	$$self.$$.update = ($$dirty = { size: 1, avatar: 1, tone: 1, className: 1 }) => {
+    		if ($$dirty.size || $$dirty.avatar || $$dirty.tone || $$dirty.className) { $$invalidate('R_classNames', R_classNames = [
+            classes$1.component,
+            classForSize(classes$1, size),
+            avatar ? classes$1.avatar : null,
+            tone === "dark" ? "pe-dark-tone" : undefined,
+            tone === "light" ? "pe-light-tone" : undefined,
+            className
+          ].join(" ")); }
+    	};
+
+    	return {
+    		className,
+    		events,
+    		id,
+    		style,
+    		testId,
+    		tone,
+    		alt,
+    		avatar,
+    		size,
+    		src,
+    		svg,
+    		R_classNames,
+    		$$slots,
+    		$$scope
+    	};
+    }
+
+    class Icon extends SvelteComponent$1 {
+    	constructor(options) {
+    		super();
+    		init$1(this, options, instance$1$1, create_fragment$1$1, safe_not_equal$1, ["className", "events", "id", "style", "testId", "tone", "alt", "avatar", "size", "src", "svg"]);
+    	}
+    }
+
     var shadowClasses = {
       component:          "pe-shadow",
           
@@ -853,27 +1639,25 @@ var app = (function () {
         : undefined
     );
 
-    /* src/lib/shadow/Shadow.svelte generated by Svelte v3.5.1 */
+    /* src/shadow/Shadow.svelte generated by Svelte v3.5.1 */
 
-    const file = "src/lib/shadow/Shadow.svelte";
+    const get_after_slot_changes$1 = ({}) => ({});
+    const get_after_slot_context$1 = ({}) => ({});
 
-    const get_after_slot_changes = ({}) => ({});
-    const get_after_slot_context = ({}) => ({});
+    const get_before_slot_changes$1 = ({}) => ({});
+    const get_before_slot_context$1 = ({}) => ({});
 
-    const get_before_slot_changes = ({}) => ({});
-    const get_before_slot_context = ({}) => ({});
-
-    function create_fragment$1(ctx) {
+    function create_fragment$2(ctx) {
     	var div2, t0, t1, t2, div0, div0_class_value, t3, div1, div1_class_value, current;
 
     	const before_slot_1 = ctx.$$slots.before;
-    	const before_slot = create_slot(before_slot_1, ctx, get_before_slot_context);
+    	const before_slot = create_slot(before_slot_1, ctx, get_before_slot_context$1);
 
     	const default_slot_1 = ctx.$$slots.default;
     	const default_slot = create_slot(default_slot_1, ctx, null);
 
     	const after_slot_1 = ctx.$$slots.after;
-    	const after_slot = create_slot(after_slot_1, ctx, get_after_slot_context);
+    	const after_slot = create_slot(after_slot_1, ctx, get_after_slot_context$1);
 
     	var div2_levels = [
     		{ class: ctx.R_classNames },
@@ -889,67 +1673,63 @@ var app = (function () {
     	}
 
     	return {
-    		c: function create() {
-    			div2 = element("div");
+    		c() {
+    			div2 = element$1("div");
 
     			if (before_slot) before_slot.c();
-    			t0 = space();
+    			t0 = space$1();
 
     			if (default_slot) default_slot.c();
-    			t1 = space();
+    			t1 = space$1();
 
     			if (after_slot) after_slot.c();
-    			t2 = space();
-    			div0 = element("div");
-    			t3 = space();
-    			div1 = element("div");
+    			t2 = space$1();
+    			div0 = element$1("div");
+    			t3 = space$1();
+    			div1 = element$1("div");
 
     			div0.className = div0_class_value = shadowClasses.bottomShadow;
-    			add_location(div0, file, 38, 2, 850);
     			div1.className = div1_class_value = shadowClasses.topShadow;
-    			add_location(div1, file, 39, 2, 889);
     			set_attributes(div2, div2_data);
-    			add_location(div2, file, 28, 0, 668);
     		},
 
-    		l: function claim(nodes) {
+    		l(nodes) {
     			if (before_slot) before_slot.l(div2_nodes);
 
     			if (default_slot) default_slot.l(div2_nodes);
 
     			if (after_slot) after_slot.l(div2_nodes);
-    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
 
-    		m: function mount(target, anchor) {
-    			insert(target, div2, anchor);
+    		m(target, anchor) {
+    			insert$1(target, div2, anchor);
 
     			if (before_slot) {
     				before_slot.m(div2, null);
     			}
 
-    			append(div2, t0);
+    			append$1(div2, t0);
 
     			if (default_slot) {
     				default_slot.m(div2, null);
     			}
 
-    			append(div2, t1);
+    			append$1(div2, t1);
 
     			if (after_slot) {
     				after_slot.m(div2, null);
     			}
 
-    			append(div2, t2);
-    			append(div2, div0);
-    			append(div2, t3);
-    			append(div2, div1);
+    			append$1(div2, t2);
+    			append$1(div2, div0);
+    			append$1(div2, t3);
+    			append$1(div2, div1);
     			current = true;
     		},
 
-    		p: function update(changed, ctx) {
+    		p(changed, ctx) {
     			if (before_slot && before_slot.p && changed.$$scope) {
-    				before_slot.p(get_slot_changes(before_slot_1, ctx, changed, get_before_slot_changes), get_slot_context(before_slot_1, ctx, get_before_slot_context));
+    				before_slot.p(get_slot_changes(before_slot_1, ctx, changed, get_before_slot_changes$1), get_slot_context(before_slot_1, ctx, get_before_slot_context$1));
     			}
 
     			if (default_slot && default_slot.p && changed.$$scope) {
@@ -957,7 +1737,7 @@ var app = (function () {
     			}
 
     			if (after_slot && after_slot.p && changed.$$scope) {
-    				after_slot.p(get_slot_changes(after_slot_1, ctx, changed, get_after_slot_changes), get_slot_context(after_slot_1, ctx, get_after_slot_context));
+    				after_slot.p(get_slot_changes(after_slot_1, ctx, changed, get_after_slot_changes$1), get_slot_context(after_slot_1, ctx, get_after_slot_context$1));
     			}
 
     			set_attributes(div2, get_spread_update(div2_levels, [
@@ -969,7 +1749,7 @@ var app = (function () {
     			]));
     		},
 
-    		i: function intro(local) {
+    		i(local) {
     			if (current) return;
     			if (before_slot && before_slot.i) before_slot.i(local);
     			if (default_slot && default_slot.i) default_slot.i(local);
@@ -977,16 +1757,16 @@ var app = (function () {
     			current = true;
     		},
 
-    		o: function outro(local) {
+    		o(local) {
     			if (before_slot && before_slot.o) before_slot.o(local);
     			if (default_slot && default_slot.o) default_slot.o(local);
     			if (after_slot && after_slot.o) after_slot.o(local);
     			current = false;
     		},
 
-    		d: function destroy(detaching) {
+    		d(detaching) {
     			if (detaching) {
-    				detach(div2);
+    				detach$1(div2);
     			}
 
     			if (before_slot) before_slot.d(detaching);
@@ -998,14 +1778,9 @@ var app = (function () {
     	};
     }
 
-    function instance$1($$self, $$props, $$invalidate) {
+    function instance$2($$self, $$props, $$invalidate) {
     	// Common vars
       let { className = "", events = {}, id = undefined, style = undefined, testId = undefined, shadowDepth = 1, animated = false } = $$props;
-
-    	const writable_props = ['className', 'events', 'id', 'style', 'testId', 'shadowDepth', 'animated'];
-    	Object.keys($$props).forEach(key => {
-    		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<Shadow> was created with unknown prop '${key}'`);
-    	});
 
     	let { $$slots = {}, $$scope } = $$props;
 
@@ -1045,66 +1820,1653 @@ var app = (function () {
     	};
     }
 
-    class Shadow extends SvelteComponentDev {
+    class Shadow extends SvelteComponent$1 {
     	constructor(options) {
-    		super(options);
-    		init(this, options, instance$1, create_fragment$1, safe_not_equal, ["className", "events", "id", "style", "testId", "shadowDepth", "animated"]);
+    		super();
+    		init$1(this, options, instance$2, create_fragment$2, safe_not_equal$1, ["className", "events", "id", "style", "testId", "shadowDepth", "animated"]);
+    	}
+    }
+
+    // @ts-check
+    // Global style variables
+    var grid_unit = 4;
+    var grid_unit_component = 8;
+    var increment = 7 * grid_unit_component; // 7 * 8 = 56
+
+    var increment_large = 8 * grid_unit_component; // 8 * 8 = 64
+
+    var vars = {
+      // grid
+      grid_unit: grid_unit,
+      grid_unit_component: grid_unit_component,
+      increment: increment,
+      increment_large: increment_large,
+      grid_unit_menu: 56,
+      grid_unit_icon_button: 6 * grid_unit_component,
+      // 48
+      // common sizes
+      unit_block_border_radius: 4,
+      unit_item_border_radius: 4,
+      unit_indent: 72,
+      unit_indent_large: 80,
+      unit_side_padding: 16,
+      // buttons
+      unit_touch_height: 48,
+      unit_icon_size_small: 2 * grid_unit_component,
+      // 16
+      unit_icon_size: 3 * grid_unit_component,
+      // 24
+      unit_icon_size_medium: 4 * grid_unit_component,
+      // 32
+      unit_icon_size_large: 5 * grid_unit_component,
+      // 40
+      // screen dimensions
+      unit_screen_size_extra_large: 1280,
+      unit_screen_size_large: 960,
+      unit_screen_size_medium: 480,
+      unit_screen_size_small: 320,
+      // transitions
+      animation_duration: ".18s",
+      animation_curve_slow_in_fast_out: "cubic-bezier(.4, 0, .2, 1)",
+      animation_curve_slow_in_linear_out: "cubic-bezier(0, 0, .2, 1)",
+      animation_curve_linear_in_fast_out: "cubic-bezier(.4, 0, 1, 1)",
+      animation_curve_default: "ease-out",
+      // font
+      font_weight_light: 300,
+      font_weight_normal: 400,
+      font_weight_medium: 500,
+      font_weight_bold: 700,
+      font_size_title: 20,
+      line_height: 1.5,
+      // base colors
+      color_primary: "33, 150, 243",
+      // blue 500
+      color_primary_active: "30, 136, 229",
+      // blue 600
+      color_primary_dark: "25, 118, 210",
+      // blue 700
+      color_primary_faded: "100, 181, 249",
+      // blue 300
+      color_primary_foreground: "255, 255, 255",
+      color_light_background: "255, 255, 255",
+      color_light_foreground: "0, 0, 0",
+      color_dark_background: "34, 34, 34",
+      color_dark_foreground: "255, 255, 255",
+      // blends
+      blend_light_text_primary: .87,
+      blend_light_text_regular: .73,
+      blend_light_text_secondary: .54,
+      blend_light_text_tertiary: .40,
+      blend_light_text_disabled: .26,
+      blend_light_border_medium: .24,
+      blend_light_border_light: .11,
+      blend_light_background_active: .14,
+      blend_light_background_hover: .06,
+      blend_light_background_hover_medium: .12,
+      // for the lighter tinted icon buttons
+      blend_light_background_disabled: .09,
+      blend_light_overlay_background: .3,
+      blend_dark_text_primary: 1,
+      blend_dark_text_regular: .87,
+      blend_dark_text_secondary: .70,
+      blend_dark_text_tertiary: .40,
+      blend_dark_text_disabled: .26,
+      blend_dark_border_medium: .22,
+      blend_dark_border_light: .10,
+      blend_dark_background_active: .14,
+      blend_dark_background_hover: .08,
+      blend_dark_background_hoverMedium: .12,
+      // for the lighter tinted icon buttons
+      blend_dark_background_disabled: .12,
+      blend_dark_overlay_background: .3,
+
+      /*
+      Breakpoints
+      Specs: https://material.io/guidelines/layout/responsive-ui.html#responsive-ui-breakpoints
+      Breakbpoint naming: inspiration from
+      https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862
+      */
+      breakpoint_for_phone_only: 599,
+      // set max-width  cols: 4,  gutter: 16
+      breakpoint_for_tablet_portrait_up: 600,
+      // set min-width  cols: 8,  gutter: 24
+      breakpoint_for_tablet_landscape_up: 840,
+      // etc.           cols: 12, gutter: 24
+      breakpoint_for_desktop_up: 1280,
+      breakpoint_for_big_desktop_up: 1600,
+      breakpoint_for_tv_up: 1920,
+      // z-index
+      z_toolbar: 100,
+      z_menu: 1000,
+      z_app_bar: 2000,
+      z_drawer: 3000,
+      z_notification: 5000,
+      z_dialog: 7000
+    };
+
+    var ANIMATION_END_EVENT = getAnimationEndEvent();
+    var DEFAULT_START_OPACITY = 0.2;
+    var DEFAULT_END_OPACITY = 0.0;
+    var DEFAULT_START_SCALE = 0.1;
+    var DEFAULT_END_SCALE = 2.0;
+    var OPACITY_DECAY_VELOCITY = 0.35;
+
+    var addStyleToHead = function addStyleToHead(id, stylesheet) {
+      if (isServer) return;
+      var documentRef = window.document;
+      var styleEl = documentRef.createElement("style");
+      styleEl.setAttribute("id", id);
+      styleEl.appendChild(documentRef.createTextNode(stylesheet));
+      documentRef.head.appendChild(styleEl);
+    };
+
+    var removeStyleFromHead = function removeStyleFromHead(id) {
+      if (isServer) return;
+      var el = document.getElementById(id);
+
+      if (el && el.parentNode) {
+        el.parentNode.removeChild(el);
+      }
+    };
+
+    var rippleAnimation = function rippleAnimation(_ref) {
+      var e = _ref.e,
+          id = _ref.id,
+          el = _ref.el,
+          props = _ref.props,
+          classes = _ref.classes;
+      return new Promise(function (resolve) {
+        var container = document.createElement("div");
+        container.setAttribute("class", classes.mask);
+        el.appendChild(container);
+        var waves = document.createElement("div");
+        waves.setAttribute("class", classes.waves);
+        container.appendChild(waves);
+        var rect = el.getBoundingClientRect();
+        var x = isTouch && e.touches ? e.touches[0].pageX : e.clientX;
+        var y = isTouch && e.touches ? e.touches[0].pageY : e.clientY;
+        var w = el.offsetWidth;
+        var h = el.offsetHeight;
+        var waveRadius = Math.sqrt(w * w + h * h);
+        var mx = props.center ? rect.left + rect.width / 2 : x;
+        var my = props.center ? rect.top + rect.height / 2 : y;
+        var rx = mx - rect.left - waveRadius / 2;
+        var ry = my - rect.top - waveRadius / 2;
+        var startOpacity = props.startOpacity !== undefined ? props.startOpacity : DEFAULT_START_OPACITY;
+        var opacityDecayVelocity = props.opacityDecayVelocity !== undefined ? props.opacityDecayVelocity : OPACITY_DECAY_VELOCITY;
+        var endOpacity = props.endOpacity || DEFAULT_END_OPACITY;
+        var startScale = props.startScale || DEFAULT_START_SCALE;
+        var endScale = props.endScale || DEFAULT_END_SCALE;
+        var duration = props.duration ? props.duration : 1 / opacityDecayVelocity * 0.2;
+        var color = window.getComputedStyle(el).color;
+        var style = waves.style;
+        style.width = style.height = waveRadius + "px";
+        style.top = ry + "px";
+        style.left = rx + "px";
+        style["animation-duration"] = style["-webkit-animation-duration"] = style["-moz-animation-duration"] = style["-o-animation-duration"] = duration + "s";
+        style.backgroundColor = color;
+        style.opacity = startOpacity;
+        style.animationName = id;
+        style.animationTimingFunction = props.animationTimingFunction || vars.animation_curve_default;
+        var rippleStyleSheet = "@keyframes ".concat(id, " {\n      0% {\n        transform:scale(").concat(startScale, ");\n        opacity: ").concat(startOpacity, "\n      }\n      100% {\n        transform:scale(").concat(endScale, ");\n        opacity: ").concat(endOpacity, ";\n      }\n    }");
+        addStyleToHead(id, rippleStyleSheet);
+
+        var animationDone = function animationDone(evt) {
+          removeStyleFromHead(id);
+          waves.removeEventListener(ANIMATION_END_EVENT, animationDone, false);
+
+          if (props.persistent) {
+            style.opacity = endOpacity;
+            style.transform = "scale(" + endScale + ")";
+          } else {
+            waves.classList.remove(classes.wavesAnimating);
+            container.removeChild(waves);
+            el.removeChild(container);
+          }
+
+          resolve(evt);
+        };
+
+        waves.addEventListener(ANIMATION_END_EVENT, animationDone, false);
+        waves.classList.add(classes.wavesAnimating);
+      });
+    };
+
+    /**
+     * Create a `Writable` store that allows both updating and reading by subscription.
+     * @param {*=}value initial value
+     * @param {StartStopNotifier=}start start and stop notifications for subscriptions
+     */
+    function writable$1(value, start = noop$1) {
+        let stop;
+        const subscribers = [];
+        function set(new_value) {
+            if (safe_not_equal$1(value, new_value)) {
+                value = new_value;
+                if (!stop) {
+                    return; // not ready
+                }
+                subscribers.forEach((s) => s[1]());
+                subscribers.forEach((s) => s[0](value));
+            }
+        }
+        function update(fn) {
+            set(fn(value));
+        }
+        function subscribe(run, invalidate = noop$1) {
+            const subscriber = [run, invalidate];
+            subscribers.push(subscriber);
+            if (subscribers.length === 1) {
+                stop = start(set) || noop$1;
+            }
+            run(value);
+            return () => {
+                const index = subscribers.indexOf(subscriber);
+                if (index !== -1) {
+                    subscribers.splice(index, 1);
+                }
+                if (subscribers.length === 0) {
+                    stop();
+                }
+            };
+        }
+        return { set, update, subscribe };
+    }
+
+    var classes$2 = {
+      component:      "pe-ripple",
+
+      // elements
+      mask:           "pe-ripple__mask",
+      waves:          "pe-ripple__waves",
+
+      // states
+      unconstrained:  "pe-ripple--unconstrained",
+      wavesAnimating: "pe-ripple__waves--animating",
+    };
+
+    /* src/ripple/Ripple.svelte generated by Svelte v3.5.1 */
+
+    const get_after_slot_changes$2 = ({}) => ({});
+    const get_after_slot_context$2 = ({}) => ({});
+
+    const get_before_slot_changes$2 = ({}) => ({});
+    const get_before_slot_context$2 = ({}) => ({});
+
+    function create_fragment$3(ctx) {
+    	var div, t0, t1, current;
+
+    	const before_slot_1 = ctx.$$slots.before;
+    	const before_slot = create_slot(before_slot_1, ctx, get_before_slot_context$2);
+
+    	const default_slot_1 = ctx.$$slots.default;
+    	const default_slot = create_slot(default_slot_1, ctx, null);
+
+    	const after_slot_1 = ctx.$$slots.after;
+    	const after_slot = create_slot(after_slot_1, ctx, get_after_slot_context$2);
+
+    	var div_levels = [
+    		{ "data-uid": ctx.uid },
+    		{ class: ctx.R_classNames },
+    		(ctx.style && {style: ctx.style}),
+    		(ctx.id && { 'id': ctx.id }),
+    		{ 'data-test-id': ctx.testId }
+    	];
+
+    	var div_data = {};
+    	for (var i = 0; i < div_levels.length; i += 1) {
+    		div_data = assign(div_data, div_levels[i]);
     	}
 
-    	get className() {
-    		throw new Error("<Shadow>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	return {
+    		c() {
+    			div = element$1("div");
+
+    			if (before_slot) before_slot.c();
+    			t0 = space$1();
+
+    			if (default_slot) default_slot.c();
+    			t1 = space$1();
+
+    			if (after_slot) after_slot.c();
+
+    			set_attributes(div, div_data);
+    		},
+
+    		l(nodes) {
+    			if (before_slot) before_slot.l(div_nodes);
+
+    			if (default_slot) default_slot.l(div_nodes);
+
+    			if (after_slot) after_slot.l(div_nodes);
+    		},
+
+    		m(target_1, anchor) {
+    			insert$1(target_1, div, anchor);
+
+    			if (before_slot) {
+    				before_slot.m(div, null);
+    			}
+
+    			append$1(div, t0);
+
+    			if (default_slot) {
+    				default_slot.m(div, null);
+    			}
+
+    			append$1(div, t1);
+
+    			if (after_slot) {
+    				after_slot.m(div, null);
+    			}
+
+    			current = true;
+    		},
+
+    		p(changed, ctx) {
+    			if (before_slot && before_slot.p && changed.$$scope) {
+    				before_slot.p(get_slot_changes(before_slot_1, ctx, changed, get_before_slot_changes$2), get_slot_context(before_slot_1, ctx, get_before_slot_context$2));
+    			}
+
+    			if (default_slot && default_slot.p && changed.$$scope) {
+    				default_slot.p(get_slot_changes(default_slot_1, ctx, changed, null), get_slot_context(default_slot_1, ctx, null));
+    			}
+
+    			if (after_slot && after_slot.p && changed.$$scope) {
+    				after_slot.p(get_slot_changes(after_slot_1, ctx, changed, get_after_slot_changes$2), get_slot_context(after_slot_1, ctx, get_after_slot_context$2));
+    			}
+
+    			set_attributes(div, get_spread_update(div_levels, [
+    				(changed.uid) && { "data-uid": ctx.uid },
+    				(changed.R_classNames) && { class: ctx.R_classNames },
+    				(changed.style) && (ctx.style && {style: ctx.style}),
+    				(changed.id) && (ctx.id && { 'id': ctx.id }),
+    				(changed.testId) && { 'data-test-id': ctx.testId }
+    			]));
+    		},
+
+    		i(local) {
+    			if (current) return;
+    			if (before_slot && before_slot.i) before_slot.i(local);
+    			if (default_slot && default_slot.i) default_slot.i(local);
+    			if (after_slot && after_slot.i) after_slot.i(local);
+    			current = true;
+    		},
+
+    		o(local) {
+    			if (before_slot && before_slot.o) before_slot.o(local);
+    			if (default_slot && default_slot.o) default_slot.o(local);
+    			if (after_slot && after_slot.o) after_slot.o(local);
+    			current = false;
+    		},
+
+    		d(detaching) {
+    			if (detaching) {
+    				detach$1(div);
+    			}
+
+    			if (before_slot) before_slot.d(detaching);
+
+    			if (default_slot) default_slot.d(detaching);
+
+    			if (after_slot) after_slot.d(detaching);
+    		}
+    	};
+    }
+
+    function instance$3($$self, $$props, $$invalidate) {
+    	let $animationCount;
+
+    	
+       
+      // Store
+      const animationCount = writable$1(0); subscribe$1($$self, animationCount, $$value => { $animationCount = $$value; $$invalidate('$animationCount', $animationCount); });
+
+      // DOM bindings
+      let domElement;
+      const uid = nonSecure();
+
+      // Common vars
+      let { className = "", id = undefined, style = undefined, testId = undefined, tone = undefined, disabled = false, unconstrained = false, multi = false, target = undefined, start = undefined, end = undefined, duration = undefined, center = false, startOpacity = undefined, endOpacity = undefined, opacityDecayVelocity = undefined, startScale = undefined, endScale = undefined, animationTimingFunction = undefined, persistent = false } = $$props;
+
+      const tap = e => {
+        if (disabled || !domElement || (!multi && $animationCount > 0)) {
+          return;
+        }
+        if (start) {
+          start(e);
+        }
+        const id = `ripple_animation_${new Date().getTime()}`;
+        const props = {
+          duration,
+          center,
+          startOpacity,
+          endOpacity,
+          opacityDecayVelocity,
+          startScale,
+          endScale,
+          animationTimingFunction,
+          persistent,
+        };
+        const animation = rippleAnimation({ e, id, el: domElement, props, classes: classes$2 })
+          .then(evt => {
+            if (end) {
+              end(evt);
+            }
+            animationCount.set($animationCount - 1);
+          });
+        animationCount.set($animationCount + 1);
+      };
+
+      onMount(() => {
+        domElement = document.querySelector(`[data-uid="${uid}"]`);
+        const triggerEl = target || (domElement ? domElement.parentElement : undefined);
+        if (triggerEl && triggerEl.addEventListener) {
+          pointerEndEvent.forEach(evt =>
+            triggerEl.addEventListener(evt, tap, false));
+        
+          return () => {
+            pointerEndEvent.forEach(evt =>
+              triggerEl.removeEventListener(evt, tap, false));
+          };
+        }
+      });
+
+    	let { $$slots = {}, $$scope } = $$props;
+
+    	$$self.$set = $$props => {
+    		if ('className' in $$props) $$invalidate('className', className = $$props.className);
+    		if ('id' in $$props) $$invalidate('id', id = $$props.id);
+    		if ('style' in $$props) $$invalidate('style', style = $$props.style);
+    		if ('testId' in $$props) $$invalidate('testId', testId = $$props.testId);
+    		if ('tone' in $$props) $$invalidate('tone', tone = $$props.tone);
+    		if ('disabled' in $$props) $$invalidate('disabled', disabled = $$props.disabled);
+    		if ('unconstrained' in $$props) $$invalidate('unconstrained', unconstrained = $$props.unconstrained);
+    		if ('multi' in $$props) $$invalidate('multi', multi = $$props.multi);
+    		if ('target' in $$props) $$invalidate('target', target = $$props.target);
+    		if ('start' in $$props) $$invalidate('start', start = $$props.start);
+    		if ('end' in $$props) $$invalidate('end', end = $$props.end);
+    		if ('duration' in $$props) $$invalidate('duration', duration = $$props.duration);
+    		if ('center' in $$props) $$invalidate('center', center = $$props.center);
+    		if ('startOpacity' in $$props) $$invalidate('startOpacity', startOpacity = $$props.startOpacity);
+    		if ('endOpacity' in $$props) $$invalidate('endOpacity', endOpacity = $$props.endOpacity);
+    		if ('opacityDecayVelocity' in $$props) $$invalidate('opacityDecayVelocity', opacityDecayVelocity = $$props.opacityDecayVelocity);
+    		if ('startScale' in $$props) $$invalidate('startScale', startScale = $$props.startScale);
+    		if ('endScale' in $$props) $$invalidate('endScale', endScale = $$props.endScale);
+    		if ('animationTimingFunction' in $$props) $$invalidate('animationTimingFunction', animationTimingFunction = $$props.animationTimingFunction);
+    		if ('persistent' in $$props) $$invalidate('persistent', persistent = $$props.persistent);
+    		if ('$$scope' in $$props) $$invalidate('$$scope', $$scope = $$props.$$scope);
+    	};
+
+    	let R_classNames;
+
+    	$$self.$$.update = ($$dirty = { unconstrained: 1, tone: 1, className: 1 }) => {
+    		if ($$dirty.unconstrained || $$dirty.tone || $$dirty.className) { $$invalidate('R_classNames', R_classNames = [
+            classes$2.component,
+            unconstrained ? classes$2.unconstrained : null,
+            tone === "dark" ? "pe-dark-tone" : undefined,
+            tone === "light" ? "pe-light-tone" : undefined,
+            className,
+          ].join(" ")); }
+    	};
+
+    	return {
+    		animationCount,
+    		uid,
+    		className,
+    		id,
+    		style,
+    		testId,
+    		tone,
+    		disabled,
+    		unconstrained,
+    		multi,
+    		target,
+    		start,
+    		end,
+    		duration,
+    		center,
+    		startOpacity,
+    		endOpacity,
+    		opacityDecayVelocity,
+    		startScale,
+    		endScale,
+    		animationTimingFunction,
+    		persistent,
+    		R_classNames,
+    		$$slots,
+    		$$scope
+    	};
+    }
+
+    class Ripple extends SvelteComponent$1 {
+    	constructor(options) {
+    		super();
+    		init$1(this, options, instance$3, create_fragment$3, safe_not_equal$1, ["className", "id", "style", "testId", "tone", "disabled", "unconstrained", "multi", "target", "start", "end", "duration", "center", "startOpacity", "endOpacity", "opacityDecayVelocity", "startScale", "endScale", "animationTimingFunction", "persistent"]);
+    	}
+    }
+
+    var classes$3 = {
+      component:        "pe-text-button",
+      super:            "pe-button",
+      row:              "pe-button-row",
+          
+      // elements      
+      content:          "pe-button__content",
+      label:            "pe-button__label",
+      textLabel:        "pe-button__text-label",
+      wash:             "pe-button__wash",
+      washColor:        "pe-button__wash-color",
+      dropdown:         "pe-button__dropdown",
+          
+      // states      
+      border:           "pe-button--border",
+      contained:        "pe-button--contained",
+      disabled:         "pe-button--disabled",
+      dropdownClosed:   "pe-button--dropdown-closed",
+      dropdownOpen:     "pe-button--dropdown-open",
+      extraWide:        "pe-button--extra-wide",
+      hasDropdown:      "pe-button--dropdown",
+      highLabel:        "pe-button--high-label",
+      inactive:         "pe-button--inactive",
+      raised:           "pe-button--raised",
+      selected:         "pe-button--selected",
+      separatorAtStart: "pe-button--separator-start",
+      hasHover:         "pe-button--has-hover",
+    };
+
+    /* src/button/IconDropdownDown.svelte generated by Svelte v3.5.1 */
+
+    function create_fragment$4(ctx) {
+    	var svg, path;
+
+    	return {
+    		c() {
+    			svg = svg_element$1("svg");
+    			path = svg_element$1("path");
+    			attr$1(path, "d", "M7 10l5 5 5-5z");
+    			attr$1(svg, "xmlns", "http://www.w3.org/2000/svg");
+    			attr$1(svg, "id", "dd-down-svg");
+    			attr$1(svg, "width", "24");
+    			attr$1(svg, "height", "24");
+    			attr$1(svg, "viewBox", "0 0 24 24");
+    		},
+
+    		m(target, anchor) {
+    			insert$1(target, svg, anchor);
+    			append$1(svg, path);
+    		},
+
+    		p: noop$1,
+    		i: noop$1,
+    		o: noop$1,
+
+    		d(detaching) {
+    			if (detaching) {
+    				detach$1(svg);
+    			}
+    		}
+    	};
+    }
+
+    class IconDropdownDown extends SvelteComponent$1 {
+    	constructor(options) {
+    		super();
+    		init$1(this, options, null, create_fragment$4, safe_not_equal$1, []);
+    	}
+    }
+
+    /* src/button/TextLabel.svelte generated by Svelte v3.5.1 */
+
+    function create_fragment$5(ctx) {
+    	var div1, div0, t, div0_class_value, div1_class_value;
+
+    	return {
+    		c() {
+    			div1 = element$1("div");
+    			div0 = element$1("div");
+    			t = text$1(ctx.label);
+    			div0.className = div0_class_value = classes$3.textLabel;
+    			div0.style.cssText = ctx.textStyle;
+    			div1.className = div1_class_value = classes$3.label;
+    		},
+
+    		m(target, anchor) {
+    			insert$1(target, div1, anchor);
+    			append$1(div1, div0);
+    			append$1(div0, t);
+    		},
+
+    		p(changed, ctx) {
+    			if (changed.label) {
+    				set_data$1(t, ctx.label);
+    			}
+
+    			if (changed.textStyle) {
+    				div0.style.cssText = ctx.textStyle;
+    			}
+    		},
+
+    		i: noop$1,
+    		o: noop$1,
+
+    		d(detaching) {
+    			if (detaching) {
+    				detach$1(div1);
+    			}
+    		}
+    	};
+    }
+
+    function instance$4($$self, $$props, $$invalidate) {
+    	let { label = "", textStyle = undefined } = $$props;
+
+    	$$self.$set = $$props => {
+    		if ('label' in $$props) $$invalidate('label', label = $$props.label);
+    		if ('textStyle' in $$props) $$invalidate('textStyle', textStyle = $$props.textStyle);
+    	};
+
+    	return { label, textStyle };
+    }
+
+    class TextLabel extends SvelteComponent$1 {
+    	constructor(options) {
+    		super();
+    		init$1(this, options, instance$4, create_fragment$5, safe_not_equal$1, ["label", "textStyle"]);
+    	}
+    }
+
+    /* src/button/Button.svelte generated by Svelte v3.5.1 */
+
+    const get_after_slot_changes$3 = ({}) => ({});
+    const get_after_slot_context$3 = ({}) => ({});
+
+    const get_label_slot_changes = ({}) => ({});
+    const get_label_slot_context = ({}) => ({});
+
+    const get_before_slot_changes$3 = ({}) => ({});
+    const get_before_slot_context$3 = ({}) => ({});
+
+    // (166:4) {#if disabled || noInk}
+    function create_if_block_2(ctx) {
+    	var current;
+
+    	var ripple_1_spread_levels = [
+    		ctx.ripple,
+    		{ target: ctx.domElement }
+    	];
+
+    	let ripple_1_props = {};
+    	for (var i = 0; i < ripple_1_spread_levels.length; i += 1) {
+    		ripple_1_props = assign(ripple_1_props, ripple_1_spread_levels[i]);
+    	}
+    	var ripple_1 = new Ripple({ props: ripple_1_props });
+
+    	return {
+    		c() {
+    			ripple_1.$$.fragment.c();
+    		},
+
+    		m(target, anchor) {
+    			mount_component$1(ripple_1, target, anchor);
+    			current = true;
+    		},
+
+    		p(changed, ctx) {
+    			var ripple_1_changes = (changed.ripple || changed.domElement) ? get_spread_update(ripple_1_spread_levels, [
+    				(changed.ripple) && ctx.ripple,
+    				(changed.domElement) && { target: ctx.domElement }
+    			]) : {};
+    			ripple_1.$set(ripple_1_changes);
+    		},
+
+    		i(local) {
+    			if (current) return;
+    			ripple_1.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o(local) {
+    			ripple_1.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d(detaching) {
+    			ripple_1.$destroy(detaching);
+    		}
+    	};
+    }
+
+    // (177:4) {:else}
+    function create_else_block(ctx) {
+    	var current;
+
+    	const default_slot_1 = ctx.$$slots.default;
+    	const default_slot = create_slot(default_slot_1, ctx, null);
+
+    	return {
+    		c() {
+    			if (default_slot) default_slot.c();
+    		},
+
+    		l(nodes) {
+    			if (default_slot) default_slot.l(nodes);
+    		},
+
+    		m(target, anchor) {
+    			if (default_slot) {
+    				default_slot.m(target, anchor);
+    			}
+
+    			current = true;
+    		},
+
+    		p(changed, ctx) {
+    			if (default_slot && default_slot.p && changed.$$scope) {
+    				default_slot.p(get_slot_changes(default_slot_1, ctx, changed, null), get_slot_context(default_slot_1, ctx, null));
+    			}
+    		},
+
+    		i(local) {
+    			if (current) return;
+    			if (default_slot && default_slot.i) default_slot.i(local);
+    			current = true;
+    		},
+
+    		o(local) {
+    			if (default_slot && default_slot.o) default_slot.o(local);
+    			current = false;
+    		},
+
+    		d(detaching) {
+    			if (default_slot) default_slot.d(detaching);
+    		}
+    	};
+    }
+
+    // (175:4) {#if label !== undefined}
+    function create_if_block_1(ctx) {
+    	var current;
+
+    	var textlabel = new TextLabel({
+    		props: {
+    		label: ctx.label,
+    		textStyle: ctx.textStyle
+    	}
+    	});
+
+    	return {
+    		c() {
+    			textlabel.$$.fragment.c();
+    		},
+
+    		m(target, anchor) {
+    			mount_component$1(textlabel, target, anchor);
+    			current = true;
+    		},
+
+    		p(changed, ctx) {
+    			var textlabel_changes = {};
+    			if (changed.label) textlabel_changes.label = ctx.label;
+    			if (changed.textStyle) textlabel_changes.textStyle = ctx.textStyle;
+    			textlabel.$set(textlabel_changes);
+    		},
+
+    		i(local) {
+    			if (current) return;
+    			textlabel.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o(local) {
+    			textlabel.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d(detaching) {
+    			textlabel.$destroy(detaching);
+    		}
+    	};
+    }
+
+    // (181:4) {#if dropdown}
+    function create_if_block(ctx) {
+    	var current;
+
+    	var icon = new Icon({
+    		props: {
+    		className: classes$3.dropdown,
+    		$$slots: { default: [create_default_slot$1] },
+    		$$scope: { ctx }
+    	}
+    	});
+
+    	return {
+    		c() {
+    			icon.$$.fragment.c();
+    		},
+
+    		m(target, anchor) {
+    			mount_component$1(icon, target, anchor);
+    			current = true;
+    		},
+
+    		p(changed, ctx) {
+    			var icon_changes = {};
+    			if (changed.classes) icon_changes.className = classes$3.dropdown;
+    			if (changed.$$scope) icon_changes.$$scope = { changed, ctx };
+    			icon.$set(icon_changes);
+    		},
+
+    		i(local) {
+    			if (current) return;
+    			icon.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o(local) {
+    			icon.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d(detaching) {
+    			icon.$destroy(detaching);
+    		}
+    	};
+    }
+
+    // (182:6) <Icon className={classes.dropdown}>
+    function create_default_slot$1(ctx) {
+    	var current;
+
+    	var icondropdowndown = new IconDropdownDown({});
+
+    	return {
+    		c() {
+    			icondropdowndown.$$.fragment.c();
+    		},
+
+    		m(target, anchor) {
+    			mount_component$1(icondropdowndown, target, anchor);
+    			current = true;
+    		},
+
+    		i(local) {
+    			if (current) return;
+    			icondropdowndown.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o(local) {
+    			icondropdowndown.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d(detaching) {
+    			icondropdowndown.$destroy(detaching);
+    		}
+    	};
+    }
+
+    function create_fragment$6(ctx) {
+    	var a, t0, div2, t1, t2, div1, t3, t4, current_block_type_index, if_block1, t5, t6, current;
+
+    	const before_slot_1 = ctx.$$slots.before;
+    	const before_slot = create_slot(before_slot_1, ctx, get_before_slot_context$3);
+
+    	var shadow = new Shadow({
+    		props: {
+    		shadowDepth: ctx._shadowDepth,
+    		animated: true
+    	}
+    	});
+
+    	var if_block0 = (ctx.disabled || ctx.noInk) && create_if_block_2(ctx);
+
+    	const label_slot_1 = ctx.$$slots.label;
+    	const label_slot = create_slot(label_slot_1, ctx, get_label_slot_context);
+
+    	var if_block_creators = [
+    		create_if_block_1,
+    		create_else_block
+    	];
+
+    	var if_blocks = [];
+
+    	function select_block_type(ctx) {
+    		if (ctx.label !== ctx.undefined) return 0;
+    		return 1;
     	}
 
-    	set className(value) {
-    		throw new Error("<Shadow>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	current_block_type_index = select_block_type(ctx);
+    	if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+
+    	var if_block2 = (ctx.dropdown) && create_if_block(ctx);
+
+    	const after_slot_1 = ctx.$$slots.after;
+    	const after_slot = create_slot(after_slot_1, ctx, get_after_slot_context$3);
+
+    	var a_levels = [
+    		{ href: null },
+    		ctx.elementProps
+    	];
+
+    	var a_data = {};
+    	for (var i = 0; i < a_levels.length; i += 1) {
+    		a_data = assign(a_data, a_levels[i]);
     	}
 
-    	get events() {
-    		throw new Error("<Shadow>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
+    	return {
+    		c() {
+    			a = element$1("a");
 
-    	set events(value) {
-    		throw new Error("<Shadow>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
+    			if (before_slot) before_slot.c();
+    			t0 = space$1();
+    			div2 = element$1("div");
+    			shadow.$$.fragment.c();
+    			t1 = space$1();
+    			if (if_block0) if_block0.c();
+    			t2 = space$1();
+    			div1 = element$1("div");
+    			div1.innerHTML = `<div class="pe-button__wash-color"></div>`;
+    			t3 = space$1();
 
-    	get id() {
-    		throw new Error("<Shadow>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
+    			if (label_slot) label_slot.c();
+    			t4 = space$1();
+    			if_block1.c();
+    			t5 = space$1();
+    			if (if_block2) if_block2.c();
+    			t6 = space$1();
 
-    	set id(value) {
-    		throw new Error("<Shadow>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
+    			if (after_slot) after_slot.c();
 
-    	get style() {
-    		throw new Error("<Shadow>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
+    			div1.className = "pe-button__wash";
 
-    	set style(value) {
-    		throw new Error("<Shadow>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
+    			div2.className = "pe-button__content";
 
-    	get testId() {
-    		throw new Error("<Shadow>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
+    			set_attributes(a, a_data);
+    		},
 
-    	set testId(value) {
-    		throw new Error("<Shadow>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
+    		l(nodes) {
+    			if (before_slot) before_slot.l(a_nodes);
 
-    	get shadowDepth() {
-    		throw new Error("<Shadow>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
+    			if (label_slot) label_slot.l(div2_nodes);
 
-    	set shadowDepth(value) {
-    		throw new Error("<Shadow>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
+    			if (after_slot) after_slot.l(a_nodes);
+    		},
 
-    	get animated() {
-    		throw new Error("<Shadow>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
+    		m(target, anchor) {
+    			insert$1(target, a, anchor);
 
-    	set animated(value) {
-    		throw new Error("<Shadow>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    			if (before_slot) {
+    				before_slot.m(a, null);
+    			}
+
+    			append$1(a, t0);
+    			append$1(a, div2);
+    			mount_component$1(shadow, div2, null);
+    			append$1(div2, t1);
+    			if (if_block0) if_block0.m(div2, null);
+    			append$1(div2, t2);
+    			append$1(div2, div1);
+    			append$1(div2, t3);
+
+    			if (label_slot) {
+    				label_slot.m(div2, null);
+    			}
+
+    			append$1(div2, t4);
+    			if_blocks[current_block_type_index].m(div2, null);
+    			append$1(div2, t5);
+    			if (if_block2) if_block2.m(div2, null);
+    			append$1(a, t6);
+
+    			if (after_slot) {
+    				after_slot.m(a, null);
+    			}
+
+    			current = true;
+    		},
+
+    		p(changed, ctx) {
+    			if (before_slot && before_slot.p && changed.$$scope) {
+    				before_slot.p(get_slot_changes(before_slot_1, ctx, changed, get_before_slot_changes$3), get_slot_context(before_slot_1, ctx, get_before_slot_context$3));
+    			}
+
+    			var shadow_changes = {};
+    			if (changed._shadowDepth) shadow_changes.shadowDepth = ctx._shadowDepth;
+    			shadow.$set(shadow_changes);
+
+    			if (ctx.disabled || ctx.noInk) {
+    				if (if_block0) {
+    					if_block0.p(changed, ctx);
+    					if_block0.i(1);
+    				} else {
+    					if_block0 = create_if_block_2(ctx);
+    					if_block0.c();
+    					if_block0.i(1);
+    					if_block0.m(div2, t2);
+    				}
+    			} else if (if_block0) {
+    				group_outros$1();
+    				on_outro$1(() => {
+    					if_block0.d(1);
+    					if_block0 = null;
+    				});
+
+    				if_block0.o(1);
+    				check_outros$1();
+    			}
+
+    			if (label_slot && label_slot.p && changed.$$scope) {
+    				label_slot.p(get_slot_changes(label_slot_1, ctx, changed, get_label_slot_changes), get_slot_context(label_slot_1, ctx, get_label_slot_context));
+    			}
+
+    			var previous_block_index = current_block_type_index;
+    			current_block_type_index = select_block_type(ctx);
+    			if (current_block_type_index === previous_block_index) {
+    				if_blocks[current_block_type_index].p(changed, ctx);
+    			} else {
+    				group_outros$1();
+    				on_outro$1(() => {
+    					if_blocks[previous_block_index].d(1);
+    					if_blocks[previous_block_index] = null;
+    				});
+    				if_block1.o(1);
+    				check_outros$1();
+
+    				if_block1 = if_blocks[current_block_type_index];
+    				if (!if_block1) {
+    					if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    					if_block1.c();
+    				}
+    				if_block1.i(1);
+    				if_block1.m(div2, t5);
+    			}
+
+    			if (ctx.dropdown) {
+    				if (if_block2) {
+    					if_block2.p(changed, ctx);
+    					if_block2.i(1);
+    				} else {
+    					if_block2 = create_if_block(ctx);
+    					if_block2.c();
+    					if_block2.i(1);
+    					if_block2.m(div2, null);
+    				}
+    			} else if (if_block2) {
+    				group_outros$1();
+    				on_outro$1(() => {
+    					if_block2.d(1);
+    					if_block2 = null;
+    				});
+
+    				if_block2.o(1);
+    				check_outros$1();
+    			}
+
+    			if (after_slot && after_slot.p && changed.$$scope) {
+    				after_slot.p(get_slot_changes(after_slot_1, ctx, changed, get_after_slot_changes$3), get_slot_context(after_slot_1, ctx, get_after_slot_context$3));
+    			}
+
+    			set_attributes(a, get_spread_update(a_levels, [
+    				{ href: null },
+    				(changed.elementProps) && ctx.elementProps
+    			]));
+    		},
+
+    		i(local) {
+    			if (current) return;
+    			if (before_slot && before_slot.i) before_slot.i(local);
+
+    			shadow.$$.fragment.i(local);
+
+    			if (if_block0) if_block0.i();
+    			if (label_slot && label_slot.i) label_slot.i(local);
+    			if (if_block1) if_block1.i();
+    			if (if_block2) if_block2.i();
+    			if (after_slot && after_slot.i) after_slot.i(local);
+    			current = true;
+    		},
+
+    		o(local) {
+    			if (before_slot && before_slot.o) before_slot.o(local);
+    			shadow.$$.fragment.o(local);
+    			if (if_block0) if_block0.o();
+    			if (label_slot && label_slot.o) label_slot.o(local);
+    			if (if_block1) if_block1.o();
+    			if (if_block2) if_block2.o();
+    			if (after_slot && after_slot.o) after_slot.o(local);
+    			current = false;
+    		},
+
+    		d(detaching) {
+    			if (detaching) {
+    				detach$1(a);
+    			}
+
+    			if (before_slot) before_slot.d(detaching);
+
+    			shadow.$destroy();
+
+    			if (if_block0) if_block0.d();
+
+    			if (label_slot) label_slot.d(detaching);
+    			if_blocks[current_block_type_index].d();
+    			if (if_block2) if_block2.d();
+
+    			if (after_slot) after_slot.d(detaching);
+    		}
+    	};
+    }
+
+    function instance$5($$self, $$props, $$invalidate) {
+    	let $isInactive;
+
+    	
+
+      // Store
+      const isInactive = writable$1(false); subscribe$1($$self, isInactive, $$value => { $isInactive = $$value; $$invalidate('$isInactive', $isInactive); });
+
+      // DOM bindings
+      const uid = nonSecure();
+      let domElement;
+      
+      onMount(() => {
+        $$invalidate('domElement', domElement = document.querySelector(`[data-uid="${uid}"]`));
+      });
+
+      // Common vars
+      let { className = "", events = {}, id = undefined, style = undefined, testId = undefined, tone = undefined, animateOnTap = undefined, border = false, contained = false, disabled = false, dropdown = undefined, extraWide = false, highLabel = false, inactivate = false, inactive = false, ink = false, label = undefined, parentClassName = "", raised = false, ripple = {}, selected = false, separatorAtStart = false, shadowDepth = undefined, tabindex = 0, textStyle = undefined, url = { href: "javascript:false" }, wash = undefined } = $$props;
+
+      const onClickHandler = events.onclick || (() => {});
+      const onKeyUpHandler = events.onkeyup || onClickHandler;
+
+      const handleInactivate = () => {
+        if (!inactivate) {
+          return;
+        }
+        isInactive.set(true);
+        setTimeout(() => (
+          isInactive.set(false)
+        ), inactivate * 1000);
+      };
+
+      const onClick = e => {
+        document.activeElement === domElement && document.activeElement.blur();
+        handleInactivate();
+        onClickHandler(e);
+        events && events.onclick && events.onclick(e);
+      };
+
+      const handleMouseLeave = e => {
+        domElement.blur();
+        domElement.removeEventListener("mouseleave", handleMouseLeave);
+      };
+
+      const onMouseDown = e => {
+        domElement &&
+          domElement.addEventListener &&
+          domElement.addEventListener("mouseleave", handleMouseLeave);
+        events && events.onmousedown && events.onmousedown(e);
+      };
+
+      const onKeyUp = e => {
+        if (e.keyCode === 13 && document.activeElement === domElement) {
+          document.activeElement.blur();
+          if (onKeyUpHandler) {
+            onKeyUpHandler(e);
+          }
+        }
+        events && events.onkeyup && events.onkeyup(e);
+      };
+
+      const doesAnimateOnTap = animateOnTap !== false ? true : false;
+      const hasHover = !disabled && !selected && (raised ? wash : wash !== false);
+      const _shadowDepth = raised
+        ? shadowDepth !== undefined
+          ? parseInt(shadowDepth, 10)
+          : 1
+        : 0;
+      const noInk = ink !== undefined && ink === false;
+      const tabIndex = disabled || inactive ? -1 : tabindex || 0;
+
+    	let { $$slots = {}, $$scope } = $$props;
+
+    	$$self.$set = $$props => {
+    		if ('className' in $$props) $$invalidate('className', className = $$props.className);
+    		if ('events' in $$props) $$invalidate('events', events = $$props.events);
+    		if ('id' in $$props) $$invalidate('id', id = $$props.id);
+    		if ('style' in $$props) $$invalidate('style', style = $$props.style);
+    		if ('testId' in $$props) $$invalidate('testId', testId = $$props.testId);
+    		if ('tone' in $$props) $$invalidate('tone', tone = $$props.tone);
+    		if ('animateOnTap' in $$props) $$invalidate('animateOnTap', animateOnTap = $$props.animateOnTap);
+    		if ('border' in $$props) $$invalidate('border', border = $$props.border);
+    		if ('contained' in $$props) $$invalidate('contained', contained = $$props.contained);
+    		if ('disabled' in $$props) $$invalidate('disabled', disabled = $$props.disabled);
+    		if ('dropdown' in $$props) $$invalidate('dropdown', dropdown = $$props.dropdown);
+    		if ('extraWide' in $$props) $$invalidate('extraWide', extraWide = $$props.extraWide);
+    		if ('highLabel' in $$props) $$invalidate('highLabel', highLabel = $$props.highLabel);
+    		if ('inactivate' in $$props) $$invalidate('inactivate', inactivate = $$props.inactivate);
+    		if ('inactive' in $$props) $$invalidate('inactive', inactive = $$props.inactive);
+    		if ('ink' in $$props) $$invalidate('ink', ink = $$props.ink);
+    		if ('label' in $$props) $$invalidate('label', label = $$props.label);
+    		if ('parentClassName' in $$props) $$invalidate('parentClassName', parentClassName = $$props.parentClassName);
+    		if ('raised' in $$props) $$invalidate('raised', raised = $$props.raised);
+    		if ('ripple' in $$props) $$invalidate('ripple', ripple = $$props.ripple);
+    		if ('selected' in $$props) $$invalidate('selected', selected = $$props.selected);
+    		if ('separatorAtStart' in $$props) $$invalidate('separatorAtStart', separatorAtStart = $$props.separatorAtStart);
+    		if ('shadowDepth' in $$props) $$invalidate('shadowDepth', shadowDepth = $$props.shadowDepth);
+    		if ('tabindex' in $$props) $$invalidate('tabindex', tabindex = $$props.tabindex);
+    		if ('textStyle' in $$props) $$invalidate('textStyle', textStyle = $$props.textStyle);
+    		if ('url' in $$props) $$invalidate('url', url = $$props.url);
+    		if ('wash' in $$props) $$invalidate('wash', wash = $$props.wash);
+    		if ('$$scope' in $$props) $$invalidate('$$scope', $$scope = $$props.$$scope);
+    	};
+
+    	let R_inactive, R_classNames, elementProps;
+
+    	$$self.$$.update = ($$dirty = { inactive: 1, $isInactive: 1, parentClassName: 1, contained: 1, raised: 1, selected: 1, highLabel: 1, extraWide: 1, disabled: 1, R_inactive: 1, separatorAtStart: 1, border: 1, dropdown: 1, tone: 1, className: 1, R_classNames: 1, style: 1, id: 1, testId: 1, events: 1, url: 1 }) => {
+    		if ($$dirty.inactive || $$dirty.$isInactive) { $$invalidate('R_inactive', R_inactive = inactive || $isInactive); }
+    		if ($$dirty.parentClassName || $$dirty.contained || $$dirty.raised || $$dirty.selected || $$dirty.highLabel || $$dirty.extraWide || $$dirty.disabled || $$dirty.R_inactive || $$dirty.separatorAtStart || $$dirty.border || $$dirty.dropdown || $$dirty.tone || $$dirty.className) { $$invalidate('R_classNames', R_classNames = [
+            classes$3.super,
+            parentClassName || classes$3.component,
+            contained ? classes$3.contained : undefined,
+            // Raised button classes
+            raised ? classes$3.contained : undefined,
+            raised ? classes$3.raised : undefined,
+            raised && doesAnimateOnTap ? shadowClasses.with_active_shadow : undefined,
+            raised && doesAnimateOnTap
+              ? getShadowDepthClass(_shadowDepth + 1)
+              : undefined,
+            //
+            hasHover ? classes$3.hasHover : undefined,
+            selected ? classes$3.selected : undefined,
+            highLabel ? classes$3.highLabel : undefined,
+            extraWide ? classes$3.extraWide : undefined,
+            disabled ? classes$3.disabled : undefined,
+            R_inactive ? classes$3.inactive : undefined,
+            separatorAtStart ? classes$3.separatorAtStart : undefined,
+            border ? classes$3.border : undefined,
+            dropdown ? classes$3.hasDropdown : undefined,
+            !!dropdown
+              ? dropdown.open
+                ? classes$3.dropdownOpen
+                : classes$3.dropdownClosed
+              : undefined,
+            tone === "dark" ? "pe-dark-tone" : undefined,
+            tone === "light" ? "pe-light-tone" : undefined,
+            className
+          ].join(" ")); }
+    		if ($$dirty.R_classNames || $$dirty.style || $$dirty.id || $$dirty.testId || $$dirty.events || $$dirty.url) { $$invalidate('elementProps', elementProps = {
+            "data-uid": uid,
+            class: R_classNames,
+            ...(style ? { style } : undefined),
+            ...(id ? { id } : undefined),
+            "data-test-id": testId,
+            ...events,
+            ...url,
+            tabindex: tabIndex,
+            onmousedown: onMouseDown,
+            onkeyup: onKeyUp,
+            onclick: onClick,
+          }); }
+    	};
+
+    	return {
+    		isInactive,
+    		domElement,
+    		className,
+    		events,
+    		id,
+    		style,
+    		testId,
+    		tone,
+    		animateOnTap,
+    		border,
+    		contained,
+    		disabled,
+    		dropdown,
+    		extraWide,
+    		highLabel,
+    		inactivate,
+    		inactive,
+    		ink,
+    		label,
+    		parentClassName,
+    		raised,
+    		ripple,
+    		selected,
+    		separatorAtStart,
+    		shadowDepth,
+    		tabindex,
+    		textStyle,
+    		url,
+    		wash,
+    		_shadowDepth,
+    		noInk,
+    		undefined,
+    		elementProps,
+    		$$slots,
+    		$$scope
+    	};
+    }
+
+    class Button extends SvelteComponent$1 {
+    	constructor(options) {
+    		super();
+    		init$1(this, options, instance$5, create_fragment$6, safe_not_equal$1, ["className", "events", "id", "style", "testId", "tone", "animateOnTap", "border", "contained", "disabled", "dropdown", "extraWide", "highLabel", "inactivate", "inactive", "ink", "label", "parentClassName", "raised", "ripple", "selected", "separatorAtStart", "shadowDepth", "tabindex", "textStyle", "url", "wash"]);
+    	}
+    }
+
+    var classes$4 = {
+      component: "pe-button pe-icon-button",
+
+      // elements
+      content:   "pe-icon-button__content",
+      label:     "pe-icon-button__label",
+
+      // states
+      compact:   "pe-icon-button--compact",
+    };
+
+    /* src/icon-button/IconButton.svelte generated by Svelte v3.5.1 */
+
+    // (30:4) <Icon {...icon}>
+    function create_default_slot_1(ctx) {
+    	var current;
+
+    	const default_slot_1 = ctx.$$slots.default;
+    	const default_slot = create_slot(default_slot_1, ctx, null);
+
+    	return {
+    		c() {
+    			if (default_slot) default_slot.c();
+    		},
+
+    		l(nodes) {
+    			if (default_slot) default_slot.l(nodes);
+    		},
+
+    		m(target, anchor) {
+    			if (default_slot) {
+    				default_slot.m(target, anchor);
+    			}
+
+    			current = true;
+    		},
+
+    		p(changed, ctx) {
+    			if (default_slot && default_slot.p && changed.$$scope) {
+    				default_slot.p(get_slot_changes(default_slot_1, ctx, changed, null), get_slot_context(default_slot_1, ctx, null));
+    			}
+    		},
+
+    		i(local) {
+    			if (current) return;
+    			if (default_slot && default_slot.i) default_slot.i(local);
+    			current = true;
+    		},
+
+    		o(local) {
+    			if (default_slot && default_slot.o) default_slot.o(local);
+    			current = false;
+    		},
+
+    		d(detaching) {
+    			if (default_slot) default_slot.d(detaching);
+    		}
+    	};
+    }
+
+    // (36:4) {#if label}
+    function create_if_block$1(ctx) {
+    	var div, t, div_class_value;
+
+    	return {
+    		c() {
+    			div = element$1("div");
+    			t = text$1(ctx.label);
+    			div.className = div_class_value = classes$4.label;
+    		},
+
+    		m(target, anchor) {
+    			insert$1(target, div, anchor);
+    			append$1(div, t);
+    		},
+
+    		p(changed, ctx) {
+    			if (changed.label) {
+    				set_data$1(t, ctx.label);
+    			}
+    		},
+
+    		d(detaching) {
+    			if (detaching) {
+    				detach$1(div);
+    			}
+    		}
+    	};
+    }
+
+    // (35:2) <span slot="after">
+    function create_after_slot(ctx) {
+    	var span;
+
+    	var if_block = (ctx.label) && create_if_block$1(ctx);
+
+    	return {
+    		c() {
+    			span = element$1("span");
+    			if (if_block) if_block.c();
+    			attr$1(span, "slot", "after");
+    		},
+
+    		m(target, anchor) {
+    			insert$1(target, span, anchor);
+    			if (if_block) if_block.m(span, null);
+    		},
+
+    		p(changed, ctx) {
+    			if (ctx.label) {
+    				if (if_block) {
+    					if_block.p(changed, ctx);
+    				} else {
+    					if_block = create_if_block$1(ctx);
+    					if_block.c();
+    					if_block.m(span, null);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+    		},
+
+    		d(detaching) {
+    			if (detaching) {
+    				detach$1(span);
+    			}
+
+    			if (if_block) if_block.d();
+    		}
+    	};
+    }
+
+    // (28:0) <Button {...defaultButtonProps} {...$$props}>
+    function create_default_slot$2(ctx) {
+    	var div, div_class_value, t, current;
+
+    	var icon_1_spread_levels = [
+    		ctx.icon
+    	];
+
+    	let icon_1_props = {
+    		$$slots: { default: [create_default_slot_1] },
+    		$$scope: { ctx }
+    	};
+    	for (var i = 0; i < icon_1_spread_levels.length; i += 1) {
+    		icon_1_props = assign(icon_1_props, icon_1_spread_levels[i]);
+    	}
+    	var icon_1 = new Icon({ props: icon_1_props });
+
+    	return {
+    		c() {
+    			div = element$1("div");
+    			icon_1.$$.fragment.c();
+    			t = space$1();
+    			div.className = div_class_value = classes$4.content;
+    		},
+
+    		m(target, anchor) {
+    			insert$1(target, div, anchor);
+    			mount_component$1(icon_1, div, null);
+    			insert$1(target, t, anchor);
+    			current = true;
+    		},
+
+    		p(changed, ctx) {
+    			var icon_1_changes = changed.icon ? get_spread_update(icon_1_spread_levels, [
+    				ctx.icon
+    			]) : {};
+    			if (changed.$$scope) icon_1_changes.$$scope = { changed, ctx };
+    			icon_1.$set(icon_1_changes);
+    		},
+
+    		i(local) {
+    			if (current) return;
+    			icon_1.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o(local) {
+    			icon_1.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d(detaching) {
+    			if (detaching) {
+    				detach$1(div);
+    			}
+
+    			icon_1.$destroy();
+
+    			if (detaching) {
+    				detach$1(t);
+    			}
+    		}
+    	};
+    }
+
+    function create_fragment$7(ctx) {
+    	var current;
+
+    	var button_spread_levels = [
+    		ctx.defaultButtonProps,
+    		ctx.$$props
+    	];
+
+    	let button_props = {
+    		$$slots: {
+    		default: [create_default_slot$2],
+    		after: [create_after_slot]
+    	},
+    		$$scope: { ctx }
+    	};
+    	for (var i = 0; i < button_spread_levels.length; i += 1) {
+    		button_props = assign(button_props, button_spread_levels[i]);
+    	}
+    	var button = new Button({ props: button_props });
+
+    	return {
+    		c() {
+    			button.$$.fragment.c();
+    		},
+
+    		m(target, anchor) {
+    			mount_component$1(button, target, anchor);
+    			current = true;
+    		},
+
+    		p(changed, ctx) {
+    			var button_changes = (changed.defaultButtonProps || changed.$$props) ? get_spread_update(button_spread_levels, [
+    				(changed.defaultButtonProps) && ctx.defaultButtonProps,
+    				(changed.$$props) && ctx.$$props
+    			]) : {};
+    			if (changed.$$scope || changed.label || changed.icon) button_changes.$$scope = { changed, ctx };
+    			button.$set(button_changes);
+    		},
+
+    		i(local) {
+    			if (current) return;
+    			button.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o(local) {
+    			button.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d(detaching) {
+    			button.$destroy(detaching);
+    		}
+    	};
+    }
+
+    function instance$6($$self, $$props, $$invalidate) {
+    	
+
+      let { compact = false, icon = undefined, label = undefined, parentClassName = undefined } = $$props;
+
+      const parentClassNames = [
+        parentClassName || classes$4.component,
+        compact ? classes$4.compact : null,
+      ].join(" ");
+
+      const defaultButtonProps = {
+        wash: false,
+        animateOnTap: false,
+        parentClassName: parentClassNames,
+      };
+
+      // Reset pass through
+      delete $$props.icon;
+      delete $$props.label;
+
+    	let { $$slots = {}, $$scope } = $$props;
+
+    	$$self.$set = $$new_props => {
+    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
+    		if ('compact' in $$props) $$invalidate('compact', compact = $$props.compact);
+    		if ('icon' in $$props) $$invalidate('icon', icon = $$props.icon);
+    		if ('label' in $$props) $$invalidate('label', label = $$props.label);
+    		if ('parentClassName' in $$props) $$invalidate('parentClassName', parentClassName = $$props.parentClassName);
+    		if ('$$scope' in $$new_props) $$invalidate('$$scope', $$scope = $$new_props.$$scope);
+    	};
+
+    	return {
+    		compact,
+    		icon,
+    		label,
+    		parentClassName,
+    		defaultButtonProps,
+    		$$props,
+    		$$props: $$props = exclude_internal_props($$props),
+    		$$slots,
+    		$$scope
+    	};
+    }
+
+    class IconButton extends SvelteComponent$1 {
+    	constructor(options) {
+    		super();
+    		init$1(this, options, instance$6, create_fragment$7, safe_not_equal$1, ["compact", "icon", "label", "parentClassName"]);
     	}
     }
 
@@ -1765,67 +4127,8 @@ var app = (function () {
 
     var j2c_commonjs = j2c;
 
-    /**
-     * 
-     * @param {{[s: string]: string}} classes 
-     * @returns {{[s: string]: string}}
-     */
-
-    var sizeClasses = function sizeClasses(classes) {
-      return {
-        small: classes.small,
-        regular: classes.regular,
-        medium: classes.medium,
-        large: classes.large,
-        fab: classes.fab
-      };
-    };
-    /**
-     * 
-     * @param {{[s: string]: string}} classes 
-     * @param {string} [size] 
-     * @returns {object}
-     */
-
-
-    var classForSize = function classForSize(classes) {
-      var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "regular";
-      return sizeClasses(classes)[size];
-    };
-
-    var isClient = typeof document !== "undefined";
-    var isServer = !isClient;
-
-    // @ts-check
-    /**
-     * @type {{[s: string]: string}} evts
-     */
-
-    var evts = {
-      "animation": "animationend",
-      "OAnimation": "oAnimationEnd",
-      "MozAnimation": "animationend",
-      "WebkitAnimation": "webkitAnimationEnd"
-    };
-    var getAnimationEndEvent = function getAnimationEndEvent() {
-      if (isClient) {
-        var el = document.createElement("fakeelement");
-        /**
-         * @type {string} a
-         */
-
-        for (var a in evts) {
-          /**
-           * @type {object} style
-           */
-          var style = el.style;
-
-          if (style[a] !== undefined) {
-            return evts[a];
-          }
-        }
-      }
-    };
+    var isClient$1 = typeof document !== "undefined";
+    var isServer$1 = !isClient$1;
     /**
      * 
      * @param {string} durationStr 
@@ -1838,14 +4141,14 @@ var app = (function () {
     };
 
     // @ts-check
-    var isTouch = isServer ? false : "ontouchstart" in document.documentElement;
-    var pointerEndEvent = isTouch ? ["click", "mouseup"] : ["mouseup"];
+    var isTouch$1 = isServer$1 ? false : "ontouchstart" in document.documentElement;
+    var pointerEndEvent$1 = isTouch$1 ? ["click", "mouseup"] : ["mouseup"];
 
-    if (isClient) {
-      var htmlElement = document.querySelector("html");
+    if (isClient$1) {
+      var htmlElement$1 = document.querySelector("html");
 
-      if (htmlElement) {
-        htmlElement.classList.add(isTouch ? "pe-touch" : "pe-no-touch");
+      if (htmlElement$1) {
+        htmlElement$1.classList.add(isTouch$1 ? "pe-touch" : "pe-no-touch");
       }
     }
 
@@ -1854,36 +4157,36 @@ var app = (function () {
      * @type {{[s: string]: Array<function>}} listeners
      */
 
-    var listeners = {};
+    var listeners$1 = {};
     /**
      * 
      * @param {string} eventName 
      * @param {object} event 
      */
 
-    var emit = function emit(eventName, event) {
-      if (!listeners[eventName]) {
+    var emit$1 = function emit(eventName, event) {
+      if (!listeners$1[eventName]) {
         return;
       }
 
-      listeners[eventName].forEach(function (listener) {
+      listeners$1[eventName].forEach(function (listener) {
         return listener(event);
       });
     };
 
-    if (isClient) {
+    if (isClient$1) {
       window.addEventListener("resize", function (e) {
-        return emit("resize", e);
+        return emit$1("resize", e);
       });
       window.addEventListener("scroll", function (e) {
-        return emit("scroll", e);
+        return emit$1("scroll", e);
       });
       window.addEventListener("keydown", function (e) {
-        return emit("keydown", e);
+        return emit$1("keydown", e);
       });
-      pointerEndEvent.forEach(function (eventName) {
+      pointerEndEvent$1.forEach(function (eventName) {
         return window.addEventListener(eventName, function (e) {
-          return emit(eventName, e);
+          return emit$1(eventName, e);
         });
       });
     }
@@ -3142,7 +5445,7 @@ var app = (function () {
 
 
     var remove = function remove(id) {
-      if (isServer) return;
+      if (isServer$1) return;
 
       if (id) {
         var old = document.getElementById(id);
@@ -3165,7 +5468,7 @@ var app = (function () {
     var addToDocument = function addToDocument(_ref) {
       var id = _ref.id,
           document = _ref.document;
-      if (isServer) return;
+      if (isServer$1) return;
       var safeId = id.replace(ID_REGEX, "_");
       remove(safeId);
       var documentRef = document || window.document;
@@ -3671,20 +5974,20 @@ var app = (function () {
 
     // @ts-check
     // Global style variables
-    var grid_unit = 4;
-    var grid_unit_component = 8;
-    var increment = 7 * grid_unit_component; // 7 * 8 = 56
+    var grid_unit$1 = 4;
+    var grid_unit_component$1 = 8;
+    var increment$1 = 7 * grid_unit_component$1; // 7 * 8 = 56
 
-    var increment_large = 8 * grid_unit_component; // 8 * 8 = 64
+    var increment_large$1 = 8 * grid_unit_component$1; // 8 * 8 = 64
 
-    var vars = {
+    var vars$1 = {
       // grid
-      grid_unit: grid_unit,
-      grid_unit_component: grid_unit_component,
-      increment: increment,
-      increment_large: increment_large,
+      grid_unit: grid_unit$1,
+      grid_unit_component: grid_unit_component$1,
+      increment: increment$1,
+      increment_large: increment_large$1,
       grid_unit_menu: 56,
-      grid_unit_icon_button: 6 * grid_unit_component,
+      grid_unit_icon_button: 6 * grid_unit_component$1,
       // 48
       // common sizes
       unit_block_border_radius: 4,
@@ -3694,13 +5997,13 @@ var app = (function () {
       unit_side_padding: 16,
       // buttons
       unit_touch_height: 48,
-      unit_icon_size_small: 2 * grid_unit_component,
+      unit_icon_size_small: 2 * grid_unit_component$1,
       // 16
-      unit_icon_size: 3 * grid_unit_component,
+      unit_icon_size: 3 * grid_unit_component$1,
       // 24
-      unit_icon_size_medium: 4 * grid_unit_component,
+      unit_icon_size_medium: 4 * grid_unit_component$1,
       // 32
-      unit_icon_size_large: 5 * grid_unit_component,
+      unit_icon_size_large: 5 * grid_unit_component$1,
       // 40
       // screen dimensions
       unit_screen_size_extra_large: 1280,
@@ -3786,7 +6089,7 @@ var app = (function () {
       z_dialog: 7000
     };
 
-    var classes = {
+    var classes$5 = {
       component: "pe-spinner",
       // elements
       animation: "pe-spinner__animation",
@@ -3976,19 +6279,19 @@ var app = (function () {
       animation_hide_css: "opacity: 0;",
       animation_show_css: "opacity: 1;",
       animation_timing_function: "ease-in-out",
-      size_fab: 7 * vars.grid_unit_component,
-      size_large: 6 * vars.grid_unit_component,
-      size_medium: 5 * vars.grid_unit_component,
-      size_regular: 4 * vars.grid_unit_component,
-      size_small: 3 * vars.grid_unit_component,
-      color_light_raised_background: rgba(vars.color_light_background),
-      color_dark_raised_background: rgba(vars.color_light_background) // also use light background with dark tone
+      size_fab: 7 * vars$1.grid_unit_component,
+      size_large: 6 * vars$1.grid_unit_component,
+      size_medium: 5 * vars$1.grid_unit_component,
+      size_regular: 4 * vars$1.grid_unit_component,
+      size_small: 3 * vars$1.grid_unit_component,
+      color_light_raised_background: rgba(vars$1.color_light_background),
+      color_dark_raised_background: rgba(vars$1.color_light_background) // also use light background with dark tone
 
     };
 
     // @ts-check
     var fns = [layout$1, color];
-    var selector = ".".concat(classes.component);
+    var selector = ".".concat(classes$5.component);
 
     var addGeneralStyleToHead = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -3998,7 +6301,7 @@ var app = (function () {
       });
     };
 
-    var classes$1 = {
+    var classes$6 = {
       component: "pe-shadow",
       // elements      
       bottomShadow: "pe-shadow__bottom",
@@ -4177,28 +6480,28 @@ var app = (function () {
       // theme vars
       shadow_depth: undefined
     };
-    var vars$1 = _objectSpread$1({
+    var vars$2 = _objectSpread$1({
       /**
        * Generate general styles, not defined by variables
        */
       general_styles: true,
-      transition: "box-shadow ".concat(vars.animation_duration, " ease-out")
+      transition: "box-shadow ".concat(vars$1.animation_duration, " ease-out")
     }, sharedVars);
 
     // @ts-check
     var fns$1 = [layout$2];
-    var selector$1 = ".".concat(classes$1.component);
-    var addStyle$1 = styler.createAddStyle(selector$1, fns$1, vars$1);
+    var selector$1 = ".".concat(classes$6.component);
+    var addStyle$1 = styler.createAddStyle(selector$1, fns$1, vars$2);
 
     var addGeneralStyleToHead$1 = function addGeneralStyleToHead() {
       return styler.addStyle({
         selectors: [selector$1],
         fns: fns$1,
-        vars: vars$1
+        vars: vars$2
       });
     };
 
-    var classes$2 = {
+    var classes$7 = {
       component: "pe-text-button",
       "super": "pe-button",
       row: "pe-button-row",
@@ -4778,7 +7081,7 @@ var app = (function () {
       varFns: varFns$1$1
     });
 
-    var touch_height = vars.unit_touch_height; // 48
+    var touch_height = vars$1.unit_touch_height; // 48
 
     var height = 36;
     var border_width = 1;
@@ -4790,17 +7093,17 @@ var app = (function () {
 
     var borderVars = {
       border_width: border_width,
-      color_light_border: rgba(vars.color_light_foreground, vars.blend_light_border_medium),
+      color_light_border: rgba(vars$1.color_light_foreground, vars$1.blend_light_border_medium),
       // only specify this variable to get all 4 states
       // color_light_hover_border:             "transparent",
       // color_light_active_border:            "transparent",
-      color_light_disabled_border: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+      color_light_disabled_border: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_disabled),
       //
-      color_dark_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_medium),
+      color_dark_border: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_border_medium),
       // only specify this variable to get all 4 states
       // color_dark_hover_border:              "transparent",
       // color_dark_active_border:             "transparent",
-      color_dark_disabled_border: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled)
+      color_dark_disabled_border: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_disabled)
     };
     /**
      * @type {TextButtonVars} textButtonVars
@@ -4811,42 +7114,42 @@ var app = (function () {
        * Generate general styles, not defined by variables
        */
       general_styles: true,
-      animation_duration: vars.animation_duration,
-      border_radius: vars.unit_item_border_radius,
+      animation_duration: vars$1.animation_duration,
+      border_radius: vars$1.unit_item_border_radius,
       dropdown_icon_size: 24,
       font_size: 14,
       font_weight: 500,
       label_padding_v: 11,
       letter_spacing: 0.75,
       line_height: 1,
-      min_width: 8 * vars.grid_unit_component,
+      min_width: 8 * vars$1.grid_unit_component,
       outer_padding_v: (touch_height - height) / 2,
       // (48 - 36) / 2 = 6
-      padding_h: 2 * vars.grid_unit,
+      padding_h: 2 * vars$1.grid_unit,
       // 8
-      padding_h_extra_wide: 6 * vars.grid_unit,
+      padding_h_extra_wide: 6 * vars$1.grid_unit,
       // 24
-      row_margin_h: vars.grid_unit,
+      row_margin_h: vars$1.grid_unit,
       separator_width: border_width,
       text_transform: "uppercase",
       color_light_background: "transparent",
-      color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
+      color_light_text: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_primary),
       color_light_wash_background: "currentColor",
       color_light_wash_opacity: 0.1,
-      color_light_active_background: rgba(vars.color_light_foreground, vars.blend_light_background_active),
+      color_light_active_background: rgba(vars$1.color_light_foreground, vars$1.blend_light_background_active),
       color_light_disabled_background: "transparent",
-      color_light_disabled_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
-      color_light_icon: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-      color_light_separator: rgba(vars.color_light_foreground, vars.blend_light_border_light),
+      color_light_disabled_text: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_disabled),
+      color_light_icon: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_secondary),
+      color_light_separator: rgba(vars$1.color_light_foreground, vars$1.blend_light_border_light),
       color_dark_background: "transparent",
-      color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
+      color_dark_text: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_primary),
       color_dark_wash_background: "currentColor",
       color_dark_wash_opacity: 0.1,
-      color_dark_active_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_active),
+      color_dark_active_background: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_background_active),
       color_dark_disabled_background: "transparent",
-      color_dark_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
-      color_dark_icon: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-      color_dark_separator: rgba(vars.color_dark_foreground, vars.blend_dark_border_light)
+      color_dark_disabled_text: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_disabled),
+      color_dark_icon: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_secondary),
+      color_dark_separator: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_border_light)
     }, borderVars, themeVars);
 
     var themeVars$1 = _objectSpread$2({
@@ -4862,20 +7165,20 @@ var app = (function () {
        * Generate general styles, not defined by variables
        */
       general_styles: true,
-      padding_h: 4 * vars.grid_unit,
+      padding_h: 4 * vars$1.grid_unit,
       // 16
       color_light_background: "#fff",
-      color_light_disabled_background: rgba(vars.color_light_foreground, vars.blend_light_background_disabled),
-      color_dark_active_background: rgba(vars.color_primary_dark),
-      color_dark_background: rgba(vars.color_primary),
-      color_dark_disabled_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_disabled)
+      color_light_disabled_background: rgba(vars$1.color_light_foreground, vars$1.blend_light_background_disabled),
+      color_dark_active_background: rgba(vars$1.color_primary_dark),
+      color_dark_background: rgba(vars$1.color_primary),
+      color_dark_disabled_background: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_background_disabled)
     }, themeVars$1);
 
     // @ts-check
     var fns$2 = [superLayout$1, superColor];
     var superFns = [superLayout];
-    var superSelector = ".".concat(classes$2["super"]);
-    var selector$2 = ".".concat(classes$2.component);
+    var superSelector = ".".concat(classes$7["super"]);
+    var selector$2 = ".".concat(classes$7.component);
     /**
      * @param {string} customSelector 
      * @param {object} [customVars]
@@ -4935,7 +7238,7 @@ var app = (function () {
 
     // @ts-check
     var fns$1$1 = [layout$3, color$1];
-    var selectors = [classes$2.component, classes$2.contained].join(" ");
+    var selectors = [classes$7.component, classes$7.contained].join(" ");
     var selector$1$1 = ".".concat(selectors.split(/\s/).join("."));
 
     var addGeneralStyleToHead$1$1 = function addGeneralStyleToHead() {
@@ -4975,7 +7278,7 @@ var app = (function () {
       addGeneralStyleToHead$2();
     };
 
-    var classes$3 = {
+    var classes$8 = {
       component: "pe-button-group"
     };
 
@@ -5012,7 +7315,7 @@ var app = (function () {
 
     // @ts-check
     var fns$3 = [layout$4];
-    var selector$3 = ".".concat(classes$3.component);
+    var selector$3 = ".".concat(classes$8.component);
 
     var addGeneralStyleToHead$3 = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -5022,7 +7325,7 @@ var app = (function () {
       });
     };
 
-    var classes$4 = {
+    var classes$9 = {
       component: "pe-card",
       // elements
       actions: "pe-card__actions",
@@ -5242,8 +7545,8 @@ var app = (function () {
     };
 
     var varFns$4 = {
-      general_styles: function general_styles(selector, vars$1) {
-        return [sel(selector, [alignLeft$1(vars$1), {
+      general_styles: function general_styles(selector, vars$1$1) {
+        return [sel(selector, [alignLeft$1(vars$1$1), {
           display: "block",
           position: "relative",
           "&, a:link, a:visited": {
@@ -5331,7 +7634,7 @@ var app = (function () {
           " .pe-card__header": {
             " .pe-list-tile__title": {
               fontSize: "14px",
-              fontWeight: vars.font_weight_normal,
+              fontWeight: vars$1.font_weight_normal,
               lineHeight: "20px",
               marginTop: "2px"
             },
@@ -5412,7 +7715,7 @@ var app = (function () {
           }
         }, {
           // RTL
-          "*[dir=rtl], .pe-rtl ": _defineProperty$4({}, selector, alignRight$1(vars$1))
+          "*[dir=rtl], .pe-rtl ": _defineProperty$4({}, selector, alignRight$1(vars$1$1))
         }])];
       },
       border_radius: function border_radius(selector, vars) {
@@ -5626,12 +7929,12 @@ var app = (function () {
 
     var cardVars = {
       general_styles: true,
-      actions_button_margin_h: vars.grid_unit,
+      actions_button_margin_h: vars$1.grid_unit,
       actions_button_margin_v: actions_button_margin_v,
       actions_padding_h: 8,
       actions_padding_v: 0,
       actions_vertical_padding_v: padding_actions_v - actions_button_margin_v,
-      border_radius: vars.unit_block_border_radius,
+      border_radius: vars$1.unit_block_border_radius,
       icon_element_width: 72 - 4,
       image_size_large: 3 * 80,
       image_size_medium: 2 * 80,
@@ -5651,25 +7954,25 @@ var app = (function () {
       tight_title_padding_bottom: 16,
       title_padding_h: 16,
       title_padding_v: 24,
-      color_light_main_background: rgba(vars.color_light_background),
-      color_light_title_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-      color_light_subtitle_text: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-      color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_regular),
-      color_light_actions_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
-      color_light_overlay_background: rgba(vars.color_light_background, vars.blend_light_overlay_background),
-      color_dark_main_background: rgba(vars.color_dark_background),
-      color_dark_title_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-      color_dark_subtitle_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-      color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_regular),
-      color_dark_actions_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
-      color_dark_overlay_background: rgba(vars.color_dark_background, vars.blend_dark_overlay_background)
+      color_light_main_background: rgba(vars$1.color_light_background),
+      color_light_title_text: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_primary),
+      color_light_subtitle_text: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_secondary),
+      color_light_text: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_regular),
+      color_light_actions_border: rgba(vars$1.color_light_foreground, vars$1.blend_light_border_light),
+      color_light_overlay_background: rgba(vars$1.color_light_background, vars$1.blend_light_overlay_background),
+      color_dark_main_background: rgba(vars$1.color_dark_background),
+      color_dark_title_text: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_primary),
+      color_dark_subtitle_text: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_secondary),
+      color_dark_text: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_regular),
+      color_dark_actions_border: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_border_light),
+      color_dark_overlay_background: rgba(vars$1.color_dark_background, vars$1.blend_dark_overlay_background)
     };
 
     // @ts-check
-    var selector$4 = ".".concat(classes$4.component);
-    var contentSelector = ".".concat(classes$4.content);
-    var overlaySheetSelector = ".".concat(classes$4.overlaySheet);
-    var overlayContentSelector = ".".concat(classes$4.overlayContent);
+    var selector$4 = ".".concat(classes$9.component);
+    var contentSelector = ".".concat(classes$9.content);
+    var overlaySheetSelector = ".".concat(classes$9.overlaySheet);
+    var overlayContentSelector = ".".concat(classes$9.overlayContent);
     var baseFns = [layout$5, color$2];
     var overlayColorFns = [overlayColor];
     var contentColorFns = [contentColor];
@@ -5697,7 +8000,7 @@ var app = (function () {
       });
     };
 
-    var classes$5 = {
+    var classes$a = {
       component: "pe-control",
       // elements
       formLabel: "pe-control__form-label",
@@ -5857,9 +8160,9 @@ var app = (function () {
     var alignLeft$2 = alignSide$2();
     var alignRight$2 = alignSide$2();
 
-    var makeSize = function makeSize(vars$1, height) {
-      var iconSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : vars.unit_icon_size;
-      var labelSize = iconSize + vars$1.label_height;
+    var makeSize = function makeSize(vars$1$1, height) {
+      var iconSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : vars$1.unit_icon_size;
+      var labelSize = iconSize + vars$1$1.label_height;
       var iconOffset = (labelSize - iconSize) / 2;
       return {
         " .pe-control__form-label": {
@@ -5985,16 +8288,16 @@ var app = (function () {
           }
         })];
       },
-      label_height: function label_height(selector, vars$1) {
+      label_height: function label_height(selector, vars$1$1) {
         return [sel(selector, {
           " .pe-control__box": {
-            width: vars$1.label_height + "px",
-            height: vars$1.label_height + "px"
+            width: vars$1$1.label_height + "px",
+            height: vars$1$1.label_height + "px"
           },
-          ".pe-control--small": makeSize(vars$1, vars.unit_icon_size_small, vars.unit_icon_size_small),
-          ".pe-control--regular": makeSize(vars$1, vars$1.label_height, vars.unit_icon_size),
-          ".pe-control--medium": makeSize(vars$1, vars.unit_icon_size_medium, vars.unit_icon_size_medium),
-          ".pe-control--large": makeSize(vars$1, vars.unit_icon_size_large, vars.unit_icon_size_large)
+          ".pe-control--small": makeSize(vars$1$1, vars$1.unit_icon_size_small, vars$1.unit_icon_size_small),
+          ".pe-control--regular": makeSize(vars$1$1, vars$1$1.label_height, vars$1.unit_icon_size),
+          ".pe-control--medium": makeSize(vars$1$1, vars$1.unit_icon_size_medium, vars$1.unit_icon_size_medium),
+          ".pe-control--large": makeSize(vars$1$1, vars$1.unit_icon_size_large, vars$1.unit_icon_size_large)
         })];
       },
       animation_duration: function animation_duration(selector, vars) {
@@ -6034,44 +8337,44 @@ var app = (function () {
        * Generate general styles, not defined by variables
        */
       general_styles: true,
-      animation_duration: vars.animation_duration,
-      button_size: 6 * vars.grid_unit_component,
-      icon_size: 3 * vars.grid_unit_component,
-      label_font_size: 2 * vars.grid_unit_component,
+      animation_duration: vars$1.animation_duration,
+      button_size: 6 * vars$1.grid_unit_component,
+      icon_size: 3 * vars$1.grid_unit_component,
+      label_font_size: 2 * vars$1.grid_unit_component,
       // 16
-      label_height: 3 * vars.grid_unit_component,
+      label_height: 3 * vars$1.grid_unit_component,
       // 24
       label_padding_after: 0,
-      label_padding_before: vars.grid_unit * 4,
+      label_padding_before: vars$1.grid_unit * 4,
       // 16
-      color_light_on: rgba(vars.color_primary),
-      color_light_off: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-      color_light_label: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-      color_light_disabled: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+      color_light_on: rgba(vars$1.color_primary),
+      color_light_off: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_secondary),
+      color_light_label: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_secondary),
+      color_light_disabled: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_disabled),
       // color_light_thumb_off_focus_opacity: .08,
       // color_light_thumb_on_focus_opacity:  .11,
       // icon colors may be set in theme; set to "inherit" by default
       color_light_on_icon: "inherit",
       color_light_off_icon: "inherit",
       // label on/off colors may be set in theme; set to color_light_label by default
-      color_light_on_label: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-      color_light_off_label: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
+      color_light_on_label: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_secondary),
+      color_light_off_label: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_secondary),
       // color_light_focus_on:                rgba(vars.color_primary),
       // color_light_focus_on_opacity:        .11,
       // color_light_focus_off:               rgba(vars.color_light_foreground),
       // color_light_focus_off_opacity:       .07,
-      color_dark_on: rgba(vars.color_primary),
-      color_dark_off: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-      color_dark_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-      color_dark_disabled: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
+      color_dark_on: rgba(vars$1.color_primary),
+      color_dark_off: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_secondary),
+      color_dark_label: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_secondary),
+      color_dark_disabled: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_disabled),
       // color_dark_thumb_off_focus_opacity:  .08,
       // color_dark_thumb_on_focus_opacity:   .11,
       // icon color may be set in theme; set to "inherit" by default
       color_dark_on_icon: "inherit",
       color_dark_off_icon: "inherit",
       // label on/off colors may be set in theme; set to color_dark_label by default
-      color_dark_on_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-      color_dark_off_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary) // color_dark_focus_on:                 rgba(vars.color_primary), // or '#80cbc4'
+      color_dark_on_label: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_secondary),
+      color_dark_off_label: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_secondary) // color_dark_focus_on:                 rgba(vars.color_primary), // or '#80cbc4'
       // color_dark_focus_on_opacity:         .14,
       // color_dark_focus_off:                rgba(vars.color_dark_foreground),
       // color_dark_focus_off_opacity:        .09
@@ -6080,7 +8383,7 @@ var app = (function () {
 
     // @ts-check
     var fns$4 = [layout$6, color$3];
-    var selector$5 = ".".concat(classes$5.component);
+    var selector$5 = ".".concat(classes$a.component);
 
     var addGeneralStyleToHead$5 = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -6090,7 +8393,7 @@ var app = (function () {
       });
     };
 
-    var classes$6 = {
+    var classes$b = {
       component: "pe-checkbox-control"
     };
 
@@ -6122,7 +8425,7 @@ var app = (function () {
 
     // @ts-check
     var fns$5 = [layout$7, color$4];
-    var selector$6 = ".".concat(classes$6.component);
+    var selector$6 = ".".concat(classes$b.component);
 
     var addGeneralStyleToHead$6 = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -6132,7 +8435,7 @@ var app = (function () {
       });
     };
 
-    var classes$7 = {
+    var classes$c = {
       component: "pe-dialog-pane",
       // elements
       actions: "pe-dialog-pane__actions",
@@ -6323,8 +8626,8 @@ var app = (function () {
             borderBottomRightRadius: "inherit"
           },
           " .pe-dialog-pane__title": {
-            fontSize: vars.font_size_title + "px",
-            fontWeight: vars.font_weight_medium,
+            fontSize: vars$1.font_size_title + "px",
+            fontWeight: vars$1.font_weight_medium,
             "& + div": {
               marginTop: "16px"
             }
@@ -6469,29 +8772,29 @@ var app = (function () {
       header_bottom: 20,
       header_height: 64,
       line_height_title: 24,
-      max_width: 7 * vars.grid_unit_menu,
+      max_width: 7 * vars$1.grid_unit_menu,
       // 7 * 56 = 392 
-      min_width: 5 * vars.grid_unit_menu,
+      min_width: 5 * vars$1.grid_unit_menu,
       // 5 * 56 = 280
-      padding: 3 * vars.grid_unit_component,
+      padding: 3 * vars$1.grid_unit_component,
       // 3 * 8 = 24
-      side_padding_mobile: 6 * vars.grid_unit,
+      side_padding_mobile: 6 * vars$1.grid_unit,
       // 6 * 4 = 48
-      max_height: 8 * vars.grid_unit_component,
-      margin_vertical: 8 * vars.grid_unit_component,
+      max_height: 8 * vars$1.grid_unit_component,
+      margin_vertical: 8 * vars$1.grid_unit_component,
       color_light_title_text: "inherit",
       color_light_body_text: "inherit",
-      color_light_body_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
+      color_light_body_border: rgba(vars$1.color_light_foreground, vars$1.blend_light_border_light),
       color_light_background: "inherit",
       color_dark_title_text: "inherit",
       color_dark_body_text: "inherit",
-      color_dark_body_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
+      color_dark_body_border: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_border_light),
       color_dark_background: "inherit"
     };
 
     // @ts-check
     var fns$6 = [layout$8, color$5];
-    var selector$7 = ".".concat(classes$7.component);
+    var selector$7 = ".".concat(classes$c.component);
 
     var addGeneralStyleToHead$7 = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -6551,7 +8854,7 @@ var app = (function () {
       selectedListTile: listTileClasses.selected
     };
 
-    var classes$8 = {
+    var classes$d = {
       component: "pe-dialog",
       // elements
       placeholder: "pe-dialog__placeholder",
@@ -6673,7 +8976,7 @@ var app = (function () {
 
     var themeVars$2 = _extends$6({}, {
       backdrop: false,
-      z_index: vars.z_dialog
+      z_index: vars$1.z_dialog
     }, behaviorVars, sharedVars);
     /**
      * @type {DialogVars} dialogVars
@@ -6690,15 +8993,15 @@ var app = (function () {
       animation_hide_css: "opacity: 0;",
       animation_show_css: "opacity: 1;",
       animation_timing_function: "ease-in-out",
-      border_radius: vars.unit_block_border_radius,
+      border_radius: vars$1.unit_block_border_radius,
       position: "fixed",
       // color vars
       color_light_backdrop_background: "rgba(0, 0, 0, .4)",
       color_dark_backdrop_background: "rgba(0, 0, 0, .5)",
-      color_light_background: rgba(vars.color_light_background),
-      color_dark_background: rgba(vars.color_dark_background),
-      color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_regular),
-      color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_regular)
+      color_light_background: rgba(vars$1.color_light_background),
+      color_dark_background: rgba(vars$1.color_dark_background),
+      color_light_text: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_regular),
+      color_dark_text: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_regular)
     }, themeVars$2);
 
     var minWidth = "320px";
@@ -6833,7 +9136,7 @@ var app = (function () {
 
     // @ts-check
     var fns$7 = [layout$9, color$6];
-    var selector$8 = ".".concat(classes$8.component);
+    var selector$8 = ".".concat(classes$d.component);
 
     var addGeneralStyleToHead$8 = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -6914,7 +9217,7 @@ var app = (function () {
       menuContent: menuClasses$1.content
     };
 
-    var classes$9 = {
+    var classes$e = {
       component: "pe-dialog pe-drawer",
       // states
       cover: "pe-drawer--cover",
@@ -7219,8 +9522,8 @@ var app = (function () {
        * @param {string} selector 
        * @param {object} [vars] 
        */
-      general_styles: function general_styles(selector, vars$1) {
-        return [sel(selector, [alignLeft$3(selector, vars$1), {
+      general_styles: function general_styles(selector, vars$1$1) {
+        return [sel(selector, [alignLeft$3(selector, vars$1$1), {
           justifyContent: "flex-start",
           position: "absolute",
           top: 0,
@@ -7270,7 +9573,7 @@ var app = (function () {
             position: "fixed",
             top: 0,
             width: "100%",
-            zIndex: vars.z_drawer
+            zIndex: vars$1.z_drawer
           },
           // Mini
           ".pe-drawer--mini": _mini(selector),
@@ -7279,7 +9582,7 @@ var app = (function () {
           // Floating
           ".pe-drawer--floating": _floating(selector),
           // Cover (default)
-          ".pe-drawer--cover": _cover(selector, vars$1),
+          ".pe-drawer--cover": _cover(selector, vars$1$1),
           // Push
           ".pe-drawer--push": _push(selector),
           // Backdrop
@@ -7297,7 +9600,7 @@ var app = (function () {
             bottom: 0
           },
           ".pe-dialog--backdrop": _backdrop$1(selector)
-        }]), [sel(selectorRTL(selector), alignRight$3(selector, vars$1))]];
+        }]), [sel(selectorRTL(selector), alignRight$3(selector, vars$1$1))]];
       },
       animation_delay: function animation_delay(selector, vars) {
         return [sel(selector, {
@@ -7369,7 +9672,7 @@ var app = (function () {
       mini: false,
       permanent: false,
       push: false,
-      z_index: vars.z_drawer
+      z_index: vars$1.z_drawer
     }, sharedVars);
     /**
      * @type {DrawerVars} drawerVars
@@ -7385,23 +9688,23 @@ var app = (function () {
       animation_duration: ".260s",
       animation_timing_function: "ease-in-out",
       border_radius: 0,
-      content_max_width: 5 * vars.increment,
+      content_max_width: 5 * vars$1.increment,
       // 5 * 56
       content_width: 240,
-      content_width_mini_collapsed: vars.increment,
+      content_width_mini_collapsed: vars$1.increment,
       // 1 * 56
       // color vars
       color_light_backdrop_background: "rgba(0, 0, 0, .4)",
       color_dark_backdrop_background: "rgba(0, 0, 0, .5)",
-      color_light_background: rgba(vars.color_light_background),
-      color_dark_background: rgba(vars.color_dark_background),
-      color_light_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
-      color_dark_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light)
+      color_light_background: rgba(vars$1.color_light_background),
+      color_dark_background: rgba(vars$1.color_dark_background),
+      color_light_border: rgba(vars$1.color_light_foreground, vars$1.blend_light_border_light),
+      color_dark_border: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_border_light)
     }, themeVars$3);
 
     // @ts-check
     var fns$8 = [layout$a, color$7];
-    var selector$9 = ".".concat(classes$9.component.replace(/ /g, "."));
+    var selector$9 = ".".concat(classes$e.component.replace(/ /g, "."));
 
     var addGeneralStyleToHead$9 = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -7411,7 +9714,7 @@ var app = (function () {
       });
     };
 
-    var classes$a = {
+    var classes$f = {
       component: "pe-fab",
       // elements
       content: "pe-fab__content",
@@ -7527,7 +9830,7 @@ var app = (function () {
           },
           " .pe-button__wash": [mixin.fit(), {
             borderRadius: "inherit",
-            transition: "background-color " + vars.animation_duration + " ease-in-out",
+            transition: "background-color " + vars$1.animation_duration + " ease-in-out",
             pointerEvents: "none",
             backgroundColor: "transparent"
           }]
@@ -7541,13 +9844,13 @@ var app = (function () {
           }
         })];
       },
-      size_mini: function size_mini(selector, vars$1) {
+      size_mini: function size_mini(selector, vars$1$1) {
         return [sel(selector, {
           ".pe-fab--mini": {
             " .pe-button__content": {
-              width: vars$1.size_mini + "px",
-              height: vars$1.size_mini + "px",
-              padding: (vars$1.size_mini - vars.unit_icon_size) / 2 + "px"
+              width: vars$1$1.size_mini + "px",
+              height: vars$1$1.size_mini + "px",
+              padding: (vars$1$1.size_mini - vars$1.unit_icon_size) / 2 + "px"
             }
           }
         })];
@@ -7567,23 +9870,23 @@ var app = (function () {
        * Generate general styles, not defined by variables
        */
       general_styles: true,
-      size_mini: 5 * vars.grid_unit_component,
+      size_mini: 5 * vars$1.grid_unit_component,
       // 5 * 8 = 40
-      size_regular: 7 * vars.grid_unit_component,
+      size_regular: 7 * vars$1.grid_unit_component,
       // 7 * 8 = 56
-      color_light: rgba(vars.color_primary_foreground),
-      color_light_background: rgba(vars.color_primary),
+      color_light: rgba(vars$1.color_primary_foreground),
+      color_light_background: rgba(vars$1.color_primary),
       color_light_wash_background: "currentColor",
       color_light_wash_opacity: 0.1,
-      color_dark: rgba(vars.color_primary_foreground),
-      color_dark_background: rgba(vars.color_primary),
+      color_dark: rgba(vars$1.color_primary_foreground),
+      color_dark_background: rgba(vars$1.color_primary),
       color_dark_wash_background: "currentColor",
       color_dark_wash_opacity: 0.1
     };
 
     // @ts-check
     var fns$9 = [layout$b, color$8];
-    var selector$a = ".".concat(classes$a.component);
+    var selector$a = ".".concat(classes$f.component);
 
     var addGeneralStyleToHead$a = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -7593,7 +9896,7 @@ var app = (function () {
       });
     };
 
-    var classes$b = {
+    var classes$g = {
       component: "pe-icon",
       // states
       avatar: "pe-icon--avatar",
@@ -7726,24 +10029,24 @@ var app = (function () {
        * Generate general styles, not defined by variables
        */
       general_styles: true,
-      size_small: vars.unit_icon_size_small,
+      size_small: vars$1.unit_icon_size_small,
       // 16 
-      size_regular: vars.unit_icon_size,
+      size_regular: vars$1.unit_icon_size,
       // 24
-      size_medium: vars.unit_icon_size_medium,
+      size_medium: vars$1.unit_icon_size_medium,
       // 32
-      size_large: vars.unit_icon_size_large,
+      size_large: vars$1.unit_icon_size_large,
       // 40
       // avatar background is visible when image is not yet loaded
-      color_light_avatar_background: rgba(vars.color_light_foreground, vars.blend_light_background_disabled),
-      color_dark_avatar_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_disabled),
+      color_light_avatar_background: rgba(vars$1.color_light_foreground, vars$1.blend_light_background_disabled),
+      color_dark_avatar_background: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_background_disabled),
       color_light: "currentcolor",
       color_dark: "currentcolor"
     };
 
     // @ts-check
     var fns$a = [layout$c, color$9];
-    var selector$b = ".".concat(classes$b.component);
+    var selector$b = ".".concat(classes$g.component);
     var addStyle$3 = styler.createAddStyle(selector$b, fns$a, iconVars);
 
     var addGeneralStyleToHead$b = function addGeneralStyleToHead() {
@@ -7754,7 +10057,7 @@ var app = (function () {
       });
     };
 
-    var classes$c = {
+    var classes$h = {
       component: "pe-button pe-icon-button",
       // elements
       content: "pe-icon-button__content",
@@ -8012,19 +10315,19 @@ var app = (function () {
        * Generate general styles, not defined by variables
        */
       general_styles: true,
-      animation_duration: vars.animation_duration,
+      animation_duration: vars$1.animation_duration,
       label_font_size: 16,
       label_font_weight: 400,
       label_line_height: 20,
       label_padding_after: 0,
-      label_padding_before: vars.grid_unit * 1,
+      label_padding_before: vars$1.grid_unit * 1,
       // 4
       label_text_transform: "initial",
       label_top_margin_factor: 1 / 12,
       // align with icon
-      padding: (vars.grid_unit_icon_button - vars.unit_icon_size) / 2,
+      padding: (vars$1.grid_unit_icon_button - vars$1.unit_icon_size) / 2,
       // 12
-      padding_compact: (vars.grid_unit_icon_button - vars.unit_icon_size) / 3,
+      padding_compact: (vars$1.grid_unit_icon_button - vars$1.unit_icon_size) / 3,
       // 8
       color_background: "transparent",
       // only specify this variable to get all 2 states
@@ -8035,14 +10338,14 @@ var app = (function () {
       // color_dark_hover:          "inherit",
       // color_light_label_hover:   "inherit",
       // color_dark_label_hover:    "inherit",
-      color_light: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-      color_light_label: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-      color_light_disabled: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+      color_light: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_secondary),
+      color_light_label: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_secondary),
+      color_light_disabled: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_disabled),
       color_light_wash_background: "currentColor",
       color_light_wash_opacity: 0.1,
-      color_dark: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-      color_dark_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-      color_dark_disabled: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
+      color_dark: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_secondary),
+      color_dark_label: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_secondary),
+      color_dark_disabled: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_disabled),
       color_dark_wash_background: "currentColor",
       color_dark_wash_opacity: 0.1 // hover colors may be set in theme; disabled by default
       // color_light_background_hover:         "currentColor",
@@ -8052,7 +10355,7 @@ var app = (function () {
 
     // @ts-check
     var fns$b = [layout$d, color$a];
-    var selector$c = ".".concat(classes$c.component.replace(/ /g, "."));
+    var selector$c = ".".concat(classes$h.component.replace(/ /g, "."));
     var addStyle$4 = styler.createAddStyle(selector$c, fns$b, iconButtonVars);
 
     var addGeneralStyleToHead$c = function addGeneralStyleToHead() {
@@ -8063,7 +10366,7 @@ var app = (function () {
       });
     };
 
-    var classes$d = {
+    var classes$i = {
       component: "pe-ios-spinner",
       // elements
       blades: "pe-ios-spinner__blades",
@@ -8203,13 +10506,13 @@ var app = (function () {
        */
       general_styles: true,
       rotation_animation_duration: "1s",
-      color_light: rgba(vars.color_light_foreground),
-      color_dark: rgba(vars.color_dark_foreground)
+      color_light: rgba(vars$1.color_light_foreground),
+      color_dark: rgba(vars$1.color_dark_foreground)
     };
 
     // @ts-check
     var fns$c = [layout$e, color$b];
-    var selector$d = ".".concat(classes$d.component);
+    var selector$d = ".".concat(classes$i.component);
 
     var addGeneralStyleToHead$d = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -8248,7 +10551,7 @@ var app = (function () {
       navigation: "pe-list-tile--navigation"
     };
 
-    var classes$e = {
+    var classes$j = {
       component: "pe-list",
       // states
       border: "pe-list--border",
@@ -8424,11 +10727,11 @@ var app = (function () {
       general_styles: true,
       border_width_bordered: 1,
       border_width_stacked: 1,
-      padding: vars.grid_unit_component,
+      padding: vars$1.grid_unit_component,
       // vertical padding
-      padding_compact: vars.grid_unit_component * 3 / 4,
-      color_light_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
-      color_dark_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light) // background color may be set in theme; disabled by default
+      padding_compact: vars$1.grid_unit_component * 3 / 4,
+      color_light_border: rgba(vars$1.color_light_foreground, vars$1.blend_light_border_light),
+      color_dark_border: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_border_light) // background color may be set in theme; disabled by default
       // color_light_background: "inherit",
       // color_dark_background:  "inherit"
 
@@ -8436,7 +10739,7 @@ var app = (function () {
 
     // @ts-check
     var fns$d = [layout$f, color$c];
-    var selector$e = ".".concat(classes$e.component);
+    var selector$e = ".".concat(classes$j.component);
 
     var addGeneralStyleToHead$e = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -8446,7 +10749,7 @@ var app = (function () {
       });
     };
 
-    var classes$f = {
+    var classes$k = {
       component: "pe-list-tile",
       // elements
       content: "pe-list-tile__content",
@@ -9117,28 +11420,28 @@ var app = (function () {
       general_styles: true,
       compact_front_item_width: 64,
       compact_padding: 9,
-      compact_side_padding: 1 * vars.grid_unit_component,
+      compact_side_padding: 1 * vars$1.grid_unit_component,
       font_size_list_header: 14,
       font_size_navigation_title: 14,
       font_size_small: 12,
       font_size_subtitle: 14,
       font_size_title: 16,
-      font_weight_list_header: vars.font_weight_medium,
-      font_weight_navigation_title: vars.font_weight_medium,
-      font_weight_subtitle: vars.font_weight_normal,
-      font_weight_title: vars.font_weight_normal,
+      font_weight_list_header: vars$1.font_weight_medium,
+      font_weight_navigation_title: vars$1.font_weight_medium,
+      font_weight_subtitle: vars$1.font_weight_normal,
+      font_weight_title: vars$1.font_weight_normal,
       front_item_width: 72,
       has_high_subtitle_padding: 13,
       has_subtitle_padding: 15,
       high_subtitle_line_count: 2,
-      inset_h_size: 1 * vars.grid_unit_component,
+      inset_h_size: 1 * vars$1.grid_unit_component,
       // 8
-      inset_v_size: 1 * vars.grid_unit_component,
+      inset_v_size: 1 * vars$1.grid_unit_component,
       // 8
       line_height_subtitle: 20,
       padding: 13,
-      rounded_border_radius: vars.unit_item_border_radius,
-      side_padding: 2 * vars.grid_unit_component,
+      rounded_border_radius: vars$1.unit_item_border_radius,
+      side_padding: 2 * vars$1.grid_unit_component,
       // 16
       single_height: single_height,
       single_line_height: single_height - 2 * padding - (2 * 5 + 1),
@@ -9146,40 +11449,40 @@ var app = (function () {
       single_with_icon_line_height: single_with_icon_height - 2 * padding - (2 * 5 + 1),
       subtitle_line_count: 1,
       title_line_count: 1,
-      color_light_title: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-      color_light_subtitle: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-      color_light_info: rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
-      color_light_front: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-      color_light_text_disabled: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
-      color_light_list_header: rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
-      color_light_secondary: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-      color_light_hover: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-      color_light_hover_front: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-      color_light_hover_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
-      color_light_focus_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+      color_light_title: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_primary),
+      color_light_subtitle: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_secondary),
+      color_light_info: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_tertiary),
+      color_light_front: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_secondary),
+      color_light_text_disabled: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_disabled),
+      color_light_list_header: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_tertiary),
+      color_light_secondary: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_secondary),
+      color_light_hover: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_primary),
+      color_light_hover_front: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_primary),
+      color_light_hover_background: rgba(vars$1.color_light_foreground, vars$1.blend_light_background_hover),
+      color_light_focus_background: rgba(vars$1.color_light_foreground, vars$1.blend_light_background_hover),
       color_light_selected_text: "inherit",
-      color_light_selected_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
-      color_light_highlight_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+      color_light_selected_background: rgba(vars$1.color_light_foreground, vars$1.blend_light_background_hover),
+      color_light_highlight_background: rgba(vars$1.color_light_foreground, vars$1.blend_light_background_hover),
       // background color may be set in theme; disabled by default
       // color_light_background:          "inherit",
-      color_dark_title: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-      color_dark_subtitle: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-      color_dark_info: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
-      color_dark_front: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-      color_dark_text_disabled: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
-      color_dark_list_header: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
-      color_dark_secondary: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-      color_dark_hover: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-      color_dark_hover_front: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-      color_dark_hover_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
+      color_dark_title: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_primary),
+      color_dark_subtitle: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_secondary),
+      color_dark_info: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_tertiary),
+      color_dark_front: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_secondary),
+      color_dark_text_disabled: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_disabled),
+      color_dark_list_header: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_tertiary),
+      color_dark_secondary: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_secondary),
+      color_dark_hover: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_primary),
+      color_dark_hover_front: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_primary),
+      color_dark_hover_background: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_background_hover),
       color_dark_selected_text: "inherit",
-      color_dark_selected_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
-      color_dark_highlight_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover)
+      color_dark_selected_background: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_background_hover),
+      color_dark_highlight_background: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_background_hover)
     }, themeVars$4);
 
     // @ts-check
     var fns$e = [layout$g, color$d];
-    var selector$f = ".".concat(classes$f.component);
+    var selector$f = ".".concat(classes$k.component);
 
     var addGeneralStyleToHead$f = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -9189,7 +11492,7 @@ var app = (function () {
       });
     };
 
-    var classes$g = {
+    var classes$l = {
       component: "pe-md-spinner",
       // elements
       animation: "pe-md-spinner__animation",
@@ -9689,12 +11992,12 @@ var app = (function () {
       border_width_regular: 3,
       border_width_small: baseSpinnerVars.size_small / baseSpinnerVars.size_regular * 3,
       rotation_duration: rotation_duration,
-      color_light_single: rgba(vars.color_primary),
+      color_light_single: rgba(vars$1.color_primary),
       color_light_1: blue400,
       color_light_2: red500,
       color_light_3: yellow600,
       color_light_4: green500,
-      color_dark_single: rgba(vars.color_primary),
+      color_dark_single: rgba(vars$1.color_primary),
       color_dark_1: blue400,
       color_dark_2: red500,
       color_dark_3: yellow600,
@@ -9703,7 +12006,7 @@ var app = (function () {
 
     // @ts-check
     var fns$f = [layout$h, color$e];
-    var selector$g = ".".concat(classes$g.component);
+    var selector$g = ".".concat(classes$l.component);
 
     var addGeneralStyleToHead$g = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -9713,7 +12016,7 @@ var app = (function () {
       });
     };
 
-    var classes$h = {
+    var classes$m = {
       component: "pe-md-progress-spinner",
       // elements
       animation: "pe-md-progress-spinner__animation",
@@ -9833,13 +12136,13 @@ var app = (function () {
        */
       general_styles: true,
       progress_animation_duration: ".8s",
-      color_light: rgba(vars.color_primary),
-      color_dark: rgba(vars.color_primary)
+      color_light: rgba(vars$1.color_primary),
+      color_dark: rgba(vars$1.color_primary)
     };
 
     // @ts-check
     var fns$g = [layout$i, color$f];
-    var selector$h = ".".concat(classes$h.component);
+    var selector$h = ".".concat(classes$m.component);
 
     var addGeneralStyleToHead$h = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -9878,7 +12181,7 @@ var app = (function () {
       navigation: "pe-list-tile--navigation"
     };
 
-    var classes$i = {
+    var classes$n = {
       component: "pe-menu",
       // elements
       panel: "pe-menu__panel",
@@ -9995,7 +12298,7 @@ var app = (function () {
     var themeVars$5 = _objectSpread$6({
       backdrop: undefined,
       // (Boolean) - if not set, backdrop existence is set by component option
-      z: vars.z_menu
+      z: vars$1.z_menu
     }, behaviorVars$1, sharedVars);
     /**
      * @type {MenuVars} menuVars
@@ -10015,15 +12318,15 @@ var app = (function () {
       animation_show_css: "opacity: 1;",
       animation_show_origin_effect_css: "transform: scale(1);",
       animation_timing_function: "ease-in-out",
-      border_radius: vars.unit_block_border_radius,
+      border_radius: vars$1.unit_block_border_radius,
       height: undefined,
       // (height value with unit) - if not set, height is set by component option
       min_width: 1.5,
-      width_factor: vars.grid_unit_menu,
+      width_factor: vars$1.grid_unit_menu,
       widths: [1, 1.5, 2, 3, 4, 5, 6, 7],
       // color vars
-      color_light_background: rgba(vars.color_light_background),
-      color_dark_background: rgba(vars.color_dark_background),
+      color_light_background: rgba(vars$1.color_light_background),
+      color_dark_background: rgba(vars$1.color_dark_background),
       color_light_backdrop_background: "rgba(0, 0, 0, .1)",
       color_dark_backdrop_background: "rgba(0, 0, 0, .5)"
     }, themeVars$5);
@@ -10074,15 +12377,15 @@ var app = (function () {
       });
     };
 
-    var widths_min_width_width_factor = function widths_min_width_width_factor(selector, vars$1) {
-      return sel(selector, [vars$1.widths.map(function (width) {
+    var widths_min_width_width_factor = function widths_min_width_width_factor(selector, vars$1$1) {
+      return sel(selector, [vars$1$1.widths.map(function (width) {
         return widthStyle({
-          vars: vars$1,
+          vars: vars$1$1,
           width: width
         });
       }), {
         " .pe-menu__panel": {
-          minWidth: vars.grid_unit_menu * vars$1.min_width + "px"
+          minWidth: vars$1.grid_unit_menu * vars$1$1.min_width + "px"
         }
       }]);
     };
@@ -10268,7 +12571,7 @@ var app = (function () {
 
     // @ts-check
     var fns$h = [layout$j, color$g];
-    var selector$i = ".".concat(classes$i.component);
+    var selector$i = ".".concat(classes$n.component);
 
     var addGeneralStyleToHead$i = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -10278,7 +12581,7 @@ var app = (function () {
       });
     };
 
-    var classes$j = {
+    var classes$o = {
       component: "pe-notification",
       // elements
       action: "pe-notification__action",
@@ -10377,7 +12680,7 @@ var app = (function () {
           // For IE 11
           ".pe-multiple--screen": {
             position: "fixed",
-            zIndex: vars.z_notification
+            zIndex: vars$1.z_notification
           }
         }]), {
           ":not(.pe-notification--container) .pe-multiple--container": {
@@ -10540,7 +12843,7 @@ var app = (function () {
       animation_hide_css: "opacity: 0;",
       animation_show_css: "opacity: 1;",
       animation_timing_function: "ease-in-out",
-      border_radius: vars.unit_block_border_radius,
+      border_radius: vars$1.unit_block_border_radius,
       font_size: 14,
       line_height: 20,
       min_height: 80,
@@ -10550,17 +12853,17 @@ var app = (function () {
       title_padding_h: buttonPaddingH,
       title_single_padding_v: 14,
       width: 288,
-      color_light_background: rgba(vars.color_light_background),
-      color_light_text: rgba(vars.color_light_foreground, vars.blend_light_dark_primary),
-      color_dark_background: rgba(vars.color_dark_background),
-      color_dark_text: rgba(vars.color_dark_foreground, vars.blend_light_text_primary)
+      color_light_background: rgba(vars$1.color_light_background),
+      color_light_text: rgba(vars$1.color_light_foreground, vars$1.blend_light_dark_primary),
+      color_dark_background: rgba(vars$1.color_dark_background),
+      color_dark_text: rgba(vars$1.color_dark_foreground, vars$1.blend_light_text_primary)
     };
 
     // @ts-check
     var fns$i = [layout$k, color$h];
-    var selector$j = ".".concat(classes$j.component);
+    var selector$j = ".".concat(classes$o.component);
     var holderFns = [holderLayout];
-    var holderSelector = ".".concat(classes$j.holder);
+    var holderSelector = ".".concat(classes$o.holder);
 
     var addGeneralStyleToHead$j = function addGeneralStyleToHead() {
       styler.addStyle({
@@ -10575,7 +12878,7 @@ var app = (function () {
       });
     };
 
-    var classes$k = {
+    var classes$p = {
       component: "pe-radio-control"
     };
 
@@ -10617,7 +12920,7 @@ var app = (function () {
 
     // @ts-check
     var fns$j = [layout$l, color$i];
-    var selector$k = ".".concat(classes$k.component);
+    var selector$k = ".".concat(classes$p.component);
 
     var addGeneralStyleToHead$k = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -10627,7 +12930,7 @@ var app = (function () {
       });
     };
 
-    var classes$l = {
+    var classes$q = {
       component: "pe-ripple",
       // elements
       mask: "pe-ripple__mask",
@@ -10760,7 +13063,7 @@ var app = (function () {
 
     // @ts-check
     var fns$k = [layout$m, color$j];
-    var selector$l = ".".concat(classes$l.component);
+    var selector$l = ".".concat(classes$q.component);
     var addStyle$5 = styler.createAddStyle(selector$l, fns$k, rippleVars);
 
     var addGeneralStyleToHead$l = function addGeneralStyleToHead() {
@@ -10771,7 +13074,7 @@ var app = (function () {
       });
     };
 
-    var classes$m = {
+    var classes$r = {
       component: "pe-search",
       // elements
       content: "pe-search__content",
@@ -10994,21 +13297,21 @@ var app = (function () {
           }
         })];
       },
-      full_width_side_padding: function full_width_side_padding(selector, vars$1) {
-        var full_width_input_indent = vars.unit_indent - vars$1.full_width_side_padding - vars.grid_unit_icon_button;
+      full_width_side_padding: function full_width_side_padding(selector, vars$1$1) {
+        var full_width_input_indent = vars$1.unit_indent - vars$1$1.full_width_side_padding - vars$1.grid_unit_icon_button;
         return sel(selector, {
           ".pe-search--full-width": {
-            padding: "0 " + vars$1.full_width_side_padding + "px",
+            padding: "0 " + vars$1$1.full_width_side_padding + "px",
             " .pe-textfield__input, .pe-textfield__label": {
               paddingLeft: full_width_input_indent + "px"
             }
           },
           ".pe-search--full-width + .pe-list .pe-list-tile": {
             "> :first-child": {
-              paddingLeft: vars$1.full_width_side_padding + "px"
+              paddingLeft: vars$1$1.full_width_side_padding + "px"
             },
             "> :last-child": {
-              paddingRight: vars$1.full_width_side_padding + "px"
+              paddingRight: vars$1$1.full_width_side_padding + "px"
             }
           }
         });
@@ -11050,23 +13353,23 @@ var app = (function () {
       full_width_input_right_padding: 0,
       full_width_side_margin: 0,
       full_width_side_padding: 8,
-      inset_border_radius: vars.unit_block_border_radius,
+      inset_border_radius: vars$1.unit_block_border_radius,
       inset_height: 48,
       inset_input_indent: 16,
       inset_input_right_padding: 0,
       inset_side_padding: 0,
       line_height_input: 20,
-      color_light_label_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
-      color_light_input_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-      color_light_background: rgba(vars.color_light_background),
-      color_dark_label_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
-      color_dark_input_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-      color_dark_background: rgba(vars.color_dark_background)
+      color_light_label_text: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_disabled),
+      color_light_input_text: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_primary),
+      color_light_background: rgba(vars$1.color_light_background),
+      color_dark_label_text: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_disabled),
+      color_dark_input_text: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_primary),
+      color_dark_background: rgba(vars$1.color_dark_background)
     };
 
     // @ts-check
     var fns$l = [layout$n, color$k];
-    var selector$m = ".".concat(classes$m.component);
+    var selector$m = ".".concat(classes$r.component);
 
     var addGeneralStyleToHead$m = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -11076,7 +13379,7 @@ var app = (function () {
       });
     };
 
-    var classes$n = {
+    var classes$s = {
       component: "pe-slider",
       // elements
       control: "pe-slider__control",
@@ -11502,10 +13805,10 @@ var app = (function () {
             }
           }],
           " .pe-slider__label": {
-            minWidth: vars.unit_icon_size + "px",
+            minWidth: vars$1.unit_icon_size + "px",
             textAlign: "center",
             fontSize: "16px",
-            fontWeight: vars.font_weight_medium
+            fontWeight: vars$1.font_weight_medium
           },
           " .pe-slider__track-part": [flex$1.flex(), {
             userSelect: "none",
@@ -11727,9 +14030,9 @@ var app = (function () {
     });
 
     // @ts-check
-    var lightForeground = vars.color_light_foreground;
-    var darkForeground = vars.color_dark_foreground;
-    var activeColor = vars.color_primary; // or override in CSS by setting 'color' property on '.pe-slider'
+    var lightForeground = vars$1.color_light_foreground;
+    var darkForeground = vars$1.color_dark_foreground;
+    var activeColor = vars$1.color_primary; // or override in CSS by setting 'color' property on '.pe-slider'
 
     var thumb_size = 12;
     var thumb_touch_size = Math.max(40, thumb_size);
@@ -11743,14 +14046,14 @@ var app = (function () {
     var side_spacing = Math.max(10, largestElement / 2 - thumb_size / 2);
     var horizontal_layout_side_spacing = side_spacing + 4; // optimization for horizontal layout
 
-    var vars$2 = {
+    var vars$3 = {
       /**
        * Generate general styles, not defined by variables
        */
       general_styles: true,
       active_pin_thumb_scale: active_pin_thumb_scale,
       active_thumb_scale: active_thumb_scale,
-      animation_duration: vars.animation_duration,
+      animation_duration: vars$1.animation_duration,
       bar_height: 2,
       disabled_thumb_scale: disabled_thumb_scale,
       height: height$1,
@@ -11777,10 +14080,10 @@ var app = (function () {
       color_light_thumb_inactive: rgba(lightForeground, .26),
       color_light_tick: rgba(lightForeground, 1),
       color_light_tick_value: rgba(lightForeground, 1),
-      color_light_icon: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-      color_light_disabled_icon: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
-      color_light_label: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-      color_light_disabled_label: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+      color_light_icon: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_secondary),
+      color_light_disabled_icon: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_disabled),
+      color_light_label: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_secondary),
+      color_light_disabled_label: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_disabled),
       color_light_pin_label: "#fff",
       color_light_pin_background: "currentColor",
       color_dark_track_active: rgba(darkForeground, .3),
@@ -11796,23 +14099,23 @@ var app = (function () {
       color_dark_thumb_inactive: rgba(darkForeground, .2),
       color_dark_tick: rgba(darkForeground, 1),
       color_dark_tick_value: rgba(darkForeground, 1),
-      color_dark_icon: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-      color_dark_disabled_icon: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
-      color_dark_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-      color_dark_disabled_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
+      color_dark_icon: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_secondary),
+      color_dark_disabled_icon: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_disabled),
+      color_dark_label: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_secondary),
+      color_dark_disabled_label: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_disabled),
       color_dark_pin_label: "#fff",
       color_dark_pin_background: "currentColor"
     };
 
     // @ts-check
     var fns$m = [layout$o, color$l];
-    var selector$n = ".".concat(classes$n.component);
+    var selector$n = ".".concat(classes$s.component);
 
     var addGeneralStyleToHead$n = function addGeneralStyleToHead() {
       return styler.addStyle({
         selectors: [selector$n],
         fns: fns$m,
-        vars: vars$2
+        vars: vars$3
       });
     };
 
@@ -11866,7 +14169,7 @@ var app = (function () {
       visible: "pe-notification--visible"
     };
 
-    var classes$o = _objectSpread$7({}, notificationClasses, {
+    var classes$t = _objectSpread$7({}, notificationClasses, {
       component: "pe-notification pe-snackbar",
       // elements
       holder: "pe-snackbar__holder",
@@ -11888,7 +14191,7 @@ var app = (function () {
           right: 0,
           bottom: 0,
           left: 0,
-          zIndex: vars.z_notification,
+          zIndex: vars$1.z_notification,
           pointerEvents: "none",
           justifyContent: "flex-start",
           // For IE11
@@ -11908,7 +14211,7 @@ var app = (function () {
       };
     };
 
-    var breakpointTabletPortraitUp = breakpoint("@media (min-width: ".concat(vars.breakpoint_for_tablet_portrait_up, "px)"));
+    var breakpointTabletPortraitUp = breakpoint("@media (min-width: ".concat(vars$1.breakpoint_for_tablet_portrait_up, "px)"));
     var varFns$1$3 = {
       general_styles: function general_styles(selector) {
         return [sel(selector, {
@@ -11971,15 +14274,15 @@ var app = (function () {
       max_width: 568,
       min_height: 0,
       min_width: 288,
-      color_light_background: rgba(vars.color_light_background),
-      color_dark_background: rgba(vars.color_dark_background)
+      color_light_background: rgba(vars$1.color_light_background),
+      color_dark_background: rgba(vars$1.color_dark_background)
     };
 
     // @ts-check
     var fns$n = [layout$p, color$m];
-    var selector$o = ".".concat(classes$o.component.replace(/ /g, "."));
+    var selector$o = ".".concat(classes$t.component.replace(/ /g, "."));
     var holderFns$1 = [holderLayout$1];
-    var holderSelector$1 = ".".concat(classes$o.holder.replace(/ /g, "."));
+    var holderSelector$1 = ".".concat(classes$t.holder.replace(/ /g, "."));
 
     var addGeneralStyleToHead$o = function addGeneralStyleToHead() {
       styler.addStyle({
@@ -11994,7 +14297,7 @@ var app = (function () {
       });
     };
 
-    var classes$p = {
+    var classes$u = {
       component: "pe-svg"
     };
 
@@ -12108,7 +14411,7 @@ var app = (function () {
 
     // @ts-check
     var fns$o = [layout$q, color$n];
-    var selector$p = ".".concat(classes$p.component);
+    var selector$p = ".".concat(classes$u.component);
     var addStyle$6 = styler.createAddStyle(selector$p, fns$o, svgVars);
 
     var addGeneralStyleToHead$p = function addGeneralStyleToHead() {
@@ -12119,7 +14422,7 @@ var app = (function () {
       });
     };
 
-    var classes$q = {
+    var classes$v = {
       component: "pe-switch-control",
       // elements
       knob: "pe-switch-control__knob",
@@ -12332,16 +14635,16 @@ var app = (function () {
       return mixin.defaultTransition(properties, duration, "ease-out");
     };
 
-    var getSizeData = function getSizeData(vars$1, size) {
-      var factor = size / vars.unit_icon_size;
-      var thumbSize = Math.floor(0.5 * vars$1.thumb_size * factor) * 2; // round to even
+    var getSizeData = function getSizeData(vars$1$1, size) {
+      var factor = size / vars$1.unit_icon_size;
+      var thumbSize = Math.floor(0.5 * vars$1$1.thumb_size * factor) * 2; // round to even
 
-      var scaledTrackHeight = Math.floor(0.5 * vars$1.track_height * factor) * 2; // round to even
+      var scaledTrackHeight = Math.floor(0.5 * vars$1$1.track_height * factor) * 2; // round to even
 
-      var scaledTrackWidth = Math.floor(0.5 * vars$1.track_length * factor) * 2;
-      var scaledThumbSize = Math.floor(0.5 * vars$1.thumb_size * factor) * 2;
-      var trackTop = (vars$1.label_height * factor - scaledTrackHeight) / 2;
-      var thumbPadding = vars$1.icon_button_padding;
+      var scaledTrackWidth = Math.floor(0.5 * vars$1$1.track_length * factor) * 2;
+      var scaledThumbSize = Math.floor(0.5 * vars$1$1.thumb_size * factor) * 2;
+      var trackTop = (vars$1$1.label_height * factor - scaledTrackHeight) / 2;
+      var thumbPadding = vars$1$1.icon_button_padding;
       var thumbMargin = (size - scaledThumbSize) / 2;
       var thumbOuterSize = size + 2 * thumbPadding;
       var thumbOffsetMin = -(thumbOuterSize / 2) + thumbSize / 2;
@@ -12431,23 +14734,23 @@ var app = (function () {
     var alignLeft$7 = alignSide$7(false);
     var alignRight$7 = alignSide$7(true);
 
-    var createSize = function createSize(selector, vars$1) {
+    var createSize = function createSize(selector, vars$1$1) {
       var sizeData = {
-        small: getSizeData(vars$1, vars.unit_icon_size_small),
-        regular: getSizeData(vars$1, vars.unit_icon_size),
-        medium: getSizeData(vars$1, vars.unit_icon_size_medium),
-        large: getSizeData(vars$1, vars.unit_icon_size_large)
+        small: getSizeData(vars$1$1, vars$1.unit_icon_size_small),
+        regular: getSizeData(vars$1$1, vars$1.unit_icon_size),
+        medium: getSizeData(vars$1$1, vars$1.unit_icon_size_medium),
+        large: getSizeData(vars$1$1, vars$1.unit_icon_size_large)
       };
       return [sel(selector, {
-        ".pe-control--small": [customSize(vars$1, sizeData.small), customSpacing(vars$1, sizeData.small, false)],
-        ".pe-control--regular": [customSize(vars$1, sizeData.regular), customSpacing(vars$1, sizeData.regular, false)],
-        ".pe-control--medium": [customSize(vars$1, sizeData.medium), customSpacing(vars$1, sizeData.medium, false)],
-        ".pe-control--large": [customSize(vars$1, sizeData.large), customSpacing(vars$1, sizeData.large, false)]
+        ".pe-control--small": [customSize(vars$1$1, sizeData.small), customSpacing(vars$1$1, sizeData.small, false)],
+        ".pe-control--regular": [customSize(vars$1$1, sizeData.regular), customSpacing(vars$1$1, sizeData.regular, false)],
+        ".pe-control--medium": [customSize(vars$1$1, sizeData.medium), customSpacing(vars$1$1, sizeData.medium, false)],
+        ".pe-control--large": [customSize(vars$1$1, sizeData.large), customSpacing(vars$1$1, sizeData.large, false)]
       }), _defineProperty$o({}, "*[dir=rtl] ".concat(selector, ", .pe-rtl ").concat(selector), [alignRight$7(), {
-        ".pe-control--small": [customSpacing(vars$1, sizeData.small, true)],
-        ".pe-control--regular": [customSpacing(vars$1, sizeData.regular, true)],
-        ".pe-control--medium": [customSpacing(vars$1, sizeData.medium, true)],
-        ".pe-control--large": [customSpacing(vars$1, sizeData.large, true)]
+        ".pe-control--small": [customSpacing(vars$1$1, sizeData.small, true)],
+        ".pe-control--regular": [customSpacing(vars$1$1, sizeData.regular, true)],
+        ".pe-control--medium": [customSpacing(vars$1$1, sizeData.medium, true)],
+        ".pe-control--large": [customSpacing(vars$1$1, sizeData.large, true)]
       }])];
     };
 
@@ -12526,36 +14829,36 @@ var app = (function () {
        * Generate general styles, not defined by variables
        */
       general_styles: true,
-      animation_duration: vars.animation_duration,
-      hit_area_padding: (vars.grid_unit_icon_button - vars.unit_icon_size) / 2,
+      animation_duration: vars$1.animation_duration,
+      hit_area_padding: (vars$1.grid_unit_icon_button - vars$1.unit_icon_size) / 2,
       // 12
       icon_button_padding: iconButtonVars.padding,
-      padding: vars.grid_unit_component,
+      padding: vars$1.grid_unit_component,
       thumb_size: 20,
       track_height: 14,
       track_length: 36,
       label_height: selectionControlVars.label_height,
-      color_light_thumb_on: rgba(vars.color_primary),
+      color_light_thumb_on: rgba(vars$1.color_primary),
       color_light_thumb_off: "#f1f1f1",
       color_light_thumb_disabled: "#eee",
-      color_light_wash_on: rgba(vars.color_primary, vars.blend_light_background_active),
+      color_light_wash_on: rgba(vars$1.color_primary, vars$1.blend_light_background_active),
       color_light_wash_off: iconButtonVars.color_light_wash_background,
-      color_light_track_on: rgba(vars.color_primary_faded),
+      color_light_track_on: rgba(vars$1.color_primary_faded),
       color_light_track_on_opacity: .55,
-      color_light_track_off: rgba(vars.color_light_foreground, vars.blend_light_text_regular),
+      color_light_track_off: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_regular),
       color_light_track_off_opacity: .55,
-      color_light_track_disabled: rgba(vars.color_light_foreground, vars.blend_light_background_disabled),
+      color_light_track_disabled: rgba(vars$1.color_light_foreground, vars$1.blend_light_background_disabled),
       color_light_track_disabled_opacity: 1,
       // icon color may be set in theme; default "currentcolor"
       // color_light_icon_on:                   "currentcolor",
       // color_light_icon_off:                  "currentcolor",
       // color_light_focus_on and so on taken from selectionControlVars
-      color_dark_thumb_on: rgba(vars.color_primary),
+      color_dark_thumb_on: rgba(vars$1.color_primary),
       color_dark_thumb_off: "#bdbdbd",
       color_dark_thumb_disabled: "#555",
-      color_dark_wash_on: rgba(vars.color_primary, vars.blend_dark_background_active),
+      color_dark_wash_on: rgba(vars$1.color_primary, vars$1.blend_dark_background_active),
       color_dark_wash_off: iconButtonVars.color_dark_wash_background,
-      color_dark_track_on: rgba(vars.color_primary_faded, vars.blend_dark_text_tertiary),
+      color_dark_track_on: rgba(vars$1.color_primary_faded, vars$1.blend_dark_text_tertiary),
       // or "#5a7f7c"
       color_dark_track_on_opacity: 9,
       color_dark_track_off: "#717171",
@@ -12570,7 +14873,7 @@ var app = (function () {
 
     // @ts-check
     var fns$p = [layout$r, color$o];
-    var selector$q = ".".concat(classes$q.component);
+    var selector$q = ".".concat(classes$v.component);
 
     var addGeneralStyleToHead$q = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -12607,7 +14910,7 @@ var app = (function () {
       hasHover: "pe-button--has-hover"
     };
 
-    var classes$r = {
+    var classes$w = {
       component: "pe-tabs",
       // elements
       indicator: "pe-tabs__indicator",
@@ -12731,7 +15034,7 @@ var app = (function () {
           borderRadius: 0,
           padding: 0,
           " .pe-button__content": {
-            lineHeight: vars.line_height + "em",
+            lineHeight: vars$1.line_height + "em",
             borderRadius: 0,
             position: "relative",
             " .pe-button__label, .pe-icon": {
@@ -12807,9 +15110,9 @@ var app = (function () {
           maxWidth: isNaN(vars.tab_max_width) ? vars.tab_max_width : vars.tab_max_width + "px"
         })];
       },
-      tab_min_width_tablet: function tab_min_width_tablet(selector, vars$1) {
-        return _defineProperty$p({}, "@media (min-width: " + vars.breakpoint_for_tablet_landscape_up + "px)", _defineProperty$p({}, ".pe-tabs:not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable):not(.pe-tabs--compact) ".concat(selector), {
-          minWidth: vars$1.tab_min_width_tablet + "px"
+      tab_min_width_tablet: function tab_min_width_tablet(selector, vars$1$1) {
+        return _defineProperty$p({}, "@media (min-width: " + vars$1.breakpoint_for_tablet_landscape_up + "px)", _defineProperty$p({}, ".pe-tabs:not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable):not(.pe-tabs--compact) ".concat(selector), {
+          minWidth: vars$1$1.tab_min_width_tablet + "px"
         }));
       },
       tab_icon_label_height: function tab_icon_label_height(selector, vars) {
@@ -13167,15 +15470,15 @@ var app = (function () {
       tab_min_width: 72,
       tab_min_width_tablet: 160,
       tabs_indent: 0,
-      color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_regular),
-      color_light_selected: rgba(vars.color_primary),
+      color_light_text: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_regular),
+      color_light_selected: rgba(vars$1.color_primary),
       color_light_selected_background: "transparent",
-      color_light_tab_indicator: rgba(vars.color_primary),
+      color_light_tab_indicator: rgba(vars$1.color_primary),
       color_light_icon: iconButtonVars.color_light,
-      color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_regular),
-      color_dark_selected: rgba(vars.color_primary),
+      color_dark_text: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_regular),
+      color_dark_selected: rgba(vars$1.color_primary),
       color_dark_selected_background: "transparent",
-      color_dark_tab_indicator: rgba(vars.color_primary),
+      color_dark_tab_indicator: rgba(vars$1.color_primary),
       color_dark_icon: iconButtonVars.color_dark // hover colors may be set in theme; disabled by default
       // color_light_hover:                    rgba(vars.color_light_foreground, vars.blend_light_text_primary),
       // color_light_hover_background:         "transparent",
@@ -13188,8 +15491,8 @@ var app = (function () {
     // @ts-check
     var tabsFns = [tabsLayout, tabsColor];
     var tabFns = [tabLayout, tabColor];
-    var tabsSelector = ".".concat(classes$r.component);
-    var tabClass = "".concat(classes$r.tab, " pe-text-button pe-button");
+    var tabsSelector = ".".concat(classes$w.component);
+    var tabClass = "".concat(classes$w.tab, " pe-text-button pe-button");
     var tabSelector = " .".concat(tabClass.replace(/ /g, "."));
 
     var addGeneralStyleToHead$r = function addGeneralStyleToHead() {
@@ -13205,7 +15508,7 @@ var app = (function () {
       });
     };
 
-    var classes$s = {
+    var classes$x = {
       component: "pe-textfield",
       // elements
       counter: "pe-textfield__counter",
@@ -13497,7 +15800,7 @@ var app = (function () {
       general_styles: function general_styles(selector) {
         return [sel(selector, [alignLeft$9(), mixin.clearfix(), {
           position: "relative",
-          lineHeight: vars.line_height,
+          lineHeight: vars$1.line_height,
           display: "inline-block",
           boxSizing: "border-box",
           margin: 0,
@@ -13588,7 +15891,7 @@ var app = (function () {
             }
           },
           " .pe-textfield__error, .pe-textfield__error-placeholder, .pe-textfield__help, .pe-textfield__counter": {
-            lineHeight: vars.line_height
+            lineHeight: vars$1.line_height
           },
           " .pe-textfield__help-focus": [mixin.defaultTransition("opacity"), {
             opacity: 0
@@ -13682,11 +15985,11 @@ var app = (function () {
           }
         })];
       },
-      font_size_error: function font_size_error(selector, vars$1) {
+      font_size_error: function font_size_error(selector, vars$1$1) {
         return [sel(selector, {
           " .pe-textfield__error, .pe-textfield__error-placeholder, .pe-textfield__help, .pe-textfield__counter": {
-            fontSize: vars$1.font_size_error + "px",
-            minHeight: vars$1.font_size_error * vars.line_height + "px"
+            fontSize: vars$1$1.font_size_error + "px",
+            minHeight: vars$1$1.font_size_error * vars$1.line_height + "px"
           }
         })];
       },
@@ -13886,7 +16189,7 @@ var app = (function () {
       full_width_input_padding_v: 18,
       // 20 minus natural label height padding (2)
       input_border_width: 1,
-      input_focus_border_animation_duration: vars.animation_duration,
+      input_focus_border_animation_duration: vars$1.animation_duration,
       input_focus_border_width: 2,
       input_padding_h: 0,
       input_padding_v: 7,
@@ -13896,41 +16199,41 @@ var app = (function () {
       // 8 minus natural label height padding (1)
       vertical_spacing_top: 6,
       // 8 minus natural label height padding (1)
-      color_light_input_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
+      color_light_input_text: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_primary),
       color_light_input_background: "transparent",
       // only used to "remove" autofill color
-      color_light_highlight_text: rgba(vars.color_primary, vars.blend_light_text_primary),
-      color_light_input_bottom_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
+      color_light_highlight_text: rgba(vars$1.color_primary, vars$1.blend_light_text_primary),
+      color_light_input_bottom_border: rgba(vars$1.color_light_foreground, vars$1.blend_light_border_light),
       color_light_input_error_text: rgba("221, 44, 0"),
       color_light_input_error_border: rgba("221, 44, 0"),
-      color_light_input_placeholder: rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
-      color_light_label_text: rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
-      color_light_disabled_label_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
-      color_light_readonly_label_text: rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
-      color_light_help_text: rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
+      color_light_input_placeholder: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_tertiary),
+      color_light_label_text: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_tertiary),
+      color_light_disabled_label_text: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_disabled),
+      color_light_readonly_label_text: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_tertiary),
+      color_light_help_text: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_tertiary),
       color_light_required_symbol: rgba("221, 44, 0"),
-      color_light_focus_border: rgba(vars.color_primary),
-      color_light_counter_ok_border: rgba(vars.color_primary),
-      color_dark_input_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
+      color_light_focus_border: rgba(vars$1.color_primary),
+      color_light_counter_ok_border: rgba(vars$1.color_primary),
+      color_dark_input_text: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_primary),
       color_dark_input_background: "transparent",
       // only used to "remove" autofill color
-      color_dark_highlight_text: rgba(vars.color_primary, vars.blend_dark_text_primary),
-      color_dark_input_bottom_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
+      color_dark_highlight_text: rgba(vars$1.color_primary, vars$1.blend_dark_text_primary),
+      color_dark_input_bottom_border: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_border_light),
       color_dark_input_error_text: rgba("222, 50, 38"),
       color_dark_input_error_border: rgba("222, 50, 38"),
-      color_dark_input_placeholder: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
-      color_dark_label_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
-      color_dark_disabled_label_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
-      color_dark_readonly_label_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
-      color_dark_help_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
+      color_dark_input_placeholder: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_tertiary),
+      color_dark_label_text: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_tertiary),
+      color_dark_disabled_label_text: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_disabled),
+      color_dark_readonly_label_text: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_tertiary),
+      color_dark_help_text: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_tertiary),
       color_dark_required_symbol: rgba("221, 44, 0"),
-      color_dark_focus_border: rgba(vars.color_primary),
-      color_dark_counter_ok_border: rgba(vars.color_primary)
+      color_dark_focus_border: rgba(vars$1.color_primary),
+      color_dark_counter_ok_border: rgba(vars$1.color_primary)
     };
 
     // @ts-check
     var fns$q = [layout$s, color$p];
-    var selector$r = ".".concat(classes$s.component);
+    var selector$r = ".".concat(classes$x.component);
 
     var addGeneralStyleToHead$s = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -13940,7 +16243,7 @@ var app = (function () {
       });
     };
 
-    var classes$t = {
+    var classes$y = {
       // Toolbar
       component: "pe-toolbar",
       // states
@@ -14118,13 +16421,13 @@ var app = (function () {
       });
     };
 
-    var breakpointPhoneOnly = breakpoint$1("@media (min-width: ".concat(vars.breakpoint_for_phone_only, "px) and (orientation: landscape)"));
-    var breakpointTabletPortraitUp$1 = breakpoint$1("@media (min-width: ".concat(vars.breakpoint_for_tablet_portrait_up, "px)"));
+    var breakpointPhoneOnly = breakpoint$1("@media (min-width: ".concat(vars$1.breakpoint_for_phone_only, "px) and (orientation: landscape)"));
+    var breakpointTabletPortraitUp$1 = breakpoint$1("@media (min-width: ".concat(vars$1.breakpoint_for_tablet_portrait_up, "px)"));
     var varFns$s = {
       general_styles: function general_styles(selector) {
         return [sel(selector, [flex$1.layout, flex$1.layoutHorizontal, flex$1.layoutCenter, {
           position: "relative",
-          zIndex: vars.z_toolbar,
+          zIndex: vars$1.z_toolbar,
           " > a": {
             textDecoration: "none"
           },
@@ -14290,49 +16593,49 @@ var app = (function () {
     });
 
     // @ts-check
-    var padding_side = vars.grid_unit_component * 2 - 12; // 16 - 12 = 4
+    var padding_side = vars$1.grid_unit_component * 2 - 12; // 16 - 12 = 4
 
-    var padding_side_large = vars.grid_unit_component * 3 - 12; // 24 - 12 = 12
+    var padding_side_large = vars$1.grid_unit_component * 3 - 12; // 24 - 12 = 12
 
-    var vars$3 = {
+    var vars$4 = {
       /**
        * Generate general styles, not defined by variables
        */
       general_styles: true,
       font_size: 20,
       font_weight: 400,
-      height: vars.grid_unit_component * 7,
+      height: vars$1.grid_unit_component * 7,
       // 56
-      height_compact: vars.grid_unit_component * 6,
+      height_compact: vars$1.grid_unit_component * 6,
       // 48
-      height_large: vars.grid_unit_component * 8,
+      height_large: vars$1.grid_unit_component * 8,
       // 64
-      line_height: vars.line_height,
+      line_height: vars$1.line_height,
       padding_side: padding_side,
       padding_side_large: padding_side_large,
-      indent: vars.unit_indent - padding_side,
-      indent_large: vars.unit_indent_large - padding_side_large,
+      indent: vars$1.unit_indent - padding_side,
+      indent_large: vars$1.unit_indent_large - padding_side_large,
       title_after_icon_padding: 4,
       title_after_icon_padding_large: 12,
       title_padding: 16,
       title_padding_large: 8,
-      color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-      color_light_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
-      color_light_background: rgba(vars.color_light_background),
-      color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-      color_dark_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
-      color_dark_background: rgba(vars.color_dark_background)
+      color_light_text: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_primary),
+      color_light_border: rgba(vars$1.color_light_foreground, vars$1.blend_light_border_light),
+      color_light_background: rgba(vars$1.color_light_background),
+      color_dark_text: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_primary),
+      color_dark_border: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_border_light),
+      color_dark_background: rgba(vars$1.color_dark_background)
     };
 
     // @ts-check
     var fns$r = [layout$t, color$q];
-    var selector$s = ".".concat(classes$t.component);
+    var selector$s = ".".concat(classes$y.component);
 
     var addGeneralStyleToHead$t = function addGeneralStyleToHead() {
       return styler.addStyle({
         selectors: [selector$s],
         fns: fns$r,
-        vars: vars$3
+        vars: vars$4
       });
     };
 
@@ -14367,11 +16670,11 @@ var app = (function () {
     addGeneralStyleToHead$s();
     addGeneralStyleToHead$t();
 
-    /* src/examples/shadow/interactive/Interactive.svelte generated by Svelte v3.5.1 */
+    /* src/shadow/interactive/Interactive.svelte generated by Svelte v3.5.1 */
 
-    const file$1 = "src/examples/shadow/interactive/Interactive.svelte";
+    const file = "src/shadow/interactive/Interactive.svelte";
 
-    function create_fragment$2(ctx) {
+    function create_fragment$8(ctx) {
     	var div3, div0, p0, t1, p1, t2, t3, t4, t5, div2, div1, current, dispose;
 
     	var shadow = new Shadow({
@@ -14398,16 +16701,16 @@ var app = (function () {
     			div2 = element("div");
     			div1 = element("div");
     			shadow.$$.fragment.c();
-    			add_location(p0, file$1, 22, 4, 492);
-    			add_location(p1, file$1, 23, 4, 528);
+    			add_location(p0, file, 22, 4, 489);
+    			add_location(p1, file, 23, 4, 525);
     			div0.className = "example-info";
-    			add_location(div0, file$1, 21, 2, 461);
+    			add_location(div0, file, 21, 2, 458);
     			div1.className = "shadow-example";
-    			add_location(div1, file$1, 26, 4, 634);
+    			add_location(div1, file, 26, 4, 631);
     			div2.className = "example-component";
-    			add_location(div2, file$1, 25, 2, 598);
+    			add_location(div2, file, 25, 2, 595);
     			div3.className = "example interactive";
-    			add_location(div3, file$1, 20, 0, 425);
+    			add_location(div3, file, 20, 0, 422);
     			dispose = listen(div1, "click", ctx.increment);
     		},
 
@@ -14465,7 +16768,7 @@ var app = (function () {
     	};
     }
 
-    function instance$2($$self, $$props, $$invalidate) {
+    function instance$7($$self, $$props, $$invalidate) {
     	
 
       addStyle$1(".example-shadow-themed-transition", {
@@ -14487,15 +16790,15 @@ var app = (function () {
     class Interactive extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$2, create_fragment$2, safe_not_equal, []);
+    		init(this, options, instance$7, create_fragment$8, safe_not_equal, []);
     	}
     }
 
-    /* src/examples/shadow/Shadow.svelte generated by Svelte v3.5.1 */
+    /* src/shadow/Shadow.svelte generated by Svelte v3.5.1 */
 
-    const file$2 = "src/examples/shadow/Shadow.svelte";
+    const file$1 = "src/shadow/Shadow.svelte";
 
-    function create_fragment$3(ctx) {
+    function create_fragment$9(ctx) {
     	var div24, h1, t1, div3, div0, p0, t3, div2, div1, t4, div7, div4, p1, t6, div6, div5, t7, div11, div8, p2, t9, div10, div9, t10, div15, div12, p3, t12, div14, div13, t13, div19, div16, p4, t15, div18, div17, t16, div23, div20, p5, t18, div22, div21, t19, current;
 
     	var shadow0 = new Shadow({
@@ -14596,63 +16899,63 @@ var app = (function () {
     			shadow5.$$.fragment.c();
     			t19 = space();
     			interactive.$$.fragment.c();
-    			add_location(h1, file$2, 24, 2, 528);
-    			add_location(p0, file$2, 28, 6, 606);
+    			add_location(h1, file$1, 24, 2, 528);
+    			add_location(p0, file$1, 28, 6, 606);
     			div0.className = "example-info";
-    			add_location(div0, file$2, 27, 4, 573);
+    			add_location(div0, file$1, 27, 4, 573);
     			div1.className = "shadow-example";
-    			add_location(div1, file$2, 31, 6, 682);
+    			add_location(div1, file$1, 31, 6, 682);
     			div2.className = "example-component";
-    			add_location(div2, file$2, 30, 4, 644);
+    			add_location(div2, file$1, 30, 4, 644);
     			div3.className = "example";
-    			add_location(div3, file$2, 26, 2, 547);
-    			add_location(p1, file$2, 39, 6, 841);
+    			add_location(div3, file$1, 26, 2, 547);
+    			add_location(p1, file$1, 39, 6, 841);
     			div4.className = "example-info";
-    			add_location(div4, file$2, 38, 4, 808);
+    			add_location(div4, file$1, 38, 4, 808);
     			div5.className = "shadow-example";
-    			add_location(div5, file$2, 42, 6, 917);
+    			add_location(div5, file$1, 42, 6, 917);
     			div6.className = "example-component";
-    			add_location(div6, file$2, 41, 4, 879);
+    			add_location(div6, file$1, 41, 4, 879);
     			div7.className = "example";
-    			add_location(div7, file$2, 37, 2, 782);
-    			add_location(p2, file$2, 50, 6, 1076);
+    			add_location(div7, file$1, 37, 2, 782);
+    			add_location(p2, file$1, 50, 6, 1076);
     			div8.className = "example-info";
-    			add_location(div8, file$2, 49, 4, 1043);
+    			add_location(div8, file$1, 49, 4, 1043);
     			div9.className = "shadow-example";
-    			add_location(div9, file$2, 53, 6, 1152);
+    			add_location(div9, file$1, 53, 6, 1152);
     			div10.className = "example-component";
-    			add_location(div10, file$2, 52, 4, 1114);
+    			add_location(div10, file$1, 52, 4, 1114);
     			div11.className = "example";
-    			add_location(div11, file$2, 48, 2, 1017);
-    			add_location(p3, file$2, 61, 6, 1311);
+    			add_location(div11, file$1, 48, 2, 1017);
+    			add_location(p3, file$1, 61, 6, 1311);
     			div12.className = "example-info";
-    			add_location(div12, file$2, 60, 4, 1278);
+    			add_location(div12, file$1, 60, 4, 1278);
     			div13.className = "shadow-example";
-    			add_location(div13, file$2, 64, 6, 1387);
+    			add_location(div13, file$1, 64, 6, 1387);
     			div14.className = "example-component";
-    			add_location(div14, file$2, 63, 4, 1349);
+    			add_location(div14, file$1, 63, 4, 1349);
     			div15.className = "example";
-    			add_location(div15, file$2, 59, 2, 1252);
-    			add_location(p4, file$2, 72, 6, 1546);
+    			add_location(div15, file$1, 59, 2, 1252);
+    			add_location(p4, file$1, 72, 6, 1546);
     			div16.className = "example-info";
-    			add_location(div16, file$2, 71, 4, 1513);
+    			add_location(div16, file$1, 71, 4, 1513);
     			div17.className = "shadow-example";
-    			add_location(div17, file$2, 75, 6, 1620);
+    			add_location(div17, file$1, 75, 6, 1620);
     			div18.className = "example-component";
-    			add_location(div18, file$2, 74, 4, 1582);
+    			add_location(div18, file$1, 74, 4, 1582);
     			div19.className = "example";
-    			add_location(div19, file$2, 70, 2, 1487);
-    			add_location(p5, file$2, 85, 6, 1874);
+    			add_location(div19, file$1, 70, 2, 1487);
+    			add_location(p5, file$1, 85, 6, 1874);
     			div20.className = "example-info";
-    			add_location(div20, file$2, 84, 4, 1841);
+    			add_location(div20, file$1, 84, 4, 1841);
     			div21.className = "shadow-example";
-    			add_location(div21, file$2, 88, 6, 1954);
+    			add_location(div21, file$1, 88, 6, 1954);
     			div22.className = "example-component";
-    			add_location(div22, file$2, 87, 4, 1916);
+    			add_location(div22, file$1, 87, 4, 1916);
     			div23.className = "example";
-    			add_location(div23, file$2, 83, 2, 1815);
+    			add_location(div23, file$1, 83, 2, 1815);
     			div24.className = "page";
-    			add_location(div24, file$2, 22, 0, 506);
+    			add_location(div24, file$1, 22, 0, 506);
     		},
 
     		l: function claim(nodes) {
@@ -14769,7 +17072,7 @@ var app = (function () {
     	};
     }
 
-    function instance$3($$self) {
+    function instance$8($$self) {
     	
 
       addStyle$1(".example-shadow-themed-shadow", {
@@ -14786,2419 +17089,13 @@ var app = (function () {
     class Shadow_1 extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$3, create_fragment$3, safe_not_equal, []);
+    		init(this, options, instance$8, create_fragment$9, safe_not_equal, []);
     	}
     }
 
-    function createCommonjsModule$1(fn, module) {
-    	return module = { exports: {} }, fn(module, module.exports), module.exports;
-    }
+    /* src/button/Button.svelte generated by Svelte v3.5.1 */
 
-    var rngBrowser = createCommonjsModule$1(function (module) {
-    // Unique ID creation requires a high quality random # generator.  In the
-    // browser this is a little complicated due to unknown quality of Math.random()
-    // and inconsistent support for the `crypto` API.  We do the best we can via
-    // feature-detection
-
-    // getRandomValues needs to be invoked in a context where "this" is a Crypto
-    // implementation. Also, find the complete implementation of crypto on IE11.
-    var getRandomValues = (typeof(crypto) != 'undefined' && crypto.getRandomValues && crypto.getRandomValues.bind(crypto)) ||
-                          (typeof(msCrypto) != 'undefined' && typeof window.msCrypto.getRandomValues == 'function' && msCrypto.getRandomValues.bind(msCrypto));
-
-    if (getRandomValues) {
-      // WHATWG crypto RNG - http://wiki.whatwg.org/wiki/Crypto
-      var rnds8 = new Uint8Array(16); // eslint-disable-line no-undef
-
-      module.exports = function whatwgRNG() {
-        getRandomValues(rnds8);
-        return rnds8;
-      };
-    } else {
-      // Math.random()-based (RNG)
-      //
-      // If all else fails, use Math.random().  It's fast, but is of unspecified
-      // quality.
-      var rnds = new Array(16);
-
-      module.exports = function mathRNG() {
-        for (var i = 0, r; i < 16; i++) {
-          if ((i & 0x03) === 0) r = Math.random() * 0x100000000;
-          rnds[i] = r >>> ((i & 0x03) << 3) & 0xff;
-        }
-
-        return rnds;
-      };
-    }
-    });
-
-    /**
-     * Convert array of 16 byte values to UUID string format of the form:
-     * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-     */
-    var byteToHex = [];
-    for (var i = 0; i < 256; ++i) {
-      byteToHex[i] = (i + 0x100).toString(16).substr(1);
-    }
-
-    function bytesToUuid(buf, offset) {
-      var i = offset || 0;
-      var bth = byteToHex;
-      // join used to fix memory issue caused by concatenation: https://bugs.chromium.org/p/v8/issues/detail?id=3175#c4
-      return ([bth[buf[i++]], bth[buf[i++]], 
-    	bth[buf[i++]], bth[buf[i++]], '-',
-    	bth[buf[i++]], bth[buf[i++]], '-',
-    	bth[buf[i++]], bth[buf[i++]], '-',
-    	bth[buf[i++]], bth[buf[i++]], '-',
-    	bth[buf[i++]], bth[buf[i++]],
-    	bth[buf[i++]], bth[buf[i++]],
-    	bth[buf[i++]], bth[buf[i++]]]).join('');
-    }
-
-    var bytesToUuid_1 = bytesToUuid;
-
-    function v4(options, buf, offset) {
-      var i = buf && offset || 0;
-
-      if (typeof(options) == 'string') {
-        buf = options === 'binary' ? new Array(16) : null;
-        options = null;
-      }
-      options = options || {};
-
-      var rnds = options.random || (options.rng || rngBrowser)();
-
-      // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
-      rnds[6] = (rnds[6] & 0x0f) | 0x40;
-      rnds[8] = (rnds[8] & 0x3f) | 0x80;
-
-      // Copy bytes to buffer, if provided
-      if (buf) {
-        for (var ii = 0; ii < 16; ++ii) {
-          buf[i + ii] = rnds[ii];
-        }
-      }
-
-      return buf || bytesToUuid_1(rnds);
-    }
-
-    var v4_1 = v4;
-
-    var classes$u = {
-      component: "pe-svg"
-    };
-
-    /* src/lib/svg/SVG.svelte generated by Svelte v3.5.1 */
-
-    const file$3 = "src/lib/svg/SVG.svelte";
-
-    const get_after_slot_changes$1 = ({}) => ({});
-    const get_after_slot_context$1 = ({}) => ({});
-
-    const get_before_slot_changes$1 = ({}) => ({});
-    const get_before_slot_context$1 = ({}) => ({});
-
-    function create_fragment$4(ctx) {
-    	var div, t0, t1, current;
-
-    	const before_slot_1 = ctx.$$slots.before;
-    	const before_slot = create_slot(before_slot_1, ctx, get_before_slot_context$1);
-
-    	const default_slot_1 = ctx.$$slots.default;
-    	const default_slot = create_slot(default_slot_1, ctx, null);
-
-    	const after_slot_1 = ctx.$$slots.after;
-    	const after_slot = create_slot(after_slot_1, ctx, get_after_slot_context$1);
-
-    	var div_levels = [
-    		{ "data-uid": ctx.uid },
-    		{ class: ctx.R_classNames },
-    		(ctx.style && {style: ctx.style}),
-    		(ctx.id && { 'id': ctx.id }),
-    		{ 'data-test-id': ctx.testId },
-    		ctx.events
-    	];
-
-    	var div_data = {};
-    	for (var i = 0; i < div_levels.length; i += 1) {
-    		div_data = assign(div_data, div_levels[i]);
-    	}
-
-    	return {
-    		c: function create() {
-    			div = element("div");
-
-    			if (before_slot) before_slot.c();
-    			t0 = space();
-
-    			if (default_slot) default_slot.c();
-    			t1 = space();
-
-    			if (after_slot) after_slot.c();
-
-    			set_attributes(div, div_data);
-    			add_location(div, file$3, 40, 0, 964);
-    		},
-
-    		l: function claim(nodes) {
-    			if (before_slot) before_slot.l(div_nodes);
-
-    			if (default_slot) default_slot.l(div_nodes);
-
-    			if (after_slot) after_slot.l(div_nodes);
-    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
-    		},
-
-    		m: function mount(target, anchor) {
-    			insert(target, div, anchor);
-
-    			if (before_slot) {
-    				before_slot.m(div, null);
-    			}
-
-    			append(div, t0);
-
-    			if (default_slot) {
-    				default_slot.m(div, null);
-    			}
-
-    			append(div, t1);
-
-    			if (after_slot) {
-    				after_slot.m(div, null);
-    			}
-
-    			current = true;
-    		},
-
-    		p: function update(changed, ctx) {
-    			if (before_slot && before_slot.p && changed.$$scope) {
-    				before_slot.p(get_slot_changes(before_slot_1, ctx, changed, get_before_slot_changes$1), get_slot_context(before_slot_1, ctx, get_before_slot_context$1));
-    			}
-
-    			if (default_slot && default_slot.p && changed.$$scope) {
-    				default_slot.p(get_slot_changes(default_slot_1, ctx, changed, null), get_slot_context(default_slot_1, ctx, null));
-    			}
-
-    			if (after_slot && after_slot.p && changed.$$scope) {
-    				after_slot.p(get_slot_changes(after_slot_1, ctx, changed, get_after_slot_changes$1), get_slot_context(after_slot_1, ctx, get_after_slot_context$1));
-    			}
-
-    			set_attributes(div, get_spread_update(div_levels, [
-    				(changed.uid) && { "data-uid": ctx.uid },
-    				(changed.R_classNames) && { class: ctx.R_classNames },
-    				(changed.style) && (ctx.style && {style: ctx.style}),
-    				(changed.id) && (ctx.id && { 'id': ctx.id }),
-    				(changed.testId) && { 'data-test-id': ctx.testId },
-    				(changed.events) && ctx.events
-    			]));
-    		},
-
-    		i: function intro(local) {
-    			if (current) return;
-    			if (before_slot && before_slot.i) before_slot.i(local);
-    			if (default_slot && default_slot.i) default_slot.i(local);
-    			if (after_slot && after_slot.i) after_slot.i(local);
-    			current = true;
-    		},
-
-    		o: function outro(local) {
-    			if (before_slot && before_slot.o) before_slot.o(local);
-    			if (default_slot && default_slot.o) default_slot.o(local);
-    			if (after_slot && after_slot.o) after_slot.o(local);
-    			current = false;
-    		},
-
-    		d: function destroy(detaching) {
-    			if (detaching) {
-    				detach(div);
-    			}
-
-    			if (before_slot) before_slot.d(detaching);
-
-    			if (default_slot) default_slot.d(detaching);
-
-    			if (after_slot) after_slot.d(detaching);
-    		}
-    	};
-    }
-
-    function instance$4($$self, $$props, $$invalidate) {
-    	
-
-      // DOM bindings
-      let domElement;
-      const uid = v4_1();
-
-      // Common vars
-      let { className = "", events = {}, id = undefined, style = undefined, testId = undefined, tone = undefined } = $$props;
-
-      onMount(() => {
-        domElement = document.querySelector(`[data-uid="${uid}"]`);
-        const svgElement = domElement.querySelector("svg");
-        if (svgElement) {
-          svgElement.setAttribute("focusable", "false");
-        }
-      });
-
-    	const writable_props = ['className', 'events', 'id', 'style', 'testId', 'tone'];
-    	Object.keys($$props).forEach(key => {
-    		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<SVG> was created with unknown prop '${key}'`);
-    	});
-
-    	let { $$slots = {}, $$scope } = $$props;
-
-    	$$self.$set = $$props => {
-    		if ('className' in $$props) $$invalidate('className', className = $$props.className);
-    		if ('events' in $$props) $$invalidate('events', events = $$props.events);
-    		if ('id' in $$props) $$invalidate('id', id = $$props.id);
-    		if ('style' in $$props) $$invalidate('style', style = $$props.style);
-    		if ('testId' in $$props) $$invalidate('testId', testId = $$props.testId);
-    		if ('tone' in $$props) $$invalidate('tone', tone = $$props.tone);
-    		if ('$$scope' in $$props) $$invalidate('$$scope', $$scope = $$props.$$scope);
-    	};
-
-    	let R_classNames;
-
-    	$$self.$$.update = ($$dirty = { tone: 1, className: 1 }) => {
-    		if ($$dirty.tone || $$dirty.className) { $$invalidate('R_classNames', R_classNames = [
-            classes$u.component,
-            tone === "dark" ? "pe-dark-tone" : undefined,
-            tone === "light" ? "pe-light-tone" : undefined,
-            className,
-          ].join(" ")); }
-    	};
-
-    	return {
-    		uid,
-    		className,
-    		events,
-    		id,
-    		style,
-    		testId,
-    		tone,
-    		R_classNames,
-    		$$slots,
-    		$$scope
-    	};
-    }
-
-    class SVG extends SvelteComponentDev {
-    	constructor(options) {
-    		super(options);
-    		init(this, options, instance$4, create_fragment$4, safe_not_equal, ["className", "events", "id", "style", "testId", "tone"]);
-    	}
-
-    	get className() {
-    		throw new Error("<SVG>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set className(value) {
-    		throw new Error("<SVG>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get events() {
-    		throw new Error("<SVG>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set events(value) {
-    		throw new Error("<SVG>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get id() {
-    		throw new Error("<SVG>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set id(value) {
-    		throw new Error("<SVG>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get style() {
-    		throw new Error("<SVG>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set style(value) {
-    		throw new Error("<SVG>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get testId() {
-    		throw new Error("<SVG>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set testId(value) {
-    		throw new Error("<SVG>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get tone() {
-    		throw new Error("<SVG>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set tone(value) {
-    		throw new Error("<SVG>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-    }
-
-    var classes$v = {
-      component: "pe-icon",
-
-      // states
-      avatar:    "pe-icon--avatar",
-      large:     "pe-icon--large",
-      medium:    "pe-icon--medium",
-      regular:   "pe-icon--regular",
-      small:     "pe-icon--small",
-    };
-
-    /* src/lib/icon/Icon.svelte generated by Svelte v3.5.1 */
-
-    const file$4 = "src/lib/icon/Icon.svelte";
-
-    const get_after_slot_changes$2 = ({}) => ({});
-    const get_after_slot_context$2 = ({}) => ({});
-
-    const get_before_slot_changes$2 = ({}) => ({});
-    const get_before_slot_context$2 = ({}) => ({});
-
-    // (40:2) {:else}
-    function create_else_block(ctx) {
-    	var current;
-
-    	var svg = new SVG({
-    		props: {
-    		$$slots: { default: [create_default_slot] },
-    		$$scope: { ctx }
-    	},
-    		$$inline: true
-    	});
-
-    	return {
-    		c: function create() {
-    			svg.$$.fragment.c();
-    		},
-
-    		m: function mount(target, anchor) {
-    			mount_component(svg, target, anchor);
-    			current = true;
-    		},
-
-    		p: function update(changed, ctx) {
-    			var svg_changes = {};
-    			if (changed.$$scope) svg_changes.$$scope = { changed, ctx };
-    			svg.$set(svg_changes);
-    		},
-
-    		i: function intro(local) {
-    			if (current) return;
-    			svg.$$.fragment.i(local);
-
-    			current = true;
-    		},
-
-    		o: function outro(local) {
-    			svg.$$.fragment.o(local);
-    			current = false;
-    		},
-
-    		d: function destroy(detaching) {
-    			svg.$destroy(detaching);
-    		}
-    	};
-    }
-
-    // (38:2) {#if src !== undefined}
-    function create_if_block(ctx) {
-    	var img;
-
-    	return {
-    		c: function create() {
-    			img = element("img");
-    			img.src = ctx.src;
-    			img.alt = ctx.alt;
-    			add_location(img, file$4, 38, 4, 927);
-    		},
-
-    		m: function mount(target, anchor) {
-    			insert(target, img, anchor);
-    		},
-
-    		p: function update(changed, ctx) {
-    			if (changed.src) {
-    				img.src = ctx.src;
-    			}
-
-    			if (changed.alt) {
-    				img.alt = ctx.alt;
-    			}
-    		},
-
-    		i: noop,
-    		o: noop,
-
-    		d: function destroy(detaching) {
-    			if (detaching) {
-    				detach(img);
-    			}
-    		}
-    	};
-    }
-
-    // (41:4) <SVG>
-    function create_default_slot(ctx) {
-    	var current;
-
-    	const default_slot_1 = ctx.$$slots.default;
-    	const default_slot = create_slot(default_slot_1, ctx, null);
-
-    	return {
-    		c: function create() {
-    			if (default_slot) default_slot.c();
-    		},
-
-    		l: function claim(nodes) {
-    			if (default_slot) default_slot.l(nodes);
-    		},
-
-    		m: function mount(target, anchor) {
-    			if (default_slot) {
-    				default_slot.m(target, anchor);
-    			}
-
-    			current = true;
-    		},
-
-    		p: function update(changed, ctx) {
-    			if (default_slot && default_slot.p && changed.$$scope) {
-    				default_slot.p(get_slot_changes(default_slot_1, ctx, changed, null), get_slot_context(default_slot_1, ctx, null));
-    			}
-    		},
-
-    		i: function intro(local) {
-    			if (current) return;
-    			if (default_slot && default_slot.i) default_slot.i(local);
-    			current = true;
-    		},
-
-    		o: function outro(local) {
-    			if (default_slot && default_slot.o) default_slot.o(local);
-    			current = false;
-    		},
-
-    		d: function destroy(detaching) {
-    			if (default_slot) default_slot.d(detaching);
-    		}
-    	};
-    }
-
-    function create_fragment$5(ctx) {
-    	var div, t0, current_block_type_index, if_block, t1, current;
-
-    	const before_slot_1 = ctx.$$slots.before;
-    	const before_slot = create_slot(before_slot_1, ctx, get_before_slot_context$2);
-
-    	var if_block_creators = [
-    		create_if_block,
-    		create_else_block
-    	];
-
-    	var if_blocks = [];
-
-    	function select_block_type(ctx) {
-    		if (ctx.src !== ctx.undefined) return 0;
-    		return 1;
-    	}
-
-    	current_block_type_index = select_block_type(ctx);
-    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-
-    	const after_slot_1 = ctx.$$slots.after;
-    	const after_slot = create_slot(after_slot_1, ctx, get_after_slot_context$2);
-
-    	var div_levels = [
-    		{ class: ctx.R_classNames },
-    		(ctx.style && {style: ctx.style}),
-    		(ctx.id && { 'id': ctx.id }),
-    		{ 'data-test-id': ctx.testId },
-    		ctx.events
-    	];
-
-    	var div_data = {};
-    	for (var i = 0; i < div_levels.length; i += 1) {
-    		div_data = assign(div_data, div_levels[i]);
-    	}
-
-    	return {
-    		c: function create() {
-    			div = element("div");
-
-    			if (before_slot) before_slot.c();
-    			t0 = space();
-    			if_block.c();
-    			t1 = space();
-
-    			if (after_slot) after_slot.c();
-
-    			set_attributes(div, div_data);
-    			add_location(div, file$4, 29, 0, 740);
-    		},
-
-    		l: function claim(nodes) {
-    			if (before_slot) before_slot.l(div_nodes);
-
-    			if (after_slot) after_slot.l(div_nodes);
-    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
-    		},
-
-    		m: function mount(target, anchor) {
-    			insert(target, div, anchor);
-
-    			if (before_slot) {
-    				before_slot.m(div, null);
-    			}
-
-    			append(div, t0);
-    			if_blocks[current_block_type_index].m(div, null);
-    			append(div, t1);
-
-    			if (after_slot) {
-    				after_slot.m(div, null);
-    			}
-
-    			current = true;
-    		},
-
-    		p: function update(changed, ctx) {
-    			if (before_slot && before_slot.p && changed.$$scope) {
-    				before_slot.p(get_slot_changes(before_slot_1, ctx, changed, get_before_slot_changes$2), get_slot_context(before_slot_1, ctx, get_before_slot_context$2));
-    			}
-
-    			var previous_block_index = current_block_type_index;
-    			current_block_type_index = select_block_type(ctx);
-    			if (current_block_type_index === previous_block_index) {
-    				if_blocks[current_block_type_index].p(changed, ctx);
-    			} else {
-    				group_outros();
-    				on_outro(() => {
-    					if_blocks[previous_block_index].d(1);
-    					if_blocks[previous_block_index] = null;
-    				});
-    				if_block.o(1);
-    				check_outros();
-
-    				if_block = if_blocks[current_block_type_index];
-    				if (!if_block) {
-    					if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-    					if_block.c();
-    				}
-    				if_block.i(1);
-    				if_block.m(div, t1);
-    			}
-
-    			if (after_slot && after_slot.p && changed.$$scope) {
-    				after_slot.p(get_slot_changes(after_slot_1, ctx, changed, get_after_slot_changes$2), get_slot_context(after_slot_1, ctx, get_after_slot_context$2));
-    			}
-
-    			set_attributes(div, get_spread_update(div_levels, [
-    				(changed.R_classNames) && { class: ctx.R_classNames },
-    				(changed.style) && (ctx.style && {style: ctx.style}),
-    				(changed.id) && (ctx.id && { 'id': ctx.id }),
-    				(changed.testId) && { 'data-test-id': ctx.testId },
-    				(changed.events) && ctx.events
-    			]));
-    		},
-
-    		i: function intro(local) {
-    			if (current) return;
-    			if (before_slot && before_slot.i) before_slot.i(local);
-    			if (if_block) if_block.i();
-    			if (after_slot && after_slot.i) after_slot.i(local);
-    			current = true;
-    		},
-
-    		o: function outro(local) {
-    			if (before_slot && before_slot.o) before_slot.o(local);
-    			if (if_block) if_block.o();
-    			if (after_slot && after_slot.o) after_slot.o(local);
-    			current = false;
-    		},
-
-    		d: function destroy(detaching) {
-    			if (detaching) {
-    				detach(div);
-    			}
-
-    			if (before_slot) before_slot.d(detaching);
-    			if_blocks[current_block_type_index].d();
-
-    			if (after_slot) after_slot.d(detaching);
-    		}
-    	};
-    }
-
-    function instance$5($$self, $$props, $$invalidate) {
-    	
-
-      // Common vars
-      let { className = "", events = {}, id = undefined, style = undefined, testId = undefined, tone = undefined, alt = "", avatar = false, size = undefined, src = undefined } = $$props;
-
-    	const writable_props = ['className', 'events', 'id', 'style', 'testId', 'tone', 'alt', 'avatar', 'size', 'src'];
-    	Object.keys($$props).forEach(key => {
-    		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<Icon> was created with unknown prop '${key}'`);
-    	});
-
-    	let { $$slots = {}, $$scope } = $$props;
-
-    	$$self.$set = $$props => {
-    		if ('className' in $$props) $$invalidate('className', className = $$props.className);
-    		if ('events' in $$props) $$invalidate('events', events = $$props.events);
-    		if ('id' in $$props) $$invalidate('id', id = $$props.id);
-    		if ('style' in $$props) $$invalidate('style', style = $$props.style);
-    		if ('testId' in $$props) $$invalidate('testId', testId = $$props.testId);
-    		if ('tone' in $$props) $$invalidate('tone', tone = $$props.tone);
-    		if ('alt' in $$props) $$invalidate('alt', alt = $$props.alt);
-    		if ('avatar' in $$props) $$invalidate('avatar', avatar = $$props.avatar);
-    		if ('size' in $$props) $$invalidate('size', size = $$props.size);
-    		if ('src' in $$props) $$invalidate('src', src = $$props.src);
-    		if ('$$scope' in $$props) $$invalidate('$$scope', $$scope = $$props.$$scope);
-    	};
-
-    	let R_classNames;
-
-    	$$self.$$.update = ($$dirty = { size: 1, avatar: 1, tone: 1, className: 1 }) => {
-    		if ($$dirty.size || $$dirty.avatar || $$dirty.tone || $$dirty.className) { $$invalidate('R_classNames', R_classNames = [
-            classes$v.component,
-            classForSize(classes$v, size),
-            avatar ? classes$v.avatar : null,
-            tone === "dark" ? "pe-dark-tone" : undefined,
-            tone === "light" ? "pe-light-tone" : undefined,
-            className
-          ].join(" ")); }
-    	};
-
-    	return {
-    		className,
-    		events,
-    		id,
-    		style,
-    		testId,
-    		tone,
-    		alt,
-    		avatar,
-    		size,
-    		src,
-    		undefined,
-    		R_classNames,
-    		$$slots,
-    		$$scope
-    	};
-    }
-
-    class Icon extends SvelteComponentDev {
-    	constructor(options) {
-    		super(options);
-    		init(this, options, instance$5, create_fragment$5, safe_not_equal, ["className", "events", "id", "style", "testId", "tone", "alt", "avatar", "size", "src"]);
-    	}
-
-    	get className() {
-    		throw new Error("<Icon>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set className(value) {
-    		throw new Error("<Icon>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get events() {
-    		throw new Error("<Icon>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set events(value) {
-    		throw new Error("<Icon>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get id() {
-    		throw new Error("<Icon>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set id(value) {
-    		throw new Error("<Icon>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get style() {
-    		throw new Error("<Icon>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set style(value) {
-    		throw new Error("<Icon>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get testId() {
-    		throw new Error("<Icon>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set testId(value) {
-    		throw new Error("<Icon>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get tone() {
-    		throw new Error("<Icon>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set tone(value) {
-    		throw new Error("<Icon>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get alt() {
-    		throw new Error("<Icon>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set alt(value) {
-    		throw new Error("<Icon>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get avatar() {
-    		throw new Error("<Icon>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set avatar(value) {
-    		throw new Error("<Icon>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get size() {
-    		throw new Error("<Icon>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set size(value) {
-    		throw new Error("<Icon>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get src() {
-    		throw new Error("<Icon>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set src(value) {
-    		throw new Error("<Icon>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-    }
-
-    var ANIMATION_END_EVENT = getAnimationEndEvent();
-    var DEFAULT_START_OPACITY = 0.2;
-    var DEFAULT_END_OPACITY = 0.0;
-    var DEFAULT_START_SCALE = 0.1;
-    var DEFAULT_END_SCALE = 2.0;
-    var OPACITY_DECAY_VELOCITY = 0.35;
-
-    var addStyleToHead = function addStyleToHead(id, stylesheet) {
-      if (isServer) return;
-      var documentRef = window.document;
-      var styleEl = documentRef.createElement("style");
-      styleEl.setAttribute("id", id);
-      styleEl.appendChild(documentRef.createTextNode(stylesheet));
-      documentRef.head.appendChild(styleEl);
-    };
-
-    var removeStyleFromHead = function removeStyleFromHead(id) {
-      if (isServer) return;
-      var el = document.getElementById(id);
-
-      if (el && el.parentNode) {
-        el.parentNode.removeChild(el);
-      }
-    };
-
-    var rippleAnimation = function rippleAnimation(_ref) {
-      var e = _ref.e,
-          id = _ref.id,
-          el = _ref.el,
-          props = _ref.props,
-          classes = _ref.classes;
-      return new Promise(function (resolve) {
-        var container = document.createElement("div");
-        container.setAttribute("class", classes.mask);
-        el.appendChild(container);
-        var waves = document.createElement("div");
-        waves.setAttribute("class", classes.waves);
-        container.appendChild(waves);
-        var rect = el.getBoundingClientRect();
-        var x = isTouch && e.touches ? e.touches[0].pageX : e.clientX;
-        var y = isTouch && e.touches ? e.touches[0].pageY : e.clientY;
-        var w = el.offsetWidth;
-        var h = el.offsetHeight;
-        var waveRadius = Math.sqrt(w * w + h * h);
-        var mx = props.center ? rect.left + rect.width / 2 : x;
-        var my = props.center ? rect.top + rect.height / 2 : y;
-        var rx = mx - rect.left - waveRadius / 2;
-        var ry = my - rect.top - waveRadius / 2;
-        var startOpacity = props.startOpacity !== undefined ? props.startOpacity : DEFAULT_START_OPACITY;
-        var opacityDecayVelocity = props.opacityDecayVelocity !== undefined ? props.opacityDecayVelocity : OPACITY_DECAY_VELOCITY;
-        var endOpacity = props.endOpacity || DEFAULT_END_OPACITY;
-        var startScale = props.startScale || DEFAULT_START_SCALE;
-        var endScale = props.endScale || DEFAULT_END_SCALE;
-        var duration = props.duration ? props.duration : 1 / opacityDecayVelocity * 0.2;
-        var color = window.getComputedStyle(el).color;
-        var style = waves.style;
-        style.width = style.height = waveRadius + "px";
-        style.top = ry + "px";
-        style.left = rx + "px";
-        style["animation-duration"] = style["-webkit-animation-duration"] = style["-moz-animation-duration"] = style["-o-animation-duration"] = duration + "s";
-        style.backgroundColor = color;
-        style.opacity = startOpacity;
-        style.animationName = id;
-        style.animationTimingFunction = props.animationTimingFunction || vars.animation_curve_default;
-        var rippleStyleSheet = "@keyframes ".concat(id, " {\n      0% {\n        transform:scale(").concat(startScale, ");\n        opacity: ").concat(startOpacity, "\n      }\n      100% {\n        transform:scale(").concat(endScale, ");\n        opacity: ").concat(endOpacity, ";\n      }\n    }");
-        addStyleToHead(id, rippleStyleSheet);
-
-        var animationDone = function animationDone(evt) {
-          removeStyleFromHead(id);
-          waves.removeEventListener(ANIMATION_END_EVENT, animationDone, false);
-
-          if (props.persistent) {
-            style.opacity = endOpacity;
-            style.transform = "scale(" + endScale + ")";
-          } else {
-            waves.classList.remove(classes.wavesAnimating);
-            container.removeChild(waves);
-            el.removeChild(container);
-          }
-
-          resolve(evt);
-        };
-
-        waves.addEventListener(ANIMATION_END_EVENT, animationDone, false);
-        waves.classList.add(classes.wavesAnimating);
-      });
-    };
-
-    var classes$w = {
-      component:      "pe-ripple",
-
-      // elements
-      mask:           "pe-ripple__mask",
-      waves:          "pe-ripple__waves",
-
-      // states
-      unconstrained:  "pe-ripple--unconstrained",
-      wavesAnimating: "pe-ripple__waves--animating",
-    };
-
-    /* src/lib/ripple/Ripple.svelte generated by Svelte v3.5.1 */
-
-    const file$5 = "src/lib/ripple/Ripple.svelte";
-
-    const get_after_slot_changes$3 = ({}) => ({});
-    const get_after_slot_context$3 = ({}) => ({});
-
-    const get_before_slot_changes$3 = ({}) => ({});
-    const get_before_slot_context$3 = ({}) => ({});
-
-    function create_fragment$6(ctx) {
-    	var div, t0, t1, current;
-
-    	const before_slot_1 = ctx.$$slots.before;
-    	const before_slot = create_slot(before_slot_1, ctx, get_before_slot_context$3);
-
-    	const default_slot_1 = ctx.$$slots.default;
-    	const default_slot = create_slot(default_slot_1, ctx, null);
-
-    	const after_slot_1 = ctx.$$slots.after;
-    	const after_slot = create_slot(after_slot_1, ctx, get_after_slot_context$3);
-
-    	var div_levels = [
-    		{ "data-uid": ctx.uid },
-    		{ class: ctx.R_classNames },
-    		(ctx.style && {style: ctx.style}),
-    		(ctx.id && { 'id': ctx.id }),
-    		{ 'data-test-id': ctx.testId }
-    	];
-
-    	var div_data = {};
-    	for (var i = 0; i < div_levels.length; i += 1) {
-    		div_data = assign(div_data, div_levels[i]);
-    	}
-
-    	return {
-    		c: function create() {
-    			div = element("div");
-
-    			if (before_slot) before_slot.c();
-    			t0 = space();
-
-    			if (default_slot) default_slot.c();
-    			t1 = space();
-
-    			if (after_slot) after_slot.c();
-
-    			set_attributes(div, div_data);
-    			add_location(div, file$5, 101, 0, 2753);
-    		},
-
-    		l: function claim(nodes) {
-    			if (before_slot) before_slot.l(div_nodes);
-
-    			if (default_slot) default_slot.l(div_nodes);
-
-    			if (after_slot) after_slot.l(div_nodes);
-    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
-    		},
-
-    		m: function mount(target_1, anchor) {
-    			insert(target_1, div, anchor);
-
-    			if (before_slot) {
-    				before_slot.m(div, null);
-    			}
-
-    			append(div, t0);
-
-    			if (default_slot) {
-    				default_slot.m(div, null);
-    			}
-
-    			append(div, t1);
-
-    			if (after_slot) {
-    				after_slot.m(div, null);
-    			}
-
-    			current = true;
-    		},
-
-    		p: function update(changed, ctx) {
-    			if (before_slot && before_slot.p && changed.$$scope) {
-    				before_slot.p(get_slot_changes(before_slot_1, ctx, changed, get_before_slot_changes$3), get_slot_context(before_slot_1, ctx, get_before_slot_context$3));
-    			}
-
-    			if (default_slot && default_slot.p && changed.$$scope) {
-    				default_slot.p(get_slot_changes(default_slot_1, ctx, changed, null), get_slot_context(default_slot_1, ctx, null));
-    			}
-
-    			if (after_slot && after_slot.p && changed.$$scope) {
-    				after_slot.p(get_slot_changes(after_slot_1, ctx, changed, get_after_slot_changes$3), get_slot_context(after_slot_1, ctx, get_after_slot_context$3));
-    			}
-
-    			set_attributes(div, get_spread_update(div_levels, [
-    				(changed.uid) && { "data-uid": ctx.uid },
-    				(changed.R_classNames) && { class: ctx.R_classNames },
-    				(changed.style) && (ctx.style && {style: ctx.style}),
-    				(changed.id) && (ctx.id && { 'id': ctx.id }),
-    				(changed.testId) && { 'data-test-id': ctx.testId }
-    			]));
-    		},
-
-    		i: function intro(local) {
-    			if (current) return;
-    			if (before_slot && before_slot.i) before_slot.i(local);
-    			if (default_slot && default_slot.i) default_slot.i(local);
-    			if (after_slot && after_slot.i) after_slot.i(local);
-    			current = true;
-    		},
-
-    		o: function outro(local) {
-    			if (before_slot && before_slot.o) before_slot.o(local);
-    			if (default_slot && default_slot.o) default_slot.o(local);
-    			if (after_slot && after_slot.o) after_slot.o(local);
-    			current = false;
-    		},
-
-    		d: function destroy(detaching) {
-    			if (detaching) {
-    				detach(div);
-    			}
-
-    			if (before_slot) before_slot.d(detaching);
-
-    			if (default_slot) default_slot.d(detaching);
-
-    			if (after_slot) after_slot.d(detaching);
-    		}
-    	};
-    }
-
-    function instance$6($$self, $$props, $$invalidate) {
-    	let $animationCount;
-
-    	
-       
-      // Store
-      const animationCount = writable(0); validate_store(animationCount, 'animationCount'); subscribe($$self, animationCount, $$value => { $animationCount = $$value; $$invalidate('$animationCount', $animationCount); });
-
-      // DOM bindings
-      let domElement;
-      const uid = v4_1();
-
-      // Common vars
-      let { className = "", id = undefined, style = undefined, testId = undefined, tone = undefined, disabled = false, unconstrained = false, multi = false, target = undefined, start = undefined, end = undefined, duration = undefined, center = false, startOpacity = undefined, endOpacity = undefined, opacityDecayVelocity = undefined, startScale = undefined, endScale = undefined, animationTimingFunction = undefined, persistent = false } = $$props;
-
-      const tap = e => {
-        if (disabled || !domElement || (!multi && $animationCount > 0)) {
-          return;
-        }
-        if (start) {
-          start(e);
-        }
-        const id = `ripple_animation_${new Date().getTime()}`;
-        const props = {
-          duration,
-          center,
-          startOpacity,
-          endOpacity,
-          opacityDecayVelocity,
-          startScale,
-          endScale,
-          animationTimingFunction,
-          persistent,
-        };
-        const animation = rippleAnimation({ e, id, el: domElement, props, classes: classes$w })
-          .then(evt => {
-            if (end) {
-              end(evt);
-            }
-            animationCount.set($animationCount - 1);
-          });
-        animationCount.set($animationCount + 1);
-      };
-
-      onMount(() => {
-        domElement = document.querySelector(`[data-uid="${uid}"]`);
-        const triggerEl = target || (domElement ? domElement.parentElement : undefined);
-
-        if (triggerEl && triggerEl.addEventListener) {
-          pointerEndEvent.forEach(evt =>
-            triggerEl.addEventListener(evt, tap, false));
-        
-          return () => {
-            pointerEndEvent.forEach(evt =>
-              triggerEl.removeEventListener(evt, tap, false));
-          };
-        }
-      });
-
-    	const writable_props = ['className', 'id', 'style', 'testId', 'tone', 'disabled', 'unconstrained', 'multi', 'target', 'start', 'end', 'duration', 'center', 'startOpacity', 'endOpacity', 'opacityDecayVelocity', 'startScale', 'endScale', 'animationTimingFunction', 'persistent'];
-    	Object.keys($$props).forEach(key => {
-    		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<Ripple> was created with unknown prop '${key}'`);
-    	});
-
-    	let { $$slots = {}, $$scope } = $$props;
-
-    	$$self.$set = $$props => {
-    		if ('className' in $$props) $$invalidate('className', className = $$props.className);
-    		if ('id' in $$props) $$invalidate('id', id = $$props.id);
-    		if ('style' in $$props) $$invalidate('style', style = $$props.style);
-    		if ('testId' in $$props) $$invalidate('testId', testId = $$props.testId);
-    		if ('tone' in $$props) $$invalidate('tone', tone = $$props.tone);
-    		if ('disabled' in $$props) $$invalidate('disabled', disabled = $$props.disabled);
-    		if ('unconstrained' in $$props) $$invalidate('unconstrained', unconstrained = $$props.unconstrained);
-    		if ('multi' in $$props) $$invalidate('multi', multi = $$props.multi);
-    		if ('target' in $$props) $$invalidate('target', target = $$props.target);
-    		if ('start' in $$props) $$invalidate('start', start = $$props.start);
-    		if ('end' in $$props) $$invalidate('end', end = $$props.end);
-    		if ('duration' in $$props) $$invalidate('duration', duration = $$props.duration);
-    		if ('center' in $$props) $$invalidate('center', center = $$props.center);
-    		if ('startOpacity' in $$props) $$invalidate('startOpacity', startOpacity = $$props.startOpacity);
-    		if ('endOpacity' in $$props) $$invalidate('endOpacity', endOpacity = $$props.endOpacity);
-    		if ('opacityDecayVelocity' in $$props) $$invalidate('opacityDecayVelocity', opacityDecayVelocity = $$props.opacityDecayVelocity);
-    		if ('startScale' in $$props) $$invalidate('startScale', startScale = $$props.startScale);
-    		if ('endScale' in $$props) $$invalidate('endScale', endScale = $$props.endScale);
-    		if ('animationTimingFunction' in $$props) $$invalidate('animationTimingFunction', animationTimingFunction = $$props.animationTimingFunction);
-    		if ('persistent' in $$props) $$invalidate('persistent', persistent = $$props.persistent);
-    		if ('$$scope' in $$props) $$invalidate('$$scope', $$scope = $$props.$$scope);
-    	};
-
-    	let R_classNames;
-
-    	$$self.$$.update = ($$dirty = { unconstrained: 1, tone: 1, className: 1 }) => {
-    		if ($$dirty.unconstrained || $$dirty.tone || $$dirty.className) { $$invalidate('R_classNames', R_classNames = [
-            classes$w.component,
-            unconstrained ? classes$w.unconstrained : null,
-            tone === "dark" ? "pe-dark-tone" : undefined,
-            tone === "light" ? "pe-light-tone" : undefined,
-            className,
-          ].join(" ")); }
-    	};
-
-    	return {
-    		animationCount,
-    		uid,
-    		className,
-    		id,
-    		style,
-    		testId,
-    		tone,
-    		disabled,
-    		unconstrained,
-    		multi,
-    		target,
-    		start,
-    		end,
-    		duration,
-    		center,
-    		startOpacity,
-    		endOpacity,
-    		opacityDecayVelocity,
-    		startScale,
-    		endScale,
-    		animationTimingFunction,
-    		persistent,
-    		R_classNames,
-    		$$slots,
-    		$$scope
-    	};
-    }
-
-    class Ripple extends SvelteComponentDev {
-    	constructor(options) {
-    		super(options);
-    		init(this, options, instance$6, create_fragment$6, safe_not_equal, ["className", "id", "style", "testId", "tone", "disabled", "unconstrained", "multi", "target", "start", "end", "duration", "center", "startOpacity", "endOpacity", "opacityDecayVelocity", "startScale", "endScale", "animationTimingFunction", "persistent"]);
-    	}
-
-    	get className() {
-    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set className(value) {
-    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get id() {
-    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set id(value) {
-    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get style() {
-    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set style(value) {
-    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get testId() {
-    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set testId(value) {
-    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get tone() {
-    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set tone(value) {
-    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get disabled() {
-    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set disabled(value) {
-    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get unconstrained() {
-    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set unconstrained(value) {
-    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get multi() {
-    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set multi(value) {
-    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get target() {
-    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set target(value) {
-    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get start() {
-    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set start(value) {
-    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get end() {
-    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set end(value) {
-    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get duration() {
-    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set duration(value) {
-    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get center() {
-    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set center(value) {
-    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get startOpacity() {
-    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set startOpacity(value) {
-    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get endOpacity() {
-    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set endOpacity(value) {
-    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get opacityDecayVelocity() {
-    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set opacityDecayVelocity(value) {
-    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get startScale() {
-    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set startScale(value) {
-    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get endScale() {
-    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set endScale(value) {
-    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get animationTimingFunction() {
-    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set animationTimingFunction(value) {
-    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get persistent() {
-    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set persistent(value) {
-    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-    }
-
-    var classes$x = {
-      component:        "pe-text-button",
-      super:            "pe-button",
-      row:              "pe-button-row",
-          
-      // elements      
-      content:          "pe-button__content",
-      label:            "pe-button__label",
-      textLabel:        "pe-button__text-label",
-      wash:             "pe-button__wash",
-      washColor:        "pe-button__wash-color",
-      dropdown:         "pe-button__dropdown",
-          
-      // states      
-      border:           "pe-button--border",
-      contained:        "pe-button--contained",
-      disabled:         "pe-button--disabled",
-      dropdownClosed:   "pe-button--dropdown-closed",
-      dropdownOpen:     "pe-button--dropdown-open",
-      extraWide:        "pe-button--extra-wide",
-      hasDropdown:      "pe-button--dropdown",
-      highLabel:        "pe-button--high-label",
-      inactive:         "pe-button--inactive",
-      raised:           "pe-button--raised",
-      selected:         "pe-button--selected",
-      separatorAtStart: "pe-button--separator-start",
-      hasHover:         "pe-button--has-hover",
-    };
-
-    /* src/lib/button/IconDropdownDown.svelte generated by Svelte v3.5.1 */
-
-    const file$6 = "src/lib/button/IconDropdownDown.svelte";
-
-    function create_fragment$7(ctx) {
-    	var svg, path;
-
-    	return {
-    		c: function create() {
-    			svg = svg_element("svg");
-    			path = svg_element("path");
-    			attr(path, "d", "M7 10l5 5 5-5z");
-    			add_location(path, file$6, 0, 100, 100);
-    			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
-    			attr(svg, "id", "dd-down-svg");
-    			attr(svg, "width", "24");
-    			attr(svg, "height", "24");
-    			attr(svg, "viewBox", "0 0 24 24");
-    			add_location(svg, file$6, 0, 0, 0);
-    		},
-
-    		l: function claim(nodes) {
-    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
-    		},
-
-    		m: function mount(target, anchor) {
-    			insert(target, svg, anchor);
-    			append(svg, path);
-    		},
-
-    		p: noop,
-    		i: noop,
-    		o: noop,
-
-    		d: function destroy(detaching) {
-    			if (detaching) {
-    				detach(svg);
-    			}
-    		}
-    	};
-    }
-
-    class IconDropdownDown extends SvelteComponentDev {
-    	constructor(options) {
-    		super(options);
-    		init(this, options, null, create_fragment$7, safe_not_equal, []);
-    	}
-    }
-
-    /* src/lib/button/TextLabel.svelte generated by Svelte v3.5.1 */
-
-    const file$7 = "src/lib/button/TextLabel.svelte";
-
-    function create_fragment$8(ctx) {
-    	var div1, div0, t, div0_class_value, div1_class_value;
-
-    	return {
-    		c: function create() {
-    			div1 = element("div");
-    			div0 = element("div");
-    			t = text(ctx.label);
-    			div0.className = div0_class_value = classes$x.textLabel;
-    			div0.style.cssText = ctx.textStyle;
-    			add_location(div0, file$7, 8, 2, 168);
-    			div1.className = div1_class_value = classes$x.label;
-    			add_location(div1, file$7, 7, 0, 138);
-    		},
-
-    		l: function claim(nodes) {
-    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
-    		},
-
-    		m: function mount(target, anchor) {
-    			insert(target, div1, anchor);
-    			append(div1, div0);
-    			append(div0, t);
-    		},
-
-    		p: function update(changed, ctx) {
-    			if (changed.label) {
-    				set_data(t, ctx.label);
-    			}
-
-    			if (changed.textStyle) {
-    				div0.style.cssText = ctx.textStyle;
-    			}
-    		},
-
-    		i: noop,
-    		o: noop,
-
-    		d: function destroy(detaching) {
-    			if (detaching) {
-    				detach(div1);
-    			}
-    		}
-    	};
-    }
-
-    function instance$7($$self, $$props, $$invalidate) {
-    	let { label = "", textStyle = undefined } = $$props;
-
-    	const writable_props = ['label', 'textStyle'];
-    	Object.keys($$props).forEach(key => {
-    		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<TextLabel> was created with unknown prop '${key}'`);
-    	});
-
-    	$$self.$set = $$props => {
-    		if ('label' in $$props) $$invalidate('label', label = $$props.label);
-    		if ('textStyle' in $$props) $$invalidate('textStyle', textStyle = $$props.textStyle);
-    	};
-
-    	return { label, textStyle };
-    }
-
-    class TextLabel extends SvelteComponentDev {
-    	constructor(options) {
-    		super(options);
-    		init(this, options, instance$7, create_fragment$8, safe_not_equal, ["label", "textStyle"]);
-    	}
-
-    	get label() {
-    		throw new Error("<TextLabel>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set label(value) {
-    		throw new Error("<TextLabel>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get textStyle() {
-    		throw new Error("<TextLabel>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set textStyle(value) {
-    		throw new Error("<TextLabel>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-    }
-
-    /* src/lib/button/Button.svelte generated by Svelte v3.5.1 */
-
-    const file$8 = "src/lib/button/Button.svelte";
-
-    const get_after_slot_changes$4 = ({}) => ({});
-    const get_after_slot_context$4 = ({}) => ({});
-
-    const get_label_slot_changes = ({}) => ({});
-    const get_label_slot_context = ({}) => ({});
-
-    const get_before_slot_changes$4 = ({}) => ({});
-    const get_before_slot_context$4 = ({}) => ({});
-
-    // (166:4) {#if disabled || noInk}
-    function create_if_block_2(ctx) {
-    	var current;
-
-    	var ripple_1_spread_levels = [
-    		ctx.ripple,
-    		{ target: ctx.domElement }
-    	];
-
-    	let ripple_1_props = {};
-    	for (var i = 0; i < ripple_1_spread_levels.length; i += 1) {
-    		ripple_1_props = assign(ripple_1_props, ripple_1_spread_levels[i]);
-    	}
-    	var ripple_1 = new Ripple({ props: ripple_1_props, $$inline: true });
-
-    	return {
-    		c: function create() {
-    			ripple_1.$$.fragment.c();
-    		},
-
-    		m: function mount(target, anchor) {
-    			mount_component(ripple_1, target, anchor);
-    			current = true;
-    		},
-
-    		p: function update(changed, ctx) {
-    			var ripple_1_changes = (changed.ripple || changed.domElement) ? get_spread_update(ripple_1_spread_levels, [
-    				(changed.ripple) && ctx.ripple,
-    				(changed.domElement) && { target: ctx.domElement }
-    			]) : {};
-    			ripple_1.$set(ripple_1_changes);
-    		},
-
-    		i: function intro(local) {
-    			if (current) return;
-    			ripple_1.$$.fragment.i(local);
-
-    			current = true;
-    		},
-
-    		o: function outro(local) {
-    			ripple_1.$$.fragment.o(local);
-    			current = false;
-    		},
-
-    		d: function destroy(detaching) {
-    			ripple_1.$destroy(detaching);
-    		}
-    	};
-    }
-
-    // (177:4) {:else}
-    function create_else_block$1(ctx) {
-    	var current;
-
-    	const default_slot_1 = ctx.$$slots.default;
-    	const default_slot = create_slot(default_slot_1, ctx, null);
-
-    	return {
-    		c: function create() {
-    			if (default_slot) default_slot.c();
-    		},
-
-    		l: function claim(nodes) {
-    			if (default_slot) default_slot.l(nodes);
-    		},
-
-    		m: function mount(target, anchor) {
-    			if (default_slot) {
-    				default_slot.m(target, anchor);
-    			}
-
-    			current = true;
-    		},
-
-    		p: function update(changed, ctx) {
-    			if (default_slot && default_slot.p && changed.$$scope) {
-    				default_slot.p(get_slot_changes(default_slot_1, ctx, changed, null), get_slot_context(default_slot_1, ctx, null));
-    			}
-    		},
-
-    		i: function intro(local) {
-    			if (current) return;
-    			if (default_slot && default_slot.i) default_slot.i(local);
-    			current = true;
-    		},
-
-    		o: function outro(local) {
-    			if (default_slot && default_slot.o) default_slot.o(local);
-    			current = false;
-    		},
-
-    		d: function destroy(detaching) {
-    			if (default_slot) default_slot.d(detaching);
-    		}
-    	};
-    }
-
-    // (175:4) {#if label !== undefined}
-    function create_if_block_1(ctx) {
-    	var current;
-
-    	var textlabel = new TextLabel({
-    		props: {
-    		label: ctx.label,
-    		textStyle: ctx.textStyle
-    	},
-    		$$inline: true
-    	});
-
-    	return {
-    		c: function create() {
-    			textlabel.$$.fragment.c();
-    		},
-
-    		m: function mount(target, anchor) {
-    			mount_component(textlabel, target, anchor);
-    			current = true;
-    		},
-
-    		p: function update(changed, ctx) {
-    			var textlabel_changes = {};
-    			if (changed.label) textlabel_changes.label = ctx.label;
-    			if (changed.textStyle) textlabel_changes.textStyle = ctx.textStyle;
-    			textlabel.$set(textlabel_changes);
-    		},
-
-    		i: function intro(local) {
-    			if (current) return;
-    			textlabel.$$.fragment.i(local);
-
-    			current = true;
-    		},
-
-    		o: function outro(local) {
-    			textlabel.$$.fragment.o(local);
-    			current = false;
-    		},
-
-    		d: function destroy(detaching) {
-    			textlabel.$destroy(detaching);
-    		}
-    	};
-    }
-
-    // (181:4) {#if dropdown}
-    function create_if_block$1(ctx) {
-    	var current;
-
-    	var icon = new Icon({
-    		props: {
-    		className: classes$x.dropdown,
-    		$$slots: { default: [create_default_slot$1] },
-    		$$scope: { ctx }
-    	},
-    		$$inline: true
-    	});
-
-    	return {
-    		c: function create() {
-    			icon.$$.fragment.c();
-    		},
-
-    		m: function mount(target, anchor) {
-    			mount_component(icon, target, anchor);
-    			current = true;
-    		},
-
-    		p: function update(changed, ctx) {
-    			var icon_changes = {};
-    			if (changed.classes) icon_changes.className = classes$x.dropdown;
-    			if (changed.$$scope) icon_changes.$$scope = { changed, ctx };
-    			icon.$set(icon_changes);
-    		},
-
-    		i: function intro(local) {
-    			if (current) return;
-    			icon.$$.fragment.i(local);
-
-    			current = true;
-    		},
-
-    		o: function outro(local) {
-    			icon.$$.fragment.o(local);
-    			current = false;
-    		},
-
-    		d: function destroy(detaching) {
-    			icon.$destroy(detaching);
-    		}
-    	};
-    }
-
-    // (182:6) <Icon className={classes.dropdown}>
-    function create_default_slot$1(ctx) {
-    	var current;
-
-    	var icondropdowndown = new IconDropdownDown({ $$inline: true });
-
-    	return {
-    		c: function create() {
-    			icondropdowndown.$$.fragment.c();
-    		},
-
-    		m: function mount(target, anchor) {
-    			mount_component(icondropdowndown, target, anchor);
-    			current = true;
-    		},
-
-    		i: function intro(local) {
-    			if (current) return;
-    			icondropdowndown.$$.fragment.i(local);
-
-    			current = true;
-    		},
-
-    		o: function outro(local) {
-    			icondropdowndown.$$.fragment.o(local);
-    			current = false;
-    		},
-
-    		d: function destroy(detaching) {
-    			icondropdowndown.$destroy(detaching);
-    		}
-    	};
-    }
-
-    function create_fragment$9(ctx) {
-    	var a, t0, div2, t1, t2, div1, div0, t3, t4, current_block_type_index, if_block1, t5, t6, current;
-
-    	const before_slot_1 = ctx.$$slots.before;
-    	const before_slot = create_slot(before_slot_1, ctx, get_before_slot_context$4);
-
-    	var shadow = new Shadow({
-    		props: {
-    		shadowDepth: ctx._shadowDepth,
-    		animated: true
-    	},
-    		$$inline: true
-    	});
-
-    	var if_block0 = (ctx.disabled || ctx.noInk) && create_if_block_2(ctx);
-
-    	const label_slot_1 = ctx.$$slots.label;
-    	const label_slot = create_slot(label_slot_1, ctx, get_label_slot_context);
-
-    	var if_block_creators = [
-    		create_if_block_1,
-    		create_else_block$1
-    	];
-
-    	var if_blocks = [];
-
-    	function select_block_type(ctx) {
-    		if (ctx.label !== ctx.undefined) return 0;
-    		return 1;
-    	}
-
-    	current_block_type_index = select_block_type(ctx);
-    	if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-
-    	var if_block2 = (ctx.dropdown) && create_if_block$1(ctx);
-
-    	const after_slot_1 = ctx.$$slots.after;
-    	const after_slot = create_slot(after_slot_1, ctx, get_after_slot_context$4);
-
-    	var a_levels = [
-    		{ href: null },
-    		ctx.elementProps
-    	];
-
-    	var a_data = {};
-    	for (var i = 0; i < a_levels.length; i += 1) {
-    		a_data = assign(a_data, a_levels[i]);
-    	}
-
-    	return {
-    		c: function create() {
-    			a = element("a");
-
-    			if (before_slot) before_slot.c();
-    			t0 = space();
-    			div2 = element("div");
-    			shadow.$$.fragment.c();
-    			t1 = space();
-    			if (if_block0) if_block0.c();
-    			t2 = space();
-    			div1 = element("div");
-    			div0 = element("div");
-    			t3 = space();
-
-    			if (label_slot) label_slot.c();
-    			t4 = space();
-    			if_block1.c();
-    			t5 = space();
-    			if (if_block2) if_block2.c();
-    			t6 = space();
-
-    			if (after_slot) after_slot.c();
-
-    			div0.className = "pe-button__wash-color";
-    			add_location(div0, file$8, 169, 6, 4983);
-    			div1.className = "pe-button__wash";
-    			add_location(div1, file$8, 168, 4, 4947);
-
-    			div2.className = "pe-button__content";
-    			add_location(div2, file$8, 163, 2, 4772);
-
-    			set_attributes(a, a_data);
-    			add_location(a, file$8, 161, 0, 4711);
-    		},
-
-    		l: function claim(nodes) {
-    			if (before_slot) before_slot.l(a_nodes);
-
-    			if (label_slot) label_slot.l(div2_nodes);
-
-    			if (after_slot) after_slot.l(a_nodes);
-    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
-    		},
-
-    		m: function mount(target, anchor) {
-    			insert(target, a, anchor);
-
-    			if (before_slot) {
-    				before_slot.m(a, null);
-    			}
-
-    			append(a, t0);
-    			append(a, div2);
-    			mount_component(shadow, div2, null);
-    			append(div2, t1);
-    			if (if_block0) if_block0.m(div2, null);
-    			append(div2, t2);
-    			append(div2, div1);
-    			append(div1, div0);
-    			append(div2, t3);
-
-    			if (label_slot) {
-    				label_slot.m(div2, null);
-    			}
-
-    			append(div2, t4);
-    			if_blocks[current_block_type_index].m(div2, null);
-    			append(div2, t5);
-    			if (if_block2) if_block2.m(div2, null);
-    			append(a, t6);
-
-    			if (after_slot) {
-    				after_slot.m(a, null);
-    			}
-
-    			current = true;
-    		},
-
-    		p: function update(changed, ctx) {
-    			if (before_slot && before_slot.p && changed.$$scope) {
-    				before_slot.p(get_slot_changes(before_slot_1, ctx, changed, get_before_slot_changes$4), get_slot_context(before_slot_1, ctx, get_before_slot_context$4));
-    			}
-
-    			var shadow_changes = {};
-    			if (changed._shadowDepth) shadow_changes.shadowDepth = ctx._shadowDepth;
-    			shadow.$set(shadow_changes);
-
-    			if (ctx.disabled || ctx.noInk) {
-    				if (if_block0) {
-    					if_block0.p(changed, ctx);
-    					if_block0.i(1);
-    				} else {
-    					if_block0 = create_if_block_2(ctx);
-    					if_block0.c();
-    					if_block0.i(1);
-    					if_block0.m(div2, t2);
-    				}
-    			} else if (if_block0) {
-    				group_outros();
-    				on_outro(() => {
-    					if_block0.d(1);
-    					if_block0 = null;
-    				});
-
-    				if_block0.o(1);
-    				check_outros();
-    			}
-
-    			if (label_slot && label_slot.p && changed.$$scope) {
-    				label_slot.p(get_slot_changes(label_slot_1, ctx, changed, get_label_slot_changes), get_slot_context(label_slot_1, ctx, get_label_slot_context));
-    			}
-
-    			var previous_block_index = current_block_type_index;
-    			current_block_type_index = select_block_type(ctx);
-    			if (current_block_type_index === previous_block_index) {
-    				if_blocks[current_block_type_index].p(changed, ctx);
-    			} else {
-    				group_outros();
-    				on_outro(() => {
-    					if_blocks[previous_block_index].d(1);
-    					if_blocks[previous_block_index] = null;
-    				});
-    				if_block1.o(1);
-    				check_outros();
-
-    				if_block1 = if_blocks[current_block_type_index];
-    				if (!if_block1) {
-    					if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-    					if_block1.c();
-    				}
-    				if_block1.i(1);
-    				if_block1.m(div2, t5);
-    			}
-
-    			if (ctx.dropdown) {
-    				if (if_block2) {
-    					if_block2.p(changed, ctx);
-    					if_block2.i(1);
-    				} else {
-    					if_block2 = create_if_block$1(ctx);
-    					if_block2.c();
-    					if_block2.i(1);
-    					if_block2.m(div2, null);
-    				}
-    			} else if (if_block2) {
-    				group_outros();
-    				on_outro(() => {
-    					if_block2.d(1);
-    					if_block2 = null;
-    				});
-
-    				if_block2.o(1);
-    				check_outros();
-    			}
-
-    			if (after_slot && after_slot.p && changed.$$scope) {
-    				after_slot.p(get_slot_changes(after_slot_1, ctx, changed, get_after_slot_changes$4), get_slot_context(after_slot_1, ctx, get_after_slot_context$4));
-    			}
-
-    			set_attributes(a, get_spread_update(a_levels, [
-    				{ href: null },
-    				(changed.elementProps) && ctx.elementProps
-    			]));
-    		},
-
-    		i: function intro(local) {
-    			if (current) return;
-    			if (before_slot && before_slot.i) before_slot.i(local);
-
-    			shadow.$$.fragment.i(local);
-
-    			if (if_block0) if_block0.i();
-    			if (label_slot && label_slot.i) label_slot.i(local);
-    			if (if_block1) if_block1.i();
-    			if (if_block2) if_block2.i();
-    			if (after_slot && after_slot.i) after_slot.i(local);
-    			current = true;
-    		},
-
-    		o: function outro(local) {
-    			if (before_slot && before_slot.o) before_slot.o(local);
-    			shadow.$$.fragment.o(local);
-    			if (if_block0) if_block0.o();
-    			if (label_slot && label_slot.o) label_slot.o(local);
-    			if (if_block1) if_block1.o();
-    			if (if_block2) if_block2.o();
-    			if (after_slot && after_slot.o) after_slot.o(local);
-    			current = false;
-    		},
-
-    		d: function destroy(detaching) {
-    			if (detaching) {
-    				detach(a);
-    			}
-
-    			if (before_slot) before_slot.d(detaching);
-
-    			shadow.$destroy();
-
-    			if (if_block0) if_block0.d();
-
-    			if (label_slot) label_slot.d(detaching);
-    			if_blocks[current_block_type_index].d();
-    			if (if_block2) if_block2.d();
-
-    			if (after_slot) after_slot.d(detaching);
-    		}
-    	};
-    }
-
-    function instance$8($$self, $$props, $$invalidate) {
-    	let $isInactive;
-
-    	
-
-      // Store
-      const isInactive = writable(false); validate_store(isInactive, 'isInactive'); subscribe($$self, isInactive, $$value => { $isInactive = $$value; $$invalidate('$isInactive', $isInactive); });
-
-      // DOM bindings
-      const uid = v4_1();
-      let domElement;
-
-      onMount(() => {
-        $$invalidate('domElement', domElement = document.querySelector(`[data-uid="${uid}"]`));
-      });
-
-      // Common vars
-      let { className = "", events = {}, id = undefined, style = undefined, testId = undefined, tone = undefined, animateOnTap = undefined, border = false, contained = false, disabled = false, dropdown = undefined, extraWide = false, highLabel = false, inactivate = false, inactive = false, ink = false, label = undefined, parentClassName = "", raised = false, ripple = {}, selected = false, separatorAtStart = false, shadowDepth = undefined, tabindex = 0, textStyle = undefined, url = { href: "javascript:false" }, wash = undefined } = $$props;
-
-      const onClickHandler = events.onclick || (() => {});
-      const onKeyUpHandler = events.onkeyup || onClickHandler;
-
-      const handleInactivate = () => {
-        if (!inactivate) {
-          return;
-        }
-        isInactive.set(true);
-        setTimeout(() => (
-          isInactive.set(false)
-        ), inactivate * 1000);
-      };
-
-      const onClick = e => {
-        document.activeElement === domElement && document.activeElement.blur();
-        handleInactivate();
-        onClickHandler(e);
-        events && events.onclick && events.onclick(e);
-      };
-
-      const handleMouseLeave = e => {
-        domElement.blur();
-        domElement.removeEventListener("mouseleave", handleMouseLeave);
-      };
-
-      const onMouseDown = e => {
-        domElement &&
-          domElement.addEventListener &&
-          domElement.addEventListener("mouseleave", handleMouseLeave);
-        events && events.onmousedown && events.onmousedown(e);
-      };
-
-      const onKeyUp = e => {
-        if (e.keyCode === 13 && document.activeElement === domElement) {
-          document.activeElement.blur();
-          if (onKeyUpHandler) {
-            onKeyUpHandler(e);
-          }
-        }
-        events && events.onkeyup && events.onkeyup(e);
-      };
-
-      const doesAnimateOnTap = animateOnTap !== false ? true : false;
-      const hasHover = !disabled && !selected && (raised ? wash : wash !== false);
-      const _shadowDepth = raised
-        ? shadowDepth !== undefined
-          ? parseInt(shadowDepth, 10)
-          : 1
-        : 0;
-      const noInk = ink !== undefined && ink === false;
-      const tabIndex = disabled || inactive ? -1 : tabindex || 0;
-
-    	const writable_props = ['className', 'events', 'id', 'style', 'testId', 'tone', 'animateOnTap', 'border', 'contained', 'disabled', 'dropdown', 'extraWide', 'highLabel', 'inactivate', 'inactive', 'ink', 'label', 'parentClassName', 'raised', 'ripple', 'selected', 'separatorAtStart', 'shadowDepth', 'tabindex', 'textStyle', 'url', 'wash'];
-    	Object.keys($$props).forEach(key => {
-    		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<Button> was created with unknown prop '${key}'`);
-    	});
-
-    	let { $$slots = {}, $$scope } = $$props;
-
-    	$$self.$set = $$props => {
-    		if ('className' in $$props) $$invalidate('className', className = $$props.className);
-    		if ('events' in $$props) $$invalidate('events', events = $$props.events);
-    		if ('id' in $$props) $$invalidate('id', id = $$props.id);
-    		if ('style' in $$props) $$invalidate('style', style = $$props.style);
-    		if ('testId' in $$props) $$invalidate('testId', testId = $$props.testId);
-    		if ('tone' in $$props) $$invalidate('tone', tone = $$props.tone);
-    		if ('animateOnTap' in $$props) $$invalidate('animateOnTap', animateOnTap = $$props.animateOnTap);
-    		if ('border' in $$props) $$invalidate('border', border = $$props.border);
-    		if ('contained' in $$props) $$invalidate('contained', contained = $$props.contained);
-    		if ('disabled' in $$props) $$invalidate('disabled', disabled = $$props.disabled);
-    		if ('dropdown' in $$props) $$invalidate('dropdown', dropdown = $$props.dropdown);
-    		if ('extraWide' in $$props) $$invalidate('extraWide', extraWide = $$props.extraWide);
-    		if ('highLabel' in $$props) $$invalidate('highLabel', highLabel = $$props.highLabel);
-    		if ('inactivate' in $$props) $$invalidate('inactivate', inactivate = $$props.inactivate);
-    		if ('inactive' in $$props) $$invalidate('inactive', inactive = $$props.inactive);
-    		if ('ink' in $$props) $$invalidate('ink', ink = $$props.ink);
-    		if ('label' in $$props) $$invalidate('label', label = $$props.label);
-    		if ('parentClassName' in $$props) $$invalidate('parentClassName', parentClassName = $$props.parentClassName);
-    		if ('raised' in $$props) $$invalidate('raised', raised = $$props.raised);
-    		if ('ripple' in $$props) $$invalidate('ripple', ripple = $$props.ripple);
-    		if ('selected' in $$props) $$invalidate('selected', selected = $$props.selected);
-    		if ('separatorAtStart' in $$props) $$invalidate('separatorAtStart', separatorAtStart = $$props.separatorAtStart);
-    		if ('shadowDepth' in $$props) $$invalidate('shadowDepth', shadowDepth = $$props.shadowDepth);
-    		if ('tabindex' in $$props) $$invalidate('tabindex', tabindex = $$props.tabindex);
-    		if ('textStyle' in $$props) $$invalidate('textStyle', textStyle = $$props.textStyle);
-    		if ('url' in $$props) $$invalidate('url', url = $$props.url);
-    		if ('wash' in $$props) $$invalidate('wash', wash = $$props.wash);
-    		if ('$$scope' in $$props) $$invalidate('$$scope', $$scope = $$props.$$scope);
-    	};
-
-    	let R_inactive, R_classNames, elementProps;
-
-    	$$self.$$.update = ($$dirty = { inactive: 1, $isInactive: 1, parentClassName: 1, contained: 1, raised: 1, selected: 1, highLabel: 1, extraWide: 1, disabled: 1, R_inactive: 1, separatorAtStart: 1, border: 1, dropdown: 1, tone: 1, className: 1, R_classNames: 1, style: 1, id: 1, testId: 1, events: 1, url: 1 }) => {
-    		if ($$dirty.inactive || $$dirty.$isInactive) { $$invalidate('R_inactive', R_inactive = inactive || $isInactive); }
-    		if ($$dirty.parentClassName || $$dirty.contained || $$dirty.raised || $$dirty.selected || $$dirty.highLabel || $$dirty.extraWide || $$dirty.disabled || $$dirty.R_inactive || $$dirty.separatorAtStart || $$dirty.border || $$dirty.dropdown || $$dirty.tone || $$dirty.className) { $$invalidate('R_classNames', R_classNames = [
-            classes$x.super,
-            parentClassName || classes$x.component,
-            contained ? classes$x.contained : undefined,
-            // Raised button classes
-            raised ? classes$x.contained : undefined,
-            raised ? classes$x.raised : undefined,
-            raised && doesAnimateOnTap ? shadowClasses.with_active_shadow : undefined,
-            raised && doesAnimateOnTap
-              ? getShadowDepthClass(_shadowDepth + 1)
-              : undefined,
-            //
-            hasHover ? classes$x.hasHover : undefined,
-            selected ? classes$x.selected : undefined,
-            highLabel ? classes$x.highLabel : undefined,
-            extraWide ? classes$x.extraWide : undefined,
-            disabled ? classes$x.disabled : undefined,
-            R_inactive ? classes$x.inactive : undefined,
-            separatorAtStart ? classes$x.separatorAtStart : undefined,
-            border ? classes$x.border : undefined,
-            dropdown ? classes$x.hasDropdown : undefined,
-            !!dropdown
-              ? dropdown.open
-                ? classes$x.dropdownOpen
-                : classes$x.dropdownClosed
-              : undefined,
-            tone === "dark" ? "pe-dark-tone" : undefined,
-            tone === "light" ? "pe-light-tone" : undefined,
-            className
-          ].join(" ")); }
-    		if ($$dirty.R_classNames || $$dirty.style || $$dirty.id || $$dirty.testId || $$dirty.events || $$dirty.url) { $$invalidate('elementProps', elementProps = {
-            "data-uid": uid,
-            class: R_classNames,
-            ...(style ? { style } : undefined),
-            ...(id ? { id } : undefined),
-            "data-test-id": testId,
-            ...events,
-            ...url,
-            tabindex: tabIndex,
-            onmousedown: onMouseDown,
-            onkeyup: onKeyUp,
-            onclick: onClick,
-          }); }
-    	};
-
-    	return {
-    		isInactive,
-    		domElement,
-    		className,
-    		events,
-    		id,
-    		style,
-    		testId,
-    		tone,
-    		animateOnTap,
-    		border,
-    		contained,
-    		disabled,
-    		dropdown,
-    		extraWide,
-    		highLabel,
-    		inactivate,
-    		inactive,
-    		ink,
-    		label,
-    		parentClassName,
-    		raised,
-    		ripple,
-    		selected,
-    		separatorAtStart,
-    		shadowDepth,
-    		tabindex,
-    		textStyle,
-    		url,
-    		wash,
-    		_shadowDepth,
-    		noInk,
-    		undefined,
-    		elementProps,
-    		$$slots,
-    		$$scope
-    	};
-    }
-
-    class Button extends SvelteComponentDev {
-    	constructor(options) {
-    		super(options);
-    		init(this, options, instance$8, create_fragment$9, safe_not_equal, ["className", "events", "id", "style", "testId", "tone", "animateOnTap", "border", "contained", "disabled", "dropdown", "extraWide", "highLabel", "inactivate", "inactive", "ink", "label", "parentClassName", "raised", "ripple", "selected", "separatorAtStart", "shadowDepth", "tabindex", "textStyle", "url", "wash"]);
-    	}
-
-    	get className() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set className(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get events() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set events(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get id() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set id(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get style() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set style(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get testId() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set testId(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get tone() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set tone(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get animateOnTap() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set animateOnTap(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get border() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set border(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get contained() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set contained(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get disabled() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set disabled(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get dropdown() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set dropdown(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get extraWide() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set extraWide(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get highLabel() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set highLabel(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get inactivate() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set inactivate(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get inactive() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set inactive(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get ink() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set ink(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get label() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set label(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get parentClassName() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set parentClassName(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get raised() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set raised(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get ripple() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set ripple(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get selected() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set selected(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get separatorAtStart() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set separatorAtStart(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get shadowDepth() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set shadowDepth(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get tabindex() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set tabindex(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get textStyle() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set textStyle(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get url() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set url(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get wash() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set wash(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-    }
-
-    /* src/examples/button/Button.svelte generated by Svelte v3.5.1 */
-
-    const file$9 = "src/examples/button/Button.svelte";
+    const file$2 = "src/button/Button.svelte";
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = Object.create(ctx);
@@ -17226,7 +17123,7 @@ var app = (function () {
     				each_blocks[i].c();
     			}
     			set_style(div, "margin-top", "1em");
-    			add_location(div, file$9, 120, 8, 3225);
+    			add_location(div, file$2, 120, 8, 3225);
     		},
 
     		m: function mount(target, anchor) {
@@ -17281,7 +17178,7 @@ var app = (function () {
     			set_style(div, "border-top", "1px solid #eee");
     			set_style(div, "padding", "5px 0");
     			set_style(div, "color", "#aaa");
-    			add_location(div, file$9, 122, 12, 3314);
+    			add_location(div, file$2, 122, 12, 3314);
     		},
 
     		m: function mount(target, anchor) {
@@ -17447,63 +17344,63 @@ var app = (function () {
     			button8.$$.fragment.c();
     			t28 = space();
     			if (if_block) if_block.c();
-    			add_location(h1, file$9, 22, 2, 510);
+    			add_location(h1, file$2, 22, 2, 510);
     			div0.className = "example-info";
-    			add_location(div0, file$9, 25, 4, 555);
+    			add_location(div0, file$2, 25, 4, 555);
     			div1.className = "example-component";
-    			add_location(div1, file$9, 26, 4, 606);
+    			add_location(div1, file$2, 26, 4, 606);
     			div2.className = "example";
-    			add_location(div2, file$9, 24, 2, 529);
+    			add_location(div2, file$2, 24, 2, 529);
     			div3.className = "example-info";
-    			add_location(div3, file$9, 32, 4, 719);
+    			add_location(div3, file$2, 32, 4, 719);
     			div4.className = "example-component";
-    			add_location(div4, file$9, 33, 4, 769);
+    			add_location(div4, file$2, 33, 4, 769);
     			div5.className = "example";
-    			add_location(div5, file$9, 31, 2, 693);
+    			add_location(div5, file$2, 31, 2, 693);
     			div6.className = "example-info";
-    			add_location(div6, file$9, 39, 4, 889);
+    			add_location(div6, file$2, 39, 4, 889);
     			div7.className = "example-component";
-    			add_location(div7, file$9, 40, 4, 940);
+    			add_location(div7, file$2, 40, 4, 940);
     			div8.className = "example";
-    			add_location(div8, file$9, 38, 2, 863);
+    			add_location(div8, file$2, 38, 2, 863);
     			div9.className = "example-info";
-    			add_location(div9, file$9, 46, 4, 1112);
+    			add_location(div9, file$2, 46, 4, 1112);
     			div10.className = "example-component";
-    			add_location(div10, file$9, 47, 4, 1176);
+    			add_location(div10, file$2, 47, 4, 1176);
     			div11.className = "example pe-dark-tone";
-    			add_location(div11, file$9, 45, 2, 1073);
+    			add_location(div11, file$2, 45, 2, 1073);
     			div12.className = "example-info";
-    			add_location(div12, file$9, 81, 4, 2067);
+    			add_location(div12, file$2, 81, 4, 2067);
     			div13.className = "example-component";
-    			add_location(div13, file$9, 82, 4, 2117);
+    			add_location(div13, file$2, 82, 4, 2117);
     			div14.className = "example";
-    			add_location(div14, file$9, 80, 2, 2041);
+    			add_location(div14, file$2, 80, 2, 2041);
     			div15.className = "example-info";
-    			add_location(div15, file$9, 93, 4, 2331);
+    			add_location(div15, file$2, 93, 4, 2331);
     			div16.className = "example-component";
-    			add_location(div16, file$9, 94, 4, 2434);
+    			add_location(div16, file$2, 94, 4, 2434);
     			div17.className = "example";
-    			add_location(div17, file$9, 92, 2, 2305);
+    			add_location(div17, file$2, 92, 2, 2305);
     			div18.className = "example-info";
-    			add_location(div18, file$9, 100, 4, 2568);
+    			add_location(div18, file$2, 100, 4, 2568);
     			div19.className = "example-component";
-    			add_location(div19, file$9, 101, 4, 2636);
+    			add_location(div19, file$2, 101, 4, 2636);
     			div20.className = "example interactive";
-    			add_location(div20, file$9, 99, 2, 2530);
+    			add_location(div20, file$2, 99, 2, 2530);
     			div21.className = "example-info";
-    			add_location(div21, file$9, 107, 4, 2785);
+    			add_location(div21, file$2, 107, 4, 2785);
     			div22.className = "example-component";
-    			add_location(div22, file$9, 108, 4, 2836);
+    			add_location(div22, file$2, 108, 4, 2836);
     			div23.className = "example interactive";
-    			add_location(div23, file$9, 106, 2, 2747);
+    			add_location(div23, file$2, 106, 2, 2747);
     			div24.className = "example-info";
-    			add_location(div24, file$9, 114, 4, 3002);
+    			add_location(div24, file$2, 114, 4, 3002);
     			div25.className = "example-component";
-    			add_location(div25, file$9, 115, 4, 3065);
+    			add_location(div25, file$2, 115, 4, 3065);
     			div26.className = "example interactive";
-    			add_location(div26, file$9, 113, 2, 2964);
+    			add_location(div26, file$2, 113, 2, 2964);
     			div27.className = "page";
-    			add_location(div27, file$9, 20, 0, 488);
+    			add_location(div27, file$2, 20, 0, 488);
     		},
 
     		l: function claim(nodes) {
@@ -17688,9 +17585,9 @@ var app = (function () {
     	}
     }
 
-    /* src/examples/icon/StarSVG.svelte generated by Svelte v3.5.1 */
+    /* src/icon/StarSVG.svelte generated by Svelte v3.5.1 */
 
-    const file$a = "src/examples/icon/StarSVG.svelte";
+    const file$3 = "src/icon/StarSVG.svelte";
 
     function create_fragment$b(ctx) {
     	var svg, path;
@@ -17700,11 +17597,11 @@ var app = (function () {
     			svg = svg_element("svg");
     			path = svg_element("path");
     			attr(path, "d", "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z");
-    			add_location(path, file$a, 0, 48, 48);
+    			add_location(path, file$3, 0, 48, 48);
     			attr(svg, "width", "24");
     			attr(svg, "height", "24");
     			attr(svg, "viewBox", "0 0 24 24");
-    			add_location(svg, file$a, 0, 0, 0);
+    			add_location(svg, file$3, 0, 0, 0);
     		},
 
     		l: function claim(nodes) {
@@ -17735,9 +17632,9 @@ var app = (function () {
     	}
     }
 
-    /* src/examples/icon/Icon.svelte generated by Svelte v3.5.1 */
+    /* src/icon/Icon.svelte generated by Svelte v3.5.1 */
 
-    const file$b = "src/examples/icon/Icon.svelte";
+    const file$4 = "src/icon/Icon.svelte";
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = Object.create(ctx);
@@ -17970,7 +17867,7 @@ var app = (function () {
     }
 
     // (89:8) <Icon size={sizeName}>
-    function create_default_slot_1(ctx) {
+    function create_default_slot_1$1(ctx) {
     	var current;
 
     	var starsvg = new StarSVG({ $$inline: true });
@@ -18010,7 +17907,7 @@ var app = (function () {
     	var icon = new Icon({
     		props: {
     		size: ctx.sizeName,
-    		$$slots: { default: [create_default_slot_1] },
+    		$$slots: { default: [create_default_slot_1$1] },
     		$$scope: { ctx }
     	},
     		$$inline: true
@@ -18052,7 +17949,7 @@ var app = (function () {
     }
 
     // (99:6) <Icon className="tests-icon-themed-icon">
-    function create_default_slot$2(ctx) {
+    function create_default_slot$3(ctx) {
     	var current;
 
     	var starsvg = new StarSVG({ $$inline: true });
@@ -18184,7 +18081,7 @@ var app = (function () {
     	var icon6 = new Icon({
     		props: {
     		className: "tests-icon-themed-icon",
-    		$$slots: { default: [create_default_slot$2] },
+    		$$slots: { default: [create_default_slot$3] },
     		$$scope: { ctx }
     	},
     		$$inline: true
@@ -18266,63 +18163,63 @@ var app = (function () {
     			t27 = space();
     			div25 = element("div");
     			icon6.$$.fragment.c();
-    			add_location(h1, file$b, 16, 2, 359);
+    			add_location(h1, file$4, 16, 2, 361);
     			div0.className = "example-info";
-    			add_location(div0, file$b, 19, 4, 402);
+    			add_location(div0, file$4, 19, 4, 404);
     			div1.className = "example-component";
-    			add_location(div1, file$b, 20, 4, 452);
+    			add_location(div1, file$4, 20, 4, 454);
     			div2.className = "example";
-    			add_location(div2, file$b, 18, 2, 376);
+    			add_location(div2, file$4, 18, 2, 378);
     			div3.className = "example-info";
-    			add_location(div3, file$b, 28, 4, 580);
+    			add_location(div3, file$4, 28, 4, 582);
     			div4.className = "example-component";
-    			add_location(div4, file$b, 29, 4, 630);
+    			add_location(div4, file$4, 29, 4, 632);
     			div5.className = "example";
-    			add_location(div5, file$b, 27, 2, 554);
+    			add_location(div5, file$4, 27, 2, 556);
     			div6.className = "example-info";
-    			add_location(div6, file$b, 37, 4, 758);
+    			add_location(div6, file$4, 37, 4, 760);
     			div7.className = "example-component";
-    			add_location(div7, file$b, 38, 4, 807);
+    			add_location(div7, file$4, 38, 4, 809);
     			div8.className = "example";
-    			add_location(div8, file$b, 36, 2, 732);
+    			add_location(div8, file$4, 36, 2, 734);
     			div9.className = "example-info";
-    			add_location(div9, file$b, 48, 4, 1007);
+    			add_location(div9, file$4, 48, 4, 1009);
     			div10.className = "example-component";
-    			add_location(div10, file$b, 49, 4, 1068);
+    			add_location(div10, file$4, 49, 4, 1070);
     			div11.className = "example";
-    			add_location(div11, file$b, 47, 2, 981);
+    			add_location(div11, file$4, 47, 2, 983);
     			div12.className = "example-info";
-    			add_location(div12, file$b, 57, 4, 1269);
+    			add_location(div12, file$4, 57, 4, 1271);
     			div13.className = "example-component";
-    			add_location(div13, file$b, 58, 4, 1333);
+    			add_location(div13, file$4, 58, 4, 1335);
     			div14.className = "example";
-    			add_location(div14, file$b, 56, 2, 1243);
+    			add_location(div14, file$4, 56, 2, 1245);
     			div15.className = "example-info";
-    			add_location(div15, file$b, 67, 4, 1549);
+    			add_location(div15, file$4, 67, 4, 1551);
     			div16.className = "example-component";
-    			add_location(div16, file$b, 68, 4, 1599);
+    			add_location(div16, file$4, 68, 4, 1601);
     			div17.className = "example";
-    			add_location(div17, file$b, 66, 2, 1523);
+    			add_location(div17, file$4, 66, 2, 1525);
     			div18.className = "example-info";
-    			add_location(div18, file$b, 76, 4, 1750);
+    			add_location(div18, file$4, 76, 4, 1752);
     			div19.className = "example-component";
-    			add_location(div19, file$b, 77, 4, 1810);
+    			add_location(div19, file$4, 77, 4, 1812);
     			div20.className = "example";
-    			add_location(div20, file$b, 75, 2, 1724);
+    			add_location(div20, file$4, 75, 2, 1726);
     			div21.className = "example-info";
-    			add_location(div21, file$b, 85, 4, 1986);
+    			add_location(div21, file$4, 85, 4, 1988);
     			div22.className = "example-component";
-    			add_location(div22, file$b, 86, 4, 2048);
+    			add_location(div22, file$4, 86, 4, 2050);
     			div23.className = "example pe-dark-tone";
-    			add_location(div23, file$b, 84, 2, 1947);
+    			add_location(div23, file$4, 84, 2, 1949);
     			div24.className = "example-info";
-    			add_location(div24, file$b, 96, 4, 2261);
+    			add_location(div24, file$4, 96, 4, 2263);
     			div25.className = "example-component";
-    			add_location(div25, file$b, 97, 4, 2334);
+    			add_location(div25, file$4, 97, 4, 2336);
     			div26.className = "example pe-dark-tone";
-    			add_location(div26, file$b, 95, 2, 2222);
+    			add_location(div26, file$4, 95, 2, 2224);
     			div27.className = "page";
-    			add_location(div27, file$b, 14, 0, 337);
+    			add_location(div27, file$4, 14, 0, 339);
     		},
 
     		l: function claim(nodes) {
@@ -18552,359 +18449,11 @@ var app = (function () {
     	}
     }
 
-    var classes$y = {
-      component: "pe-button pe-icon-button",
+    /* src/icon-button/LockSVG.svelte generated by Svelte v3.5.1 */
 
-      // elements
-      content:   "pe-icon-button__content",
-      label:     "pe-icon-button__label",
-
-      // states
-      compact:   "pe-icon-button--compact",
-    };
-
-    /* src/lib/icon-button/IconButton.svelte generated by Svelte v3.5.1 */
-
-    const file$c = "src/lib/icon-button/IconButton.svelte";
-
-    // (30:4) <Icon {...icon}>
-    function create_default_slot_1$1(ctx) {
-    	var current;
-
-    	const default_slot_1 = ctx.$$slots.default;
-    	const default_slot = create_slot(default_slot_1, ctx, null);
-
-    	return {
-    		c: function create() {
-    			if (default_slot) default_slot.c();
-    		},
-
-    		l: function claim(nodes) {
-    			if (default_slot) default_slot.l(nodes);
-    		},
-
-    		m: function mount(target, anchor) {
-    			if (default_slot) {
-    				default_slot.m(target, anchor);
-    			}
-
-    			current = true;
-    		},
-
-    		p: function update(changed, ctx) {
-    			if (default_slot && default_slot.p && changed.$$scope) {
-    				default_slot.p(get_slot_changes(default_slot_1, ctx, changed, null), get_slot_context(default_slot_1, ctx, null));
-    			}
-    		},
-
-    		i: function intro(local) {
-    			if (current) return;
-    			if (default_slot && default_slot.i) default_slot.i(local);
-    			current = true;
-    		},
-
-    		o: function outro(local) {
-    			if (default_slot && default_slot.o) default_slot.o(local);
-    			current = false;
-    		},
-
-    		d: function destroy(detaching) {
-    			if (default_slot) default_slot.d(detaching);
-    		}
-    	};
-    }
-
-    // (36:4) {#if label}
-    function create_if_block$3(ctx) {
-    	var div, t, div_class_value;
-
-    	return {
-    		c: function create() {
-    			div = element("div");
-    			t = text(ctx.label);
-    			div.className = div_class_value = classes$y.label;
-    			add_location(div, file$c, 36, 6, 811);
-    		},
-
-    		m: function mount(target, anchor) {
-    			insert(target, div, anchor);
-    			append(div, t);
-    		},
-
-    		p: function update(changed, ctx) {
-    			if (changed.label) {
-    				set_data(t, ctx.label);
-    			}
-    		},
-
-    		d: function destroy(detaching) {
-    			if (detaching) {
-    				detach(div);
-    			}
-    		}
-    	};
-    }
-
-    // (35:2) <span slot="after">
-    function create_after_slot(ctx) {
-    	var span;
-
-    	var if_block = (ctx.label) && create_if_block$3(ctx);
-
-    	return {
-    		c: function create() {
-    			span = element("span");
-    			if (if_block) if_block.c();
-    			attr(span, "slot", "after");
-    			add_location(span, file$c, 34, 2, 769);
-    		},
-
-    		m: function mount(target, anchor) {
-    			insert(target, span, anchor);
-    			if (if_block) if_block.m(span, null);
-    		},
-
-    		p: function update(changed, ctx) {
-    			if (ctx.label) {
-    				if (if_block) {
-    					if_block.p(changed, ctx);
-    				} else {
-    					if_block = create_if_block$3(ctx);
-    					if_block.c();
-    					if_block.m(span, null);
-    				}
-    			} else if (if_block) {
-    				if_block.d(1);
-    				if_block = null;
-    			}
-    		},
-
-    		d: function destroy(detaching) {
-    			if (detaching) {
-    				detach(span);
-    			}
-
-    			if (if_block) if_block.d();
-    		}
-    	};
-    }
-
-    // (28:0) <Button {...defaultButtonProps} {...$$props}>
-    function create_default_slot$3(ctx) {
-    	var div, div_class_value, t, current;
-
-    	var icon_1_spread_levels = [
-    		ctx.icon
-    	];
-
-    	let icon_1_props = {
-    		$$slots: { default: [create_default_slot_1$1] },
-    		$$scope: { ctx }
-    	};
-    	for (var i = 0; i < icon_1_spread_levels.length; i += 1) {
-    		icon_1_props = assign(icon_1_props, icon_1_spread_levels[i]);
-    	}
-    	var icon_1 = new Icon({ props: icon_1_props, $$inline: true });
-
-    	return {
-    		c: function create() {
-    			div = element("div");
-    			icon_1.$$.fragment.c();
-    			t = space();
-    			div.className = div_class_value = classes$y.content;
-    			add_location(div, file$c, 28, 2, 651);
-    		},
-
-    		m: function mount(target, anchor) {
-    			insert(target, div, anchor);
-    			mount_component(icon_1, div, null);
-    			insert(target, t, anchor);
-    			current = true;
-    		},
-
-    		p: function update(changed, ctx) {
-    			var icon_1_changes = changed.icon ? get_spread_update(icon_1_spread_levels, [
-    				ctx.icon
-    			]) : {};
-    			if (changed.$$scope) icon_1_changes.$$scope = { changed, ctx };
-    			icon_1.$set(icon_1_changes);
-    		},
-
-    		i: function intro(local) {
-    			if (current) return;
-    			icon_1.$$.fragment.i(local);
-
-    			current = true;
-    		},
-
-    		o: function outro(local) {
-    			icon_1.$$.fragment.o(local);
-    			current = false;
-    		},
-
-    		d: function destroy(detaching) {
-    			if (detaching) {
-    				detach(div);
-    			}
-
-    			icon_1.$destroy();
-
-    			if (detaching) {
-    				detach(t);
-    			}
-    		}
-    	};
-    }
+    const file$5 = "src/icon-button/LockSVG.svelte";
 
     function create_fragment$d(ctx) {
-    	var current;
-
-    	var button_spread_levels = [
-    		ctx.defaultButtonProps,
-    		ctx.$$props
-    	];
-
-    	let button_props = {
-    		$$slots: {
-    		default: [create_default_slot$3],
-    		after: [create_after_slot]
-    	},
-    		$$scope: { ctx }
-    	};
-    	for (var i = 0; i < button_spread_levels.length; i += 1) {
-    		button_props = assign(button_props, button_spread_levels[i]);
-    	}
-    	var button = new Button({ props: button_props, $$inline: true });
-
-    	return {
-    		c: function create() {
-    			button.$$.fragment.c();
-    		},
-
-    		l: function claim(nodes) {
-    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
-    		},
-
-    		m: function mount(target, anchor) {
-    			mount_component(button, target, anchor);
-    			current = true;
-    		},
-
-    		p: function update(changed, ctx) {
-    			var button_changes = (changed.defaultButtonProps || changed.$$props) ? get_spread_update(button_spread_levels, [
-    				(changed.defaultButtonProps) && ctx.defaultButtonProps,
-    				(changed.$$props) && ctx.$$props
-    			]) : {};
-    			if (changed.$$scope || changed.label || changed.icon) button_changes.$$scope = { changed, ctx };
-    			button.$set(button_changes);
-    		},
-
-    		i: function intro(local) {
-    			if (current) return;
-    			button.$$.fragment.i(local);
-
-    			current = true;
-    		},
-
-    		o: function outro(local) {
-    			button.$$.fragment.o(local);
-    			current = false;
-    		},
-
-    		d: function destroy(detaching) {
-    			button.$destroy(detaching);
-    		}
-    	};
-    }
-
-    function instance$b($$self, $$props, $$invalidate) {
-    	
-
-      let { compact = false, icon = undefined, label = undefined, parentClassName = undefined } = $$props;
-
-      const parentClassNames = [
-        parentClassName || classes$y.component,
-        compact ? classes$y.compact : null,
-      ].join(" ");
-
-      const defaultButtonProps = {
-        wash: false,
-        animateOnTap: false,
-        parentClassName: parentClassNames,
-      };
-
-      // Reset pass through
-      delete $$props.icon;
-      delete $$props.label;
-
-    	let { $$slots = {}, $$scope } = $$props;
-
-    	$$self.$set = $$new_props => {
-    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
-    		if ('compact' in $$props) $$invalidate('compact', compact = $$props.compact);
-    		if ('icon' in $$props) $$invalidate('icon', icon = $$props.icon);
-    		if ('label' in $$props) $$invalidate('label', label = $$props.label);
-    		if ('parentClassName' in $$props) $$invalidate('parentClassName', parentClassName = $$props.parentClassName);
-    		if ('$$scope' in $$new_props) $$invalidate('$$scope', $$scope = $$new_props.$$scope);
-    	};
-
-    	return {
-    		compact,
-    		icon,
-    		label,
-    		parentClassName,
-    		defaultButtonProps,
-    		$$props,
-    		$$props: $$props = exclude_internal_props($$props),
-    		$$slots,
-    		$$scope
-    	};
-    }
-
-    class IconButton extends SvelteComponentDev {
-    	constructor(options) {
-    		super(options);
-    		init(this, options, instance$b, create_fragment$d, safe_not_equal, ["compact", "icon", "label", "parentClassName"]);
-    	}
-
-    	get compact() {
-    		throw new Error("<IconButton>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set compact(value) {
-    		throw new Error("<IconButton>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get icon() {
-    		throw new Error("<IconButton>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set icon(value) {
-    		throw new Error("<IconButton>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get label() {
-    		throw new Error("<IconButton>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set label(value) {
-    		throw new Error("<IconButton>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get parentClassName() {
-    		throw new Error("<IconButton>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set parentClassName(value) {
-    		throw new Error("<IconButton>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-    }
-
-    /* src/examples/icon-button/LockSVG.svelte generated by Svelte v3.5.1 */
-
-    const file$d = "src/examples/icon-button/LockSVG.svelte";
-
-    function create_fragment$e(ctx) {
     	var svg, path;
 
     	return {
@@ -18912,12 +18461,12 @@ var app = (function () {
     			svg = svg_element("svg");
     			path = svg_element("path");
     			attr(path, "d", "M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z");
-    			add_location(path, file$d, 0, 83, 83);
+    			add_location(path, file$5, 0, 83, 83);
     			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr(svg, "width", "24");
     			attr(svg, "height", "24");
     			attr(svg, "viewBox", "0 0 24 24");
-    			add_location(svg, file$d, 0, 0, 0);
+    			add_location(svg, file$5, 0, 0, 0);
     		},
 
     		l: function claim(nodes) {
@@ -18944,13 +18493,13 @@ var app = (function () {
     class LockSVG extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, null, create_fragment$e, safe_not_equal, []);
+    		init(this, options, null, create_fragment$d, safe_not_equal, []);
     	}
     }
 
-    /* src/examples/icon-button/IconButton.svelte generated by Svelte v3.5.1 */
+    /* src/icon-button/IconButton.svelte generated by Svelte v3.5.1 */
 
-    const file$e = "src/examples/icon-button/IconButton.svelte";
+    const file$6 = "src/icon-button/IconButton.svelte";
 
     function get_each_context$2(ctx, list, i) {
     	const child_ctx = Object.create(ctx);
@@ -18958,7 +18507,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (33:6) <IconButton>
+    // (32:6) <IconButton>
     function create_default_slot_7(ctx) {
     	var current;
 
@@ -18992,7 +18541,7 @@ var app = (function () {
     	};
     }
 
-    // (43:8) <IconButton icon={{ size: sizeName }}>
+    // (42:8) <IconButton icon={{ size: sizeName }}>
     function create_default_slot_6$1(ctx) {
     	var current;
 
@@ -19026,7 +18575,7 @@ var app = (function () {
     	};
     }
 
-    // (42:6) {#each iconSizeNames as sizeName}
+    // (41:6) {#each iconSizeNames as sizeName}
     function create_each_block$2(ctx) {
     	var current;
 
@@ -19074,7 +18623,7 @@ var app = (function () {
     	};
     }
 
-    // (53:6) <IconButton label="Label">
+    // (52:6) <IconButton label="Label">
     function create_default_slot_5$1(ctx) {
     	var current;
 
@@ -19108,7 +18657,7 @@ var app = (function () {
     	};
     }
 
-    // (62:6) <IconButton disabled>
+    // (61:6) <IconButton disabled>
     function create_default_slot_4$1(ctx) {
     	var current;
 
@@ -19142,7 +18691,7 @@ var app = (function () {
     	};
     }
 
-    // (71:6) <IconButton wash>
+    // (70:6) <IconButton wash>
     function create_default_slot_3$1(ctx) {
     	var current;
 
@@ -19176,7 +18725,7 @@ var app = (function () {
     	};
     }
 
-    // (80:6) <IconButton className="tests-icon-button-themed-icon-button">
+    // (79:6) <IconButton className="tests-icon-button-themed-icon-button">
     function create_default_slot_2$1(ctx) {
     	var current;
 
@@ -19210,7 +18759,7 @@ var app = (function () {
     	};
     }
 
-    // (89:6) <IconButton className="tests-icon-button-themed-hover" wash label="Hover">
+    // (88:6) <IconButton className="tests-icon-button-themed-hover" wash label="Hover">
     function create_default_slot_1$2(ctx) {
     	var current;
 
@@ -19244,7 +18793,7 @@ var app = (function () {
     	};
     }
 
-    // (98:6) <IconButton label="ضع الكلمة المناسبة">
+    // (97:6) <IconButton label="ضع الكلمة المناسبة">
     function create_default_slot$4(ctx) {
     	var current;
 
@@ -19278,7 +18827,7 @@ var app = (function () {
     	};
     }
 
-    function create_fragment$f(ctx) {
+    function create_fragment$e(ctx) {
     	var div24, h1, t1, div2, div0, t3, div1, t4, div5, div3, t6, div4, t7, div8, div6, t9, div7, t10, div11, div9, t12, div10, t13, div14, div12, t15, div13, t16, div17, div15, t18, div16, t19, div20, div18, t21, div19, t22, div23, div21, t24, div22, current;
 
     	var iconbutton0 = new IconButton({
@@ -19431,57 +18980,57 @@ var app = (function () {
     			t24 = space();
     			div22 = element("div");
     			iconbutton6.$$.fragment.c();
-    			add_location(h1, file$e, 27, 2, 776);
+    			add_location(h1, file$6, 26, 2, 770);
     			div0.className = "example-info";
-    			add_location(div0, file$e, 30, 4, 826);
+    			add_location(div0, file$6, 29, 4, 820);
     			div1.className = "example-component";
-    			add_location(div1, file$e, 31, 4, 867);
+    			add_location(div1, file$6, 30, 4, 861);
     			div2.className = "example";
-    			add_location(div2, file$e, 29, 2, 800);
+    			add_location(div2, file$6, 28, 2, 794);
     			div3.className = "example-info";
-    			add_location(div3, file$e, 39, 4, 1007);
+    			add_location(div3, file$6, 38, 4, 1001);
     			div4.className = "example-component";
-    			add_location(div4, file$e, 40, 4, 1056);
+    			add_location(div4, file$6, 39, 4, 1050);
     			div5.className = "example";
-    			add_location(div5, file$e, 38, 2, 981);
+    			add_location(div5, file$6, 37, 2, 975);
     			div6.className = "example-info";
-    			add_location(div6, file$e, 50, 4, 1282);
+    			add_location(div6, file$6, 49, 4, 1276);
     			div7.className = "example-component";
-    			add_location(div7, file$e, 51, 4, 1332);
+    			add_location(div7, file$6, 50, 4, 1326);
     			div8.className = "example";
-    			add_location(div8, file$e, 49, 2, 1256);
+    			add_location(div8, file$6, 48, 2, 1250);
     			div9.className = "example-info";
-    			add_location(div9, file$e, 59, 4, 1486);
+    			add_location(div9, file$6, 58, 4, 1480);
     			div10.className = "example-component";
-    			add_location(div10, file$e, 60, 4, 1539);
+    			add_location(div10, file$6, 59, 4, 1533);
     			div11.className = "example";
-    			add_location(div11, file$e, 58, 2, 1460);
+    			add_location(div11, file$6, 57, 2, 1454);
     			div12.className = "example-info";
-    			add_location(div12, file$e, 68, 4, 1700);
+    			add_location(div12, file$6, 67, 4, 1694);
     			div13.className = "example-component";
-    			add_location(div13, file$e, 69, 4, 1756);
+    			add_location(div13, file$6, 68, 4, 1750);
     			div14.className = "example interactive";
-    			add_location(div14, file$e, 67, 2, 1662);
+    			add_location(div14, file$6, 66, 2, 1656);
     			div15.className = "example-info";
-    			add_location(div15, file$e, 77, 4, 1901);
+    			add_location(div15, file$6, 76, 4, 1895);
     			div16.className = "example-component";
-    			add_location(div16, file$e, 78, 4, 1964);
+    			add_location(div16, file$6, 77, 4, 1958);
     			div17.className = "example";
-    			add_location(div17, file$e, 76, 2, 1875);
+    			add_location(div17, file$6, 75, 2, 1869);
     			div18.className = "example-info";
-    			add_location(div18, file$e, 86, 4, 2153);
+    			add_location(div18, file$6, 85, 4, 2147);
     			div19.className = "example-component";
-    			add_location(div19, file$e, 87, 4, 2210);
+    			add_location(div19, file$6, 86, 4, 2204);
     			div20.className = "example";
-    			add_location(div20, file$e, 85, 2, 2127);
+    			add_location(div20, file$6, 84, 2, 2121);
     			div21.className = "example-info";
-    			add_location(div21, file$e, 95, 4, 2412);
+    			add_location(div21, file$6, 94, 4, 2406);
     			div22.className = "example-component pe-rtl";
-    			add_location(div22, file$e, 96, 4, 2468);
+    			add_location(div22, file$6, 95, 4, 2462);
     			div23.className = "example";
-    			add_location(div23, file$e, 94, 2, 2386);
+    			add_location(div23, file$6, 93, 2, 2380);
     			div24.className = "page";
-    			add_location(div24, file$e, 25, 0, 754);
+    			add_location(div24, file$6, 24, 0, 748);
     		},
 
     		l: function claim(nodes) {
@@ -19658,9 +19207,8 @@ var app = (function () {
     	};
     }
 
-    function instance$c($$self) {
+    function instance$b($$self) {
     	
-
 
       addStyle$4(".tests-icon-button-themed-icon-button", {
         padding: 24,
@@ -19685,15 +19233,15 @@ var app = (function () {
     class IconButton_1 extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$c, create_fragment$f, safe_not_equal, []);
+    		init(this, options, instance$b, create_fragment$e, safe_not_equal, []);
     	}
     }
 
-    /* src/examples/ripple/Ripple.svelte generated by Svelte v3.5.1 */
+    /* src/ripple/Ripple.svelte generated by Svelte v3.5.1 */
 
-    const file$f = "src/examples/ripple/Ripple.svelte";
+    const file$7 = "src/ripple/Ripple.svelte";
 
-    function create_fragment$g(ctx) {
+    function create_fragment$f(ctx) {
     	var div48, h1, t1, div3, div0, t3, div2, div1, t4, div7, div4, t6, div6, div5, t7, div11, div8, t9, div10, div9, t10, div15, div12, t12, div14, div13, t13, div19, div16, t15, div18, div17, t16, div23, div20, t18, div22, div21, t19, div27, div24, t21, div26, div25, t22, div31, div28, t24, div30, div29, t25, div35, div32, t27, div34, div33, t28, div39, div36, t30, div38, div37, t31, div43, div40, t33, div42, div41, t34, div47, div44, t36, div46, div45, current;
 
     	var ripple0 = new Ripple({ $$inline: true });
@@ -19858,105 +19406,105 @@ var app = (function () {
     			div46 = element("div");
     			div45 = element("div");
     			ripple11.$$.fragment.c();
-    			add_location(h1, file$f, 20, 2, 358);
+    			add_location(h1, file$7, 23, 2, 441);
     			div0.className = "example-info";
-    			add_location(div0, file$f, 23, 4, 415);
+    			add_location(div0, file$7, 26, 4, 498);
     			div1.className = "ripple-example";
-    			add_location(div1, file$f, 25, 6, 500);
+    			add_location(div1, file$7, 28, 6, 583);
     			div2.className = "example-component";
-    			add_location(div2, file$f, 24, 4, 462);
+    			add_location(div2, file$7, 27, 4, 545);
     			div3.className = "example interactive";
-    			add_location(div3, file$f, 22, 2, 377);
+    			add_location(div3, file$7, 25, 2, 460);
     			div4.className = "example-info";
-    			add_location(div4, file$f, 32, 4, 622);
+    			add_location(div4, file$7, 35, 4, 705);
     			div5.className = "ripple-example";
-    			add_location(div5, file$f, 34, 6, 718);
+    			add_location(div5, file$7, 37, 6, 801);
     			div6.className = "example-component";
-    			add_location(div6, file$f, 33, 4, 680);
+    			add_location(div6, file$7, 36, 4, 763);
     			div7.className = "example interactive";
-    			add_location(div7, file$f, 31, 2, 584);
+    			add_location(div7, file$7, 34, 2, 667);
     			div8.className = "example-info";
-    			add_location(div8, file$f, 41, 4, 854);
+    			add_location(div8, file$7, 44, 4, 937);
     			div9.className = "ripple-example";
-    			add_location(div9, file$f, 43, 6, 943);
+    			add_location(div9, file$7, 46, 6, 1026);
     			div10.className = "example-component";
-    			add_location(div10, file$f, 42, 4, 905);
+    			add_location(div10, file$7, 45, 4, 988);
     			div11.className = "example interactive";
-    			add_location(div11, file$f, 40, 2, 816);
+    			add_location(div11, file$7, 43, 2, 899);
     			div12.className = "example-info";
-    			add_location(div12, file$f, 50, 4, 1074);
+    			add_location(div12, file$7, 53, 4, 1157);
     			div13.className = "ripple-example";
-    			add_location(div13, file$f, 52, 6, 1175);
+    			add_location(div13, file$7, 55, 6, 1258);
     			div14.className = "example-component";
-    			add_location(div14, file$f, 51, 4, 1137);
+    			add_location(div14, file$7, 54, 4, 1220);
     			div15.className = "example interactive";
-    			add_location(div15, file$f, 49, 2, 1036);
+    			add_location(div15, file$7, 52, 2, 1119);
     			div16.className = "example-info";
-    			add_location(div16, file$f, 59, 4, 1316);
+    			add_location(div16, file$7, 62, 4, 1399);
     			div17.className = "ripple-example";
-    			add_location(div17, file$f, 61, 6, 1413);
+    			add_location(div17, file$7, 64, 6, 1496);
     			div18.className = "example-component";
-    			add_location(div18, file$f, 60, 4, 1375);
+    			add_location(div18, file$7, 63, 4, 1458);
     			div19.className = "example interactive";
-    			add_location(div19, file$f, 58, 2, 1278);
+    			add_location(div19, file$7, 61, 2, 1361);
     			div20.className = "example-info";
-    			add_location(div20, file$f, 68, 4, 1550);
+    			add_location(div20, file$7, 71, 4, 1633);
     			div21.className = "ripple-example";
-    			add_location(div21, file$f, 70, 6, 1645);
+    			add_location(div21, file$7, 73, 6, 1728);
     			div22.className = "example-component";
-    			add_location(div22, file$f, 69, 4, 1607);
+    			add_location(div22, file$7, 72, 4, 1690);
     			div23.className = "example interactive";
-    			add_location(div23, file$f, 67, 2, 1512);
+    			add_location(div23, file$7, 70, 2, 1595);
     			div24.className = "example-info";
-    			add_location(div24, file$f, 77, 4, 1780);
+    			add_location(div24, file$7, 80, 4, 1863);
     			div25.className = "ripple-example";
-    			add_location(div25, file$f, 79, 6, 1878);
+    			add_location(div25, file$7, 82, 6, 1961);
     			div26.className = "example-component";
-    			add_location(div26, file$f, 78, 4, 1840);
+    			add_location(div26, file$7, 81, 4, 1923);
     			div27.className = "example interactive";
-    			add_location(div27, file$f, 76, 2, 1742);
+    			add_location(div27, file$7, 79, 2, 1825);
     			div28.className = "example-info";
-    			add_location(div28, file$f, 86, 4, 2021);
+    			add_location(div28, file$7, 89, 4, 2104);
     			div29.className = "ripple-example";
-    			add_location(div29, file$f, 88, 6, 2138);
+    			add_location(div29, file$7, 91, 6, 2221);
     			div30.className = "example-component";
-    			add_location(div30, file$f, 87, 4, 2100);
+    			add_location(div30, file$7, 90, 4, 2183);
     			div31.className = "example interactive";
-    			add_location(div31, file$f, 85, 2, 1983);
+    			add_location(div31, file$7, 88, 2, 2066);
     			div32.className = "example-info";
-    			add_location(div32, file$f, 95, 4, 2287);
+    			add_location(div32, file$7, 98, 4, 2370);
     			div33.className = "ripple-example";
-    			add_location(div33, file$f, 97, 6, 2378);
+    			add_location(div33, file$7, 100, 6, 2461);
     			div34.className = "example-component";
-    			add_location(div34, file$f, 96, 4, 2340);
+    			add_location(div34, file$7, 99, 4, 2423);
     			div35.className = "example interactive";
-    			add_location(div35, file$f, 94, 2, 2249);
+    			add_location(div35, file$7, 97, 2, 2332);
     			div36.className = "example-info";
-    			add_location(div36, file$f, 104, 4, 2509);
+    			add_location(div36, file$7, 107, 4, 2592);
     			div37.className = "ripple-example";
-    			add_location(div37, file$f, 106, 6, 2605);
+    			add_location(div37, file$7, 109, 6, 2688);
     			div38.className = "example-component";
-    			add_location(div38, file$f, 105, 4, 2567);
+    			add_location(div38, file$7, 108, 4, 2650);
     			div39.className = "example interactive";
-    			add_location(div39, file$f, 103, 2, 2471);
+    			add_location(div39, file$7, 106, 2, 2554);
     			div40.className = "example-info";
-    			add_location(div40, file$f, 113, 4, 2769);
+    			add_location(div40, file$7, 116, 4, 2852);
     			div41.className = "ripple-example";
-    			add_location(div41, file$f, 115, 6, 2875);
+    			add_location(div41, file$7, 118, 6, 2958);
     			div42.className = "example-component";
-    			add_location(div42, file$f, 114, 4, 2837);
+    			add_location(div42, file$7, 117, 4, 2920);
     			div43.className = "example interactive";
-    			add_location(div43, file$f, 112, 2, 2731);
+    			add_location(div43, file$7, 115, 2, 2814);
     			div44.className = "example-info";
-    			add_location(div44, file$f, 122, 4, 3077);
+    			add_location(div44, file$7, 125, 4, 3160);
     			div45.className = "ripple-example";
-    			add_location(div45, file$f, 124, 6, 3192);
+    			add_location(div45, file$7, 127, 6, 3275);
     			div46.className = "example-component";
-    			add_location(div46, file$f, 123, 4, 3154);
+    			add_location(div46, file$7, 126, 4, 3237);
     			div47.className = "example interactive pe-dark-tone";
-    			add_location(div47, file$f, 121, 2, 3026);
+    			add_location(div47, file$7, 124, 2, 3109);
     			div48.className = "page";
-    			add_location(div48, file$f, 18, 0, 336);
+    			add_location(div48, file$7, 21, 0, 419);
     		},
 
     		l: function claim(nodes) {
@@ -20132,7 +19680,7 @@ var app = (function () {
     	};
     }
 
-    function instance$d($$self) {
+    function instance$c($$self) {
     	
 
       addStyle$5(".tests-ripple-themed-ripple", {
@@ -20145,15 +19693,15 @@ var app = (function () {
     class Ripple_1 extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$d, create_fragment$g, safe_not_equal, []);
+    		init(this, options, instance$c, create_fragment$f, safe_not_equal, []);
     	}
     }
 
-    /* src/examples/svg/StarSVG.svelte generated by Svelte v3.5.1 */
+    /* src/svg/StarSVG.svelte generated by Svelte v3.5.1 */
 
-    const file$g = "src/examples/svg/StarSVG.svelte";
+    const file$8 = "src/svg/StarSVG.svelte";
 
-    function create_fragment$h(ctx) {
+    function create_fragment$g(ctx) {
     	var svg, path;
 
     	return {
@@ -20161,11 +19709,11 @@ var app = (function () {
     			svg = svg_element("svg");
     			path = svg_element("path");
     			attr(path, "d", "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z");
-    			add_location(path, file$g, 0, 48, 48);
+    			add_location(path, file$8, 0, 48, 48);
     			attr(svg, "width", "24");
     			attr(svg, "height", "24");
     			attr(svg, "viewBox", "0 0 24 24");
-    			add_location(svg, file$g, 0, 0, 0);
+    			add_location(svg, file$8, 0, 0, 0);
     		},
 
     		l: function claim(nodes) {
@@ -20192,13 +19740,13 @@ var app = (function () {
     class StarSVG$1 extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, null, create_fragment$h, safe_not_equal, []);
+    		init(this, options, null, create_fragment$g, safe_not_equal, []);
     	}
     }
 
-    /* src/examples/svg/SVG.svelte generated by Svelte v3.5.1 */
+    /* src/svg/SVG.svelte generated by Svelte v3.5.1 */
 
-    const file$h = "src/examples/svg/SVG.svelte";
+    const file$9 = "src/svg/SVG.svelte";
 
     // (32:6) <SVG>
     function create_default_slot_4$2(ctx) {
@@ -20370,7 +19918,7 @@ var app = (function () {
     	};
     }
 
-    function create_fragment$i(ctx) {
+    function create_fragment$h(ctx) {
     	var div15, h1, t1, div2, div0, t3, div1, t4, div5, div3, t6, div4, button, t8, t9, div8, div6, t11, div7, t12, div11, div9, t14, div10, t15, div14, div12, t17, div13, current, dispose;
 
     	var svg0 = new SVG({
@@ -20459,40 +20007,40 @@ var app = (function () {
     			t17 = space();
     			div13 = element("div");
     			svg4.$$.fragment.c();
-    			add_location(h1, file$h, 26, 2, 524);
+    			add_location(h1, file$9, 26, 2, 527);
     			div0.className = "example-info";
-    			add_location(div0, file$h, 29, 4, 566);
+    			add_location(div0, file$9, 29, 4, 569);
     			div1.className = "example-component";
-    			add_location(div1, file$h, 30, 4, 616);
+    			add_location(div1, file$9, 30, 4, 619);
     			div2.className = "example";
-    			add_location(div2, file$h, 28, 2, 540);
+    			add_location(div2, file$9, 28, 2, 543);
     			div3.className = "example-info";
-    			add_location(div3, file$h, 38, 4, 754);
-    			add_location(button, file$h, 40, 6, 834);
+    			add_location(div3, file$9, 38, 4, 757);
+    			add_location(button, file$9, 40, 6, 837);
     			div4.className = "example-component";
-    			add_location(div4, file$h, 39, 4, 796);
+    			add_location(div4, file$9, 39, 4, 799);
     			div5.className = "example interactive";
-    			add_location(div5, file$h, 37, 2, 716);
+    			add_location(div5, file$9, 37, 2, 719);
     			div6.className = "example-info";
-    			add_location(div6, file$h, 48, 4, 983);
+    			add_location(div6, file$9, 48, 4, 986);
     			div7.className = "example-component";
-    			add_location(div7, file$h, 49, 4, 1034);
+    			add_location(div7, file$9, 49, 4, 1037);
     			div8.className = "example";
-    			add_location(div8, file$h, 47, 2, 957);
+    			add_location(div8, file$9, 47, 2, 960);
     			div9.className = "example-info";
-    			add_location(div9, file$h, 57, 4, 1206);
+    			add_location(div9, file$9, 57, 4, 1209);
     			div10.className = "example-component";
-    			add_location(div10, file$h, 58, 4, 1269);
+    			add_location(div10, file$9, 58, 4, 1272);
     			div11.className = "example pe-dark-tone";
-    			add_location(div11, file$h, 56, 2, 1167);
+    			add_location(div11, file$9, 56, 2, 1170);
     			div12.className = "example-info";
-    			add_location(div12, file$h, 66, 4, 1408);
+    			add_location(div12, file$9, 66, 4, 1411);
     			div13.className = "example-component";
-    			add_location(div13, file$h, 67, 4, 1472);
+    			add_location(div13, file$9, 67, 4, 1475);
     			div14.className = "example pe-dark-tone";
-    			add_location(div14, file$h, 65, 2, 1369);
+    			add_location(div14, file$9, 65, 2, 1372);
     			div15.className = "page";
-    			add_location(div15, file$h, 24, 0, 502);
+    			add_location(div15, file$9, 24, 0, 505);
     			dispose = listen(button, "click", ctx.toggleStyle);
     		},
 
@@ -20607,7 +20155,7 @@ var app = (function () {
 
     let initialStyle = "color: inherit";
 
-    function instance$e($$self, $$props, $$invalidate) {
+    function instance$d($$self, $$props, $$invalidate) {
     	
 
       let showStyle = false;
@@ -20633,15 +20181,15 @@ var app = (function () {
     class SVG_1 extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$e, create_fragment$i, safe_not_equal, []);
+    		init(this, options, instance$d, create_fragment$h, safe_not_equal, []);
     	}
     }
 
     /* src/Home.svelte generated by Svelte v3.5.1 */
 
-    const file$i = "src/Home.svelte";
+    const file$a = "src/Home.svelte";
 
-    function create_fragment$j(ctx) {
+    function create_fragment$i(ctx) {
     	var div, t0, ul, li0, a0, link_action, t2, li1, a1, link_action_1, t4, li2, a2, link_action_2, t6, li3, a3, link_action_3, t8, li4, a4, link_action_4, t10, li5, a5, link_action_5;
 
     	return {
@@ -20673,25 +20221,25 @@ var app = (function () {
     			a5 = element("a");
     			a5.textContent = "SVG";
     			a0.href = "/button";
-    			add_location(a0, file$i, 8, 6, 99);
-    			add_location(li0, file$i, 7, 4, 88);
+    			add_location(a0, file$a, 8, 6, 99);
+    			add_location(li0, file$a, 7, 4, 88);
     			a1.href = "/icon";
-    			add_location(a1, file$i, 11, 6, 162);
-    			add_location(li1, file$i, 10, 4, 151);
+    			add_location(a1, file$a, 11, 6, 162);
+    			add_location(li1, file$a, 10, 4, 151);
     			a2.href = "/icon-button";
-    			add_location(a2, file$i, 14, 6, 221);
-    			add_location(li2, file$i, 13, 4, 210);
+    			add_location(a2, file$a, 14, 6, 221);
+    			add_location(li2, file$a, 13, 4, 210);
     			a3.href = "/ripple";
-    			add_location(a3, file$i, 17, 6, 294);
-    			add_location(li3, file$i, 16, 4, 283);
+    			add_location(a3, file$a, 17, 6, 294);
+    			add_location(li3, file$a, 16, 4, 283);
     			a4.href = "/shadow";
-    			add_location(a4, file$i, 20, 6, 357);
-    			add_location(li4, file$i, 19, 4, 346);
+    			add_location(a4, file$a, 20, 6, 357);
+    			add_location(li4, file$a, 19, 4, 346);
     			a5.href = "/svg";
-    			add_location(a5, file$i, 23, 6, 420);
-    			add_location(li5, file$i, 22, 4, 409);
-    			add_location(ul, file$i, 6, 2, 79);
-    			add_location(div, file$i, 4, 0, 64);
+    			add_location(a5, file$a, 23, 6, 420);
+    			add_location(li5, file$a, 22, 4, 409);
+    			add_location(ul, file$a, 6, 2, 79);
+    			add_location(div, file$a, 4, 0, 64);
     		},
 
     		l: function claim(nodes) {
@@ -20749,7 +20297,7 @@ var app = (function () {
     class Home extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, null, create_fragment$j, safe_not_equal, []);
+    		init(this, options, null, create_fragment$i, safe_not_equal, []);
     	}
     }
 
@@ -20765,7 +20313,7 @@ var app = (function () {
 
     /* src/App.svelte generated by Svelte v3.5.1 */
 
-    function create_fragment$k(ctx) {
+    function create_fragment$j(ctx) {
     	var current;
 
     	var router = new Router({
@@ -20814,7 +20362,7 @@ var app = (function () {
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, null, create_fragment$k, safe_not_equal, []);
+    		init(this, options, null, create_fragment$j, safe_not_equal, []);
     	}
     }
 

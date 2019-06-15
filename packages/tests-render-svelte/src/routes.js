@@ -1,9 +1,9 @@
-import { Shadow } from "./examples/shadow";
-import { Button } from "./examples/button";
-import { Icon } from "./examples/icon";
-import { IconButton } from "./examples/icon-button";
-import { Ripple } from "./examples/ripple";
-import { SVG } from "./examples/svg";
+import { Shadow } from "./shadow";
+import { Button } from "./button";
+import { Icon } from "./icon";
+import { IconButton } from "./icon-button";
+import { Ripple } from "./ripple";
+import { SVG } from "./svg";
 import Home from "./Home.svelte";
 
 export default {
