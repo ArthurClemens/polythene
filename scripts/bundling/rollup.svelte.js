@@ -20,9 +20,7 @@ export default {
 		svelte({
 			dev: !production,
 		}),
-		resolve({
-			browser: true
-		}),
+		resolve(),
 		commonjs(),
 	],
 };

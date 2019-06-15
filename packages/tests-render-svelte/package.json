@@ -11,9 +11,12 @@
     "serve": "http-server -p 4000 public"
   },
   "dependencies": {
-    "polythene-svelte": "^1.6.4",
+    "polythene-core": "^1.6.4",
+    "polythene-css": "^1.6.4",
+    "polythene-css-classes": "^1.6.4",
+    "polythene-core-ripple": "^1.6.4",
     "svelte-spa-router": "^1.1.1",
-    "svelte": "^3.5.1"
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -32,7 +35,8 @@
     "rollup-plugin-svelte": "^5.1.0",
     "rollup-plugin-terser": "^5.0.0",
     "rollup-plugin-postcss": "^2.0.3",
-    "sirv-cli": "^0.4.4"
+    "sirv-cli": "^0.4.4",
+    "svelte": "^3.5.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",
