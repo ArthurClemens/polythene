@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-radio-group",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "description": "",
   "main": "dist/polythene-react-radio-group",
   "module": "dist/polythene-react-radio-group.mjs",
@@ -18,8 +18,8 @@
   ],
   "dependencies": {
     "cyano-react": "^0.5.2",
-    "polythene-core-radio-group": "^1.6.4",
-    "polythene-react-radio-button": "^1.6.4"
+    "polythene-core-radio-group": "1.6.5",
+    "polythene-react-radio-button": "1.6.5"
   },
   "devDependencies": {
     "@types/react": "^16.8.19"

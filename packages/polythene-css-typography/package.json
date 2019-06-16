@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-typography",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "description": "",
   "main": "dist/polythene-css-typography",
   "module": "dist/polythene-css-typography.mjs",
@@ -18,10 +18,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "^1.6.4",
-    "polythene-style": "^1.6.4",
-    "polythene-theme": "^1.6.4",
-    "polythene-utilities": "^1.6.4"
+    "polythene-core-css": "1.6.5",
+    "polythene-style": "1.6.5",
+    "polythene-theme": "1.6.5",
+    "polythene-utilities": "1.6.5"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

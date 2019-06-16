@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-radio-group",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "description": "",
   "main": "dist/polythene-mithril-radio-group",
   "module": "dist/polythene-mithril-radio-group.mjs",
@@ -18,8 +18,8 @@
   ],
   "dependencies": {
     "cyano-mithril": "^0.5.2",
-    "polythene-core-radio-group": "^1.6.4",
-    "polythene-mithril-radio-button": "^1.6.4"
+    "polythene-core-radio-group": "1.6.5",
+    "polythene-mithril-radio-button": "1.6.5"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.16"

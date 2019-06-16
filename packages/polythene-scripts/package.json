@@ -1,6 +1,6 @@
 {
   "name": "polythene-scripts",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "description": "",
   "main": "dist/polythene-scripts",
   "module": "dist/polythene-scripts.mjs",
