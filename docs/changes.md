@@ -2,6 +2,7 @@
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="2,3" -->
 - [1.6](#16)
+  - [1.6.5](#165)
   - [1.6.4](#164)
   - [1.6.3](#163)
   - [1.6.2](#162)
@@ -52,6 +53,11 @@
 <!-- /MarkdownTOC -->
 
 ## 1.6
+
+### 1.6.5
+
+* Reset CSS has moved from `polythene-css-typography` to `polythene-css-core`. This ensures layout consistency without having to force to use `polythene-css-typography`.
+
 
 ### 1.6.4
 

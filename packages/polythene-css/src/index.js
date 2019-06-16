@@ -119,12 +119,14 @@ import * as ToolbarCSS from "polythene-css-toolbar";
 export { ToolbarCSS };
 ToolbarCSS.addGeneralStyleToHead();
 
+import * as CoreCSS from "polythene-css-core";
+export { CoreCSS };
+CoreCSS.addGeneralStyleToHead();
+
+// Styles to optionally add to head
+
 import * as TypographyCSS from "polythene-css-typography";
 export { TypographyCSS };
 
 export { addTypography, addRoboto } from "polythene-css-typography";
 export { addLayoutStyles } from "polythene-core-css";
-
-// handle deprecation
-const RaisedButtonCSS = ButtonCSS;
-export { RaisedButtonCSS };
