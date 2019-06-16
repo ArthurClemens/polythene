@@ -40,7 +40,7 @@ const maybePublish = filename => {
           resolve(filename);
         } else {
           shell.cd(path.dirname(filename));
-          shell.exec("npm publish");
+          shell.exec("npm publish --tag=fixed-version-1.1.5");
           shell.cd(baseDir);
           child_process.execSync("sleep 1");
           resolve(filename);
