@@ -58,6 +58,10 @@
 
 * Reset CSS has moved from `polythene-css-typography` to `polythene-css-core`. This ensures layout consistency without having to force to use `polythene-css-typography`.
 
+Bug fixes:
+
+* Ripple: multiple ripples were allowed without passing `multi`.
+  
 
 ### 1.6.4
 

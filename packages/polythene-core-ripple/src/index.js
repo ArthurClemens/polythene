@@ -1,48 +1,30 @@
 import { pointerEndEvent, filterSupportedAttributes } from "polythene-core";
-import animation from "./animation";
+import rippleAnimation from "./ripple-animation";
 import classes from "polythene-css-classes/ripple";
 
-const useAnimationsState = ({ useState }) => {
-  const [animations, setAnimations] = useState({});
-  return [
-    animations,
-    (addId, animation) => setAnimations(Object.assign(
-      {},
-      animations,
-      { [addId]: animation }
-    )),
-    removeId => {
-      const updated = Object.assign({}, animations);
-      delete(updated[removeId]);
-      setAnimations(updated);
-    }
-  ];
-};
+export { rippleAnimation };
 
-export const _Ripple = ({ h, a, getRef, useState, useEffect, ...props }) => {
+export const _Ripple = ({ h, a, getRef, useRef, useState, useEffect, ...props }) => {
   const [domElement, setDomElement] = useState();
-  const [animations, addAnimation, removeAnimation] = useAnimationsState({ useState });
-  const isAnimating = animations
-    ? Object.keys(animations).length > 0
-    : false;
+  const animationCountRef = useRef(0);
   const triggerEl = props.target || (domElement ? domElement.parentElement : undefined);
-  
+
   const tap = e => {
-    if (props.disabled || !domElement || (!props.multi && isAnimating)) {
+    if (props.disabled || !domElement || (!props.multi && animationCountRef.current > 0)) {
       return;
     }
     if (props.start) {
       props.start(e);
     }
     const id = `ripple_animation_${new Date().getTime()}`;
-    const rippleAnimation = animation({ e, id, el: domElement, props, classes })
+    rippleAnimation({ e, id, el: domElement, props, classes })
       .then(evt => {
         if (props.end) {
           props.end(evt);
         }
-        removeAnimation(id);
+        animationCountRef.current--;
       });
-    addAnimation(id, rippleAnimation);
+      animationCountRef.current++;
   };
 
   useEffect(

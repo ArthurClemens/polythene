@@ -1,21 +1,6 @@
 import { isTouch, getAnimationEndEvent, isServer, pointerEndEvent, filterSupportedAttributes } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -133,7 +118,7 @@ var removeStyleFromHead = function removeStyleFromHead(id) {
   }
 };
 
-var animation = (function (_ref) {
+var rippleAnimation = (function (_ref) {
   var e = _ref.e,
       id = _ref.id,
       el = _ref.el,
@@ -206,50 +191,25 @@ var classes = {
   wavesAnimating: "pe-ripple__waves--animating"
 };
 
-var useAnimationsState = function useAnimationsState(_ref) {
-  var useState = _ref.useState;
+var _Ripple = function _Ripple(_ref) {
+  var h = _ref.h,
+      a = _ref.a,
+      getRef = _ref.getRef,
+      useRef = _ref.useRef,
+      useState = _ref.useState,
+      useEffect = _ref.useEffect,
+      props = _objectWithoutProperties(_ref, ["h", "a", "getRef", "useRef", "useState", "useEffect"]);
 
-  var _useState = useState({}),
+  var _useState = useState(),
       _useState2 = _slicedToArray(_useState, 2),
-      animations = _useState2[0],
-      setAnimations = _useState2[1];
+      domElement = _useState2[0],
+      setDomElement = _useState2[1];
 
-  return [animations, function (addId, animation) {
-    return setAnimations(_extends({}, animations, _defineProperty({}, addId, animation)));
-  }, function (removeId) {
-    var updated = _extends({}, animations);
-
-    delete updated[removeId];
-    setAnimations(updated);
-  }];
-};
-
-var _Ripple = function _Ripple(_ref2) {
-  var h = _ref2.h,
-      a = _ref2.a,
-      getRef = _ref2.getRef,
-      useState = _ref2.useState,
-      useEffect = _ref2.useEffect,
-      props = _objectWithoutProperties(_ref2, ["h", "a", "getRef", "useState", "useEffect"]);
-
-  var _useState3 = useState(),
-      _useState4 = _slicedToArray(_useState3, 2),
-      domElement = _useState4[0],
-      setDomElement = _useState4[1];
-
-  var _useAnimationsState = useAnimationsState({
-    useState: useState
-  }),
-      _useAnimationsState2 = _slicedToArray(_useAnimationsState, 3),
-      animations = _useAnimationsState2[0],
-      addAnimation = _useAnimationsState2[1],
-      removeAnimation = _useAnimationsState2[2];
-
-  var isAnimating = animations ? Object.keys(animations).length > 0 : false;
+  var animationCountRef = useRef(0);
   var triggerEl = props.target || (domElement ? domElement.parentElement : undefined);
 
   var tap = function tap(e) {
-    if (props.disabled || !domElement || !props.multi && isAnimating) {
+    if (props.disabled || !domElement || !props.multi && animationCountRef.current > 0) {
       return;
     }
 
@@ -258,7 +218,7 @@ var _Ripple = function _Ripple(_ref2) {
     }
 
     var id = "ripple_animation_".concat(new Date().getTime());
-    var rippleAnimation = animation({
+    rippleAnimation({
       e: e,
       id: id,
       el: domElement,
@@ -269,9 +229,9 @@ var _Ripple = function _Ripple(_ref2) {
         props.end(evt);
       }
 
-      removeAnimation(id);
+      animationCountRef.current--;
     });
-    addAnimation(id, rippleAnimation);
+    animationCountRef.current++;
   };
 
   useEffect(function () {
@@ -299,4 +259,4 @@ var _Ripple = function _Ripple(_ref2) {
   return h(props.element || "div", componentProps, content);
 };
 
-export { _Ripple };
+export { _Ripple, rippleAnimation };
