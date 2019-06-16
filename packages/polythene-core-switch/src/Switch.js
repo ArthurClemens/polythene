@@ -7,7 +7,7 @@ export const _Switch = ({ h, SelectionControl, ...props }) => {
     {
       selectable: props.selectable || (() => true), // default: always selectable, regardless of the checked state
       instanceClass: classes.component,
-      type: "checkbox"
+      type: "checkbox",
     }
   );
   return h(SelectionControl, componentProps);

@@ -867,7 +867,7 @@ var transitionStateReducer = function transitionStateReducer(state, type) {
 };
 /**
  * 
- * @typedef {{ el?: HTMLElement, duration?: number, hasDuration?: boolean, delay?: number, hasDelay?: boolean, timingFunction?: string, transitionClass?: string, transitionClassElement?: HTMLElement, before?: () => void, after?: () => void, transition?: () => void, showClass?: string, showClassElement?: HTMLElement  }} TransitionOpts
+ * @typedef {{ el?: HTMLElement, duration?: number, hasDuration?: boolean, delay?: number, hasDelay?: boolean, timingFunction?: string, transitionClass?: string, before?: () => void, after?: () => void, transition?: () => void, showClass?: string, showClassElement?: HTMLElement  }} TransitionOpts
  */
 
 var DEFAULT_DURATION = .240;
@@ -915,8 +915,7 @@ var transition = function transition(opts, state) {
       var timingFunction = opts.timingFunction || computedStyle.transitionTimingFunction;
 
       if (opts.transitionClass) {
-        var transitionClassElement = opts.transitionClassElement || el;
-        transitionClassElement.classList.add(opts.transitionClass);
+        el.classList.add(opts.transitionClass);
       }
 
       var before = function before() {
@@ -962,10 +961,7 @@ var transition = function transition(opts, state) {
           }
 
           if (opts.transitionClass) {
-            var _transitionClassElement = opts.transitionClassElement || el;
-
-            _transitionClassElement.classList.remove(opts.transitionClass);
-
+            el.classList.remove(opts.transitionClass);
             el.offsetHeight; // force reflow
           }
 

@@ -14,7 +14,9 @@ export default ({ Switch, Icon, Button, h, a }) => {
   
   SwitchCSS.addStyle(".tests-switch-themed-switch-color", {
     color_light_thumb_off: blue,
-    color_light_thumb_on:  blue,
+    color_light_off_label: blue,
+    color_light_thumb_on:  orange,
+    color_light_on_label:  orange,
   });
 
   SwitchCSS.addStyle(".tests-switch-themed-switch", {
@@ -165,16 +167,16 @@ export default ({ Switch, Icon, Button, h, a }) => {
       exclude: true,
       component: toggleButton({ h, a, Button, Switch })
     },
-    // {
-    //   name: "Option: style (colors)",
-    //   component: Switch,
-    //   attrs: {
-    //     label: "Label",
-    //     style: {
-    //       color: "#EF6C00"
-    //     }
-    //   }
-    // },
+    {
+      name: "Option: style (colors)",
+      component: Switch,
+      attrs: {
+        label: "Label",
+        style: {
+          backgroundColor: "#EF6C00"
+        }
+      }
+    },
 
     {
       section: "Themed",

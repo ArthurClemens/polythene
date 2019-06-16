@@ -30,6 +30,7 @@ export const _ViewControl = ({ h, Icon, IconButton, ...props }) => {
     {
       element: "div",
       className: classes.button,
+      style: props.style,
       content: CONTENT.map(o =>
         h(Icon, createIcon(h, o.iconType, props, o.className))
       ),

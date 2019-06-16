@@ -20,6 +20,7 @@ const filterCssDir = file =>
 
 const files = glob.sync(`${rootPath}/polythene-*/dist/*.css*`);
 
-files.filter(filterCssDir).forEach(file =>
-  shell.cp(file, destPath)
+files
+  .filter(filterCssDir)
+  .forEach(file => shell.cp(file, destPath)
 );

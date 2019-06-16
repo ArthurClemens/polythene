@@ -7,7 +7,6 @@ const stripComment = str =>
   str.replace(/(\\r|\\n)\/\*#.*$/, "");
 
 const filterStyleCSS = file =>
-  file !== "dist/polythene-layout-styles.css" &&
   file !== "dist/polythene-typography.css";
 
 const files = glob.readdirSync("./dist/*.css");

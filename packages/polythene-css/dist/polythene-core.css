@@ -1,0 +1,22 @@
+html {
+  box-sizing: border-box;
+}
+
+*, :after, :before {
+  box-sizing: inherit;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus, a, a:active, a:focus, input:active {
+  outline: 0;
+}
+
+input:disabled {
+  opacity: 1;
+}
+
+/*# sourceMappingURL=polythene-core.css.map */

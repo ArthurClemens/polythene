@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-dialog-pane",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "description": "",
   "main": "dist/polythene-react-dialog-pane",
   "module": "dist/polythene-react-dialog-pane.mjs",
@@ -18,7 +18,7 @@
   ],
   "dependencies": {
     "cyano-react": "^0.5.2",
-    "polythene-core-dialog-pane": "^1.6.4"
+    "polythene-core-dialog-pane": "1.6.5"
   },
   "devDependencies": {
     "@types/react": "^16.8.19"

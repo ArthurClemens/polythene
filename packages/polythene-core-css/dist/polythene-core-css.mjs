@@ -1329,6 +1329,7 @@ var wrapInScope = function wrapInScope(_ref2) {
  * @param {object} [params.customVars]
  * @param {string} [params.mediaQuery]
  * @param {string} [params.scope]
+ * @param {string} [params.identifier]
  * @returns {void}
  */
 
@@ -1339,7 +1340,8 @@ var addStyle = function addStyle(_ref4) {
       vars = _ref4.vars,
       customVars = _ref4.customVars,
       mediaQuery = _ref4.mediaQuery,
-      scope = _ref4.scope;
+      scope = _ref4.scope,
+      identifier = _ref4.identifier;
   var prefix = scope ? " " : "";
   var selector = prefix + selectors.join("");
   var styles = styleFns.map(function (fn) {
@@ -1352,7 +1354,7 @@ var addStyle = function addStyle(_ref4) {
     return;
   }
 
-  var id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
+  var id = identifier || selector.trim().replace(/^[^a-z]?(.*)/, "$1");
   add(id, wrapInScope({
     styles: wrapInScope({
       styles: styles,

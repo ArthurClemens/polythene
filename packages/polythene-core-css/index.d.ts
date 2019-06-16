@@ -171,8 +171,9 @@ type StyleCollection = {[s: string]: StyleFn};
      * @param params.customVars - Style configuration variables
      * @param params.mediaQuery - CSS media query string
      * @param params.scope - CSS selector
+     * @param params.identifier - Identifier, useful when no selector is passed
      */
-    addStyle: ({ selectors, fns, vars, customVars, mediaQuery, scope } : { selectors: Array<string>, fns: StyleFns, vars: StyleObject, customVars?: StyleObject, mediaQuery?: string, scope?: string }) => void
+    addStyle: ({ selectors, fns, vars, customVars, mediaQuery, scope, identifier } : { selectors: Array<string>, fns: StyleFns, vars: StyleObject, customVars?: StyleObject, mediaQuery?: string, scope?: string, addStyle?: string }) => void
     
     /**
      * Adds styles to the head.

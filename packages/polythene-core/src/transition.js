@@ -51,7 +51,7 @@ export const transitionStateReducer = (state, type) => {
 
 /**
  * 
- * @typedef {{ el?: HTMLElement, duration?: number, hasDuration?: boolean, delay?: number, hasDelay?: boolean, timingFunction?: string, transitionClass?: string, transitionClassElement?: HTMLElement, before?: () => void, after?: () => void, transition?: () => void, showClass?: string, showClassElement?: HTMLElement  }} TransitionOpts
+ * @typedef {{ el?: HTMLElement, duration?: number, hasDuration?: boolean, delay?: number, hasDelay?: boolean, timingFunction?: string, transitionClass?: string, before?: () => void, after?: () => void, transition?: () => void, showClass?: string, showClassElement?: HTMLElement  }} TransitionOpts
  */
 
 const DEFAULT_DURATION = .240;
@@ -101,8 +101,7 @@ const transition = (opts, state) => {
       const timingFunction = opts.timingFunction || computedStyle.transitionTimingFunction;
 
       if (opts.transitionClass) {
-        const transitionClassElement = opts.transitionClassElement || el;
-        transitionClassElement.classList.add(opts.transitionClass);
+        el.classList.add(opts.transitionClass);
       }
 
       const before = () => {
@@ -148,8 +147,7 @@ const transition = (opts, state) => {
             after();
           }
           if (opts.transitionClass) {
-            const transitionClassElement = opts.transitionClassElement || el;
-            transitionClassElement.classList.remove(opts.transitionClass);
+            el.classList.remove(opts.transitionClass);
             el.offsetHeight; // force reflow
           }
           resolve();

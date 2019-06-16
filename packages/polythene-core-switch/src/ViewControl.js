@@ -31,7 +31,10 @@ export const _ViewControl = ({ h, a, IconButton, Shadow, ...props }) => {
         className: classes.thumb,
         key: "button",
         content: h("div",
-          { className: classes.knob },
+          {
+            className: classes.knob,
+            style: props.style,
+          },
           [
             props.icon ? props.icon : null,
             raised
@@ -44,7 +47,6 @@ export const _ViewControl = ({ h, a, IconButton, Shadow, ...props }) => {
               : null
           ]
         ),
-        style: props.style,
         disabled: props.disabled,
         events: props.events,
         ink: props.ink || false,

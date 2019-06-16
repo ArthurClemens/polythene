@@ -98,12 +98,12 @@ var _ViewControl = function _ViewControl(_ref) {
     className: classes.thumb,
     key: "button",
     content: h("div", {
-      className: classes.knob
+      className: classes.knob,
+      style: props.style
     }, [props.icon ? props.icon : null, raised ? h(Shadow, {
       shadowDepth: shadowDepth,
       animated: true
     }) : null]),
-    style: props.style,
     disabled: props.disabled,
     events: props.events,
     ink: props.ink || false,

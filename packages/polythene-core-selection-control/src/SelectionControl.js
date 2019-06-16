@@ -57,7 +57,7 @@ export const _SelectionControl = ({ h, a, useState, ViewControl, ...props }) => 
 
   const componentProps = Object.assign(
     {},
-    filterSupportedAttributes(props),
+    filterSupportedAttributes(props, { remove: ["style"] }), // Set style on view control
     props.testId && { "data-test-id": props.testId },
     {
       className: [

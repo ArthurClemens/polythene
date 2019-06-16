@@ -87,16 +87,17 @@ const wrapInScope = ({ styles, scope }) =>
  * @param {object} [params.customVars]
  * @param {string} [params.mediaQuery]
  * @param {string} [params.scope]
+ * @param {string} [params.identifier]
  * @returns {void}
  */
-const addStyle = ({ selectors, fns: styleFns, vars, customVars, mediaQuery, scope }) => {
+const addStyle = ({ selectors, fns: styleFns, vars, customVars, mediaQuery, scope, identifier }) => {
   const prefix = scope ? " " : "";
   const selector = prefix + selectors.join("");
   const styles = styleFns.map(fn => fn(selector, vars, customVars)).filter(list => list.length > 0);
   if (styles.length === 0) {
     return;
   }
-  const id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
+  const id = identifier || selector.trim().replace(/^[^a-z]?(.*)/, "$1");
   add(id,
     wrapInScope({
       styles: wrapInScope({ styles, scope }),

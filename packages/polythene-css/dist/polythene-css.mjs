@@ -1,8 +1,8 @@
 import { addGeneralStyleToHead } from 'polythene-css-base-spinner';
 import * as BaseSpinnerCSS from 'polythene-css-base-spinner';
 export { BaseSpinnerCSS };
-import * as ButtonCSS from 'polythene-css-button';
 import { addGeneralStyleToHead as addGeneralStyleToHead$1 } from 'polythene-css-button';
+import * as ButtonCSS from 'polythene-css-button';
 export { ButtonCSS };
 import { addGeneralStyleToHead as addGeneralStyleToHead$2 } from 'polythene-css-button-group';
 import * as ButtonGroupCSS from 'polythene-css-button-group';
@@ -88,6 +88,9 @@ export { TextFieldCSS };
 import { addGeneralStyleToHead as addGeneralStyleToHead$t } from 'polythene-css-toolbar';
 import * as ToolbarCSS from 'polythene-css-toolbar';
 export { ToolbarCSS };
+import { addGeneralStyleToHead as addGeneralStyleToHead$u } from 'polythene-css-core';
+import * as CoreCSS from 'polythene-css-core';
+export { CoreCSS };
 import * as polytheneCssTypography from 'polythene-css-typography';
 export { polytheneCssTypography as TypographyCSS };
 export { addRoboto, addTypography } from 'polythene-css-typography';
@@ -123,7 +126,4 @@ addGeneralStyleToHead$q();
 addGeneralStyleToHead$r();
 addGeneralStyleToHead$s();
 addGeneralStyleToHead$t();
-
-var RaisedButtonCSS = ButtonCSS;
-
-export { RaisedButtonCSS };
+addGeneralStyleToHead$u(); // Styles to optionally add to head
