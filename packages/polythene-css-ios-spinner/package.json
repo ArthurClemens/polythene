@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-ios-spinner",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "",
   "main": "dist/polythene-css-ios-spinner",
   "module": "dist/polythene-css-ios-spinner.mjs",
@@ -18,11 +18,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.5.4",
-    "polythene-core-css": "^1.5.4",
-    "polythene-css-base-spinner": "^1.5.4",
-    "polythene-css-classes": "^1.5.4",
-    "polythene-theme": "^1.5.4"
+    "polythene-core": "1.5.5",
+    "polythene-core-css": "1.5.5",
+    "polythene-css-base-spinner": "1.5.5",
+    "polythene-css-classes": "1.5.5",
+    "polythene-theme": "1.5.5"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

@@ -22,7 +22,7 @@ const update = filename => {
         console.log("DRY RUN", `"change version to": "${newVersion}"`); // eslint-disable-line no-console
       } else {
         shell.sed("-i", `"version": ".*"`, `"version": "${newVersion}"`, filename);
-        shell.sed("-i", `"polythene-(.*)": ".*?"`, `"polythene-$1": "^${newVersion}"`, filename);
+        shell.sed("-i", `"polythene-(.*)": ".*?"`, `"polythene-$1": "${newVersion}"`, filename);
       }
       resolve(filename);
     } else {

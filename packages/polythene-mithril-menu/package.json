@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-menu",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "",
   "main": "dist/polythene-mithril-menu",
   "module": "dist/polythene-mithril-menu.mjs",
@@ -17,11 +17,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.5.4",
-    "polythene-core-menu": "^1.5.4",
-    "polythene-css-classes": "^1.5.4",
-    "polythene-mithril-base": "^1.5.4",
-    "polythene-mithril-shadow": "^1.5.4"
+    "polythene-core": "1.5.5",
+    "polythene-core-menu": "1.5.5",
+    "polythene-css-classes": "1.5.5",
+    "polythene-mithril-base": "1.5.5",
+    "polythene-mithril-shadow": "1.5.5"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.14"
