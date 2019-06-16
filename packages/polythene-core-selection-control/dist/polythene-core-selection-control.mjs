@@ -187,7 +187,10 @@ var _SelectionControl = function _SelectionControl(_ref) {
     }
   };
 
-  var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
+  var componentProps = _extends({}, filterSupportedAttributes(props, {
+    remove: ["style"]
+  }), // Set style on view control
+  props.testId && {
     "data-test-id": props.testId
   }, {
     className: [classes.component, props.instanceClass, // for instance pe-checkbox-control
@@ -248,6 +251,7 @@ var _ViewControl = function _ViewControl(_ref) {
   var content = h(IconButton, _extends({}, {
     element: "div",
     className: classes.button,
+    style: props.style,
     content: CONTENT.map(function (o) {
       return h(Icon, createIcon(h, o.iconType, props, o.className));
     }),

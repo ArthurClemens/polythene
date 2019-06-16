@@ -61,7 +61,7 @@
 Bug fixes:
 
 * Ripple: multiple ripples were allowed without passing `multi`.
-  
+* Switch: restore `style` option  
 
 ### 1.6.4
 
