@@ -2,7 +2,7 @@ import stream from "mithril/stream";
 
 export default ({ h, a, TextField, Button }) => ({
   oninit: vnode => {
-    const value = stream("");
+    const value = stream("some text");
     const setInputState = stream();
     Object.assign(vnode.state, {
       value,
@@ -17,6 +17,7 @@ export default ({ h, a, TextField, Button }) => ({
     return h("div", [
       h(TextField, {
         help: "Type text, or press ARROW RIGHT to insert a character programmaticaly",
+        defaultValue: value,
         onChange: ({ value, setInputState }) => (
           state.value(value),
           state.setInputState(setInputState)
@@ -29,7 +30,6 @@ export default ({ h, a, TextField, Button }) => ({
             }
           }
         },
-        value,
       }),
       h(Button, {
         raised: true,

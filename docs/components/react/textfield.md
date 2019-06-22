@@ -4,23 +4,23 @@
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Options](#options)
-- [Usage](#usage)
-  - [Help texts](#help-texts)
-  - [Front-end validation](#front-end-validation)
-    - [When to validate](#when-to-validate)
-  - [Custom validation](#custom-validation)
-    - [Checking the field value with callback function "validate"](#checking-the-field-value-with-callback-function-validate)
-  - [Using a validation library / setting the "valid" state directly](#using-a-validation-library--setting-the-valid-state-directly)
-  - [Character counter](#character-counter)
-  - [Reading and setting the value](#reading-and-setting-the-value)
-  - [Programmatically setting focus and value](#programmatically-setting-focus-and-value)
-- [Appearance](#appearance)
-  - [Styling](#styling)
-    - [Themed component](#themed-component)
-    - [CSS](#css)
-    - [Style](#style)
-  - [Dark or light tone](#dark-or-light-tone)
+- [Options](#Options)
+- [Usage](#Usage)
+  - [Help texts](#Help-texts)
+  - [Front-end validation](#Front-end-validation)
+    - [When to validate](#When-to-validate)
+  - [Custom validation](#Custom-validation)
+    - [Checking the field value with callback function "validate"](#Checking-the-field-value-with-callback-function-validate)
+  - [Using a validation library / setting the "valid" state directly](#Using-a-validation-library--setting-the-valid-state-directly)
+  - [Character counter](#Character-counter)
+  - [Reading and setting the value](#Reading-and-setting-the-value)
+  - [Programmatically setting focus and value](#Programmatically-setting-focus-and-value)
+- [Appearance](#Appearance)
+  - [Styling](#Styling)
+    - [Themed component](#Themed-component)
+    - [CSS](#CSS)
+    - [Style](#Style)
+  - [Dark or light tone](#Dark-or-light-tone)
 
 <!-- /MarkdownTOC -->
 
@@ -35,7 +35,7 @@
 <a id="usage"></a>
 ## Usage
 
-<a href="https://flems.io/#0=N4IgzgxgTg9gNnEAuA2gBgDQEYAsBOHAXQxADMBLOAUzGRVADsBDAWyuRADoALAFxcQkIMBryqiOAHjjkGAawAE3KFVIBeADog+vAA5gkAekNMovbgFcoEamwZhOAc3LmLAI07kYJsGCq8wQ114AE9zcSpDKgAPVl1qQNJbBwhfLQUVOE1wXhCE7ip-LQA+DQZJSChyXV4FMGtsnX0jEzNLa1txB2dXDy8fPwCg0PCGSLBeJgYAEyY4EUjguDCCsYBaFSYIXmHl0aoNqi3eNYmp2fmxzgArMBLJQ0rq3lLyp5q6hq0mg2NTVw6VDs3Rclj63iYvn8gSWKwij0mMzmC12cPWqRhI1WBwxp0RFwWNzuIGKD3eLzKZUk03IADcFORptlYDBePdDDTacUQCQ-NRtl57BwsEg0CAAL4YRisdhILi3HkgYSicS8DjKiYKYAKAAqMV4ADFyFQ4NMMAoAEpMch+aYAIQsvF4IgU4oUagUsP2AG5KQwbJCwAoAMr+ABqcwsVAU+vE0yDFqO204AGEYCxgmNRFq-QoFBreFALNsYFAABS6WD6ACUOYYebzYAsuio5crMBrvvrDfMNs4ZzE7rrDYbtMjVCQCi0WgwZRHjf8AEkGLpHcHJmJJxYZqpZFRpnOG+Ku3nxYfDyod+Xa8BD3mCwox3Ao0Pew4B1ROE+oyeGw-Bsuq68OuTCDh6b79hun4ASua5Qb+eYqLwVj1tSdKvPOCiSHq0SGsapp3vOBRwLo2Q6iELZ1Om0ZiLh5qlp6Ki+AoACCAAibGWixABybEAPIALIKM6DL2K2tRMPm3CmMcraMTAjhQKwLCgeQEBzCE07dphIgptJDCOFQajAGMADuIFgcUwncH2gwWVQZa3tp84aLw34TgoZn2V+46zs5I6uTBQH2ZOXlQf2S6wcBUGESO4rVme-mjuOxnuYlmGGBh85ofSAa+NxMrZC2axuI6zoMBsMCmSUsUNpIVo2vuDpOiItUjnATBuCa2QsdM0wZOc6ZaZhI5ULSqpgMZTkjfOukyBAciTmWtZqFZQVwaBDnTTN87uZO7kKAA1CGhayI4nCkLALB6aYabTA5eAAOxHQoAmgdwF3zKWZZveYnBKTM6bLQoABUCgAEwAGzVtWfk7fOpAwBAFgGMJRZUG187xZjp7pSNmWY-V1q2s15U4woHVdVkWgptQpjDTtY0TVN5N5nNamLQowOrXUkXBVBjms8lz4edOPJC3miPI6jhZRkL2NJXFeMZVlI4PJyqtYRy6G-oliVlA+LG6LoQ7c1Zh45ZrOX5h1+WFVosCmZ5rIYyStWSJJyiqI0TrNH8bRWDYQJdE4oLuJ43hetiaz3SwMCBJs2yGAAxIYtG8BQJoHiAwmmIZvDZAA+m4HXyCUobRnMYAwJOAAKWIRAoiNQJaSa1Gsur6goRpZwoscwA8TBW9rXKEdbeVgAVbDMlVNVJePtuT-bIC8C41AlAAMp1Jrq+h7ucjbgZT0ZWjCBmCyiHPM3YfqPemhT2-UyAW9U+kBPzyPw8a2PB8T8fM-VTdvPX+i9-5aFXrwdeJIDTzFUgZB+VNd6j2AXSQ+dtp6n3TJmVUV8Ro31wnffqlNupaBfiadISQYBwMcGQuACh36YSQV-PezkF5H2Xo7XBasQHsIwSvNertigAAkTQm3Tkw-eqC-7LzPtgy+QDr44TwlncmxCn4AE0YBWAUMfBmM1iKkS0AAURVC3cInkZQKEhAoUyVQnTiAUC6cx0B9wuHzKYbOmMGHZU-mPXxrCeHoJPiAThCjsqBKXnwiBUDigCQsHAVeFM9wSJQblUBMisEXzZGExhSjCGqMftkGBVDV7wLUaJBQLB4mrzWDIMYokgJ6JGpQ6htDyZVISeQDee5yaO0msAcGyt5zeLVv40Z38AlSPSXw0Jms8xsKCdkaJgjEwAEcLDkBUP1dyKTGERLAUqTJWZslzLqnk-CB5FYNjUdkTR2jmBsCaZhFppSaGP3JgY7IJixBmIKBYtgVigy2JcGIesTi-kuJpLUdSUBPFXMQlQdZmz9xeNObsuqYy6r7I4bPHJWKpm8OCcskoKYUbOhYI+OYjJVIiHRdwglizMHn2OVw7K5yVHwr7qoJg1SIwi2yJ1FMTzdpUtmGIVK453Tm05XmA6ABCNQHp3KcGdBvKqrYUyQgctWCWCgAD8XNtrwxHE+Rkk5SBVyoHDY1o0oCwCgJOLQfEGDLAUCjaM8xTKtnUn4KSMltitgcMKmaCsbV5lCvEuAQzMKmrFVQFi0V-iovdpi+ZqasLYpmbitFmaiUCJJVo0xdL8VpMJdkWRWTWVq3ZQRTlNytBsRoNAZ4gpg0NheWdNpnL7oWt5SlUhpYgQMn0BYCl0x4AMTAG4mUvBZwgHJsIbcPzjIAGY0DRvnK2e1tytFKCYONGM0QICFHuv1cxKlojkCqRShgo6uotxgKQP1SkA1QCDfOq5IyMUTPGSw+lpbGUhOzZIgDkS82QMEWxG0nVqDTGLfM3N5ajk4LxdW2+FyClU2yG0j98MaRgBgyiz9aL03FoWWBgBVaM0Moo+A-NJJQy1AOucJuSMUbweo6Bg5FaWWobqoxvlL4v1pp-d+v9Ja0G0aA07YqswoByDWOVQRIHJMHOJdA2BryEEmi5nJxQSnqwcfI9x5D8jTnzJrUQwppD3k5w7QZWh9CSOiZE+JhDNGDmO09AcPTimFhUeM8vdTxQoMEZLvuXTph9MLEM+m9zXGMnMpQ+ZrClnMMkOfrZ8m+HCOXJmsJrWLnCviZSWURMxx+ICX+nGVsZYLZGxNpla147kZ2F4E4fwRjOiiDtCERc0w6tAdZFoHVDBqzekVLIygrYOBuEfoqPkVABQiFoHKLAABWFdSAsBiklNKNgHBOAYkmyIUFao5QSmICAOpchVv0BAA82UIS26cHuuNeYug2tEkVFYRAcofgtG3LoOQ50z6GETjsUd0xwcvbeyaDsX2FQkFyC2Dg5IJRSgezKDgEOY7ple0zD7iPaAkF+xwAHxggcg6O+mGHxw8csEMFDun2wGcE-ewj1U33kcUSe+j8UhBxRAA" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+<a href="https://flems.io/#0=N4Igxg9gdgzhA2BTEAucD4EMAONEBMQAaEGMAJw1QG0AGIgRgBYAOWgXRIDMBLJGGqCiYAtsjQA6ABYAXEfGLooMxMtQgAPPB5QA1gAIp5RFwC8AHRCyZuFAHo7mcjKkBXcmCRjYEgOY8XVwAjCR4IRxg8GRg7bAQATxdVRDtEAA9RbH47Li8YCTBIy31jeAtSGXj+KUREGUsAPnMoDTJyHmwZfRgPcutbBydAjy9VfP9AkLCIqJi4+ESaqBSYGUwofEx4aBT5xeSAWmNMMBlYhKTlo8QTmQPV9c3t5YkAKxhGjTs2jpkmlp+nW6vUs-Rg9kczjcI0Q3nGATcU3CmEidTmFyWKzWGy2O3OC0uiAOhXRBMxxMi92xTx2bw+IAaX0Bf2azQ0+B4ADd9Dx8OVKBB6gyvhzOQ1FHgkKcwrB1AwULQQABfIhCUTiEB0xSQZSqGTqHWrfTAfQAFXSMgAYjxEPB8ER9AAlTA8PD4ABCrhkMmg+iV+lM+j2hIA3KyoIaugBlOoANS2rkQAf0AAoAJQBhrG5r6fSR-TUTkJxAOqLx+CJ9jJx03U4SVx4KNrFQpyyWNNhqC5-NRACSUGwXqbmBUNa41drMnreDH6c7ueMMncXdbXdz+g0-3X6405rSVptdpz2-XNXg2HKpvi2CTcDE+hU+4dEHIQeMkX0AEEACLfp2fgA5b8AHkAFkHwgHlYEQZx9EwPMpCcW4YLfCBfHIUQRBHHgwC2eI2zXE99GgABhRCoF8RBTGAZYAHdhxUTNs0IojujjYsUzohjEAkIsK0QDtj1YtiZH7QcZG4scCncYxlGTLjmx4vsByHRT51YpUlSE9c7C3E92S5PMsEiAD1XKG8DiCL0fSgI4IFoxptO3DRnVdAhPW9aAnJPLAgltcpP3wfASkeCARAI4Tc0QTk9RgajgG8ojSO0MBdBQVMM1MLNlPEySTGk8hZJkFMEpYyL9D4xN0sqpMAGp9CbdoKIkLhKBEMinBIiB8EQFMAE4AHZ9Hq0CRykFrthfFNRpcCQMI2ML030AAqfQACYADY0zTIhEtYrgIDABt0pkchEz27clTTC6-S0sqdL0oiXJdN0PJsm7fP8ywSKQJwIsi6LYvim7c2SnC0oypictUkdECko7Cr1EqQfXGr0rbYgUdzA6jvBB8zsQFGrpuzS9t0vaNGwbpKiQeL9Cw8h-CgU0IGwdGQDW2hsDSYpNIaYAAANyyq-QABJgBqpUBaVL5sEenc7FFeWvj0wSoDu5p80-bAqcDJasv0Y8DLFbTjaMlEYFMsR+Xs-QoEFQmGW8jR4KMEw+m9AZIWGTxYTGPwEWCUJwmDckepECAYmOU47AAYjsR8ZF4W18GKNZGbqcoAH0giwPRGhjJMtjgdKAAUMWSfQDtfGtbn0A4zQtfRrRT-Rw4gL5MGVxWuWV0VzZMszLEoBynfus3PAtq2qMsGQAiQRoABlMD8+ARV753+8nwfrcsSARDiZZlEc+7c13C0W7tfRPrKSxl9X4pyfHnuTZY9fX+crfjMtoeQBHk+npfynr-OeMgF4MktNsbCFFr4r1tO-eWZ8gE7xnugA+Oxj5j2Euffcl9go33KPfW0xRcgQGgb4Ih8B9BPyei-buStTbIJ-rvP+9kAH6SYdPcooDwENAABK2iponBBm9DLb2Yag-eh89TsKenuA8KcPpwNviAAAmhAdw+hp7-WEmeC8lgACiupXxJDtuqOCMB9C0XaN6VQxEuymIoAQAIeYnCpxAGTRBG46Gmx8W-Thv9-5YI4WI7+XDZ7z0dg0UCrh4Bz2vjoRAIjx4BJYVIjBQovFn3kXgpRq9yiQLIXPGBN8oL01iXPA42hlhQXEjo-aUDikUOUTdEQFSeCL0STdEecVgBrTusJGh+k-HORGTuVJqCgleInmEkBkTGg1gAI6uB4MYYKNVkmANCcAtJYVpGYKyRuHJh5U6n3XAQyw6jNHCDEPUoipDyGUJuno8oRiVAmJqGY+8KIrE2JUF2X0ji1kuNwuQdx3TEDLNWQQTxzsxln3hRuCZNtR7TORREsBUSSINh9CICqWxeTYWgJskJ3JxHhLQfszJFNjmKLObmHqXBMAVOFqgleJE7knj4oSlQ1EapMRRvygAhKYQMNUJA+kXvZGCJEUS9WuvSk8AB+VMpVypEW5fgdKTL4B4F2oqoiMFKDkHZsBKACx9ANiTNsWiMFcJ4AQkhU4MF8icuEsTA1650pQFifAAZkVNWw0-BJdO9QzlDNGQwt+iKZk7MmWw4Jn9tkoO4fMhkXVXDGJJUmslszdnoKPtSs5OCFFHkVRckA35EDMhlG69cDymlPMVYy5lcTWWEJfLCHkuBXB4vwAgF83QXHqhkLtDxirICZvedRAAzLQf1wkjUvnKFcwwmAYr6HSGAWoPVgqmKwmkHgbS8U+pEH5V8EBxxgEQhhZ15BXXjsGdMmNMb0WsNRaI3NcbU2YsaN+V0K8kD4GzeM5NEjyjpMLbI-StKy3lQrU8x9kUOQwEAzC8Nz6o2Ro3v4sDFKpmfoHuBjFvCYxdH5Y8Kuh0GwgaQXh3+kGZGJv0mR1l1DMM4ewx-UDX6U3D1thZTY5BdAHBslEwj5K5m-ogY0nQvhYGr1TEJgwYm0y0aRfR-NVLoPOVg-g5RhCWkgCrrJiilD2NwqwwrKzdHePEffUGIkynRM7B0xpuzFKeFRP-ah3OBAlNOBUzsNTiLbNEYpYxg5NKL4nLyV9EAiGboobQ6cp9lnOPWYy8k5otdTggVAnNVQPVyCrjPtrKmul9UMuo94KclEZAGNGMod08Rez4FbKwwU7Zmgdm1HsvgMF1BBGURKW0iBpTQAEGgNaA0UAAFYGDKlVCAG5GoCiRD67qNQaBlScBANU3QU3qBqjEOoaOU4eoxW2NgWrWoSDuAUGgMEEJM3YF0L4AoYU7DnbsL2-A33JwSEu7aVmt33iKEqDedQzIlsnY1Odg4-aRBA8BtdsHAh7vkEe1YT24IHCvfe59kQAPbiI6+39knpwyfI+B2jvUd2QCQ41DDpU7AlRAA" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~jsx
 import React from "react"
@@ -244,9 +244,9 @@ To use the received input value, pass `value`:
 
 ~~~jsx
 <TextField
-  onChange={newState => this.setState({ value: newState.value })} 
-  value={this.state.value}
+  onChange={newState => this.setState({ value: newState.value })}
 />
+<p>{`Value: ${value}`}</p>
 ~~~
 
 <a id="programmatically-setting-focus-and-value"></a>

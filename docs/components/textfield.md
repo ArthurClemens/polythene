@@ -4,14 +4,14 @@ Form input field. Generates a styled text input element.
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Main features](#main-features)
-- [Usage](#usage)
-- [Options](#options)
-  - [Text field options](#text-field-options)
-  - [Input options](#input-options)
-  - [Validation options](#validation-options)
-  - [Common component options](#common-component-options)
-- [CSS classes](#css-classes)
+- [Main features](#Main-features)
+- [Usage](#Usage)
+- [Options](#Options)
+  - [Text field options](#Text-field-options)
+  - [Input options](#Input-options)
+  - [Validation options](#Validation-options)
+  - [Common component options](#Common-component-options)
+- [CSS classes](#CSS-classes)
 
 <!-- /MarkdownTOC -->
 
@@ -81,7 +81,7 @@ These options also have effect on the generated HTML input field.
 | **readonly** (React: **readOnly**) | optional | Boolean | | Creates a readonly input field |
 | **rows** | optional (only when `multiLine` is `true`) | Number | | The number of rows for the textarea |
 | **type** | optional | String: "text", "password", "email", "number", ... | "text" | Type of input element |
-| **value** | optional | String | | Input value |
+| **value** | optional | String | | Input value; this should normally not be set - for instance Safari will move the input to the end of the string at each change |
 | **placeholder** | optional | String | | Placeholder text; alternative for using a label |
 | **domAttributes** | optional | Object | | Additional attibutes such as `autocapitalize` (`autoCapitalize` for React) |
 
