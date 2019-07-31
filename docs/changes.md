@@ -1,66 +1,116 @@
 # Change log
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="2,3" -->
+- [1.7](#17)
+  - [1.7.0](#170)
+    - [Mithril 2.x](#mithril-2x)
+    - [Regular updates](#regular-updates)
 - [1.6](#16)
-  - [1.6.x](#16x)
   - [1.6.5](#165)
   - [1.6.4](#164)
   - [1.6.3](#163)
   - [1.6.2](#162)
   - [1.6.1](#161)
   - [1.6.0](#160)
-    - [Under the hood](#Under-the-hood)
-    - [CSS](#CSS)
-    - [Focus indication](#Focus-indication)
-    - [Closing dialogs and drawers with ESCAPE](#Closing-dialogs-and-drawers-with-ESCAPE)
-    - [Bug fixes](#Bug-fixes)
-    - [Removed](#Removed)
-    - [Other changes](#Other-changes)
+    - [Under the hood](#under-the-hood)
+    - [CSS](#css)
+    - [Focus indication](#focus-indication)
+    - [Closing dialogs and drawers with ESCAPE](#closing-dialogs-and-drawers-with-escape)
+    - [Bug fixes](#bug-fixes)
+    - [Removed](#removed)
+    - [Other changes](#other-changes)
+- [1.5](#15)
   - [1.5.4](#154)
   - [1.5.2](#152)
   - [1.5.0](#150)
-    - [Bundle size](#Bundle-size)
-    - [TypeScript type definitions](#TypeScript-type-definitions)
-    - [CSS](#CSS-1)
-    - [Components](#Components)
+    - [Bundle size](#bundle-size)
+    - [TypeScript type definitions](#typescript-type-definitions)
+    - [CSS](#css-1)
+    - [Components](#components)
 - [1.4](#14)
   - [1.4.2](#142)
   - [1.4.1](#141)
   - [1.4.0](#140)
 - [1.3](#13)
   - [1.3.2](#132)
-    - [Material Design version 2 -- first small changes](#Material-Design-version-2----first-small-changes)
-    - [CSS](#CSS-2)
-      - [Themes and behavior](#Themes-and-behavior)
-      - [Themes and media queries](#Themes-and-media-queries)
-    - [Components](#Components-1)
-    - [Deprecations](#Deprecations)
-    - [Other](#Other)
+    - [Material Design version 2 -- first small changes](#material-design-version-2----first-small-changes)
+    - [CSS](#css-2)
+      - [Themes and behavior](#themes-and-behavior)
+      - [Themes and media queries](#themes-and-media-queries)
+    - [Components](#components-1)
+    - [Deprecations](#deprecations)
+    - [Other](#other)
 - [1.2](#12)
   - [1.2.0](#120)
-    - [Components](#Components-2)
-    - [Other](#Other-1)
+    - [Components](#components-2)
+    - [Other](#other-1)
 - [1.1](#11)
   - [1.1.0](#110)
-    - [Core](#Core)
-    - [Components](#Components-3)
-    - [Example code](#Example-code)
-    - [Tooling](#Tooling)
-    - [Other](#Other-2)
+    - [Core](#core)
+    - [Components](#components-3)
+    - [Example code](#example-code)
+    - [Tooling](#tooling)
+    - [Other](#other-2)
 - [1.0](#10)
   - [1.0.0](#100)
-- [Pre-releases](#Pre-releases)
+- [Pre-releases](#pre-releases)
 
 <!-- /MarkdownTOC -->
 
-## 1.6
+## 1.7
 
-### 1.6.x
+### 1.7.0
+
+#### Mithril 2.x
+
+Polythene is now compatible with the recent release of Mithril 2.x.
+
+Mithril's API change may have some implications for code written with Polythene:
+
+1. Link building. The `m.route.link` function has been removed in favor of the `m.route.Link` component. This leads to a small code change for Polythene component option `url`:
+
+   Mithril 1.x code:
+   
+   ```javascript
+   h(Button, {
+     label: "Update",
+     element: "a", // this is the default, so can be omitted
+     url: {
+       href: route.path,
+       oncreate: m.route.link
+     }
+   })
+   ```
+   
+   Mithril 2.x code:
+   
+   ```javascript
+   h(Button, {
+     label: "Update",
+     element: h.route.Link, // Note the capital L
+     url: {
+       selector: "a", // this is the default, so can be omitted
+       href: route.path,
+     }
+   })
+   ```
+
+2. Mithril 2.x is much stricter when to use keys in arrays; when a mix of keyed and unkeyed fragments are encountered, the program will bail with an error. Mithril has an [elaborate page on keys](https://mithril.js.org/keys.html) that helps to solve issues.
+
+Other changes related to Mithril code can be found in the [Mithril release notes](https://github.com/MithrilJS/mithril.js/releases).
+
+#### Regular updates
+
+Bug fixes:
+
+* Card: Images did not load properly in some cases. This is now fixed.
 
 Documentation:
 
 * The TextField documentation contained some examples that set the field value programmatically. This led to unexpected behavior in Safari (where the cursor jumps to the end with each change). The documentation was a bit misleading - it is not required to pass the value back to the component. Documentation and demos have been updated.
 
+
+## 1.6
 
 ### 1.6.5
 
@@ -146,6 +196,7 @@ Use new option `disableEscape` to prevent ESCAPE from closing the dialog or draw
 * Raised Button styles are now defined by CSS only. Shadow component contains a couple of extra hepler classes for this purpose.
 
 
+## 1.5
 
 ### 1.5.4
 
