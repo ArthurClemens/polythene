@@ -13,6 +13,6 @@ Base functionality for:
 
 Class names can be imported with:
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/selection-control";
-~~~
+```

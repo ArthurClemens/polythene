@@ -34,27 +34,27 @@
 
 A typical Material Design (indeterminate) spinner:
 
-~~~javascript
+```javascript
 import { MaterialDesignSpinner as Spinner } from "polythene-mithril"
-~~~
+```
 
 A typical iOS (indeterminate) spinner:
 
-~~~javascript
+```javascript
 import { IOSSpinner as Spinner } from "polythene-mithril"
-~~~
+```
 
 A Material Design determinate spinner:
 
-~~~javascript
+```javascript
 import { MaterialDesignProgressSpinner as Spinner } from "polythene-mithril"
-~~~
+```
 
 Display the Spinner:
 
-~~~javascript
+```javascript
 m(Spinner, { show: true })
-~~~
+```
 
 
 <a id="show"></a>
@@ -71,7 +71,7 @@ By default the Spinner is hidden. To show the spinner, either:
 
 To show a spinner "filling" a progress circle:
 
-~~~javascript
+```javascript
 import { MaterialDesignProgressSpinner as Spinner } from "polythene-mithril"
 
 m(Spinner,
@@ -80,13 +80,13 @@ m(Spinner,
     percentage: vnode.state.percentage
   }
 )
-~~~
+```
 
 The progress spinner draws a circle between 0 and 360 degrees. The completeness is set with `percentage`, with a range between `0.0` and `1.0`. This value would normally be set by a progress function, for instance a loader.
 
 For demonstration purposes, this can be emulated with a "step" function that updates the percentage until 1.0 is reached:
 
-~~~javascript
+```javascript
 import m from "mithril"
 import stream from "mithril/stream"
 import { MaterialDesignProgressSpinner as Spinner, Button } from "polythene-mithril"
@@ -132,7 +132,7 @@ const Test = {
     ]
   }
 }
-~~~
+```
 
 
 
@@ -158,7 +158,7 @@ You can find more information about theming in  [Theming](../../theming.md).
 <a id="themed-component"></a>
 #### Themed component
 
-~~~javascript
+```javascript
 import { MaterialDesignSpinnerCSS } from "polythene-css"
 
 MaterialDesignSpinnerCSS.addStyle(".themed-spinner", {
@@ -169,7 +169,7 @@ MaterialDesignSpinnerCSS.addStyle(".themed-spinner", {
 m(Spinner, {
   className: "themed-spinner"
 })
-~~~
+```
 
 <a id="css"></a>
 #### CSS
@@ -183,24 +183,24 @@ Change CSS using the CSS classes:
 
 Class names can be imported with:
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/ios-spinner"
 
 // etcetera
-~~~
+```
 
 <a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
 
-~~~javascript
+```javascript
 m(MaterialDesignProgressSpinner, {
   style: {
     color: "red"
   }
 })
-~~~
+```
 
 
 <a id="dark-or-light-tone"></a>

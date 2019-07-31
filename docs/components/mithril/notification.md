@@ -54,7 +54,7 @@ Notifications will be spawned from `m(Notification)`. To show notification messa
 
 Because a notification should float on top of everything else, outside of the context of the caller, it can be considered a global component. It is best placed in the root view, so that it is not obstructed by other components:
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Notification } from "polythene-mithril"
 
@@ -65,7 +65,7 @@ const app = {
     m(Notification)
   ]
 }
-~~~
+```
 
 Side notes:
 
@@ -80,24 +80,24 @@ Usually you'll use only one location for notifications - on top of all content a
 
 If you are using multiple spawners, differentiate them with option `spawn`:
 
-~~~javascript
+```javascript
 m(Notification, { spawn: "notifs" })
-~~~
+```
 
 Calls to show the message will then also need to pass that spawn:
 
-~~~javascript
+```javascript
 Notification.show(messageOptions, { spawn: "notifs" })
-~~~
+```
 
 <a id="spawner-position"></a>
 #### Spawner position
 
 The notifications holder has by default CSS property `position: fixed`. This will float the messages on top of the content below. In order to show notifications inside a container, use option `position: "container"`:
 
-~~~javascript
+```javascript
 Notification.show(messageOptions, { spawn: "notifs", position: "container" })
-~~~
+```
 
 This will render the holder with `position: absolute`. The container element needs to have `position: relative`.
 
@@ -105,14 +105,14 @@ This will render the holder with `position: absolute`. The container element nee
 <a id="notification-functions"></a>
 ### Notification functions
 
-~~~javascript
+```javascript
 Notification.show(options)
 Notification.hide(options)
 Notification.pause(options)
 Notification.unpause(options)
 Notification.count()
 Notification.clear()
-~~~
+```
 
 <a id="show"></a>
 #### show
@@ -129,7 +129,7 @@ Shows a new message.
 
 Examples:
 
-~~~javascript
+```javascript
 const messageOptions = {
   title: "This is the message"
 }
@@ -138,19 +138,19 @@ const messageOptions = {
 Notification.show(messageOptions)
 Notification.show(messageOptions, { spawn: "notifs" })
 Notification.show(messageOptions).then(() => console.log("Notification shown"))
-~~~
+```
 
 In case the notification contents needs to change when a state changes (for instance after user interaction, or after reading in translations), you should pass a function instead.
 
 `optionsFn` is a function that returns an options object:
 
-~~~javascript
+```javascript
 const optionsFn = () => ({
   title: "This is the message"
 })
 
 Notification.show(optionsFn);
-~~~
+```
 
 Using a function ensures that the options are read afresh with the new state.
 
@@ -168,11 +168,11 @@ Hides the current message.
 
 Examples:
 
-~~~javascript
+```javascript
 Notification.hide()
 Notification.hide({ spawn: "notifs" })
 Notification.hide().then(() => console.log("Notification hidden"))
-~~~
+```
 
 <a id="pause"></a>
 #### pause
@@ -205,11 +205,11 @@ Clears the lists of messages.
 
 If a message is on screen, this would suddenly disappear. You might first want to hide the current message before clearing all:
 
-~~~javascript
+```javascript
 Notification.hide(spawnOptions).then(() =>
   Notification.clear()
 )
-~~~
+```
 
 <a id="count"></a>
 #### count
@@ -220,9 +220,9 @@ Returns the number of messages.
 
 Example:
 
-~~~javascript
+```javascript
 let messageCount = Notification.count()
-~~~
+```
 
 
 <a id="callbacks"></a>
@@ -236,7 +236,7 @@ Callback functions that are called after the transition: `didShow` and `didHide`
 
 Let's say the notification has an Undo button. Clicking it shows a dialog is on screen with OK/Cancel buttons. During the time the dialog is on screen, the notification is paused, so it will still there after the dialog Cancel button is clicked.
  
-~~~javascript
+```javascript
 import m from "mithril"
 import { Notification, Dialog, Button } from "polythene-mithril"
 
@@ -280,7 +280,7 @@ Notification.show({
     }
   })
 })
-~~~
+```
 
 
 
@@ -300,7 +300,7 @@ You can find more information about theming in  [Theming](../../theming.md).
 <a id="themed-component"></a>
 #### Themed component
 
-~~~javascript
+```javascript
 import { NotificationCSS } from "polythene-css"
 
 NotificationCSS.addStyle(".themed-notification", {
@@ -311,7 +311,7 @@ NotificationCSS.addStyle(".themed-notification", {
 m(Notification, {
   className: "themed-notification"
 })
-~~~
+```
 
 <a id="css"></a>
 #### CSS
@@ -323,27 +323,27 @@ Change CSS using the CSS classes:
 
 Class names can be imported with:
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/notification"
-~~~
+```
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/snackbar"
-~~~
+```
 
 <a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
 
-~~~javascript
+```javascript
 m(Notification, {
   style: {
     color: "orange",
     backgroundColor: "#4E342E"
   }
 })
-~~~
+```
 
 <a id="dark-or-light-tone"></a>
 ### Dark or light tone
@@ -370,7 +370,7 @@ For this, specify option `containerSelector`.
 
 Note that the container has `position: relative`. The messages will have `position: absolute`.
 
-~~~javascript
+```javascript
 m("#notifs-area",
   {
     style: {
@@ -386,7 +386,7 @@ Snackbar.show({
   containerSelector: "#notifs-area",
   // more message options
 })
-~~~
+```
 
 
 

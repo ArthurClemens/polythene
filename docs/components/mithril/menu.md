@@ -55,7 +55,7 @@
 
 A bare bones menu (made permanently visible to start simple):
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Menu, List, ListTile } from "polythene-mithril"
 
@@ -66,7 +66,7 @@ m(Menu, {
     m(ListTile, { title: "No" })
   ])
 })
-~~~
+```
 
 <a id="showing"></a>
 ### Showing
@@ -88,7 +88,7 @@ Menu state is best stored locally, in the container component:
 
 <a href="https://flems.io/#0=N4Igxg9gdgzhA2BTEAucD4EMAONEBMQAaEGMAJw1QG0AGIgVgDYB2AXRIDMBLJGG0FEwBbZGgB0ACwAuw+MXRRpiJahAAeeNygBrAASTyiTgF4AOiBnTcKAPS3M5aZICu5MElGxxAc27OXACNxbggHGDxpGFtsBABPZxVEW0QADxFsPltOTxhxMAiLPSN4c1JpOL5JRERpCwA+Mygm9TJybmxpPRh3Mqsbe0cA908VPL8A4NDwyOjY+ATqqGSYaUwofEx4aGT5xaSAWmF-Q14Y+MTlo5P2+APV9c3t5fEAKxgG9Vs2julG5qgrQov26vQs-RgdgcTlcI0QXnGJyCITCmAitTmFyWKzWGy2O3OC0uiAOBUxROxpIi91xTx2bw+IHqXx+nX+LXw3AAbnpuPgypQIHUmV9OVz6go8EgwNJQrA1LQULQDkwUAAmACMIAAvkRBCIxCAACKUbD4CAAdygDIUkCUKmkansegAklA9OsPdhsHo4hAXHoLf74Pg9C48LzhLEnDA9FodIhuhAUE1ndwoxAnHphHpOJQcxZjs5bhZU7ZI9GusA9ABZFQuIh6ABCLmk0mgjYAMtxVl2e9IACq8RPa3P5vQWPbE0sAu2rPTVutQBvN1vtqB93t6burIdIPSjkx6KfYppNOddE0QM2W91HgAU1cwbfIse1AEo9CZ6gumno9Be2b1gA8p0cqxke1AakQapEAAzEQAAsjBEEwRAsEQAAcRAAJxEBq9AatBGqwRqCEashGoMPhaEahhGrYRqeFqrQbDiMIOD3neP6Pn+-56LK0hICgegAAZLgG-jwnoAAkwBQNqolEHx-4JnEIkbnxH7vgA3HxfGAYEa7QC6oZHhYfIHPg8IQBYekAv+gEPMoX6-u6-EwJIloiZwWx4Mp7n-lKiAygQbrWakIn0Fp9n-nxRjSG47rACpehctwiAWiJj4ei+b6ft+bn8fxTleRarnOYg4ieZasXFQB0DzsFoX4OFaQVWsyjVYg0rKK1GxpHVxUJUl2b3hYYoWAF9X8SlgUzd0FTCUVC3FbEMD+HKIkWCUz7cogU16M67bHhAG2ytAAnVEBy4CbZ82rdU3A+DI20gNo1TtMKqUzdqP38bq-3-tQQP8cI94SY2c2rcVazkD4tQiaJADEclGW2Jn4Ip00w0FZU47jnL4AAEnyiDZQVP6VdVZWub58D+aDxWSGTRo9Zg6l6OIDHRQ9C0WnyzgiQhTP8U9L3SCJz7SK+UiIM9MgEzDbQYAOjgI5LYnI1JwgHHJzV9W1qTY6L-6Zs92hve22BTabeiBJgYA6PgpoiTLLiIErq12soSgieDO7SFDduORAUaO5r7ueyHAnDpCN0uKBF3eBx2D3veOuNtoEWUzH-4B-2e6eytuMzYJy06+I5fR3zpe8vgSM63rwDZ2kJu16XBsECJrepF+JhHl3-URV7de8robvkB7o9115XKIOQmCBMtUcz6XiDz0o8fQ2PM3QB43BOxTX48XnC3U0PRuub3a+7xftNHvTeBn8V74vweZ8fjHb8d8VX+-wed8t8xotgxhuEuMM+QiXRuuUywD-xYECD1f2IEwKNWoJfAaqQ2LV3gUdcsABlWmAtnAegEu0dYPhhJ2xdtec0VoRI7zrteFQIkaoWjtoDAB-4N4Om3jHfeWgj56HvJTRaz4qrsNcgAQnYZw0W-9VpsH+j-P+Wkmh-QBGkSsehrK+RcPAS8pp6FQHspKHqIVk78DQAwJUOo9QgCEKINQNoSA+wdGoQCi56ybiDtuQuw5GwACVMA9gIKA9cjYiGYHoY2F0doImXUPKdCkSR7Lph0VeG8VoxxhwnCAcQtgskmJnGWPQAAFM6m1LqQGsmeKAgFD7QBrJmRAAA1Be0gCFtIAOKuQsK0LkPhAyC0kOYMwFg1SIQmUUcWMhxmTOmRMkAaUMoWibBAVICyQC0D0LsqZegpkzJFNgZ8khdHbJrCRPQmEwAam5nsw5BxxA4SeWqGAzycIHDVN835aouZfP+f8l5hzQVqgAF7CH2WAA49yNR7O+QCxF7yQVArBZ8t5ny-nfMhbspgMK4UIuBYCw5eRXloqBRin5PyXnYohcc2wzJvhDMaCAey55GpdEqedOUElXKiJPitJynVExHiYd0MqPk-IHXctqdldR3IjXIMlVK6VMrZSfHlQBgrxWh1gF0KRg8RU01qv9JV7pwYWHEOtapUBSTQDWNoBe4gsB+lbOIeeThD5bFth3EGADpaywduQbltr+7mRAIEIU7ZhAzjrgAfjGlanIaQLCqNLhpAx8BgGWoKcGw6-q67g2ifQoBdtwaQwgbjOGGskao2AIGvIfJ2673Nn4KAUs8riDbdoPBeNLR9t0XyUm1lj6FXvpaOm0rB0QE4JwSIIlsIxw2uC8megRbcLFqzdmnNxBTN5rvdxfsxqB2Dpu2GccRIgxAEE4wRhPKHQsMTHqPoABkegABiNR8AOydo+kABDaiyigD4RkjYLAEOeu6YCrYLBsVTveauJ934F13IEqtu9Y5CRrph+q2gdCT2nu-f8c8F5LxXlPHDuHAFn3TXXRRpcPx4NzeIYNBxKAWmtSSTY5AdAHHXFVV1-ppBSHNuCh1PriB6ELWPRtrHjJQFDcncN+T2gSzjZhxNLGU2pDTfg7opywALzPpm+A2aY7g3idARJ4DdWlygblGWTb8CNmdF4AMNbahnyaR2hc3Qhn+yrlPVYGc7QtKMB0pw3Semfi4bh3hW9GHv0EYfAjIixETvKkeKOn8Y4MdxmwOjC1Cug0K0NAGMUNHsqgM6Aci9YC2tjLUmVHL9V6BYcscg-Lqx8kbO5pO4FtWFR3sKiRrlxXsKlQzGV-45VngVf+c1EC1VZREZqpzQ2fx2dKpOo1EiTUWnK4t2oo1c2TWIKDasqxKhrurDa5Ob1dqynnkUUccWFoydWuDEJYT8A2bwXZ1aiDkH5NAioBOvrd69ZjglqISXz38RS8IgV47jWGvIR7PL8iAFloARWnxehgKBFeJY8QaINo+CgONTdwB3u40BwtTzmsUZyWbUpZd+MY5ExHWulHVM0cP1zNKzhzHUFWNFu+IrxVlF810qlTRs2qv1KchkpAgdXKob8TJzXRcz0Xuw29AAmogMDqV8OEaoyRiAnryNrtXlpXH+d7yB11xA6ub0ABytkLvzXNxjy3BhrdkeXnbyjON-5leV5yvQdX1g8sanyo8HWF68Xcg5iwMs4+NchwnAbjV4fFRXWu2CE55pHs1htKMav+xKxZtZNmrqoriA3bDer8fYAF-qpNtbegeqbbW6DHqa8kGcFaWO0+ACerVSWlVa8jt-BxFcgemGU-rtICC3H0f5AcwRsz7ALAyg4L4HvPQQ5tBsCpEbLQN+IBQaO8Z23214+RGi1XzP7thmF+uWgq-+A0+bsb6wBb4775J74wAH6IBH4n5X4X6Nh7I3537-RMb-R1687Vh94fiCqp6rRD6gxgFP7pZYG-7-7r5z5gBf5HjL44F-5r5VRgHAH9IgBgEQFQGn4sSwHwEaYzRS40bzQK4fwKRy6zjR4ACC3o42fEK2z+n2SaBSHGBa-0LG1c-6xSt4aao8LGkAGYywSgOeM0Z23IehC0DOheM+nes88sEsb0cEtA5+umPuu8v6OgPglALgGwAAwggJmG9MjJsH4ZgEYbjKcvgJyCBm9LsgRBflwTDPwatHTgtODKoVaFDAYJYa9PkhxPYVnA3PktZMIN7rwatDwUVoVjjGYLIONHIZaAoXzEof4EgP+kpnKHdAJOrLUPbApuoYoZUfkGHLEDocKI2DIXFBUU0c0gTgzuUenkweQIEfVD2r5hnteOxgrIMaDOUTAtAGMYsSAGpjINEX-PfvofeNsZWpMbKDkRYMvHMcVAsW9FGhjLrEgJwGsQAsGtsfcdGmHAcQDDwSVvNKUalCxvIVJsMbIVXPUQdFJhYLHg1uLiAEcWDD0Vof0Q6I+nzOUeDLCe3jABJMUalICfNMCZaOIFAEKFCUMalJiZUQEVJuKuUeUYYMYG9BCFCEMLCB4PCGML4EiFMGECeIcHkWdLYEWKcPALYMjCKfWDca0fDIjPkgAPrLzrA6ClJdAAzgYAY1AegMzJgVJYhJC5iZi1g3C8B6AHC1j1i6I2RpoEmIl8Qy5zYAjCDsT+hKD3jmhgAuBeAiYawACiowSgTYcQpklRgowoQCegYh2Auk5ivU4EagVEcEKALA9i+oziEgZItoDqHiEg92co9qSgoSnWK0+Z0AIkT2+0dUAs+AQsegiELAAApHVHMprGqDYRfnVE4S4W6TkcjHOpwHVBxPDJbHoJEakPZJotalUsnIWY6iWaxo4KWTOVtMUOzM9ogNWaMiJARLQM2Rok0NOe3nOcWQvFzGxhxlxlZI4HxgJitN2a4RsCJMjHBB+gwBqE2AwHVMEaET4CJIhBfnspOU0HGZYgmWgFRHYtqBwCAFoLoNYtQOmYaKKbcAAALLCpCOgkBuDyBoCsn2BuHYDOG9HCAimmnwCoVqjiC0DUXsZgDiBMBkXFi8DsTaCuJMFxDYCGisiOjQXahAA" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
-~~~javascript
+```javascript
 import m from "mithril"
 import stream from "mithril/stream"
 import { Menu, List, ListTile, Button } from "polythene-mithril"
@@ -138,7 +138,7 @@ const SimpleMenu = {
     )
   }
 }
-~~~
+```
 
 <a id="hiding-the-menu"></a>
 ### Hiding the menu
@@ -182,12 +182,12 @@ Two optional callbacks are used after the transition: `didShow` and `didHide`. A
 
 You can add different behavior, for instance route to another page:
 
-~~~javascript
+```javascript
 didHide: id => (
   state.isOpen(false),
   m.route("/")
 )
-~~~
+```
 
 <a id="dropdown-menu"></a>
 ### Dropdown menu
@@ -213,7 +213,7 @@ The appearance will look more natural when `origin` is set to "top" - it will lo
 
 A dialog can be used as menu by passing param `menu` to the dialog component. This will show a dialog with menu contents, centered on the screen:
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Dialog, Button, List, ListTile } from "polythene-mithril"
 
@@ -255,7 +255,7 @@ const Page = {
     }
   )
 }
-~~~
+```
 
 
 <a id="settings-menu-position-to-selected-value"></a>
@@ -265,7 +265,7 @@ A settings menu shows the selected value, and when opening the menu, highlights 
 
 Similar to the simple menu, we keep track of the "open" state. Here we're adding the state for the selected index.
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Menu, List, ListTile } from "polythene-mithril"
 
@@ -337,7 +337,7 @@ const Page = {
     ])
   }
 };
-~~~
+```
 
 
 
@@ -363,7 +363,7 @@ You can find more information about theming in  [Theming](../../theming.md).
 <a id="themed-component"></a>
 #### Themed component
 
-~~~javascript
+```javascript
 import { MenuCSS } from "polythene-css"
 
 MenuCSS.addStyle(".themed-menu", {
@@ -374,7 +374,7 @@ MenuCSS.addStyle(".themed-menu", {
 m(Menu, {
   className: "themed-menu"
 })
-~~~
+```
 
 <a id="css"></a>
 #### CSS
@@ -383,16 +383,16 @@ Change CSS using the [Menu CSS classes](../../../packages/polythene-css-classes/
 
 Class names can be imported with:
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/menu"
-~~~
+```
 
 <a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. Because a Menu is created with a List, the style must also be passed to its List Tiles:
 
-~~~javascript
+```javascript
 const backgroundColor = "#2196F3"
 const color = "#fff"
 const style = {
@@ -413,7 +413,7 @@ m(Menu, {
     })
   ])
 })
-~~~
+```
 
 
 <a id="dark-or-light-tone"></a>

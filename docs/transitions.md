@@ -39,7 +39,7 @@ All transient components use CSS for their transitions (with the exception of Sn
 
 CSS is created from component style variables, located in each component's CSS `vars.js` file. For instance for Dialog:
 
-~~~javascript
+```javascript
 // polythene-css-dialog/src/vars.js
 
 animation_delay:                 "0s",
@@ -47,7 +47,7 @@ animation_duration:              ".220s",
 animation_timing_function:       "ease-in-out",
 animation_hide_css:              "opacity: 0;",
 animation_show_css:              "opacity: 1;",
-~~~
+```
 
 Any method listed above will override these defaults.
 
@@ -73,7 +73,7 @@ Any method listed above will override these defaults.
 <a id="example-with-simple-transition-settings"></a>
 #### Example with simple transition settings
 
-~~~javascript
+```javascript
 Dialog({
   // ...
   showDelay:          0,
@@ -83,7 +83,7 @@ Dialog({
   hideDuration:       1.2,
   hideTimingFunction: "cubic-bezier(0.09, 0.04, 0.16, 0.87)",
 })
-~~~
+```
 
 Option `transitions` offers a more flexible way to script the transition, see below.
 
@@ -104,7 +104,7 @@ Functions `show` and `hide` receive all previously passed options, combined with
 
 [Dialog](components/dialog.md) uses a simple fade in / fade out transition. This is a good starting point to demonstrate scripted transitions. The equivalent in JavaScript using `transitions` would be:
 
-~~~javascript
+```javascript
 Dialog({
   // ...
   transitions: {
@@ -119,11 +119,11 @@ Dialog({
     })
   }
 })
-~~~
+```
 
 Note that other options can be combined:
 
-~~~javascript
+```javascript
 Dialog({
   // ...
   showDuration:   .9,
@@ -138,7 +138,7 @@ Dialog({
     })
   }
 })
-~~~
+```
 
 <a id="themed-using-style-variables"></a>
 ### Themed (using style variables) 
@@ -147,7 +147,7 @@ For a general introduction to theming, see [Theming](theming.md).
 
 The default component style variables can be overridden in a custom theme style:
 
-~~~javascript
+```javascript
 import { DialogCSS } from "polythene-css"
 
 DialogCSS.addStyle(".dialog-transitions", {
@@ -160,7 +160,7 @@ Dialog({
   className: "dialog-transitions",
   // ...
 })
-~~~
+```
 
 Note that CSS variables should contain a unit: "s" or "ms".
 
@@ -174,23 +174,23 @@ You can create extra effects by passing custom CSS declarations:
 
 For example:
 
-~~~javascript
+```javascript
 DialogCSS.addStyle(".dialog-transitions", {
   // ...
   animation_hide_css: "opacity: 0; transform: translate3d(0, 20px, 0);",
   animation_show_css: "opacity: 1; transform: translate3d(0, 0, 0);"
 })
-~~~
+```
 
 or:
 
-~~~javascript
+```javascript
 BaseSpinnerCSS.addStyle(".spinner-transitions", {
   // ...
   animation_hide_css: "opacity: 0; transform: scale(0.1);",
   animation_show_css: "opacity: 1; transform: scale(1.0);"
 })
-~~~
+```
 
 
 <a id="custom-css"></a>
@@ -200,7 +200,7 @@ Finally you can write custom CSS to override any default style; see [Custom CSS]
 
 For example:
 
-~~~css
+```css
 .my-app .pe-menu {
   transition-timing-function: ease-out;
   transition-property: opacity;
@@ -209,7 +209,7 @@ For example:
 .my-app .pe-menu--visible {
   opacity: 1;
 }
-~~~
+```
 
 <a id="transient-components"></a>
 ## Transient components

@@ -24,35 +24,35 @@ Note: Because the background is not part of any Polythene component, you need to
 
 To render a button on a dark background:
 
-~~~javascript
+```javascript
 m(".pe-dark-tone",
   m(Button, {
     label: "Button"
   })
 )
-~~~
+```
 
 or:
 
-~~~javascript
+```javascript
 m(".some-dark-background",
   m(Button, {
     label: "Button",
     tone: "dark"
   })
 )
-~~~
+```
 
 To render a normal button on a dark background:
 
-~~~javascript
+```javascript
 m(".pe-dark-tone",
   m(Button, {
     label: "Button",
     tone: "light"
   })
 )
-~~~
+```
 
 
 <a id="react-jsx-example"></a>
@@ -60,27 +60,27 @@ m(".pe-dark-tone",
 
 To render a button on a dark background:
 
-~~~jsx
+```jsx
 <div className="pe-dark-tone">
   <Button label="Button" />
 </div>
-~~~
+```
 
 or:
 
-~~~jsx
+```jsx
 <div className="some-dark-background">
   <Button label="Button" tone="dark" />
 </div>
-~~~
+```
 
 To render a normal button on a dark background:
 
-~~~jsx
+```jsx
 <div className="pe-dark-tone">
   <Button label="Button" tone="light" />
 </div>
-~~~
+```
 
 
 

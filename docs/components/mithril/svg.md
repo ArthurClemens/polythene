@@ -37,7 +37,7 @@
 <a id="with-trusted-svg-text"></a>
 ### With trusted SVG text
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { SVG } from "polythene-mithril"
 
@@ -47,17 +47,17 @@ m(SVG, m.trust(starsSVG))
 
 // or
 m(SVG, { content: m.trust(starsSVG) })
-~~~
+```
 
 
 <a id="with-source-files"></a>
 ### With source files
 
-~~~javascript
+```javascript
 m(SVG, {
   src: "app/assets/stars.svg"
 })
-~~~
+```
 
 
 <a id="with-javascript-modules"></a>
@@ -65,21 +65,21 @@ m(SVG, {
 
 To facilitate importing (and reuse) of SVG strings, you may put them in a JavaScript module:
 
-~~~javascript
+```javascript
 // file: assets/svg/stars.js
 var m = require("mithril")
 module.exports = m.trust("<svg xmlns ... />")
-~~~
+```
 
 Now you can import the SVG like any module:
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { SVG } from "polythene-mithril"
 import starsSVG from "assets/svg/stars"
 
 m(SVG, starsSVG)
-~~~
+```
 
 A large collection of such ready to use SVG modules is available at [mmsvg](https://github.com/ArthurClemens/mmsvg). It includes icons sets from:
 
@@ -95,11 +95,11 @@ A large collection of such ready to use SVG modules is available at [mmsvg](http
 
 SVG options can be passed to [icon](../icon.md):
 
-~~~javascript
+```javascript
 import { Icon } from "polythene-mithril"
 
 m(Icon, { svg: { content: m.trust(svgString) } })
-~~~
+```
 
 
 
@@ -117,7 +117,7 @@ You can find more information about theming in  [Theming](../../theming.md).
 <a id="themed-component"></a>
 #### Themed component
 
-~~~javascript
+```javascript
 import { SVGCSS } from "polythene-css"
 
 SVGCSS.addStyle(".themed-svg", {
@@ -126,7 +126,7 @@ SVGCSS.addStyle(".themed-svg", {
 })
 
 m(SVG, { className: "themed-svg" })
-~~~
+```
 
 <a id="css"></a>
 #### CSS
@@ -135,20 +135,20 @@ Change CSS using the [SVG CSS classes](../../../packages/polythene-css-classes/s
 
 Class names can be imported with:
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/svg"
-~~~
+```
 
 <a id="style-option"></a>
 #### Style option
 
 Some style attributes can be set using option `style`. For example:
 
-~~~javascript
+```javascript
 m(SVG, {
   style: { color: "#ef6c00" }
 })
-~~~
+```
 
 
 <a id="dark-or-light-tone"></a>

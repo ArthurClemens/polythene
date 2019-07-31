@@ -37,12 +37,12 @@
 
 <a href="https://flems.io/#0=N4Igxg9gdgzhA2BTEAucD4EMAONEBMQAaEGMAJw1QG0AGIgRgBYAOWgXRIDMBLJGGqCiYAtsjQA6ABYAXEfGLooMxMtQgAPPB5QA1gAIp5RFwC8AHRCyZuFAHo7mcjKkBXcmCRjYEgOY8XVwAjCR4IRxg8GRg7bAQATxdVRDtEAA9RbH47Li8YCTBIy31jeAtSGXj+KUREGUsAPnMoDTJyHmwZfRgPcutbBydAjy9VfP9AkLCIqJi4+ESaqBSYGUwofEx4aBT5xeSAWmNMMBlYhKTlo8QTmQPV9c3t5YkAKxhGjTs2jpkmlp+nW6vUs-Rg9kczjcI0Q3nGATcU3CmEidTmFyWKzWGy2O3OC0uiAOhXRBMxxMi92xTx2bw+IAaX0Bf2azQ0+B4ADd9Dx8OVKBB6gyvhzOQ1FHgkKcwrB1AwULQQABfIhCUTiEB0xSQZSqGTqHWrfTAfQAFXSMgAYjxEPB8ER9AAlTA8PD4ABCrhkMmg+iV+lM+j2hIA3KyoIaugBlOoANS2rkQAf0AAoAJQBhrG5r6fSR-TUTkJxAOqLx+CJ9jJx03U4SVx4KNrFQpyyWNNhqC5-NRACSUGwXqbmBUNa41drMnreDH6c7ueMMncXdbXdz+g0-3X6405rSVptdpz2-XNXg2HKpvi2CTcDE+hU+4dEHIQeMkX0AEEACLfp2fgA5b8AHkAFkHwgHlYEQZx9EwPMpCcW4YLfCBfHIUQRBHHgwC2eI2zXE99GgABhRCoF8RBTGAZYAHdhxUTNs0IojujjYsUzohjEAkIsK0QDtj1YtiZH7QcZG4scCncYxlGTLjmx4vsByHRT51YpUlSE9c7C3E92S5PMsEiAD1XKG8DiCL0fSgI4IFoxptO3DRnVdAhPW9aAnJPLAgltcpP3wfASkeCARAI4Tc0QTk9RgajgG8ojSO0MBdBQVMM1MLNlPEySTGk8hZJkFMEpYyL9D4xN0sqpMAGp9CbdoKIkLhKBEMinBIiB8EQFMAE4AHZ9Hq0CRykFrthfFNRpcCQMI2ML030AAqfQACYADY0zTIhEtYrgIDABt0pkchEz27clTTC6-S0sqdL0oiXJdN0PJsm7fP8ywSKQJwIsi6LYvim7c2SnC0oypictUkdECko7Cr1EqQfXGr0rbYgUdzA6jvBB8zsQFGrpuzS9t0vaNGwbpKiQeL9Cw8h-CgU0IGwdGQDW2hsDSYpNIaYAAANyyq-QABJgBqpUBaVL5sEenc7FFeWvj0wSoDu5p80-bAqcDJasv0Y8DLFbTjaMlEYFMsR+Xs-QoEFQmGW8jR4KMEw+m9AZIWGTxYTGPwEWCUJwmDckepECAYmOU47AAYjsR8ZF4W18GKNZGbqcoAH0giwPRGhjJMtjgdKAAUMWSfQDtfGtbn0A4zQtfRrRT-Rw4gL5MGVxWuWV0VzZMszLEoBynfus3PAtq2qMsGQAiQRoABlMD8+ARV753+8nwfrcsSARDiZZlEc+7c13C0W7tfRPrKSxl9X4pyfHnuTZY9fX+crfjMtoeQBHk+npfynr-OeMgF4MktNsbCFFr4r1tO-eWZ8gE7xnugA+Oxj5j2Euffcl9go33KPfW0xRcgQGgb4Ih8B9BPyei-buStTbIJ-rvP+9kAH6SYdPcooDwENAABK2iponBBm9DLb2Yag-eh89TsKenuA8KcPpwNviAAAmhAdw+hp7-WEmeC8lgACiupXxJDtuqOCMB9C0XaN6VQxEuymIoAQAIeYnCpxAGTRBG46Gmx8W-Thv9-5YI4WI7+XDZ7z0dg0UCrh4Bz2vjoRAIjx4BJYVIjBQovFn3kXgpRq9yiQLIXPGBN8oL01iXPA42hlhQXEjo-aUDikUOUTdEQFSeCL0STdEecVgBrTusJGh+k-HORGTuVJqCgleInmEkBkTGg1gAI6uB4MYYKNVkmANCcAtJYVpGYKyRuHJh5U6n3XAQyw6jNHCDEPUoipDyGUJuno8oRiVAmJqGY+8KIrE2JUF2X0ji1kuNwuQdx3TEDLNWQQTxzsxln3hRuCZNtR7TORREsBUSSINh9CICqWxeTYWgJskJ3JxHhLQfszJFNjmKLObmHqXBMAVOFqgleJE7knj4oSlQ1EapMRRvygAhKYQMNUJA+kXvZGCJEUS9WuvSk8AB+VMpVypEW5fgdKTL4B4F2oqoiMFKDkHZsBKACx9ANiTNsWiMFcJ4AQkhU4MF8icuEsTA1650pQFifAAZkVNWw0-BJdO9QzlDNGQwt+iKZk7MmWw4Jn9tkoO4fMhkXVXDGJJUmslszdnoKPtSs5OCFFHkVRckA35EDMhlG69cDymlPMVYy5lcTWWEJfLCHkuBXB4vwAgF83QXHqhkLtDxirICZvedRAAzLQf1wkjUvnKFcwwmAYr6HSGAWoPVgqmKwmkHgbS8U+pEH5V8EBxxgEQhhZ15BXXjsGdMmNMb0WsNRaI3NcbU2YsaN+V0K8kD4GzeM5NEjyjpMLbI-StKy3lQrU8x9kUOQwEAzC8Nz6o2Ro3v4sDFKpmfoHuBjFvCYxdH5Y8Kuh0GwgaQXh3+kGZGJv0mR1l1DMM4ewx-UDX6U3D1thZTY5BdAHBslEwj5K5m-ogY0nQvhYGr1TEJgwYm0y0aRfR-NVLoPOVg-g5RhCWkgCrrJiilD2NwqwwrKzdHePEffUGIkynRM7B0xpuzFKeFRP-ah3OBAlNOBUzsNTiLbNEYpYxg5NKL4nLyV9EAiGboobQ6cp9lnOPWYy8k5otdTggVAnNVQPVyCrjPtrKmul9UMuo94KclEZAGNGMod08Rez4FbKwwU7Zmgdm1HsvgMF1BBGURKW0iBpTQAEGgNaA0UAAFYGDKlVCAG5GoCiRD67qNQaBlScBANU3QU3qBqjEOoaOU4eoxW2NgWrWoSDuAUGgMEEJM3YF0L4AoYU7DnbsL2-A33JwSEu7aVmt33iKEqDedQzIlsnY1Odg4-aRBA8BtdsHAh7vkEe1YT24IHCvfe59kQAPbiI6+39knpwyfI+B2jvUd2QCQ41DDpU7AlRAA" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
-~~~jsx
+```jsx
 import React from "react"
 import { TextField } from "polythene-react"
 
 <TextField label="Name" />
-~~~
+```
 
 This creates a text input field with a hint label that disappears when text is entered (functionally equal to a placeholder). 
 
@@ -50,40 +50,40 @@ Other types of input fields can be created using option `type` (for instance "nu
 
 To create a floating hint label that moves up when the field gets focus:
 
-~~~jsx
+```jsx
 <TextField label="Name" floatingLabel />
-~~~
+```
 
 A more compact field with floating hint label:
 
-~~~jsx
+```jsx
 <TextField
   label="Name"
   floatingLabel
   dense
 />
-~~~
+```
 
 Full-width field, compact field and with floating hint label:
 
-~~~jsx
+```jsx
 <TextField
   label="Name"
   floatingLabel
   dense
   fullWidth
 />
-~~~
+```
 
 Create a multi-line field (textarea) with `multiLine`:
 
-~~~jsx
+```jsx
 <TextField
   label="Name"
   multiLine
   rows={4}
 />
-~~~
+```
 
 
 <a id="help-texts"></a>
@@ -91,23 +91,23 @@ Create a multi-line field (textarea) with `multiLine`:
 
 Pass `help` to create a help text below the field:
 
-~~~jsx
+```jsx
 <TextField
   label="Your Name"
   help="Enter the name as written on the credit card"
 />
-~~~
+```
 
 
 To show the help text only on focus, use `focusHelp`:
 
-~~~jsx
+```jsx
 <TextField
   label="Your Name"
   help="Enter the name as written on the credit card"
   focusHelp
 />
-~~~
+```
 
 
 A help text also function as error message when the field input is invalid.
@@ -118,14 +118,14 @@ A help text also function as error message when the field input is invalid.
 
 Passing `required` adds a mark `*` to the label, and uses HTML5 field validation to test for a non-empty value:
 
-~~~jsx
+```jsx
 <TextField
   label="Your Name"
   required
   floatingLabel
   help="Enter the name as written on the credit card"
 />
-~~~
+```
 
 
 When left empty, the field will show an error status.
@@ -165,7 +165,7 @@ There are 2 ways to validate a field:
 Option `validate` is a function that receives the current field value and is called on every `onInput`. Return an object with attributes `valid` (Boolean) and `error` (message string):
 
 
-~~~jsx
+```jsx
 <TextField
   validate={value => {
     if (value !== value.toLowerCase()) {
@@ -176,7 +176,7 @@ Option `validate` is a function that receives the current field value and is cal
     }
   }}
 />
-~~~
+```
 
 <a id="using-a-validation-library--setting-the-valid-state-directly"></a>
 ### Using a validation library / setting the "valid" state directly
@@ -188,7 +188,7 @@ An external form validation library (or component/app state) can be used to mana
 * Use `valid` to mark the valid state of the form field
 * Use `error` to display an error message
 
-~~~jsx
+```jsx
 const errors = this.form.getError()
 // ...
 
@@ -198,7 +198,7 @@ const errors = this.form.getError()
   valid={!errors.username}
   error={errors.username}
 />
-~~~
+```
 
 
 
@@ -207,25 +207,25 @@ const errors = this.form.getError()
 
 Adding `counter` with a value adds a live counter below the field:
 
-~~~jsx
+```jsx
 <TextField
   label="Your Name"
   counter={30}
 />
-~~~
+```
 
 After 30 characters, the field with show an error status, but the user will be able to type more characters.
 
 To limit the input to 30 characters, add constraint `maxlength`:
 
-~~~jsx
+```jsx
 <TextField
   label="Your Name"
   counter={30}
   maxLength={30}
   error="You have exceeded the maximum number of characters."
 />
-~~~
+```
 
 <a id="reading-and-setting-the-value"></a>
 ### Reading and setting the value
@@ -234,27 +234,27 @@ See also [Handling state](../../handling-state.md).
 
 To read the input value, use `onChange`:
 
-~~~jsx
+```jsx
 <TextField
   onChange={newState => this.setState({ value: newState.value })} 
 />
-~~~
+```
 
 To use the received input value, pass `value`:
 
-~~~jsx
+```jsx
 <TextField
   onChange={newState => this.setState({ value: newState.value })}
 />
 <p>{`Value: ${value}`}</p>
-~~~
+```
 
 <a id="programmatically-setting-focus-and-value"></a>
 ### Programmatically setting focus and value
 
 The `onChange` callback returns the function `setInputState` to set the focus and value of the input element.
 
-~~~jsx
+```jsx
 <TextField
   label: "Your name",
   onChange={({ setInputState }) => this.setState({ setInputState })} 
@@ -271,7 +271,7 @@ The `onChange` callback returns the function `setInputState` to set the focus an
     onClick={() => this.state.setInputState({ focus: true, value: "" })}
   }}
 />
-~~~
+```
 
 <a id="appearance"></a>
 ## Appearance
@@ -287,7 +287,7 @@ You can find more information about theming in  [Theming](../../theming.md).
 <a id="themed-component"></a>
 #### Themed component
 
-~~~javascript
+```javascript
 import { TextFieldCSS } from "polythene-css"
 
 TextFieldCSS.addStyle(".themed-textfield", {
@@ -298,7 +298,7 @@ TextFieldCSS.addStyle(".themed-textfield", {
 })
 
 <TextField className="themed-textfield" />
-~~~
+```
 
 <a id="css"></a>
 #### CSS
@@ -307,22 +307,22 @@ Change CSS using the [Text Field CSS classes](../../../packages/polythene-css-cl
 
 Class names can be imported with:
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/textfield"
-~~~
+```
 
 <a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
 
-~~~jsx
+```jsx
 <TextField
   style={{
     background: "#2196F3"
   }}
 />
-~~~
+```
 
 
 <a id="dark-or-light-tone"></a>

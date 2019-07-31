@@ -34,7 +34,7 @@
 
 <a href="https://flems.io/#0=N4Igxg9gdgzhA2BTEAucD4EMAONEBMQAaEGMAJw1QG0AGIgdgYA4BdEgMwEskYbQomALbI0AOgAWAFyHxi6KFMSLUIADzwuUANYACCeUQcAvAB0Q0qbhQB6G5nJSJAV3JgkI2GIDmXJ84AjMS4Iexg8KRgbbAQATydlRBtEAA9hbF4bDg8YMTBw811DeDNSKVjeCUREKXMAPlMoRrUyci5sKV0YN1LLazsHfzcPZVzffyCQsIiomPh4qqgkmClMKHxMeGgkuYXEgFohPwMeaLiEpcPjtvh9lbWNraWxACsYerUbVvapBqaoFoUH5dHrmPowWz2RwuYaITxjY6BYKhTDhGqzc6LZardabbZneYXRD7fIYwlYknhO44x7bV7vEB1T7fDp-Zr4LgAN10XHwpUoEFqjM+HM5dXkeCQYCkIVgqgALCgAIxK+UgAC+RAEwlEIHp8kgimUUlUhpWumAugAyogHGAJERdABJQ0AIWcUik0EdVokmHwEAA7rp1bpjLpdkSANyNRpmzpcQ02u0SK0ANQA4mHdOYWpzvLpA7ynGZTOYAEzysuFKpcbzSUsVqtlkC6TlcRCB10QFKNkC0XQDyu6SvV4XYTBOXR8scAWSVAFYxAvdKqJPsxAwAJy3MTl5gb8sMADCi7E8qVq-Ly63q4AbKulWIVffdFvl6+l1vL0qAMxiWhb1-N8P1-K1gK-S9gPfFdINfGD7zAJ870vAd-0AjcF1veU91-fYnwXBh4D3Bg92YTlNx3FccK3LcABly1oc9byVHd9hord9gXAAvIR9gfWhj1I2gf3lXQVxVMRaPEkCFytYTLxXBCJLEhTVzEhDJOk1VZPU7ixxsJkvnzBoQBjKB4x5N1MDAbR0yzcNcxgfNC2LCQ+1HFt9EQOsGzHTzCnbTtu17McByHMSAvHScJGnPtZ0Yx8AAlSOYX94CXLCuJvOilXLXR5VuZhdGK0rV3PJV8IqujUuAv8ksYzl9nLfSW0M5kTPMczLMTaBjyQBx7OzJyXKLfAS385sax8+spA8qbWyCrsez7cKR0ihamQnKcZxbedbzvaqlVIrCZLy1cmNOw6Lxkldrp-S6WPyiSToOirVye1d-xu46bw+-7ftOv93ry1rzHa4zvFM7roHNXqoFnRMhsc9RnILMaJpbKLvN8ubJrHNsO2W0KWzW4coq2mK4rnc7VSQsQ7wEkcpM4p9f0iln9l-XLYLAWgqsZqr2a5kWwKAsR2bfcTOTvPnysZ8rJeA5XeKXPDfzlvDrwXMSl0qtXxOfK1DoYdTdBN5KF0197rwYfLDvLYCHxN8s03LJUJHLJr-33MAfYPc9irvLmJfN-jN3LdcnwYMGQAhtHodjCzYc6ChbSUZM3AkAAxDt4HwbMAAoAEowzqC1Gl0XQeqTW0s+zIQxCkchnBWQv4cz+17OL8yq5r6BXRsvRw0b5vW6kdvrNs7ve+rlOrL6gbyAbpuW7b+H+rrmfK7n2AE0NRGwBXsf14PpHMx7pO+-nwfbPdT1oGzYAd6rpaUF0QvLUnZuYBDUvjD+FXIBughCFxdAPD0XooCOmflAYBwD4bv0tGjd+8Nb56E1C-eBWhtDvw4JsPARAsHAMQJyY0EILS6GgO4RMuDdDf3ILkAaZCQxELgfA9Uxcd7qnMjvSym8HD3ygU-LBb8P5f09Iwv+ZdiEgLAW6SB3oK7sPgQvKASCuj5lQYaARy9MEqOwToPBBDEBsNUVXUh5CNHUM0LZd+DDcjuDrqw2RnDuG8PYZZTuEhwFwPDLA4BYiS5lxzAYquoDfFCKUQE8xiDKEoLUd4lxYSgFaBsjKMh78x6mNcVw9hPCr673NIfXxIiDFBP-uXWRESFEP2gco8xaiNEJPhofZJjS0nSi5IgLJLcckpLcfkjx1895dFWEoMpgTNjOB6TmEA5gzFAIiE6KA2APRWnGbM5w6wjBaAIIsvuS937BIAWMyciAxDLNWeszZn82zTNmeYBZugOAQDAK3XpMy-4HN0Mw2ZJzy73CUGITkDzhrzPmUMneO9DBSFcHAmJr8ibHIkT-aRpzEVAMsqC+AXzwxAouTimZs9gGwvhXI7xjoADyAQXiIGlGIVEMA6xQELrIquwB9GNMxaopQKQpDcEQPnJB7L4FYACEK9+5hvELNFcAvqfooDeH+ZaIlpiug1BWWsqQGzznovLmylJjSCUgrBeGNVPzGlVxNVc7VuqJn4s1dcnVmy5VAOLpa8xFq3VcqtQERRsARVGvgVAbYQarXwIla8ww79QHeN8R6t1wDMAcCUOQWNhcSmGjyRGquvqI2vPeRQnlfqjAQBjXI9BUT6mWj+e-E1fzvlJqASmtNGas3QBzbm-NVrC2twAPockcLEcNuaq5RvLbM0BVaA0wN+baTJZzgWNs4Z6xprbEDprkbo6tc6nEOHrZsvIS8-7Np7Y0od5RR1jonRW6dQ9d2ULrUui5K7E3BtURurdoCd2zsofurdJqAOno-UA9UPq11ANvVOwuvp-RBi7ao89LbJHvBScXS+BjwNQqgAU-4Xi672lzkKgu4Y07nO8cR-OJcPGWQAILYGwJMwmnZjmVN0NQLBoDzBiEoIGMQoalDPM4yk7jIBMDPJLVXAwRgpUWE9P0KEQwnHwh8IiSYoRIwUnwHCCAUQjhOBuDYAAxF8QjEhZXBtWOQZVUg5P9oCFgHQTyBmOmldUeh8A4DvwAAqYkSC88tuhEaGZ4LofY1pzPTl0+YRDuhWDvuAWJ3jQZhPVLZXqGUUgkDPPcymWLnrkuQCEDEJYihLONLjeZqj+A4tVziwlxZrBGh4caI3IQEBtkTwDO8zwUgfA1AAKIjEUK6WITp8AZYFEKD1ugGPYEwxKIV9KZSw1UAuWgKBfx3g1FqEAggRCqDyOEA00AlAqDQBqdgIBNA6D4Cgag2pDtoAMyceAAABJY-L5CuDkGgcEkJtnYG0N4PIEAhA2Fezcd714mL8zcAzSH1weBiCOFAfUJByjYF1CyE06pWDqiAA" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Search, Shadow } from "polythene-mithril"
 
@@ -42,7 +42,7 @@ m(Search, {
   textfield: { label: "Search" },
   before: m(Shadow)
 })
-~~~
+```
 
 This creates a search field without any icons, with label "Search", and is little more than a [Text Field](../textfield.md) with a drop shadow. The field also needs search icons and buttons. More on that below.
 
@@ -56,13 +56,13 @@ An inset search box is presented in an area / box / tile with some surrounding s
 
 A full width search box is a little higher and visually corresponds to a toolbar, and in fact can be displayed in a toolbar.
 
-~~~javascript
+```javascript
 m(Search, {
   textfield: { label: "Search" },
   before: m(Shadow),
   fullWidth: true
 })
-~~~
+```
 
 
 <a id="icons-and-buttons"></a>
@@ -81,7 +81,7 @@ Secondly, buttons may be placed `before` of `after` the input field.
 
 The states are set in the `buttons` option. For example:
 
-~~~javascript
+```javascript
 buttons: {
   none: {
     before: m(searchButton)
@@ -98,7 +98,7 @@ buttons: {
     before: m(backButton)
   }
 }
-~~~
+```
 
 Not all button states need to be defined.
 
@@ -115,7 +115,7 @@ To add logic to the search field, we will wrap the search field in a component. 
 
 Text Field attributes are passed with option `textfield`:
 
-~~~javascript
+```javascript
 textfield: {
   value: state.value,
   onChange: ({ value, focus, setFocus }) => (
@@ -124,7 +124,7 @@ textfield: {
     state.setFocus = setFocus
   )
 }
-~~~
+```
 
 To clear the field:
 
@@ -137,7 +137,7 @@ The back button clears the field and removes the focus, setting the search field
 <a id="complete-example"></a>
 ### Complete example
 
-~~~javascript
+```javascript
 import m from "mithril"
 import stream from "mithril/stream"
 import { Search, IconButton, Shadow } from "polythene-mithril"
@@ -238,7 +238,7 @@ const MySearch = {
     ))
   }
 }
-~~~
+```
 
 
 <a id="result-list"></a>
@@ -252,7 +252,7 @@ To add keyboard control - allowing to move from the search field into the result
 
 The basic setup is:
 
-~~~javascript
+```javascript
 {
   oninit: vnode => {
     // ... logic
@@ -270,7 +270,7 @@ The basic setup is:
     )
   }
 }
-~~~
+```
 
 An elaborate example is available as flems:
 
@@ -299,7 +299,7 @@ You can find more information about theming in  [Theming](../../theming.md).
 <a id="themed-component"></a>
 #### Themed component
 
-~~~javascript
+```javascript
 import { SearchCSS } from "polythene-css"
 
 SearchCSS.addStyle(".themed-search", {
@@ -312,7 +312,7 @@ SearchCSS.addStyle(".themed-search", {
 m(Search, {
   className: "themed-search"
 })
-~~~
+```
 
 <a id="css"></a>
 #### CSS
@@ -321,22 +321,22 @@ Change CSS using the [Search CSS classes](../../../packages/polythene-css-classe
 
 Class names can be imported with:
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/search"
-~~~
+```
 
 <a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
 
-~~~javascript
+```javascript
 m(Search, {
   style: {
     background: "#BBDEFB"
   }
 })
-~~~
+```
 
 
 <a id="dark-or-light-tone"></a>

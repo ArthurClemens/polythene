@@ -58,7 +58,7 @@ Dialogs will be spawned from the component invocation: `m(Dialog)`. To show a di
 
 Because a dialog should float on top of everything else, outside of the context of the caller, it can be considered a global component. It is best placed in the root view, so that it is not obstructed by other components.
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Dialog } from "polythene-mithril"
 
@@ -68,7 +68,7 @@ const app = {
     m(Dialog)
   ]
 }
-~~~
+```
 
 The Dialog component itself does not accept any appearance options. Instead, you pass options when calling `show` - allowing to show custom dialogs from anywhere in the app.
 
@@ -85,15 +85,15 @@ Usually you'll use only one location for dialogs - on top of all content and cen
 
 When you are using multiple spawners, differentiate them with option `spawn`:
 
-~~~javascript
+```javascript
 m(Dialog, { spawn: "special" })
-~~~
+```
 
 Calls to show the that particular dialog will then also need to pass the same spawn name:
 
-~~~javascript
+```javascript
 Dialog.show(dialogOptions, { spawn: "special" })
-~~~
+```
 
 <a id="multiple-dialogs"></a>
 #### Multiple dialogs
@@ -105,10 +105,10 @@ Multiple dialogs can co-exist for the same spawn. Add a unique `id` to each dial
 
 Dialog functions:
 
-~~~javascript
+```javascript
 Dialog.show(options)
 Dialog.hide(options)
-~~~
+```
 
 <a id="show"></a>
 ##### show
@@ -129,7 +129,7 @@ Shows a new dialog instance.
 
 Examples:
 
-~~~javascript
+```javascript
 const dialogOptions = {
   body: "some text"
 }
@@ -139,11 +139,11 @@ Dialog.show(dialogOptions)
 Dialog.show(dialogOptions, { id: "confirm" })
 Dialog.show(dialogOptions, { spawn: "special" })
 Dialog.show(dialogOptions).then(() => console.log("dialog shown"))
-~~~
+```
 
 Calling `show` a second time with the same id will redraw the dialog with new options:
 
-~~~javascript
+```javascript
 Dialog.show(
   { title: "Log in" },
   { id: "login" }
@@ -154,7 +154,7 @@ Dialog.show(
   { title: "Log in again" },
   { id: "login" }
 )
-~~~
+```
 
 
 <a id="hide"></a>
@@ -171,23 +171,23 @@ Hides the current dialog instance.
 
 Examples:
 
-~~~javascript
+```javascript
 Dialog.hide()
 Dialog.hide({ id: "confirm" })
 Dialog.hide({ spawn: "special" })
 Dialog.hide().then(() => console.log("dialog hidden"))
-~~~
+```
 
 <a id="callbacks"></a>
 #### Callbacks
 
 Two optional callback options can be used after the transition: `didShow` and `didHide`. Useful when a route change is needed after the dialog is displayed or hidden:
 
-~~~javascript
+```javascript
 const dialogOptions = {
   didHide: id => m.route.set("/")
 }
-~~~
+```
 
 
 <a id="drawing-a-dialog"></a>
@@ -212,7 +212,7 @@ Variations:
 
 A dialog header can contain any content, but using a [Toolbar](../toolbar.md) is convenient to display action buttons (not according to Material Design specs, but nonetheless used in many interfaces).
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Dialog, Toolbar, ToolbarTitle } from "polythene-mithril"
 
@@ -231,7 +231,7 @@ const dialogOptions = {
 })
 
 Dialog.show(dialogOptions)
-~~~
+```
 
 
 <a id="example-with-modal-and-backdrop"></a>
@@ -241,7 +241,7 @@ A modal dialog is a dialog that can only be closed with an explicit choice; clic
 
 To make this behavior explicit, a modal dialog often has a tinted backdrop. This also gives focus to the dialog contents.
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Dialog, Button } from "polythene-mithril"
 
@@ -262,7 +262,7 @@ const dialogOptions = {
 })
 
 Dialog.show(dialogOptions)
-~~~
+```
 
 <a id="full-screen-dialog"></a>
 #### Full screen dialog
@@ -271,7 +271,7 @@ A full screen dialog uses [Toolbar](../toolbar.md) to implement its own header (
 
 <a href="https://flems.io/#0=N4Igxg9gdgzhA2BTEAucD4EMAONEBMQAaEGMAJw1QG0AGI2gXRIDMBLJGG0KTAW2RoAdAAsALn3jF0UMYlmoQAHnhsoAawAEI8ohYBeADohxY3CgD0FzOTEiAruTBIBsIQHM2d+wCMhbCGsYPDEYC2wEAE87eUQLRAAPfmxOCxYXGCEwYONNXXgjUjFIzhFERDFjAD5DKFqlMnI2bDFNGCdC03MrG28nF3lMz28-AKCQsIj4aLKoOJgxTCh8THhoOKmZ2IBaPi8dDnComLnd-ab4bYWllbW5oQArGGqlC0bmsRq6qAaKD7aOsYujBLNZbA5+ohXEN9r5-IFMMEKpNjrN5otlqt1kdpidENtsijcWiCcErhjbutHs8QFVXu8Wl96vg2AA3TRsfCFSgQSq014s1lVaR4JBgMQBWCKWgoWjbABsKAATABGEAAXyIPH4ghA1OkkFk8jEikNC00wE0ACVMGw8PgAEL2MRiaBETQASUNTpdbs0PtdUHdABE2Fj3O6ACoQBA+GxRmPwOPkSNeJCadWafSaTZ4gDctVqZtaMBEEFskcSrWzxiU2CqABly1CObh7HxNPgEOW2l5NDqxO6zYhxRVHP2Wdg7WwwGp3JpEKpB20CJ2IAu2PYYHwIPhNHI+BFyByoLOWfh7LJNM7NFgfM2F60u2tdJo+Jh3Lx+6oAI72TBCJoACqrTyGwHaYHuexQOBmismB-Dun+dqaFAEALOQ9h7okiBOF4mAStA17wFgfCQLemD3k0MCodO16tKsbDIdgC4JAumCaJAfA7l2nHQHgf4EYBwb2ChmDOogHKYa+z49moeSINguizPguF9vJrIIPYLQEZJ8FLguSKcRw8DtmuL6SYg9iaCw9ieARqH2CRHHYDYYZiI4gEAKIJGAilyOOMBqK0EBgGAmAjg5YDaZyBEOWhUA5pQnLGu6MCXq08nRfArmaMhmgQCw7Czhxql4JhV47iRfZLLBnKGa0d7lu2QivPWxgFqe-GNdA7iVgk1aaNQKpEEqRAAMxEAALEQACsRDykQADsRAABxEAAnEQKr0CqI0qmNKqTSqM0qrNjBCO+2AABTXQAlFmVRtGWFZVndjwQGo13GMYd2dcWmjBh6ACCDYAPIAOIAPoAMJgwAcgAYh6VoALJZpoxiGuw5B8NstkkY05R1CA-3dZxax4AAygAahDGO1jArLzgA7pydhGIYxhKlNXO5GUbDuOInPc7zXMgHBbCICzDoQAkIsgLQmhKzzmg83z-KuXYnYK6jKobZo8pCFNKoNiqS1CLNBuzZoB227QlsG0bJuaDbNvOyq9uO7bSqu7bFtW4bxue-rPu2+Nwf+97ocxwHBtHZHB0AF4axYdJvMzNSk4WXWwK0BPwFTFDE9GsY2FaEAsxjEpiOm+hPdQtSaG+11etAAZ+sATfNxyhooBabTM-3fBCGImELNdzjoYgtMQw9mrd83iDwbIIIWovPfQM4M7qP392PYDYZrO4QilpXk-QDjfChuGYMtDA7qWpy-dA6DkOwwjyNoxmd0b+q3fqjukQbufBrqlyTDYVMtdECP33FWfuNd0yAOAYlFuHcgzr1Qc3O8i5+7GCppgeCxgUE9wXCvUI-cu5YM3qeVQYBd6aH3vXQ+4ZRApXun-ABv8oCME6kWcm2M2C4xvsfO+oQMbXSoc3e8+BIh4JAJGEQKFl7Gg5DRNCrRIgVDaIQgggFgavkiBAay6VDHGM0CzJYrRXSdkXBUSSdhlHkIAPzEJAbuVYCDMIwO7nGeh+BKDYC8fYHxqCWAxjkOQdBa9G7UNAegx+G9sGUVwZjEAMMlh+XgG46hS9yFrykaQmh296F7weswkREAT5KNUpIjk+AX4g3BtDOGSMUbo0AUkjMf8gEb3ic6QMiTckUR8Kk4wwY7FyByUUshxoCldOblvOhDCmFPW+sM0hVhtApT4lAK+nYj5VIWT3Sp1T2FPwaYDJp79Wlfw6b0jZPctk1Mku+eSLJwzHObqcthtTuEzObv8op-9qGdNQcwWogC+G53NMDbALFsyFNZFLKuZSD6xNIaA4wQhKAs2IUNDehgJDfT1IgxA+LjCIycvANoxd5AHPDBY-YbRFj0NXII3GBFJQMuPr9EhRSsV6i4hEOYsgKWPNATaO0BAEnHKJYUgFPccHwHkXfelHzeXEC+T3FRq9KHatIUsneaLmEKsVUUn5Z8WaSMJZUO1RKHV2oLkXXQ8hgmhPNeasokFcLDzAYmZMQzPWesDIgeRKxyDqGmQCx1sa7WGjkLIfuzq6VQHAcmCu1rjDw2lrMsVIAgWkLjXG5BBqAUyLkW+Ue48xDXTuH1N6ZbSFQqbd0x5zbtUgsVYWnuPbGAPMxSSnFlchAaPJcQAl1CiWCswPis1jqdB6HkcCUEvQITOChIMDwsJRiBFzCSVSO4wh7DsBcCwABiCwGqjlaseYscg7gKjyKhj4LAGgfp1FaD3TUaSqblG-HAfuAAFVEsQbI9lRucDgmhtgsOPrYncv0N79v5c3UBpygWMEhdCkeO4MrXS7NFVwYgPAVC8gMWQDpIgenwCSnkfIgGaDhdgP6OcRR2PFJKLgaAloqhQEtDUWoQC8AEIoLIwQDTQETSaNAGpmAgFUBobj1BtSibQCeg48AAACcwBrSEcFINAK6rCXmwOoE+XELAaYuFppUQgHZyicEIeUVmoPwEumofUJBijYF1AyE06pGDqiAA" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Button, Toolbar, IconButton } from "polythene-mithril"
 import { addLayoutStyles } from "polythene-css"
@@ -330,7 +330,7 @@ Dialog.show({
   body: m.trust(longText)),
   fullScreen: true
 })
-~~~
+```
 
 
 <a id="dynamic-content"></a>
@@ -349,7 +349,7 @@ Examples of both are shown below.
 
 When using static dialog content, passing a POJO as dialog options to `Dialog.show` works just fine. This falls short when the content needs to be updated with outside state changes. By passing the options as a function, you ensure that the options are read afresh with the new state:
 
-~~~javascript
+```javascript
 const optionsFn = () => {
   return {
     body: "some text"
@@ -357,14 +357,14 @@ const optionsFn = () => {
 }
 
 Dialog.show(optionsFn)
-~~~
+```
 
 
 The more elaborate example below shows a file upload form, where the submit button is disabled until a file has been selected.
 
 <a href="https://flems.io/#0=N4Igxg9gdgzhA2BTEAucD4EMAONEBMQAaEGMAJw1QG0AGI2gXRIDMBLJGG0KTAW2RoAdAAsALn3jF0UMYlmoQAHnhsoAawAEI8ohYBeADohxY3CgD0FzOTEiAruTBIBsIQHM2d+wCMhbCGsYPDEYC2wEAE87eUQLRAAPfmxOCxYXGCEwYONNXXgjUjFIzhFERDFjAD5DKFqlMnI2bDFNGCdC03MrG28nF3lMz28-AKCQsIj4aLKoOJgxTCh8THhoOKmZ2IBaPi8dDnComLnd-ab4bYWllbW5oQArGGqlC0bmsRq6qAaKD7aOsYujBLNZbA5+ohXEN9r5-IFMMEKpNjrN5otlqt1kdpidENtsijcWiCcErhjbutHs8QFVXu8Wl96vg2AA3TRsfCFSgQSq014s1lVaR4JBgMQBWCKWgoWjbABsKAATABGEAAXyIPH4ghA1OkkFk8jEikNC00wE0ACVMGw8PgAEL2MRiaBETROl1uzQAETYWPcmnVmn0mk2eIA3LVambWiyAwAxKAhtqLOQhqqaAAUAEoM9ngLVNJoJWIkChNMYAMqIMWtTCadhIIQt4xEIuaHwQfCRCt8LPGNTYZ1ti0d4vFbCICvGJuINvjjn4GcgOcL5PFzS8AQrtfERfQMAiJbuaeaRD565yIRzlOIISLcinsRCVmrezzjfqnPtjcsCDkHwADyLSSiCY4bsW25nsY+BQhA66bpoAh2N2K4RAsiGbvI4qRFOK58PY8AStgvRpABfDbCsixYcW0AwL4exiBWF76JmhaQdhQjYLorLGj6eiYERYi5lGnHFrGjYUXeD42M+YlIcWqyILYA4gAAChACwECumgANRSYBN4cPeb7wB+OYKYpfoBqInKIKJi7Fle963qGUBEfAVnFuqHaah2-68ipnqurAFbUIu-Yhd6HGKZoWA+LWK4AMJLGAta0dhfGyOBsVxZoh6qGA6gVrm+Y2Ws7h2XBuZOUGi7fr+SFRc6oXunlSEsjAmA+Egy6ppg15ufoob2MsehqAQTWKQlSWVhpWl8tNSG1lCxorj4rXQJlE54TBpCMV4xgNTmHbMB2LL4AAEvZpV5mxA1DSZKZjXB7BzPgtTfmJMb0a0PqRNubBgBVECBqGZUPXlkkuSmHWNiZFavRNH1+VZHa6GIjjJvDrJsIgADud0ZnV-Y2naBDRVAy2KfDcWzfAK4gfImjxpVO2KYg2WhBWdP5YVwMldm92ZqDVUwCIEAE1mbNg0mWYuTmp3iYpvkqz5dXKxrUDqj9UCSQAgtg2Bwx2eOE8TD0RZx-bGEIlAE6O1txbbeqlkgo7GADQNgJohpyLIvr+pVFbqYiMBqIGsuBhAoH0ZoiIJ42Y3ipKxg-qTan+FA-6eyAAAqZTnkkfApBe0dtJLBMwEnt72CkECYPghl8O6BNlLoJZFwxPhMZ2W3JnarN2j1fWaGNErwLXz3HjXiUs6KiDigQQjpzTxau1kECl+ssie+ryFZt7-DA2LWuKefxaMBnNtZw7QhQEFTuLoYEhqZgo7w6-r86HoK7AqCXoEJnBrTcMMBwoxAjhhJHBPgWkLBMQOPACwABiCw0cOYTjkhUFcAB9XqSx1DHTqK0Tcmp5o1gvKsOAodUSxEMpoAAsucDgmhthBwDKzeC6dFzXxpv2M+Z0vp6z4EIOBE8ZYQDAPYVwL5nwAFEBiyAdJEAAkvgNSPI+Q-k0EbbAllagilWqneiih5QAFYUAAHYNRahANBRQWRggGmgAHE0aANTMBAKoDQXAUDUG1AIRQiCLgAAE5gJBNCQRwUg0AAKsGNbA6gqqQD4Aglh8BQlKiELQHJ2wnBCHlOkuwFwxFqH1CQScuoGQmnVIwdUQA" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Dialog, Button } from "polythene-mithril"
 import stream from "mithril/stream"
@@ -411,7 +411,7 @@ Dialog.show(() =>
     didHide: () => file(null)
   })
 )
-~~~
+```
 
 <a id="continuously-calling-dialogshow"></a>
 ##### Continuously calling Dialog.show
@@ -420,7 +420,7 @@ The example shows a counter that is reflected in the dialog.
 
 <a href="https://flems.io/#0=N4Igxg9gdgzhA2BTEAucD4EMAONEBMQAaEGMAJw1QG0AGI2gXRIDMBLJGG0KTAW2RoAdAAsALn3jF0UMYlmoQAHnhsoAawAEI8ohYBeADohxY3CgD0FzOTEiAruTBIBsIQHM2d+wCMhbCGsYPDEYC2wEAE87eUQLRAAPfmxOCxYXGCEwYONNXXgjUjFIzhFERDFjAD5DKFqlMnI2bDFNGCdC03MrG28nF3lMz28-AKCQsIj4aLKoOJgxTCh8THhoOKmZ2IBaPi8dDnComLnd-ab4bYWllbW5oQArGGqlC0bmsRq6qAaKD7aOsYujBLNZbA5+ohXEN9r5-IFMMEKpNjrN5otlqt1kdpidENtsijcWiCcErhjbutHs8QFVXu8Wl96vg2AA3TRsfCFSgQSq014s1lVaR4JBgMQBWCKWgoWjbABsKAATABGEAAXyIPH4ghA1OkkFk8jEikNC00wE0ACVMGw8PgAEL2MRiaBETQAETYWPcmnVmn0mk2eIA3LVambWjARBBbAAVRKtQPGJTYKoAGVjUI5uHsfE0+AQsbaXk0OrE7rNiHFFUcZZZ2DtbDAal9iFUFbaBALEE0iDY9hgfAg+E0cj4EXIHKgLZZ+Hssk0zs0WB8Wb7rULa10mj4mHcvDLqgAjvZMEJNABVVryNj5zCjvZQO+aVm3-ju092zRQCALcj2KOiSIE4XiYBK0BLvAWB8JAK6YGuTQwD+TZLq0qxsF+2B9gkfaYJokB8MOhYEdAeCnuBF4evY36YM6iAcgBO5bsWah5Ig2C6LM+AgaWbGsgg9gtOBDFvh2fZIgRHDwHmPbbgxiD2JoLD2J44E-vY0H4dgNjemIjgXgAogkYAcXIdYwGorQQGAYCYNW6lgEJnLgepv5QEGlCcsa7owAurRsU58A6ZoX6aBALDsC2+E8XgAGLsO0GlksL6chJrSrrGeZCK8abGGG3yRiu0DuAmCRJpo1AqkQSpEAAzEQAAsRAAKxEPKRAAOxEAAHEQACcRAqvQKrVSqtUqg1KrNSqLWMEIe7YAAFEtACUAZVG0Mbxomq2PBAahLcYxirQVEZka0l7YCsEpQL6gZrRtFq1JopGwFGixyAGz0ea9Bbems7gAGpNj4SAoMpqx4EQL1-ZA-kQ-QsPqgVr1WJoADKMYAO5LtdInIT4kS7ogSzIRFZYlhOSCkf5IFCLD6NxiI37w-Ao5Q72PgMTFbCRSBxqkRO6yLtcX3Fu4aw+KsFhWgQ9i4WLiAM79IQAJJGuQrKrCt636JtwCw69StZBA-maAA1IGKqo39fBCLo+DkJg2NrbbmqaMNtC0Kd4a-bo+nkB5hu-a9rJsIg2MQ49+s-X9f185oS0myyPog5ZYOIOtIfx-HRWp4DAAKlC4N9Oe5-HEpiODbSfcr8OyDDocV5oa74JEEP22IAELEtdylbtTct39c4ABLedHeubSnAMQMDoM04GLBQ4gRu5yja-x16PpCNGECuwXc-FxAuC+83r3qpv7GBx5fBHSAgrGO61BX69d-GDAOlQKb-lP7XIk-1kKtIeLc742jtAQJ0Lo3Rx2HvBbm8AIbGCxvvT0s93BP1fn9RAb5ZAglgXA8KM5VBgHUJPJ6M804LwYoGAAhJQwG6c2CZywRfLB6pVpX0YGfeOl9fobygAI8671NAAEFsDYUDOXcOkdNDkNji-Zu789SUGxn-RR8dDASHvkIKuSA-7GA9JEXgewwBvTkIubegMIYAGFoC3XsGbGA0wCKrFUHdNBO895qJAMAq+yj-BQBYBAAxIBmbfkSMkGm3jkL4QbnIKcdh1Lfl0OkaschRxsRiP9HeJ0QHxwCYRCIcxZAGPPnbJaV0bqtk4eU2p8duH5N3Do1RQhfxyHUWvLRyjMB-3Lq9LRWidB6CQSYF03QLBPHYPgfASA2kVAsKI8EjgbEDFgBYMQjV7CRCVPKdMPgLCYPKa9RY5B3AVFGQAfTBksdQx06itD+h7ZB5QjxwAhgAWXOBwTxgNlKclmYgGk9S-qNLXgE1p7TV7EEql07Rxhekwv6ZoQZdhUmjOBKCXoEJnBQkGB4WEoxAjBhJDxYcYQ9hosOAAYgsIfDBxAsGnPOWIK5NyND3K0bw90LyebwHeZoQuqJYjKWLF8ql8BNDbF+XPAsUIQm+LXmCpRS0rFzxBYwWoQioD22HP5JahYnKuDEB4Cohk1liAdJENW+B748j5MAsREiz4inbOkyUXA0BKn6sqNUmptQCEUFkYIBp7HGiDfE2BOkZmtm2E0dw4gIYqihAVdUrqxQQSlGgFUKAVQ9Q1MwEA7j1CeuoAG3UlKDjwAAAJzHKtIRwUg0CYqsAubA6h3Cmz4BYStFxq1KiELQQdcawBCHlD2758AFpqH1CQYo2BdQMhNOqRg6ogA" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
-~~~javascript
+```javascript
 import m from "mithril"
 import stream from "mithril/stream"
 import { Dialog, Button } from "polythene-mithril"
@@ -461,7 +461,7 @@ const Updating = {
     ])
   }
 }
-~~~
+```
 
 
 
@@ -479,7 +479,7 @@ You can find more information about theming in  [Theming](../../theming.md).
 <a id="themed-component"></a>
 #### Themed component
 
-~~~javascript
+```javascript
 import { DialogCSS } from "polythene-css"
 
 DialogCSS.addStyle(".themed-dialog", {
@@ -491,7 +491,7 @@ DialogCSS.addStyle(".themed-dialog", {
 m(Dialog, {
   className: "themed-dialog"
 })
-~~~
+```
 
 <a id="css"></a>
 #### CSS
@@ -503,27 +503,27 @@ Change CSS using:
 
 Class names can be imported with:
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/dialog"
-~~~
+```
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/dialog-pane"
-~~~
+```
 
 <a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
 
-~~~javascript
+```javascript
 Dialog.show({
   style: {
     background: "#fff59d",
     padding: "1.5rem"
   }
 })
-~~~
+```
 
 <a id="rtl-right-to-left-support"></a>
 ### RTL (right-to-left) support

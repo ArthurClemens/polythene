@@ -34,20 +34,20 @@
 
 <a href="https://flems.io/#0=N4IgzgxgTg9gNnEAuA2gBgDRoLoZAMwEs4BTMZFUAOwEMBbE5EAOgAsAXOxPCGK9kvyYAeOISoBrAASsoJfAF4AOiA7sADmCQB6bTSjtWAVygRSDKmGYBzQoaMAjZoRh6wYEuzDb18AJ6GgiTaJAAe9Oqk3vjmVhDuKlJycMrg7H5RrCSeKgB8SlQFwpBQhOrsUmCmqWqaOnoGxqbmgla29k4ubh5ePv6BVMFg7DRUACY0cHzBvnABWYMAtHR2ssR9cwMky6ulcIvDoxNTg8wAVmB5wtolZez5hVTF0HeV1Sq1Wrr69s0kFm1Vo5nK4aO5PN5ZvMgjcRuNJtMNtClvFIf0FttUQc4cdpudLiBctdbuUHkUxoQAG5SQhjVKwGDsK7aCmU3IgPAeUgQdguSxMAAsSAAjMKBSAAL4Yaj0RhIFgXDkgXj8QTsJgq4ZSYBSADC+jGGCkACEjOx2HwjQBJFWm818KQSqQKKRQrYAbgKmoqOv1UDGuoAyoHHc7XeigkHA57Hn6A8HmDQxmNA+lSAAKFTMQIMMaLCAGlRG4AFKRSXhTKAAfTE1g4VboNHEVYcNAgEmssCM4yQUhUAGJjQAOACcAFEAKxDoul8vwGDV2v13nsUhVgShdi9ss7gf4fczqhlisLmuEOvsKtgRwrtcbre7kBQayt9MAJgnE4wH6-P4wzAAdgAShUAoJSAmMvT4LVCBVAAZMgwEDAA1ABxMMVGKSlrCkAB3WlDGUJQVDfAViMSLJzw4IiSLI4iQCkSlCBIXDjRgUIaJANApG40ipFI8jCWEdQaEMKQ6UEgBZYU3ykId9gANikJThWYAVhSkVT1LgmTNLQZghwAZjgAVmAnEcpFMqcdKHTSBQAL0E7QiRubD8hAGNvRpFUAAkSB+FD0JdTCwGwvCCNYTiBPomQSCo9goroxImJYtiOME7jeNMtAsuYHLBKkQQaAcUhFlbdtOxgbsJPowZcJ4hrSLy3L8pi0IuCQMARIgEhOPUOQPCgSkSEEokRLEogEE4-sctmtACsm-YYG6uw-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-p9tSChzD3nGmKerfk-Lq7ym7QWioPT9XG2qUOHhb55j7WHQbQ5Pr7HxW3ezfTOby0W2Tevdt-bsLjuVf8Re9b8C+PrfU+YDEMIampA7T8L5rqYTEiR89yN9MNoG5mgt1b63b2VRq8L-Dwgv3fPE4eeH0vlRsJU+zIG4Y6Z3sIXcIFfLteyz89Lzz-3G3sBu571d4fm3B-y775tzvhWPfDZj5Vpr63dx1ZYA16bIAYFIAssTu1+ExIs7Z-65lMO-lntYKGhc55xC9kEGMQbi2Y-jd8IMKbTWvtzYNPT0T3+tOicNw+JfAnN3HfEvdXS-WwD7MLW-GvcnPgCXKncTWnNTTPMsJnPVS9AsdnYdNDTPSfOHUfPHIXN3ZXPkLQP3dXP-OAynY3QvUTQA0vGPOPUIe-fvI7ZTHPKgH3S3cgrvMsd7MXVRBvKHZvd7PyAKNCfjAgiPWfXg9g20PPX3RXUvfg7UOvawIQpvdgFvW0GAJuFuNuCQmXVgjHGQrvOQ3Pe0bgpQwvFQnUQQplRvTFLQ97HRPRDvIw3gvAwvcfCg9gHw-A2XLHfw7nafDTUIqQIrKPefLrKrUrJTcrNfN-EAKDLIXMcsQsEAUwr3MbGACbF-JkN-eXD-f0AvHbMwMEMAAAOVlF8xzGRXzAyKjw23-zWyIOMNdFKBbmTx4PVzuxUFQk8CkAACV-Ixg-AYCrsbs+iQBZJ4MaNkMJi2DkUScejrcoBRIXAU83U5BFjJjy8-swsq86BdijsWiysVAkCmtrC4c0CYM4MEMhVaMUNsC0d2iQtwiBch9ZcmjNtriNsSDoJQC4czj6D1czcFCrCUCdxA894ws4IoUVs5UYjXc3ilsqV3BqiGBfMb1rN9AJBFgLdGsoSvC4dgjXspDucgivsSSyxwjIjStojcJYiycY9EijQVBmMqA-Bxc1QWCNtH9cjn9eTCidtijDRVjmiqCjdQTfi3cnt+sgSQdpiztVwgdM8pjzsDiVAHsHB5STiNtbCoSfstSQAAdvN9TQdd19BIdA09dUTUDTAkcrSoAOdcCvjWC5cQc-iPNRhujvTrs0wDj-TNtPEV5fN+xsgiTUTPTrczipdq92iKTscqSJ8PjaTSt6S59ytJNmAcSJhW4CTphmSNN4j6tNT18WsLQ2tQ9JMes+tT5kUpB0x8zpBCSQJMifiBS8jhT2Sij0x5sJSlspSAC2j1d5TtdgzPNNTTtyyUTC8NTVTfMdS9S5zrdDT7SfkK8wszS1SNzkdrSddbSfjGdHS-lnTXToz3SBdjyFdgDliaBFTYDVQjdqdLjSjrc0CD9MDb0XjOdoy0yMdvjRy4dRdVC4z7lHkkyQsbyNNJy-kndVdByrtNd+tkUbTocYLNsQSoTwTLD3zC8YSHcELNILSQjMLRTvcIT8LrdCLg9iLjpVzC8M8NzGDSBmCrjE8SBuiVBU8ep08sjo9s95C8KkK4d1zeDUD9jK9ljq9GKu97C6BHCRD4JEIO8oTu9iSAKjsySR9Aj-cdK+cAK6TTDx8JRIIqBFLsUyVmy20Hk1QbBPAxwTN2BjQ-ArQxhxMGQCjispBWN1AIICglQuRgUVdyB5Q3xIYkA0BJRpQ15ZQmBmBUQlR-8EqcTXMUVDtGxQg8lTFexDJEF1BQgYwccgr4UQrSCmBDIorJRcBTTxAJAwrKA4qGAmB7M9gAABQYTcJUEwRAeUTDbQbsdQDsRK3I7QNq4gdq-GMGRYUwZgBSca1LOAZgFYKgfEJUdIG9JgEkdUCUbACUIAA" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Card } from "polythene-mithril"
-~~~
+```
 
 The card can contain various elements. The `content` parameter accepts any String, hyperscript or component:
 
-~~~javascript
+```javascript
 import { Card, List } from "polythene-mithril"
 
 m(Card, {
   content: m(List, {...})
 })
-~~~
+```
 
 To generated Material Design elements, pass an array of element options, where each item is an object with on of the keys:
 
@@ -60,7 +60,7 @@ To generated Material Design elements, pass an array of element options, where e
 
 Element `primary` contains the sub-options `title` and `subtitle`:
 
-~~~javascript
+```javascript
 m(Card, {
   content: [{
     primary: {
@@ -69,7 +69,7 @@ m(Card, {
     }
   }]
 })
-~~~
+```
 
 Content parts are processed in the order as they are written. Of course this makes it possible to wildly deviate from the design specs.
 
@@ -83,7 +83,7 @@ To show in order:
 
 these are passed in this order to `content`:
 
-~~~javascript
+```javascript
 import { Card, Button } from "polythene-mithril"
 
 m(Card, {
@@ -131,12 +131,12 @@ m(Card, {
     }
   ]
 })
-~~~
+```
 
 
 For further control over the `primary` content, you can pass an array to `primary.content`.
 
-~~~javascript
+```javascript
 import { Card, IconButton } from "polythene-react"
 import { addLayoutStyles } from "polythene-css"
 
@@ -170,7 +170,7 @@ m(Card, {
     }
   }]
 })
-~~~
+```
 
 
 
@@ -189,7 +189,7 @@ An image that does not fit the ratio is cropped by CSS. An additional parameter 
 
 To show the left side of a landscape image:
 
-~~~javascript
+```javascript
 content: [{
   media: {
     origin: "start",
@@ -198,7 +198,7 @@ content: [{
     })
   }
 }]
-~~~
+```
 
 
 
@@ -207,7 +207,7 @@ content: [{
 
 Images with an overlay (text, actions) can be created with `media.overlay`:
 
-~~~javascript
+```javascript
 content: [{
   media: {
     ratio: "square",
@@ -240,29 +240,29 @@ content: [{
     }
   }
 }]
-~~~
+```
 
 An additional HTML element to control the image is "card__media__dimmer". First enable the dimmer: 
 
-~~~javascript
+```javascript
 {
   media: {
     showDimmer: true,
     ...
   }
 },
-~~~
+```
 
 To create a fuzzy dark border all around use an inset box shadow
 
-~~~css
+```css
 .pe-card__media__dimmer {
   box-shadow: inset 0px 0px 40px rgba(0,0,0,.6);
 }
 .pe-card__overlay__content {
   /* something else */
 }
-~~~
+```
 
 
 
@@ -271,7 +271,7 @@ To create a fuzzy dark border all around use an inset box shadow
 
 To create a square image at the right side of the title, use `primary.media`:
 
-~~~javascript
+```javascript
 content: [{
   primary: {
     title: title,
@@ -285,7 +285,7 @@ content: [{
     }
   }
 }]
-~~~
+```
 
 
 <a id="embedded-videos"></a>
@@ -293,7 +293,7 @@ content: [{
 
 To show an embedded video, pass an `iframe` element:
 
-~~~javascript
+```javascript
 content: [{
   media: {
     content: m("iframe", {
@@ -306,7 +306,7 @@ content: [{
     })
   }
 }]
-~~~
+```
 
 
 <a id="appearance"></a>
@@ -323,7 +323,7 @@ You can find more information about theming in  [Theming](../../theming.md).
 <a id="themed-component"></a>
 #### Themed component
 
-~~~javascript
+```javascript
 import { CardCSS } from "polythene-css"
 
 CardCSS.addStyle(".themed-card", {
@@ -335,7 +335,7 @@ CardCSS.addStyle(".themed-card", {
 m(Card, {
   className: "themed-card"
 });
-~~~
+```
 
 <a id="css"></a>
 #### CSS
@@ -344,23 +344,23 @@ Change CSS using the [Card CSS classes](../../../packages/polythene-css-classes/
 
 Class names can be imported with:
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/card"
-~~~
+```
 
 <a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
 
-~~~javascript
+```javascript
 m(Card, {
   style: {
     maxWidth: "360px",
     backgroundColor: "#B89E58"
   }
 })
-~~~
+```
 
 <a id="rtl-right-to-left-support"></a>
 ### RTL (right-to-left) support

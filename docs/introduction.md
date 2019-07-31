@@ -46,7 +46,7 @@ State is handled by your app. That means that your app sets the initial state an
 
 #### Mithril example
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Icon, SVG } from "polythene-mithril"
 
@@ -55,11 +55,11 @@ const iconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\
 m(Icon,
   m(SVG, m.trust(iconSVG))
 )
-~~~
+```
 
 #### React example
 
-~~~jsx
+```jsx
 import React from "react"
 import { Icon, SVG } from "polythene-react"
 
@@ -68,7 +68,7 @@ const iconSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 17.
 <Icon>
   <SVG>{iconSVG}</SVG>
 </Icon>
-~~~
+```
 
 <a id="example-icon-button"></a>
 ### Example: Icon Button
@@ -79,7 +79,7 @@ And the Icon component can also be used to create a somewhat larger component, f
 
 We can pass a custom Icon as a child to Icon Button:
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Icon, IconButton, SVG } from "polythene-mithril"
 
@@ -90,11 +90,11 @@ const StarIcon = m(Icon,
 )
 
 m(IconButton, StarIcon)
-~~~
+```
 
 Because Icon Button accepts `icon` options (and Icon accepts `svg` options), we can also use object notation:
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { IconButton } from "polythene-mithril"
 
@@ -107,13 +107,13 @@ m(IconButton,
     }
   }
 )
-~~~
+```
 
 #### React example
 
 Passing a custom Icon as a child to Icon Button:
 
-~~~jsx
+```jsx
 import React from "react"
 import { Icon, IconButton, SVG } from "polythene-react"
 
@@ -124,11 +124,11 @@ const iconSVG = ... // see above
     <SVG>{iconSVG}</SVG>
   </Icon>
 </IconButton>
-~~~
+```
 
 Because Icon Button accepts `icon` options (and Icon accepts `svg` options), we can also use object notation:
 
-~~~jsx
+```jsx
 import React from "react"
 import { IconButton } from "polythene-react"
 
@@ -139,7 +139,7 @@ const iconSVG = ... // see above
     svg: { content: iconSVG }
   }}
 />
-~~~
+```
 
 
 <a id="example-functions-to-write-sub-components"></a>
@@ -149,7 +149,7 @@ JavaScript is extremely well-suited to compose components. For example, you can 
 
 #### Mithril example
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Menu, List, ListTile } from "polythene-mithril"
 
@@ -168,11 +168,11 @@ m(Menu, {
     )
   })
 })
-~~~
+```
 
 #### React example
 
-~~~jsx
+```jsx
 import React from "react"
 import { Menu, List, ListTile } from "polythene-react"
 
@@ -191,7 +191,7 @@ const menuOptions = [
     }
   </List>
 </Menu>
-~~~
+```
 
 
 <a id="next"></a>

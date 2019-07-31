@@ -36,36 +36,36 @@
 <a id="with-svg"></a>
 ##### With SVG
 
-~~~jsx
+```jsx
 import React from "react"
 import { Icon } from "polythene-react"
 
 const starsSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
 
 <Icon svg={{ content: starsSVG }} />
-~~~
+```
 
 Instead of passing `svg` as option, the SVG component can be used as child:
 
-~~~jsx
+```jsx
 import { Icon, SVG } from "polythene-react"
 
 <Icon><SVG>{starsSVG}</SVG></Icon>
-~~~
+```
 
 <a id="with-svg-source-files"></a>
 ##### With SVG source files
 
-~~~jsx
+```jsx
 <Icon svg={{ src: "app/assets/stars.svg" }} />
-~~~
+```
 
 <a id="with-image-source-files"></a>
 ##### With image source files
 
-~~~jsx
+```jsx
 <Icon src={"img/arrow.png" />
-~~~
+```
 
 
 <a id="appearance"></a>
@@ -88,7 +88,7 @@ You can find more information about theming in  [Theming](../../theming.md).
 <a id="themed-component"></a>
 #### Themed component
 
-~~~jsx
+```jsx
 import { IconCSS } from "polythene-css"
 
 IconCSS.addStyle(".themed-icon", {
@@ -98,7 +98,7 @@ IconCSS.addStyle(".themed-icon", {
 })
 
 <Icon svg={{ content: starsSVG }} className="themed-icon" />
-~~~
+```
 
 <a id="css"></a>
 #### CSS
@@ -107,18 +107,18 @@ Change CSS using the [Icon CSS classes](../../../packages/polythene-css-classes/
 
 Class names can be imported with:
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/icon"
-~~~
+```
 
 <a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
 
-~~~jsx
+```jsx
 <Icon svg={{ content: starsSVG }} style={{ color: "#EF6C00" }} />
-~~~
+```
 
 <a id="rtl-right-to-left-support"></a>
 ### RTL (right-to-left) support

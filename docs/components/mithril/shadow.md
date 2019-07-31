@@ -28,16 +28,16 @@
 
 Shadow has 5 depth levels, configured with option `shadowDepth`.
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Shadow } from "polythene-mithril"
 
 m(Shadow, { shadowDepth: 2 })
-~~~
+```
 
 To add a shadow to an element, the element must have the style `position: "relative"`. In this example the shadow is added to the outer div:
 
-~~~javascript
+```javascript
 m(".outer",
   {
     style: { position: "relative" }
@@ -47,16 +47,16 @@ m(".outer",
     m(Shadow, { shadowDepth: 2 })
   ]
 )
-~~~
+```
 
 To animated the shadow on change, use `animated`. Using a dynamic shadowDepth value from `vnode.state`:
 
-~~~javascript
+```javascript
 m(Shadow, {
   shadowDepth: vnode.state.shadowDepth,
   animated: true
 })
-~~~
+```
 
 
 <a id="appearance"></a>
@@ -73,7 +73,7 @@ You can find more information about theming in  [Theming](../../theming.md).
 <a id="themed-component"></a>
 #### Themed component
 
-~~~javascript
+```javascript
 import { ShadowCSS } from "polythene-css"
 
 ShadowCSS.addStyle(".themed-shadow", {
@@ -83,15 +83,15 @@ ShadowCSS.addStyle(".themed-shadow", {
 m(Shadow, {
   className: "themed-shadow"
 })
-~~~
+```
 
 Depth can be set using a theme (replacing the component option):
 
-~~~
+```
 ShadowCSS.addStyle(".themed-shadow", {
   shadow_depth: 3
 })
-~~~
+```
 
 <a id="css"></a>
 #### CSS
@@ -100,8 +100,8 @@ Change CSS using the [Shadow CSS classes](../../../packages/polythene-css-classe
 
 Class names can be imported with:
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/shadow"
-~~~
+```
 
 

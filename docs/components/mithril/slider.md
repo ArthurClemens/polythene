@@ -32,27 +32,27 @@
 
 A Slider with default settings (a range of 0 to 100, default value 0, step size 1):
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Slider } from "polythene-mithril"
 
 m(Slider)
-~~~
+```
 
 Options to create a Slider with a range of 0 to 50 and a step size of 10 (step count of 6 including min and max), and a default value of 10:
 
-~~~javascript
+```javascript
 {
   min: 0,
   max: 50,
   defaultValue: 10,
   stepSize: 10
 }
-~~~
+```
 
 To add tick marks and pins:
 
-~~~javascript
+```javascript
 {
   min: 0,
   max: 50,
@@ -61,7 +61,7 @@ To add tick marks and pins:
   ticks: true,
   pin: true
 }
-~~~
+```
 
 
 <a id="reading-and-setting-the-slider-value"></a>
@@ -71,20 +71,20 @@ See also [Handling state](../../handling-state.md).
 
 To read the slider value, use `onChange`:
 
-~~~javascript
+```javascript
 m(Slider, {
   onChange: ({ value }) => vnode.state.value = value
 })
-~~~
+```
 
 To set the slider value, use option `value`:
 
-~~~javascript
+```javascript
 m(Slider, {
   onChange: ({ value }) => vnode.state.value = value,
   value: vnode.state.value
 })
-~~~
+```
 
 
 
@@ -97,7 +97,7 @@ m(Slider, {
 
 To place an icon next to the Slider, use the option `before`:
 
-~~~javascript
+```javascript
 import { Slider, Icon } from "polythene-mithril"
 
 const volumeIconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\"/></svg>"
@@ -107,7 +107,7 @@ m(Slider, {
     svg: { content: m.trust(volumeIconSVG) }
   })
 })
-~~~
+```
 
 
 <a id="styling"></a>
@@ -120,7 +120,7 @@ You can find more information about theming in  [Theming](../../theming.md).
 <a id="themed-component"></a>
 #### Themed component
 
-~~~javascript
+```javascript
 import { SliderCSS } from "polythene-css"
 
 SliderCSS.addStyle(".themed-slider", {
@@ -133,7 +133,7 @@ SliderCSS.addStyle(".themed-slider", {
 m(Slider, {
   className: "themed-slider"
 })
-~~~
+```
 
 <a id="css"></a>
 #### CSS
@@ -142,22 +142,22 @@ Change CSS using the [Slider CSS classes](../../../packages/polythene-css-classe
 
 Class names can be imported with:
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/slider"
-~~~
+```
 
 <a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
 
-~~~javascript
+```javascript
 m(Slider, {
   style: {
     color: "red"
   }
 })
-~~~
+```
 
 
 <a id="dark-or-light-tone"></a>

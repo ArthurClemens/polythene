@@ -37,7 +37,7 @@
 
 Radio buttons always come in groups. To simply show 2 radio buttons, without handling their state, does not make much sense:
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { RadioButton } from "polythene-mithril"
 
@@ -54,7 +54,7 @@ m("div", [
     label: "Two",
   })
 ])
-~~~
+```
 
 
 <a id="reading-and-setting-the-checked-state"></a>
@@ -64,7 +64,7 @@ Radio Buttons will generally be used with a [Radio Group](radio-group.md) that m
 
 Equivalent to the example above, now including state handling:
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { RadioGroup } from "polythene-mithril"
 
@@ -82,7 +82,7 @@ m(RadioGroup, {
     }
   ]
 })
-~~~
+```
 
 Note that `name` is required when using RadioGroup.
 
@@ -93,11 +93,11 @@ See also [Handling state](../../handling-state.md).
 
 To read the checked state, use `onChange`:
 
-~~~javascript
+```javascript
 m(RadioGroup, {
   onChange: state => vnode.state.checkedValue = state.value
 })
-~~~
+```
 
 <a id="setting-the-checked-state"></a>
 #### Setting the checked state
@@ -106,7 +106,7 @@ Unlike [Checkbox](checkbox.md), the checked state does not need to be set explic
 
 To set the initially checked radio button, pass `defaultChecked` to the `button` option:
 
-~~~javascript
+```javascript
 m(RadioGroup, {
   name: "company",
   buttons: [
@@ -121,11 +121,11 @@ m(RadioGroup, {
     }
   ]
 })
-~~~
+```
 
 or use `defaultCheckedValue` on the group:
 
-~~~javascript
+```javascript
 m(RadioGroup, {
   name: "company",
   defaultCheckedValue: "1",
@@ -140,7 +140,7 @@ m(RadioGroup, {
     }
   ]
 })
-~~~
+```
 
 #### Maintaining state
 
@@ -152,7 +152,7 @@ If you want to maintain the radio button states yourself, for instance when usin
 
 This example shows the latter method:
 
-~~~javascript
+```javascript
 import m from "mithril"
 import stream from "mithril/stream"
 import { RadioGroup, Button } from "polythene-mithril"
@@ -209,7 +209,7 @@ const Form = () => {
     }
   }
 }
-~~~
+```
 
 
 <a id="shared-options"></a>
@@ -217,7 +217,7 @@ const Form = () => {
 
 Use RadioGroup's option `all` to pass options that should be applied to all Radio Buttons:
 
-~~~javascript
+```javascript
 m(RadioGroup, {
   name: "company",
   all: {
@@ -227,7 +227,7 @@ m(RadioGroup, {
     // ...
   ]
 })
-~~~
+```
 
 
 
@@ -248,7 +248,7 @@ You can find more information about theming in  [Theming](../../theming.md).
 <a id="themed-component"></a>
 #### Themed component
 
-~~~javascript
+```javascript
 import { RadioButtonCSS } from "polythene-css"
 
 RadioButtonCSS.addStyle(".themed-radio-button", {
@@ -260,7 +260,7 @@ RadioButtonCSS.addStyle(".themed-radio-button", {
 m(RadioButton, {
   className: "themed-radio-button"
 })
-~~~
+```
 
 <a id="css"></a>
 #### CSS
@@ -272,20 +272,20 @@ Change CSS using the CSS classes:
 
 Class names can be imported with:
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/radio-button"
-~~~
+```
 
 <a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
 
-~~~javascript
+```javascript
 m(RadioButton, {
   style: { color: "#2196F3" }
 })
-~~~
+```
 
 <a id="rtl-right-to-left-support"></a>
 ### RTL (right-to-left) support

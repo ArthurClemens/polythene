@@ -44,25 +44,25 @@ Option `onChange` is called after user input, and receives an object with the cu
 
 Checkbox:
 
-~~~javascript
+```javascript
 m(Checkbox, {
   // read state
   onChange: state => vnode.state.checked = state.checked,
   // set checked state 
   checked: vnode.state.checked
 })
-~~~
+```
 
 Text Field:
 
-~~~javascript
+```javascript
 m(TextField, {
   // read state
   onChange: newState => vnode.state.value = newState.value,
   // set checked state 
   value: vnode.state.value
 })
-~~~
+```
 
 
 <a id="using-streams"></a>
@@ -70,7 +70,7 @@ m(TextField, {
 
 Polythene uses streams internally to manage state - they are a lightweight and versatile tool to store state values.
 
-~~~javascript
+```javascript
 import m from "mithril"
 import stream from "mithril/stream"
 import { Checkbox } from "polythene-mithril"
@@ -92,7 +92,7 @@ const SimpleForm = {
     })
   }
 }
-~~~
+```
 
 
 
@@ -101,25 +101,25 @@ const SimpleForm = {
 
 Checkbox:
 
-~~~jsx
+```jsx
 <Checkbox 
   onChange={
     newState => this.setState({ checked: newState.checked })
   }
   checked={this.state.checked}
 />
-~~~
+```
 
 Text Field:
 
-~~~jsx
+```jsx
 <TextField 
   onChange={
     newState => this.setState({ value: newState.value })
   }
   value={this.state.value}
 />
-~~~
+```
 
 
 <a id="components-supporting-onchange"></a>

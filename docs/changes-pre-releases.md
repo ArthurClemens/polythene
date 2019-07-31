@@ -54,9 +54,9 @@ Bug fixes.
 
 To make component packages more standalone, CSS classes are no longer exported by the component but from the common module `polythene-css-classes`:
 
-~~~javascript
+```javascript
 import buttonClasses from "polythene-css-classes/button"
-~~~
+```
 
 All references to React 15 have been replaced with React 16.
 

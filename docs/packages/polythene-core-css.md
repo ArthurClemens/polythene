@@ -22,7 +22,7 @@
 <a id="styler"></a>
 ## Styler
 
-~~~javascript
+```javascript
 import { styler } from "polythene-core-css"
 
 const styles = [
@@ -34,7 +34,7 @@ const styles = [
 ]
 
 styler.add("app", styles)
-~~~
+```
 
 
 <a id="styler-functions"></a>
@@ -50,7 +50,7 @@ styler.add("app", styles)
 <a id="mixins"></a>
 ## Mixins
 
-~~~javascript
+```javascript
 import { mixin } from "polythene-core-css"
 
 const styles = [{
@@ -58,7 +58,7 @@ const styles = [{
     mixin.ellipsis(1)
   ]
 }]
-~~~
+```
 
 
 <a id="mixin-functions"></a>
@@ -81,7 +81,7 @@ const styles = [{
 <a id="using-css-in-js"></a>
 ### Using CSS-in-JS
 
-~~~javascript
+```javascript
 import { flex } from "polythene-core-css"
 
 const styles = [{
@@ -89,15 +89,15 @@ const styles = [{
     flex.layoutHorizontal
   ]
 }]
-~~~
+```
 
 
 <a id="css-files"></a>
 ### CSS files
 
-~~~javascript
+```javascript
 import { flex } from "polythene-core-css"
-~~~
+```
 
 
 

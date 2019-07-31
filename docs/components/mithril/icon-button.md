@@ -30,7 +30,7 @@
 
 Icon Button takes an icon options object:
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { IconButton } from "polythene-mithril"
 
@@ -39,13 +39,13 @@ const starsSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=
 m(IconButton, {
   icon: { svg: { content: m.trust(starsSVG) } }
 })
-~~~
+```
 
 See [Icon](Icon.md) for more Icon options.
 
 Alternatively, pass an Icon as child:
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Icon, IconButton, SVG } from "polythene-mithril"
 
@@ -56,7 +56,7 @@ const StarIcon = m(Icon,
 )
 
 m(IconButton, StarIcon)
-~~~
+```
 
 
 <a id="links"></a>
@@ -70,12 +70,12 @@ See: [URLs and router links](../../handling-urls.md)
 
 The Material Design specs do not specifically show a label with Icon Buttons, but Checkboxes with a custom icon provide the example how they should look like.
 
-~~~javascript
+```javascript
 m(IconButton, {
   icon: { svg: { content: m.trust(starsSVG) } },
   label: "Label"
 })
-~~~
+```
 
 
 <a id="appearance"></a>
@@ -90,22 +90,22 @@ Pass [Button](../button.md) options to change the behaviour and appearance - see
 
 Disable hover and ripple effects:
 
-~~~javascript
+```javascript
 m(IconButton, {
   icon: { svg: { content: m.trust(starsSVG) } },
   wash: false,
   ink: false
 })
-~~~
+```
 
 Alternatively, use `inactive`:
 
-~~~javascript
+```javascript
 m(IconButton, {
   icon: { svg: { content: m.trust(starsSVG) } },
   inactive: true
 })
-~~~
+```
 
 
 <a id="size"></a>
@@ -113,12 +113,12 @@ m(IconButton, {
 
 `compact` creates reduced padding:
 
-~~~javascript
+```javascript
 m(IconButton, {
   icon: { svg: { content: m.trust(starsSVG) } },
   compact: true
 })
-~~~
+```
 
 
 <a id="styling"></a>
@@ -131,7 +131,7 @@ You can find more information about theming in  [Theming](../../theming.md).
 <a id="themed-component"></a>
 #### Themed component
 
-~~~javascript
+```javascript
 import { IconButtonCSS } from "polythene-css"
 
 IconButtonCSS.addStyle(".themed-icon-button", {
@@ -144,11 +144,11 @@ IconButtonCSS.addStyle(".themed-icon-button", {
 m(IconButton, {
   className: "themed-icon-button"
 })
-~~~
+```
 
 To create a hover effect:
 
-~~~javascript
+```javascript
 IconButtonCSS.addStyle(".hover-icon-button", {
   color_light_hover:            "#fff",
   color_light_label_hover:      "#673ab7",
@@ -159,7 +159,7 @@ IconButtonCSS.addStyle(".hover-icon-button", {
 m(IconButton, {
   className: "hover-icon-button"
 })
-~~~
+```
 
 
 <a id="css"></a>
@@ -169,31 +169,31 @@ Change CSS using the [Icon Button CSS classes](../../../packages/polythene-css-c
 
 Class names can be imported with:
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/icon-button"
-~~~
+```
 
 The icon color is set with the CSS (text) `color` attribute of the parent element. For example:
 
-~~~css
+```css
 .pe-button-icon {
   color: red;
 }
-~~~
+```
 
 <a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
 
-~~~javascript
+```javascript
 m(IconButton, {
   style: {
     color: "#FFCCBC",
     backgroundColor: "#4E342E"
   }
 })
-~~~
+```
 
 <a id="rtl-right-to-left-support"></a>
 ### RTL (right-to-left) support

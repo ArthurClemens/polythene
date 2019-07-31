@@ -38,7 +38,7 @@
 
 To show a Drawer as permanent side menu:
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Drawer, List } from "polythene-mithril"
 
@@ -50,7 +50,7 @@ m(Drawer, {
   content: navigationList,
   permanent: true
 })
-~~~
+```
 
 
 <a id="invoking-a-drawer"></a>
@@ -64,7 +64,7 @@ Important: to keep local state in sync with the drawer component, you almost alw
 
 Using local state:
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Drawer, List, ListTile, Button } from "polythene-mithril"
 
@@ -99,7 +99,7 @@ const AppDrawer = {
     ]
   }
 }
-~~~
+```
 
 
 <a id="types-of-drawer"></a>
@@ -171,7 +171,7 @@ A simpler approach is to create a theme CSS for each breakpoint using Polythene'
 
 If we focus on the small screen first, we pass the theme options `cover` and `backdrop`, alongside a `mediaQuery` option:
 
-~~~javascript
+```javascript
 import { DrawerCSS } from "polythene-css"
 
 const breakPointSmall = 480
@@ -186,11 +186,11 @@ DrawerCSS.addStyle(
     mediaQuery: `@media all and (max-width: ${breakPointDrawerSmall}px)`
   }
 )
-~~~
+```
 
 We do the same for the other breakpoints:
 
-~~~javascript
+```javascript
 const breakPointDrawerSmall = 650
 const breakPointDrawerMedium = 900
 
@@ -216,17 +216,17 @@ DrawerCSS.addStyle(
     mediaQuery: `@media all and (min-width: ${breakPointDrawerMedium + 1}px)`
   }
 )
-~~~
+```
 
 We pass the classnames to the Drawer. And because we need the drawer to be available all the time, we pass `permanent` to the Drawer instance:
 
-~~~javascript
+```javascript
 m(Drawer, {
   className: "small-screen-cover-drawer medium-screen-mini-drawer large-screen-floating-drawer",
   permanent: true,
   // ...
 })
-~~~
+```
 
 For small and medium screen sizes we still need a button to invoke the drawer.
 
@@ -253,7 +253,7 @@ You can find more information about theming in [Theming](../../theming.md).
 <a id="themed-component"></a>
 #### Themed component
 
-~~~javascript
+```javascript
 import { DrawerCSS } from "polythene-css"
 
 DrawerCSS.addStyle(".themed-drawer", {
@@ -266,11 +266,11 @@ m(Drawer, {
   className: "themed-drawer",
   // ...
 })
-~~~
+```
 
 As demonstrated in [responsive drawer](#responsive-drawer) above, some behaviors can be set using a theme (replacing component options):
 
-~~~javascript
+```javascript
 DrawerCSS.addStyle(
   ".themed-mini-drawer",
   {
@@ -279,7 +279,7 @@ DrawerCSS.addStyle(
     shadow_depth: 3,
   }
 )
-~~~
+```
 
 
 <a id="css"></a>
@@ -289,23 +289,23 @@ Change CSS using the [Drawer CSS classes](../../../packages/polythene-css-classe
 
 Class names can be imported with:
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/drawer"
-~~~
+```
 
 <a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
 
-~~~javascript
+```javascript
 m(Drawer, {
   style: {
     backgroundColor: "#EF6C00",
     color:           "#fff"
   }
 })
-~~~
+```
 
 <a id="rtl-right-to-left-support"></a>
 ### RTL (right-to-left) support

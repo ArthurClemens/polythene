@@ -33,32 +33,32 @@
 
 A typical Material Design (indeterminate) spinner:
 
-~~~javascript
+```javascript
 import { MaterialDesignSpinner as Spinner } from "polythene-react"
-~~~
+```
 
 A typical iOS (indeterminate) spinner:
 
-~~~javascript
+```javascript
 import { IOSSpinner as Spinner } from "polythene-react"
-~~~
+```
 
 A Material Design determinate spinner:
 
-~~~javascript
+```javascript
 import { MaterialDesignProgressSpinner as Spinner } from "polythene-react"
-~~~
+```
 
 
 <a id="displaying-the-spinner"></a>
 ### Displaying the Spinner
 
-~~~jsx
+```jsx
 import React from "react"
 import { MaterialDesignSpinner as Spinner } from "polythene-react"
 
 <Spinner show />
-~~~
+```
 
 <a id="show"></a>
 ### Show
@@ -74,12 +74,12 @@ By default the Spinner is hidden. To show the spinner, either:
 
 To show a spinner "filling" a progress circle:
 
-~~~jsx
+```jsx
 import React from "react"
 import { MaterialDesignSpinner as Spinner } from "polythene-react"
 
 <Spinner show percentage={this.state.percentage} />
-~~~
+```
 
 The progress spinner draws a circle between 0 and 360 degrees. The completeness is set with `percentage`, with a range between `0.0` and `1.0`. This value would normally be set by a progress function, for instance a loader.
 
@@ -107,7 +107,7 @@ You can find more information about theming in  [Theming](../../theming.md).
 <a id="themed-component"></a>
 #### Themed component
 
-~~~javascript
+```javascript
 import { SpinnerCSS } from "polythene-css"
 
 SpinnerCSS.addStyle(".themed-spinner", {
@@ -116,7 +116,7 @@ SpinnerCSS.addStyle(".themed-spinner", {
 })
 
 <Spinner className="themed-spinner" />
-~~~
+```
 
 <a id="css"></a>
 #### CSS
@@ -130,24 +130,24 @@ Change CSS using the CSS classes:
 
 Class names can be imported with:
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/ios-spinner"
 
 // etcetera
-~~~
+```
 
 <a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
 
-~~~jsx
+```jsx
 <Spinner
   style={{
     color: "red"
   }}
 />
-~~~
+```
 
 
 <a id="dark-or-light-tone"></a>

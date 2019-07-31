@@ -26,7 +26,7 @@ Component style variables are located in each component's CSS `vars.js` file (se
 
 For example, the variables file for Icon is:
 
-~~~javascript
+```javascript
 // polythene-css-icon/src/vars.js
 import { vars } from "polythene-theme"
 
@@ -38,7 +38,7 @@ export default {
   color_light:  "currentcolor",
   color_dark:   "currentcolor"
 }
-~~~
+```
 
 "Global" variables such as `unit_icon_size_small` are imported from `polythene-theme` (which gets them from package `polythene-style`). To override these base variables, see [Global theme file](global-theme-file.md).
 
@@ -51,53 +51,53 @@ Component variables are passed on to CSS creation modules (usually "layout" and 
 
 Each component's CSS functions can be accessed with the naming pattern `{ComponentName}CSS`:
 
-~~~javascript
+```javascript
 import { IconCSS } from "polythene-css"
-~~~
+```
 
 You may also choose to import directly from the component's CSS package:
 
-~~~javascript
+```javascript
 import { addStyle } from "polythene-css-icon"
-~~~
+```
 
 
 Call `addStyle` to create a style:
 
-~~~javascript
+```javascript
 IconCSS.addStyle(selector, {
   // CSS style key value pairs
 })
-~~~
+```
 
 For example, to change the size and color of an icon:
 
-~~~javascript
+```javascript
 IconCSS.addStyle(".my-icon", {
   size_regular: 44,
   color_light:  "purple"
 })
-~~~
+```
 
 Then use that style for a specific component instance:
 
-~~~javascript
+```javascript
 m(Icon, { className: "my-icon" })
-~~~
+```
 
 or using React with JSX:
 
-~~~jsx
+```jsx
 <Icon className="my-icon" />
-~~~
+```
 
 
 <a id="function-addstyle"></a>
 ### Function `addStyle`
 
-~~~javascript
+```javascript
 addStyle(selector, vars, options)
-~~~
+```
 
 | **Option**   | **Required** | **Type** | **Description** |
 | ------------ | ------------ | -------- | --------------- |
@@ -121,7 +121,7 @@ See [Polythene CSS](../css.md) for guidelines and instructions.
 
 If we want to create large icons:
 
-~~~javascript
+```javascript
 // app.js
 import { Icon } from "polythene-mithril"
 import { IconCSS } from "polythene-css"
@@ -138,11 +138,11 @@ m(Icon, {
   className: "app-icon",
   size: "large" // results in 4 * unitSize
 })
-~~~
+```
 
 To create a blue button on a dark background:
 
-~~~javascript
+```javascript
 // app.js
 import { Button } from "polythene-mithril"
 import { ButtonCSS } from "polythene-css"
@@ -158,7 +158,7 @@ m(".pe-dark-tone",
     label: "Blue Button"
   })
 )
-~~~
+```
 
 
 <a id="react-jsx-example"></a>
@@ -166,7 +166,7 @@ m(".pe-dark-tone",
 
 If we want to create large icons:
 
-~~~jsx
+```jsx
 // app.js
 import { Icon } from "polythene-react"
 import { IconCSS } from "polythene-css"
@@ -180,11 +180,11 @@ IconCSS.addStyle(".app-icon", {
 
 // Show the large icon
 <Icon className="app-icon" size="large" />
-~~~
+```
 
 To create a blue button on a dark background:
 
-~~~jsx
+```jsx
 // app.js
 import { Button } from "polythene-react"
 import { ButtonCSS } from "polythene-css"
@@ -200,7 +200,7 @@ ButtonCSS.addStyle(".blue-on-dark-button", {
     label="Blue Button"
   />
 </div>
-~~~
+```
 
 
 <a id="global-styling-by-overriding-polythene-defaults"></a>
@@ -208,11 +208,11 @@ ButtonCSS.addStyle(".blue-on-dark-button", {
 
 Using the same method it is possible to override the default styling, just by using Polythene classnames:
 
-~~~javascript
+```javascript
 IconCSS.addStyle(".pe-icon", {
   color_light:  "purple"
 })
-~~~
+```
 
 To override global variables such as the app's primary action color, see [Global theme file](global-theme-file.md).
 

@@ -15,7 +15,7 @@ A wrapper component - also Higher Order Component - takes a regular component an
 <a id="mithril-example"></a>
 ## Mithril example
 
-~~~javascript
+```javascript
 // secondary-button.js
 import m from "mithril"
 import { Button } from "polythene-mithril"
@@ -38,23 +38,23 @@ ButtonCSS.addStyle(".secondary-button", {
   color_light_border:     "#ddd",
   color_light_background: "#fff"
 })
-~~~
+```
 
-~~~javascript
+```javascript
 // app.js
 import { SecondaryButton } from "./secondary-button"
 
 m(SecondaryButton, {
   label: "Help"
 })
-~~~
+```
 
 
 
 <a id="react-jsx-example"></a>
 ## React JSX example
 
-~~~jsx
+```jsx
 // secondary-button.js
 import { Button } from "polythene-react"
 import { ButtonCSS } from "polythene-css"
@@ -67,11 +67,11 @@ ButtonCSS.addStyle(".secondary-button", {
   color_light_border:     "#ddd",
   color_light_background: "#fff"
 })
-~~~
+```
 
-~~~jsx
+```jsx
 // app.js
 import { SecondaryButton } from "./secondary-button"
 
 <SecondaryButton label="Help" />
-~~~
+```

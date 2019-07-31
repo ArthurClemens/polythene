@@ -38,7 +38,7 @@ Create custom CSS by passing a new CSS class and component [style variables](the
 <a id="mithril-example"></a>
 ### Mithril example
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Button } from "polythene-mithril"
 import { ButtonCSS } from "polythene-css"
@@ -52,13 +52,13 @@ m(Button, {
   className: "blue-button",
   label: "Blue Button"
 })
-~~~ 
+``` 
 
 
 <a id="react-jsx-example"></a>
 ### React example
 
-~~~jsx
+```jsx
 import React from "react"
 import { Button } from "polythene-react"
 import { ButtonCSS } from "polythene-css"
@@ -69,4 +69,4 @@ ButtonCSS.addStyle(".blue-button", {
 })
 
 <Button className="blue-button" label="Blue Button" />
-~~~ 
+``` 

@@ -24,7 +24,7 @@ Global theme variables such as `unit_icon_size_small` or the app's primary actio
 
 Components read the global variables from the file `variables` located in `polythene-style`. Module `polythene-theme` acts as a gateway - by default everything is passed through:
 
-~~~javascript
+```javascript
 // Some component
 import { vars } from "polythene-theme"
           ^
@@ -35,11 +35,11 @@ export { vars } from "polythene-style"
           |
 // polythene-style
 export { vars } from "variables"
-~~~
+```
 
 A custom theme file replaces the default `polythene-style`, while the import name "polythene-theme" is kept unchanged:
 
-~~~javascript
+```javascript
 // Some component
 import { vars } from "polythene-theme"
           ^
@@ -51,7 +51,7 @@ export const vars = Object.assign({}, defaultVars, ...)
           |
 // polythene-style
 export { vars } from "variables"
-~~~
+```
 
 
 
@@ -61,7 +61,7 @@ export { vars } from "variables"
 
 Let's say we want to change the primary color. This is defined by variable  `color_primary`. We change it by overriding this variable:
 
-~~~javascript
+```javascript
 // app/custom-theme.js
 import { vars as defaultVars } from "polythene-style"
 
@@ -72,7 +72,7 @@ export const vars = Object.assign(
     color_primary: "255, 152, 0" // new base color: orange 500
   }
 )
-~~~
+```
 
 
 
@@ -87,7 +87,7 @@ Each bundler has a different method to to this - it is generally called "map" or
 <a id="use-with-webpack"></a>
 ### Use with Webpack
 
-~~~javascript
+```javascript
 // webpack.config.js
 // ...
 {
@@ -97,7 +97,7 @@ Each bundler has a different method to to this - it is generally called "map" or
     }
   }
 }
-~~~
+```
 
 
 <a id="use-with-rollup"></a>
@@ -105,7 +105,7 @@ Each bundler has a different method to to this - it is generally called "map" or
 
 Use the [rollup-plugin-pathmodify](https://www.npmjs.com/package/rollup-plugin-pathmodify) plugin:
 
-~~~javascript
+```javascript
 // rollup.config.js
 // ...
 {
@@ -118,7 +118,7 @@ Use the [rollup-plugin-pathmodify](https://www.npmjs.com/package/rollup-plugin-p
     }),
   ]
 }
-~~~
+```
 
 
 <a id="use-with-browserify"></a>
@@ -126,13 +126,13 @@ Use the [rollup-plugin-pathmodify](https://www.npmjs.com/package/rollup-plugin-p
 
 Use the [pathmodify](https://www.npmjs.com/package/pathmodify) plugin to change the default config path to your custom file:
 
-~~~javascript
+```javascript
 browserify().plugin(pathmodify, {
   mods: [
     pathmodify.mod.id("polythene-theme", "app/custom-theme")
   ]
 })
-~~~
+```
 
 
 <a id="use-with-systemjs--jspm"></a>
@@ -140,13 +140,13 @@ browserify().plugin(pathmodify, {
 
 In `config.js`, change the path in the map variables:
 
-~~~javascript
+```javascript
 ...
 map: {
   "polythene-theme": "app/custom-theme"
   ...
 }
-~~~
+```
 
 
 <a id="global-theming-with-nextjs"></a>
@@ -156,14 +156,14 @@ Although [nextjs](https://github.com/zeit/next.js/) doesn't currently provide a 
 
 If we update the `vars` variable inside the `polythene-style` module before any other component reads values from it, we achieve essentially the same thing as aliasing the module.
 
-~~~javascript
+```javascript
 import { vars as polytheneVars } from "polythene-style"
 
 // Change polytheneVars:
 Object.assign(polytheneVars, {
   color_primary: "255, 152, 0"
 })
-~~~
+```
 
 But be careful to remember that this code needs to run before any Polythene components or files are included which also include `polythene-style` or else the `vars` won't have been updated yet.
 

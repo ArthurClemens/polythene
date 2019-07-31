@@ -20,16 +20,16 @@ Read more at [Styling with variables](../theming/style-variables.md).
 <a id="usage"></a>
 ### Usage
 
-~~~javascript
+```javascript
 writeCSS(options)
-~~~
+```
 
 <a id="example"></a>
 ### Example
 
 For example, to create a CSS file that contains themed CSS for Card and Button, you could write:
 
-~~~javascript
+```javascript
 // ./scripts/writeThemeCSS.js
 const { writeCSS } = require("polythene-scripts")
 const { CardCSS, ButtonCSS } = require("polythene-css")
@@ -50,11 +50,11 @@ writeCSS({
   path: "./dist/css/theme.css",
   beautify: true
 })
-~~~
+```
 
 Creates:
 
-~~~css
+```css
 .pe-dark-tone.themed-card.pe-card, .pe-dark-tone .themed-card.pe-card {
   background-color: #b89e58;
 }
@@ -95,7 +95,7 @@ Creates:
 }
 
 /*# sourceMappingURL=theme.css.map */
-~~~
+```
 
 <a id="writecss-options"></a>
 ### `writeCSS` options

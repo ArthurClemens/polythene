@@ -38,7 +38,7 @@
 Tabs can show a text label, an icon, or the combination of the two. 
 Each tab is created with an option object.
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Tabs } from "polythene-mithril"
 
@@ -47,31 +47,31 @@ const tabOptions = ...
 m(Tabs,
   { tabs: tabOptions }
 )
-~~~
+```
 
 Text labels:
 
-~~~javascript
+```javascript
 [
   { label: "Favorites" },
   { label: "Notifs" },
   ...
 ]
-~~~
+```
 
 Icons:
 
-~~~javascript
+```javascript
 [
   { icon: { svg: { content: m.trust(iconHeartSVG) } } },
   { icon: { svg: { content: m.trust(iconAlarmSVG) } } },
   ...
 ];
-~~~
+```
 
 Text labels and icons combined:
 
-~~~javascript
+```javascript
 [
   {
     label: "Favs",
@@ -83,11 +83,11 @@ Text labels and icons combined:
   },
   ...
 ]
-~~~
+```
 
 You can use [Button options](../button.md#options) here (Tab button options will be passed to the Button component). For example:
 
-~~~javascript
+```javascript
 
 [
   {
@@ -100,11 +100,11 @@ You can use [Button options](../button.md#options) here (Tab button options will
   },
   ...
 ]
-~~~
+```
 
 To set shared options all at once, use option `all`:
 
-~~~javascript
+```javascript
 {
   all: { ink: false },
   tabs: [
@@ -112,11 +112,11 @@ To set shared options all at once, use option `all`:
     { label: "Notifs" }
   ]
 }
-~~~
+```
 
 Alternatively, write the tab options as `children`:
 
-~~~javascript
+```javascript
 m(Tabs, [
   {
     label: "One"
@@ -131,7 +131,7 @@ m(Tabs, [
     selected: true,
   }
 ])
-~~~
+```
 
 
 <a id="scrollable-tabs"></a>
@@ -149,7 +149,7 @@ The container's `background-color` will automatically set the scroll button colo
 
 For example:
 
-~~~javascript
+```javascript
 const myTabs = m(Tabs,
   {
     scrollable: true,
@@ -169,7 +169,7 @@ m("div",
   },
   myTabs
 )
-~~~
+```
 
 <a id="getting-the-tabs-state"></a>
 ### Getting the tabs state
@@ -178,14 +178,14 @@ m("div",
 
 To read the currently selected tab, for instance to write the selected tab to a controller variable, use `onChange`:
 
-~~~javascript
+```javascript
 m(Tabs,
   {
     onChange: ({ index }) => vnode.state.selectedTabIndex = index,
     tabs: tabOptions
   }
 )
-~~~
+```
 
 The `state` object contains data on the current tab:
 
@@ -222,7 +222,7 @@ See example:
 
 Use option `menu` to remove the minimum width settings from the tab buttons and compress padding and label font size.
 
-~~~javascript
+```javascript
 m(Tabs,
   {
     menu: true,
@@ -231,13 +231,13 @@ m(Tabs,
     tabs: tabOptions
   }
 )
-~~~
+```
 
 
 <a id="scrollable-tabs-with-custom-arrow-icons"></a>
 ### Scrollable tabs with custom arrow icons
 
-~~~javascript
+```javascript
 const arrowBackSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z\"/></svg>";
 const arrowForwardSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z\"/></svg>";
 
@@ -262,7 +262,7 @@ m("div",
     }
   )
 )
-~~~
+```
 
 
 <a id="styling"></a>
@@ -275,7 +275,7 @@ You can find more information about theming in  [Theming](../../theming.md).
 <a id="themed-component"></a>
 #### Themed component
 
-~~~javascript
+```javascript
 import { TabsCSS } from "polythene-css"
 
 TabsCSS.addStyle(".themed-tabs", {
@@ -287,7 +287,7 @@ TabsCSS.addStyle(".themed-tabs", {
 m(Tabs, {
   className: "themed-tabs"
 })
-~~~
+```
 
 <a id="css"></a>
 #### CSS
@@ -296,16 +296,16 @@ Change CSS using the [Tabs CSS classes](../../../packages/polythene-css-classes/
 
 Class names can be imported with:
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/tabs"
-~~~
+```
 
 <a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. The tab button styles can be passed using `all.style`:
 
-~~~javascript
+```javascript
 m(Tabs, {
   all: {
     style: {
@@ -314,7 +314,7 @@ m(Tabs, {
     }
   }
 })
-~~~
+```
 
 
 <a id="tab-widths"></a>
@@ -326,7 +326,7 @@ m(Tabs, {
 
 To use a fixed width without `autofit`:
 
-~~~javascript
+```javascript
 import { TabsCSS } from "polythene-css"
 
 TabsCSS.addStyle(".tabs-fixed-width", {
@@ -340,15 +340,15 @@ m(Tabs,
     tabs: tabOptions
   }
 )
-~~~
+```
 
 or 
 
-~~~css
+```css
 .pe-tabs:not(.pe-tabs--small) .pe-tabs__tab {
   min-width: 100px;
 }
-~~~
+```
 
 
 <a id="dark-or-light-tone"></a>

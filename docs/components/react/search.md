@@ -35,7 +35,7 @@
 
 <a href="https://flems.io/#0=N4Igxg9gdgzhA2BTEAucD4EMAONEBMQAaEGMAJw1QG0AGI2gXRIDMBLJGG0KTAW2RoAdAAsALn3jF0UMYlmoQAHnhsoAawAEI8ohYBeADohxY3CgD0FzOTEiAruTBIBsIQHM2d+wCMhbCGsYPDEYC2wEAE87eUQLRAAPfmxOCxYXGCEwYONNXXgjUjFIzhFERDFjAD5DKCUycjZsMU0YJ0LTcysbbycXeUzPbz8AoJCwiPhosqg4mDFMKHxMeGg4yenYgFpdTDAxcKiY2Z3EPbEt+cXl1dmhACsYaqULBqaxGrq35tb2406YJZrLYHH1EK5Bl4HCNAphghUJkcZnMFksVmtDlNjogttlEVjkbjgpdUTc1g8niAqi9vh9arUlPg2AA3TRsfCFSgQSpUl5M5lVaR4JD7AKwRQAZhQtBAAF8iDx+IIQBTpJBZPIxIp1fNNMBNABlM5OERETQASXVACF7GIxNAzQaRJh8BAAO6aWWafSaDbYgDc9KgOpabHVRpsYBE3s09WZ7k0bvZdkKACYACy5MpsdziNOZkCaZlsRBuq0QBKFWiaasZzQZ57YTB2TQc4wAWQAjABWITdzSd9MiLZCADsAE54CPUwAOaejgDCPaE6c7A9TffHA4AbAPO0JO2vO7vx32d5pe+OjxKhLQtxLNKf+xKDQ-L2uH0+L0Ir+ev8ewH3bc12rG87xHbst3TIRUwlLZ927Ud4Bg0cYJnZkx0nftoPHccABlU1oFct07Scthw8ctm7AAvPgtl3WgF1Q2gj3TC89x-Ld+yfA1mLXbiz37QdND4gc2P-fdcLEx8z0HajjAsalXnjKpA2DaBdTDaArT2LQfTjBMk3wFNjAbQts1zMR81yYtS3LStjGrWs2LM6kmxbNsQHbQi9wACVQmcJXgXtIKozc8M7VNNHTKcZ00OKEoHFdO3g5K8ICh9OwlXzCOZLZU3kkBFJpFS1JDNl1QXJAbBjAzE2TERrPMxAczzUyCyLEsywrKsa3rFyCzc5to08rst23NLO1QyD2MigciJmibV3Y-slqPBaSKioTpvG5KB02gcb2WqbN32s6TpmrK9siwriuU9xVNqcqtKgdsw1qmB43q4zGvarMWssprOrsnrHL6utXKUdyRsKLsosHQChG3Bj6041KJRctGJQi-tuzAWhUuR9H0y2OCyYNe8hAxx8L2Zbd8aS5Gkuph9Wdo3syYZuCN27NjexSjnv07A0JtHaTRb8vHQL2jdRyiibYM0XdRdTAA1VNOxEVM8pvWcwF1ucVzi7dSappX6LHVNh33UdbqUz6HrUp6NJaHSwHUG07WgGMAAp9Wq5lEE9ABKb1Pk0WNLW0217SgWoI4j9REEiQofF04x44Tl79GAfUHZQPVNHVORZALl63a0L1ZVlTOI7UdQc5YFY8BrqAE80RBA9kGAc-1aAqrDdQC4DoPq8zxSnfU2AWiq41Pdj339WcY0Q7DzOlCjqB5+gWvNCTlPjGXmwM7brP1V71p4wLpfoBLsQy8q6ryE9T1W-b+vG+bxA34TzvNR73Omh+6qHdgXI+z8x6nwnkGcqEYTSb19qHfQ4dI7WhjjvU+idk6FDwJGEQJ937n0AfnQuxdNQP2gHAqML9IHv14KKQO49HpxynrqN6YAEE+h9kglBG80FexYe3fehQ+BhgIWfaAF8SE3w1KXCq0B2E0J-nXehYgWSICYZPZwcIYCGmNFGAAYiWeA+AO4JBLvgXRAAlM4+whALggHwCIsxZB6iDBHEM5B7D7AgOQH22BKC4FDsAXeMB7DYEQH4gJEAglqXbnYNgmQrhyBjCEzBCdmQrHsIgAuGdiC7wjiEc0UBsC2gNAsOQBd7BLD0GoAgu9ZRxITgkzI4CYwtKyE-IQPg1D4B9i04OTSI4dJHu0kQiShAj26b0-p4yYCDMzq3TO4DuFuPSR05JiAhBFJKWUipiA-YFKLFknJmg8lECOSwCAYB7CAk0GILxGj0mygWafJZp8R6rLSfEuZ2yKjlObAc-UmT4DZNySAXILymnvIjroGpfjgm73KiC7JYyJmbKECixAQyi4u00Fcm5uifQbP2UIAltycW6DEI4NuPsjlKCofg9J8TEhiHYIgExvcjntywD4Dl4LGXGAucy9uQCoALmdFAdwpy-bHNBYgM0OzSliABSkl5Yd7m-JCKqoFcrsmKoqMU5VOqQ7CtFaKrFZrzWv25ZoHw6DYBcpFe3KAaxr62vbnyq5ugC6Ms3twq11qE6YBYHIcgBd2H+uDh6z0gbrXkrud8oNCcvW+NORXbeUBZUjwLiMs4gdTUxojiGsNEawxRpjfKGNCaAD6TJbCRHdc60VqafWaAzQ67N+bTl5swAWl5cag0lsiQXWeNhM2yvAbm35bSXmVsHaK+txQm3JpTXoNNBcO0CK7X2ntvzRkDqLZoYd4bNBjvIBOpeT9p0TNndG5tEdlGitoda1tiAc4MudK6D0ikn3t2AEIQDHTom4D-ZoRSu9XmPtqO88qABBbA2BEEavXvyFBEdGQsiLlgYIAA5JUnJ3SaFdXIao9LMDaF0AYf4doujAl6MvCEHgoS+H8IEP0hJ8DgggGEXY+wLAAGJXj6PwYWBY5BpVWWMDWnwWANDVCNEHZuEAC4AAUkSxHxb4zQNjziaC2HovBrZuMvEwOh2MFg0O70w6ybReGCPGEoG6MjIqbPYZ0fhgQhQ1FiCQApkTfIWTmYw-ydz9mvOH0cc4zULmg0MpE0YjlpiIOucs0F6zaWBTr0y58Woun9gABEADy7YhBwq4349eCGkOKSta6G5rgxAeAqAAUX6LIK0kRzR9McxAbkxh72DLVFFjgkTFBpz5VIEgwpECig0pKVMKBIpygVCAXgAhFBZGCMN2RWo0BymYCAVQGguAoGoIqDbaA+NNa44HVY2BGuqhII4KQaAARAmqdgdQ7gsiOIsNdiw9g+D4H+7Ym7f97uPceNIYoETFC0hWxd5U12tiuj4EIW7HKYlQ64M98gr2TC0cBFYT733ft8FB+cVHf2gcg5R2jjHEPseaieyAWHyoEeykYLKIAA" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
-~~~jsx
+```jsx
 import React from "react"
 import { Search, Shadow } from "polythene-react"
 
@@ -43,7 +43,7 @@ import { Search, Shadow } from "polythene-react"
   textfield={{ label: "Search" }}
   before={<Shadow/>}
 />
-~~~
+```
 
 This creates a search field without any icons, with label "Search", and is little more than a [Text Field](../textfield.md) with a drop shadow. The field also needs search icons and buttons. More on that below.
 
@@ -57,7 +57,7 @@ An inset search box is presented in an area / box / tile with some surrounding s
 
 A full width search box is a little higher and visually corresponds to a toolbar, and in fact can be displayed in a toolbar.
 
-~~~jsx
+```jsx
 import React from "react"
 import { Search, Shadow } from "polythene-react"
 
@@ -66,7 +66,7 @@ import { Search, Shadow } from "polythene-react"
   before={<Shadow/>}
   fullWidth
 />
-~~~
+```
 
 <a id="icons-and-buttons"></a>
 ### Icons and buttons
@@ -84,7 +84,7 @@ Secondly, buttons may be placed `before` of `after` the input field.
 
 The states are set in the `buttons` option. For example:
 
-~~~javascript
+```javascript
 buttons: {
   none: {
     before: h(searchButton)
@@ -101,7 +101,7 @@ buttons: {
     before: h(backButton)
   }
 }
-~~~
+```
 
 Not all button states need to be defined.
 
@@ -118,12 +118,12 @@ To add logic to the search field, we will wrap the search field in a component. 
 
 Text Field attributes are passed with option `textfield`:
 
-~~~javascript
+```javascript
 textfield: {
   value: this.state.value,
   onChange: ({ value, setInputState }) => this.setState({ value, setInputState }),
 }
-~~~
+```
 
 To clear the field:
 
@@ -136,7 +136,7 @@ The back button clears the field and removes the focus, setting the search field
 <a id="complete-example"></a>
 ### Complete example
 
-~~~jsx
+```jsx
 import React, { Component } from "react"
 import { Search, IconButton, Shadow } from "polythene-react"
 
@@ -230,7 +230,7 @@ export default class extends Component {
     )
   }
 }
-~~~
+```
 
 <a id="result-list"></a>
 ### Result list
@@ -243,7 +243,7 @@ To add keyboard control - allowing to move from the search field into the result
 
 The basic setup is:
 
-~~~javascript
+```javascript
 class SearchWithResults extends React.Component {
   constructor(props) {
     // ... logic
@@ -258,7 +258,7 @@ class SearchWithResults extends React.Component {
     )
   }
 }
-~~~
+```
 
 An elaborate example is available as flems:
 
@@ -275,9 +275,9 @@ An elaborate example is available as flems:
 
 To add a drop shadow to the search field:
 
-~~~jsx
+```jsx
 before={<Shadow/>}
-~~~
+```
 
 
 <a id="styling"></a>
@@ -290,7 +290,7 @@ You can find more information about theming in  [Theming](../../theming.md).
 <a id="themed-component"></a>
 #### Themed component
 
-~~~javascript
+```javascript
 import { SearchCSS } from "polythene-css"
 
 SearchCSS.addStyle(".themed-search", {
@@ -301,7 +301,7 @@ SearchCSS.addStyle(".themed-search", {
 })
 
 <Search className="themed-search" />
-~~~
+```
 
 <a id="css"></a>
 #### CSS
@@ -310,22 +310,22 @@ Change CSS using the [Search CSS classes](../../../packages/polythene-css-classe
 
 Class names can be imported with:
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/search"
-~~~
+```
 
 <a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
 
-~~~jsx
+```jsx
 <Search
   style={{
     background: "#BBDEFB"
   }}
 />
-~~~
+```
 
 
 <a id="dark-or-light-tone"></a>

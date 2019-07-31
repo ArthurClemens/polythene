@@ -31,18 +31,18 @@
 
 Append a ripple to any HTML element (which requires to have style `position: relative` and a size):
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Ripple } from "polythene-mithril"
 
 m(".relative-with-size",
   m(Ripple)
 )
-~~~
+```
 
 Use option `after` to append a Ripple to a Polythene component:
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Ripple, ListTile } from "polythene-mithril"
 
@@ -50,7 +50,7 @@ m(ListTile, {
   title: "Title",
   after: m(Ripple)
 })
-~~~
+```
 
 
 
@@ -75,7 +75,7 @@ You can find more information about theming in  [Theming](../../theming.md).
 <a id="themed-component"></a>
 #### Themed component
 
-~~~javascript
+```javascript
 import { RippleCSS } from "polythene-css"
 
 RippleCSS.addStyle(".themed-ripple", {
@@ -85,7 +85,7 @@ RippleCSS.addStyle(".themed-ripple", {
 m(Ripple, {
   className: "themed-ripple"
 })
-~~~
+```
 
 <a id="css"></a>
 #### CSS
@@ -94,30 +94,30 @@ Change CSS using the [Ripple CSS classes](../../../packages/polythene-css-classe
 
 Class names can be imported with:
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/ripple"
-~~~
+```
 
 By default the inherited `color` from the parent element is used. It can be changed with CSS:
 
-~~~css
+```css
 .pe-ripple {
   color: green;
 }
-~~~
+```
 
 <a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
 
-~~~javascript
+```javascript
 m(Ripple, {
   style: {
     color: "#2196F3"
   }
 })
-~~~
+```
 
 
 <a id="dark-or-light-tone"></a>

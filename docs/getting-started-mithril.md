@@ -47,9 +47,9 @@ Optional:
 <a id="installation"></a>
 ### Installation
 
-~~~bash
+```bash
 npm install --save polythene-mithril polythene-css
-~~~
+```
 
 
 <a id="examples"></a>
@@ -57,7 +57,7 @@ npm install --save polythene-mithril polythene-css
 
 #### A single component
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Button } from "polythene-mithril"
 import "polythene-css"
@@ -66,11 +66,11 @@ m(Button, {
   raised: true,
   label: "Click"
 })
-~~~
+```
 
 #### A simple app
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Button, Dialog } from "polythene-mithril"
 import { addTypography } from "polythene-css"
@@ -96,7 +96,7 @@ const App = {
 }
 
 m.mount(document.querySelector("#app"), App)
-~~~
+```
 
 
 <a id="usage-in-a-html-file-or-jsfiddle"></a>
@@ -104,9 +104,9 @@ m.mount(document.querySelector("#app"), App)
 
 A "standalone" version of Polythene - useful for demonstration purposes - is available at:
 
-~~~
+```
 https://unpkg.com/polythene-mithril/dist/polythene-mithril-standalone.js
-~~~
+```
 
 Included:
 
@@ -124,23 +124,23 @@ Not included:
 
 Add to your HTML file:
 
-~~~html
+```html
 <div id="root"></div>
 
 <script src="https://unpkg.com/mithril@1.1.6/mithril.min.js"></script>
 <script src="https://unpkg.com/polythene-mithril/dist/polythene-mithril-standalone.js"></script>
-~~~
+```
 
 To be able to write es6, add `babel-standalone` (not necessary for JSFiddle or flems):
 
-~~~html
+```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
-~~~
+```
 
 <a id="example-script"></a>
 ### Example script
 
-~~~javascript
+```javascript
 /* global m, polythene */
 const { Button } = polythene
 
@@ -154,7 +154,7 @@ const App = {
 
 // Assuming a html element with id `root`
 m.mount(document.getElementById("root"), App)
-~~~
+```
 
 
 See: [online flems](https://flems.io/#0=N4Igxg9gdgzhA2BTEAucD4EMAONEBMQAaEGMAJw1QG0AGIgRloDYBmAXRIDMBLJGGqCiYAtsjQA6ABYAXEfGLooMxMtQgAOlAA8Zcj2wyABDHJgAvBpCyZuFAHp7mcjKkBXM0jGwJAcx6ubgBGEjwQTjB4MjD22AgAnq6qiPYwMphQ+Jjw0Clx8IlSyQC0IgFS+vCxCUlQiKXllcVpGVk5dRIAVjBWAHzaqRQGMr1aWrpDhiZmltYytjAOTi7unojeMH7lwaHhmJGI0dUFtSktmdm5x4UlYJHXp8V3MM3pF+2IXT0g-YP6hqMoON8DwAG5GHj4WaUCAyPoDEGg3ogAC+RCEonEIC+ikgylUMnUeLSRmARgAQm55tAjCijOYjPkbnUxlBicYAILYbD00laIxGUE8RAAdxQRgAFABKemAgUCkQSynUqBEPlQeXy8iYHh4fDimTkNyIIj8zVGLBBRDwcVWZUyaBWM0ClFSrQo1kiCQiCBuZQS-AQMBubwyPyHACiXgJ5PiAEl8BKrDC4SApWqudgpaj0SBhGJ1BJnrjoCo1GhUZwQPAeFAANYCFDUDEFtBlVyVAACdQAHoSSB4FGgbHZHH7sHXfEWICJ7O2KnxOwAmCS0VfFMwSZhzxp8b21nEkGTxbBYvTDSsooA)

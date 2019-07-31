@@ -38,7 +38,7 @@
 <a id="with-trusted-svg-text"></a>
 ### With trusted SVG text
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Icon } from "polythene-mithril"
 
@@ -47,38 +47,38 @@ const starsSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=
 m(Icon, {
   svg: { content: m.trust(starsSVG) }
 })
-~~~
+```
 
 or pass an SVG component as child:
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Icon, SVG } from "polythene-mithril"
 
 m(Icon,
   m(SVG, m.trust(starsSVG))
 )
-~~~
+```
 
 
 <a id="with-svg-source-files"></a>
 ### With SVG source files
 
-~~~javascript
+```javascript
 m(Icon, {
   svg: { src: "app/assets/stars.svg" }
 })
-~~~
+```
 
 
 <a id="with-image-source-files"></a>
 ### With image source files
 
-~~~javascript
+```javascript
 m(Icon, {
   src: "img/arrow.png"
 })
-~~~
+```
 
 
 <a id="with-javascript-modules"></a>
@@ -86,21 +86,21 @@ m(Icon, {
 
 To facilitate importing (and reuse) of SVG strings, you may put them in Javascript modules:
 
-~~~javascript
+```javascript
 // assets/svg/stars.js
 var m = require("mithril")
 module.exports = m.trust("<svg xmlns ... />")
-~~~
+```
 
 Now you can import the SVG like any module:
 
-~~~javascript
+```javascript
 import m from "mithril"
 import { Icon } from "polythene-mithril"
 import starsSVG from "assets/svg/stars"
 
 m(Icon, { svg: { content: starsSVG } })
-~~~
+```
 
 A large collection of such ready to use SVG modules is available at [mmsvg](https://github.com/ArthurClemens/mmsvg).
 
@@ -127,7 +127,7 @@ You can find more information about theming in  [Theming](../../theming.md).
 <a id="themed-component"></a>
 #### Themed component
 
-~~~javascript
+```javascript
 import { IconCSS } from "polythene-css"
 
 IconCSS.addStyle(".themed-icon", {
@@ -139,7 +139,7 @@ IconCSS.addStyle(".themed-icon", {
 m(Icon, {
   className: "themed-icon"
 })
-~~~
+```
 
 <a id="css"></a>
 #### CSS
@@ -148,9 +148,9 @@ Change CSS using the [Icon CSS classes](../../../packages/polythene-css-classes/
 
 Class names can be imported with:
 
-~~~javascript
+```javascript
 import classes from "polythene-css-classes/icon"
-~~~
+```
 
 
 <a id="style"></a>
@@ -158,13 +158,13 @@ import classes from "polythene-css-classes/icon"
 
 Some style attributes can be set using option `style`. For example:
 
-~~~javascript
+```javascript
 m(Icon, {
   style: {
     color: "#EF6C00"
   }
 })
-~~~
+```
 
 <a id="rtl-right-to-left-support"></a>
 ### RTL (right-to-left) support

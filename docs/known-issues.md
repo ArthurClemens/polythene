@@ -23,8 +23,8 @@ Firefox will not display ellipsis to indicate longer texts.
 
 If you need to support IE 11, add polyfills for `Promise` and `Object.assign`. For example when using polyfill.io, add to the HTML:
 
-~~~html
+```html
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise,Object.assign" type="text/javascript"></script>
-~~~
+```
 
 
