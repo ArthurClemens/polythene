@@ -63,7 +63,7 @@
 
 #### Mithril 2.x
 
-Polythene is now compatible with the recent release of Mithril 2.x.
+Polythene is now compatible with the recent release of Mithril 2.x. Mithril 2 offers better stability and performance and is recommended for Polythene apps with Mithril.
 
 Mithril's API change may have some implications for code written with Polythene:
 
