@@ -53,7 +53,6 @@ Can be used as general-purpose component library that includes dialogs, cards, n
 * [Developing](docs/developing.md)
 * [Change log](docs/changes.md)
 * [Known issues](docs/known-issues.md)
-* [Migrating from 0.2](docs/migrating-from-02.md)
 
 
 ## Compatibility

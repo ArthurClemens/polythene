@@ -70,18 +70,18 @@ var layer = function layer(num, h) {
     key: num,
     className: [classes.layer, classes.layerN + num].join(" ")
   }, [h("div", {
-    key: "clipper-left",
+    // key: "clipper-left",
     className: [classes.circleClipper, classes.circleClipperLeft].join(" ")
   }, h("div", {
-    key: "circle",
+    // key: "circle",
     className: classes.circle
   })), h("div", {
-    key: "gap-patch",
+    // key: "gap-patch",
     className: classes.gapPatch
   }, h("div", {
     className: classes.circle
   })), h("div", {
-    key: "clipper-right",
+    // key: "clipper-right",
     className: [classes.circleClipper, classes.circleClipperRight].join(" ")
   }, h("div", {
     className: classes.circle
@@ -94,7 +94,7 @@ var _Spinner = function _Spinner(_ref) {
       props = _objectWithoutProperties(_ref, ["h", "BaseSpinner"]);
 
   var content = props.content || h("div", {
-    key: "content",
+    // key: "content",
     className: classes.animation
   }, [1, 2, 3, 4].map(function (num) {
     return layer(num, h);

@@ -7,16 +7,16 @@
   "module": "dist/polythene-tests.mjs",
   "sideEffects": false,
   "dependencies": {
-    "polythene-core-css": "1.6.5",
-    "polythene-css": "1.6.5",
-    "polythene-mithril": "1.6.5",
-    "polythene-react": "1.6.5"
+    "polythene-core-css": "^1.6.5",
+    "polythene-css": "^1.6.5",
+    "polythene-mithril": "^1.6.5",
+    "polythene-react": "^1.6.5"
   },
   "devDependencies": {
-    "cyano-mithril": "^0.5.2",
-    "cyano-react": "^0.5.2",
-    "polythene-core": "1.6.5",
-    "polythene-theme": "1.6.5",
+    "cyano-mithril": "0.6.1",
+    "cyano-react": "0.6.1",
+    "polythene-core": "^1.6.5",
+    "polythene-theme": "^1.6.5",
     "powerform": "^3.1.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

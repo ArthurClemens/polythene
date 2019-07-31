@@ -395,22 +395,17 @@ var _TextField = function _TextField(_ref) {
   var showError = isInvalid && errorMessage !== undefined;
   var inactive = allProps.disabled || allProps[a.readonly];
   var requiredIndicator = allProps.required && allProps.requiredIndicator !== "" ? h("span", {
-    key: "required",
     className: classes.requiredIndicator
   }, allProps.requiredIndicator || "*") : null;
   var optionalIndicator = !allProps.required && allProps.optionalIndicator ? h("span", {
-    key: "optional",
     className: classes.optionalIndicator
   }, allProps.optionalIndicator) : null;
   var label = allProps.label ? [allProps.label, requiredIndicator, optionalIndicator] : null;
-  var contents = [h("div", {
-    className: classes.inputArea,
-    key: "input-area"
+  var componentContent = [h("div", {
+    className: classes.inputArea
   }, [label ? h("label", {
-    key: "label",
     className: classes.label
   }, label) : null, h(inputType, _extends({}, {
-    key: "input",
     className: classes.input,
     disabled: allProps.disabled
   }, type ? {
@@ -477,19 +472,15 @@ var _TextField = function _TextField(_ref) {
   } : null, allProps.placeholder !== undefined ? {
     placeholder: allProps.placeholder
   } : null, allProps.domAttributes !== undefined ? _objectSpread({}, allProps.domAttributes) : null))]), allProps.counter ? h("div", {
-    key: 'counter',
     className: classes.counter
   }, (value.length || 0) + " / " + allProps.counter) : null, allProps.help && !showError ? h("div", {
-    key: "help",
     className: [classes.help, allProps.focusHelp ? classes.focusHelp : null].join(" ")
   }, allProps.help) : null, showError ? h("div", {
-    key: "error",
     className: classes.error
   }, errorMessage) : showErrorPlaceholder && !allProps.help ? h("div", {
-    key: "error-placeholder",
     className: classes.errorPlaceholder
   }) : null];
-  var content = [props.before, contents, props.after];
+  var content = [props.before].concat(componentContent, [props.after]);
   return h(props.element || "div", componentProps, content);
 };
 

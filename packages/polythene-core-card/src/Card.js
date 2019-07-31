@@ -6,7 +6,6 @@ const createOverlay = ({ dispatcher, props, h, a }) => {
   const content = props.content.map(dispatcher);
   return h("div",
     {
-      key: props.key || "card-overlay",
       style: props.style,
       className: [
         classes.overlay,
@@ -17,7 +16,6 @@ const createOverlay = ({ dispatcher, props, h, a }) => {
     },
     [
       h(element, {
-        key: "content",
         className: [
           classes.overlayContent,
           props.className || props[a.class]
@@ -25,7 +23,6 @@ const createOverlay = ({ dispatcher, props, h, a }) => {
       }, content),
       h("div",
         {
-          key: "dimmer",
           className: classes.mediaDimmer
         }
       )
@@ -39,7 +36,6 @@ const createAny = ({ props, h, a }) => {
     {},
     filterSupportedAttributes(props),
     {
-      key: props.key || "card-any",
       className: [
         classes.any,
         props.tight ? classes.textTight : null,
@@ -55,7 +51,6 @@ const createText = ({ props, h, a }) => {
     {},
     filterSupportedAttributes(props),
     {
-      key: props.key || "card-text",
       className: [
         classes.text,
         props.tight ? classes.textTight : null,
@@ -71,7 +66,6 @@ const createHeader = ({ props, h, a, Icon, ListTile }) => {
     {},
     props,
     {
-      key: props.key || "card-header",
       className: [
         classes.header,
         props.className || props[a.class]
@@ -101,16 +95,16 @@ export const _Card = ({ h, a, CardActions, CardMedia, CardPrimary, Icon, ListTil
   );
 
   const dispatcher = block => {
-    const key = Object.keys(block)[0];
+    const blockName = Object.keys(block)[0];
     const props = Object.assign(
       {},
-      block[key],
+      block[blockName],
       {
         dispatcher,
-        key
+        key: undefined
       }
     );
-    switch (key) {
+    switch (blockName) {
     case "actions": 
       return h(CardActions, props);
     case "header": 
@@ -126,15 +120,18 @@ export const _Card = ({ h, a, CardActions, CardMedia, CardPrimary, Icon, ListTil
     case "any": 
       return createAny({ props, h, a });
     default:
-      throw(`Content type "${key}" does not exist`);
+      throw(`Content type "${blockName}" does not exist`);
     }
   };
 
-  const contents = [
+  const blocks = Array.isArray(props.content)
+    ? props.content.map(dispatcher)
+    : [props.content]; // deprecated;
+
+  const componentContent = 
+  [
     props.before,
-    Array.isArray(props.content)
-      ? props.content.map(dispatcher)
-      : props.content, // deprecated
+    ...blocks,
     props.after,
   ];
   const shadowDepth = props.shadowDepth !== undefined
@@ -148,15 +145,13 @@ export const _Card = ({ h, a, CardActions, CardMedia, CardPrimary, Icon, ListTil
           ? shadowDepth
           : 1,
         animated: true,
-        key: "shadow"
       }
     ),
     h("div",
       {
         className: classes.content,
-        key: "content"
       },
-      contents
+      componentContent
     ),
     props.children
   ];

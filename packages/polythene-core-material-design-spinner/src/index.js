@@ -12,7 +12,7 @@ const layer = (num, h) =>
     [
       h("div",
         {
-          key: "clipper-left",
+          // key: "clipper-left",
           className: [
             classes.circleClipper,
             classes.circleClipperLeft
@@ -20,21 +20,21 @@ const layer = (num, h) =>
         },
         h("div",
           {
-            key: "circle",
+            // key: "circle",
             className: classes.circle
           }
         )
       ),
       h("div",
         {
-          key: "gap-patch",
+          // key: "gap-patch",
           className: classes.gapPatch
         },
         h("div", { className: classes.circle })
       ),
       h("div",
         {
-          key: "clipper-right",
+          // key: "clipper-right",
           className: [
             classes.circleClipper,
             classes.circleClipperRight
@@ -47,7 +47,7 @@ const layer = (num, h) =>
 export const _Spinner = ({ h, BaseSpinner, ...props }) => {
   const content = props.content || h("div",
     {
-      key: "content",
+      // key: "content",
       className: classes.animation
     },
     [1,2,3,4].map(num => layer(num, h))

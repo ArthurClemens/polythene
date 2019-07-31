@@ -15,9 +15,9 @@
   },
   "dependencies": {
     "es6-object-assign": "^1.1.0",
-    "mithril": "^2.0.0-rc.6",
-    "polythene-css": "1.6.5",
-    "polythene-mithril": "1.6.5"
+    "mithril": "^2.0.3",
+    "polythene-css": "^1.6.5",
+    "polythene-mithril": "^1.6.5"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.16",

@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@types/react": "^16.8.19",
-    "cyano-react": "^0.5.2"
+    "cyano-react": "0.6.1"
   },
   "peerDependencies": {
     "react": "^16.8.6",

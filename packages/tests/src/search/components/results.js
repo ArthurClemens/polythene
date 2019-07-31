@@ -245,7 +245,6 @@ export default ({ h, a, List, ListTile, SearchField }) => {
     view: vnode => {
       const state = vnode.state;
       const attrs = vnode.attrs;
-      const searchValue = state.searchValue();
       const matches = state.matches();
       return h(".container",
         {
@@ -256,7 +255,6 @@ export default ({ h, a, List, ListTile, SearchField }) => {
           h(SearchField, Object.assign({},
             attrs,
             {
-              key: "search",
               label: "Type color name",
               onChange: ({ value }) => (
                 state.searchValue(value)
@@ -269,14 +267,11 @@ export default ({ h, a, List, ListTile, SearchField }) => {
           )),
           matches.length
             ? h(List, {
-              key: "results" + searchValue, // Use a unique key to make sure that the list tiles get registered again
               className: "tests-search-keyboard-color-list",
               border: true,
               tiles: matches.map((title, index) => 
                 createColorTile({
                   title,
-                  // Use a unique key to make sure that the list tiles get registered again
-                  key: title + searchValue,
                   colorValues: data[title],
                   selected: index === state.selectedListIndex(),
                   onSelect: () => state.selectedValue(title)

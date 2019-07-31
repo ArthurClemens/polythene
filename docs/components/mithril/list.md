@@ -68,9 +68,10 @@ m(List, {
         avatar: true,
         size: "large"
       }),
+      element: m.route.Link, // Mithril 2.x only
       url: {
         href: "/friends/jennifer"
-        config: m.route
+        config: m.route,  // Mithril 1.x only
       }
     })
   ]

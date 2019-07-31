@@ -1,6 +1,7 @@
 {
   "scripts": {
     "lint": "eslint ./packages/polythene-*",
+    "bootstrap": "lerna bootstrap",
     "clean": "lerna clean --yes",
     "build": "node ./scripts/private/build && npm run build:standalone",
     "build:component": "node ./scripts/private/buildComponent",
@@ -64,7 +65,7 @@
     "lerna": "^3.15.0",
     "mini-css-extract-plugin": "0.7.0",
     "minimist": "^1.2.0",
-    "mithril": "^2.0.0-rc.6",
+    "mithril": "^2.0.3",
     "npm-run-all": "^4.1.5",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "react": "^16.8.6",

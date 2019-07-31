@@ -32,13 +32,6 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, h }) => {
   });
 
   return [
-    {
-      name: "Child node",
-      component: {
-        view: () => 
-          h(Toolbar, null, toolbarRow())
-      },
-    },
     // {
     //   name: "Option: content, before, after",
     //   component: {
@@ -50,6 +43,13 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, h }) => {
     //       })
     //   },
     // },
+    {
+      name: "Child node",
+      component: {
+        view: () => 
+          h(Toolbar, null, toolbarRow())
+      },
+    },
     {
       name: "Option: content",
       component: {
@@ -86,7 +86,6 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, h }) => {
             content: toolbarRowWithTitleAtStart()
           })
       },
-      
     },
     {
       name: "ToolbarTitle, indented (without left icon)",
@@ -171,11 +170,11 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, h }) => {
             [
               h(Toolbar, {
                 border: true,
-                key: "toolbar", // for React
+                // key: "toolbar", // for React
               }, toolbarRowWithTitle()),
               h("div",
                 {
-                  key: "content", // for React
+                  // key: "content", // for React
                   style: {
                     padding: "20px",
                     background: "#fff",
@@ -253,7 +252,6 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, h }) => {
         tone: "light"
       }
     },
-
     {
       section: "Right-to-left",
     },
@@ -271,11 +269,9 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, h }) => {
             [
               h(Toolbar, {
                 shadowDepth: 1,
-                key: "toolbar", // for React
               }, toolbarRowWithTitle()),
               h("div",
                 {
-                  key: "content", // for React
                   style: {
                     padding: "20px",
                     background: "#fff",

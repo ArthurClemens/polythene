@@ -15,7 +15,8 @@ const mediaSizeClasses = {
 
 const mediaSizeClass = (size = "regular") => mediaSizeClasses[size];
 
-const initImage = ({ dom, img, ratio, origin }) => {
+const initImage = ({ dom, src, ratio, origin }) => {
+  const img = new Image();
   img.onload = function() {
     // use a background image on the image container
     if (img.tagName === "IMG") {
@@ -35,6 +36,7 @@ const initImage = ({ dom, img, ratio, origin }) => {
         : classes.mediaOriginCenter;
     dom.classList.add(originClass);
   };
+  img.src = src;
 };
 
 export const _CardMedia = ({ h, a, useEffect, useState, getRef, ...props }) => {
@@ -49,7 +51,7 @@ export const _CardMedia = ({ h, a, useEffect, useState, getRef, ...props }) => {
       const ratio = props.ratio || "landscape";
       const origin = props.origin || "center";
       const img = domElement.querySelector("img") || domElement.querySelector("iframe");
-      initImage({ dom: domElement, img, ratio, origin });
+      initImage({ dom: domElement, src: img.src, ratio, origin });
     },
     [domElement]
   );
@@ -59,7 +61,6 @@ export const _CardMedia = ({ h, a, useEffect, useState, getRef, ...props }) => {
     getRef(dom => dom && !domElement && setDomElement(dom)),
     props.testId && { "data-test-id": props.testId },
     {
-      key: "card-media",
       className: [
         classes.media,
         mediaSizeClass(props.size),
@@ -72,13 +73,12 @@ export const _CardMedia = ({ h, a, useEffect, useState, getRef, ...props }) => {
 
   const dispatcher = props.dispatcher;
   const content = [
-    Object.assign({}, props.content, { key: "content" }),
+    props.content,
     props.overlay
-      ? dispatcher({ overlay: props.overlay, key: "overlay" })
+      ? dispatcher({ overlay: props.overlay })
       : props.showDimmer && h("div",
         {
           className: classes.mediaDimmer,
-          key: "dimmer"
         }
       )
   ];

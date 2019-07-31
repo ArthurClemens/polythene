@@ -17,7 +17,6 @@ export default ({ h, a, Icon, List, ListTile, repeats=1, onClick=()=>{} }) => {
   const tile = ({ title, icon, index }) =>
     h(ListTile, {
       title,
-      key: `${title}-${index}`, // for React
       className: "tests-list-navigation-list",
       front: h(Icon, {
         svg: { content: h.trust(icon) }

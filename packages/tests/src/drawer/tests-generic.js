@@ -29,7 +29,6 @@ export default ({ h, a, Drawer, List, ListTile, Icon, Toolbar, IconButton, Butto
       tiles: [
         h(ListTile, {
           title: "Jennifer Barker",
-          key: "Jennifer Barker",
           front: h(Icon, {
             src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
             avatar: true,

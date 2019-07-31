@@ -24,7 +24,6 @@ export default ({ List, ListTile, Icon, h, a }) => {
 
   const ListTileJennifer = h(ListTile, {
     title: "Jennifer Barker",
-    key: "Jennifer Barker",
     subtitle: "Starting post doc",
     front: h(Icon, {
       src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
@@ -35,7 +34,6 @@ export default ({ List, ListTile, Icon, h, a }) => {
 
   const ListTileAli = h(ListTile, {
     title: "Ali Connors",
-    key: "Ali Connors",
     subtitle: "Brunch this weekend?",
     front: h(Icon, {
       src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png",
@@ -46,7 +44,6 @@ export default ({ List, ListTile, Icon, h, a }) => {
 
   const ListTileGrace = h(ListTile, {
     title: "Grace VanDam",
-    key: "Grace VanDam",
     subtitle: "Binge watching...",
     front: h(Icon, {
       src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png",
@@ -56,6 +53,25 @@ export default ({ List, ListTile, Icon, h, a }) => {
   });
 
   return [
+    // Pro forma test
+    {
+      name: "Child nodes",
+      component: List,
+      children: [
+        h(ListTile, {
+          title: "Jennifer Barker",
+          subtitle: "Starting post doc"
+        }),
+        h(ListTile, {
+          title: "Ali Connors",
+          subtitle: "Brunch this weekend?"
+        }),
+        h(ListTile, {
+          title: "Grace VanDam",
+          subtitle: "Binge watching..."
+        })
+      ]
+    },
     {
       name: "Option: tiles",
       component: List,
@@ -67,28 +83,6 @@ export default ({ List, ListTile, Icon, h, a }) => {
         ]
       }
     },
-    // Pro forma test
-    // {
-    //   name: "Child nodes",
-    //   component: List,
-    //   children: [
-    //     h(ListTile, {
-    //       title: "Jennifer Barker",
-    //       key: "Jennifer Barker",
-    //       subtitle: "Starting post doc"
-    //     }),
-    //     h(ListTile, {
-    //       title: "Ali Connors",
-    //       key: "Ali Connors",
-    //       subtitle: "Brunch this weekend?"
-    //     }),
-    //     h(ListTile, {
-    //       title: "Grace VanDam",
-    //       key: "Grace VanDam",
-    //       subtitle: "Binge watching..."
-    //     })
-    //   ]
-    // },
     {
       name: "Options: header, tiles, indent, indentedBorder",
       component: List,
@@ -103,19 +97,16 @@ export default ({ List, ListTile, Icon, h, a }) => {
             title: "Jennifer Barker",
             subtitle: "Starting post doc",
             indent: true,
-            key: "Jennifer Barker",
           }),
           h(ListTile, {
             title: "Ali Connors",
             subtitle: "Brunch this weekend?",
             indent: true,
-            key: "Ali Connors",
           }),
           h(ListTile, {
             title: "Grace VanDam",
             subtitle: "Binge watching...",
             indent: true,
-            key: "Grace VanDam",
           })
         ]
       }
@@ -164,9 +155,9 @@ export default ({ List, ListTile, Icon, h, a }) => {
       attrs: {
         header: { style: { color: "#356859"}, title: "Friends" },
         tiles: [
-          h(ListTile, { style: { color: "#356859" }, title: "One", key: "One" }),
-          h(ListTile, { style: { color: "#356859" }, title: "Two", key: "Two" }),
-          h(ListTile, { style: { color: "#356859" }, title: "Three", key: "Three" })
+          h(ListTile, { style: { color: "#356859" }, title: "One" }),
+          h(ListTile, { style: { color: "#356859" }, title: "Two" }),
+          h(ListTile, { style: { color: "#356859" }, title: "Three" })
         ],
         style: {
           backgroundColor: "#fffbe6",
@@ -187,19 +178,16 @@ export default ({ List, ListTile, Icon, h, a }) => {
       children: [
         h(ListTile, {
           title: "Jennifer Barker",
-          key: "Jennifer Barker",
           subtitle: "Starting post doc",
           className: "tests-lists-themed-list-tile"
         }),
         h(ListTile, {
           title: "Ali Connors",
-          key: "Ali Connors",
           subtitle: "Brunch this weekend?",
           className: "tests-lists-themed-list-tile"
         }),
         h(ListTile, {
           title: "Grace VanDam",
-          key: "Grace VanDam",
           subtitle: "Binge watching...",
           className: "tests-lists-themed-list-tile"
         })
@@ -221,19 +209,16 @@ export default ({ List, ListTile, Icon, h, a }) => {
         tiles: [
           h(ListTile, {
             title: "Jennifer Barker",
-            key: "Jennifer Barker",
             subtitle: "Starting post doc",
             hoverable: true,
           }),
           h(ListTile, {
             title: "Ali Connors",
-            key: "Ali Connors",
             subtitle: "Brunch this weekend?",
             hoverable: true,
           }),
           h(ListTile, {
             title: "Grace VanDam",
-            key: "Grace VanDam",
             subtitle: "Binge watching...",
             hoverable: true,
           })
@@ -250,19 +235,16 @@ export default ({ List, ListTile, Icon, h, a }) => {
       children: [
         h(ListTile, {
           title: "Jennifer Barker",
-          key: "Jennifer Barker",
           subtitle: "Starting post doc",
           className: "tests-lists-themed-list-tile"
         }),
         h(ListTile, {
           title: "Ali Connors",
-          key: "Ali Connors",
           subtitle: "Brunch this weekend?",
           className: "tests-lists-themed-list-tile"
         }),
         h(ListTile, {
           title: "Grace VanDam",
-          key: "Grace VanDam",
           subtitle: "Binge watching...",
           className: "tests-lists-themed-list-tile"
         })
@@ -281,19 +263,16 @@ export default ({ List, ListTile, Icon, h, a }) => {
         tiles: [
           h(ListTile, {
             title: "Jennifer Barker",
-            key: "Jennifer Barker",
             subtitle: "Starting post doc",
             hoverable: true
           }),
           h(ListTile, {
             title: "Ali Connors",
-            key: "Ali Connors",
             subtitle: "Brunch this weekend?",
             hoverable: true,
           }),
           h(ListTile, {
             title: "Grace VanDam",
-            key: "Grace VanDam",
             subtitle: "Binge watching...",
             hoverable: true,
           })
@@ -313,19 +292,16 @@ export default ({ List, ListTile, Icon, h, a }) => {
         tiles: [
           h(ListTile, {
             title: "Jennifer Barker",
-            key: "Jennifer Barker",
             subtitle: "Starting post doc",
             hoverable: true
           }),
           h(ListTile, {
             title: "Ali Connors",
-            key: "Ali Connors",
             subtitle: "Brunch this weekend?",
             hoverable: true,
           }),
           h(ListTile, {
             title: "Grace VanDam",
-            key: "Grace VanDam",
             subtitle: "Binge watching...",
             hoverable: true,
           })

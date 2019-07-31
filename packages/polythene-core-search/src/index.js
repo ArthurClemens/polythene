@@ -11,6 +11,8 @@ const getNameOfState = searchState =>
         : "none";
 
 export const _Search = ({ h, a, useState, TextField, ...props }) => {
+  delete props.key;
+
   const [searchState, setSearchState] = useState({});
   
   const componentProps = Object.assign({},
@@ -32,7 +34,7 @@ export const _Search = ({ h, a, useState, TextField, ...props }) => {
   const buttons = (props.buttons || {})[searchStateName] || {};
   const textfieldAttrs = props.textfield || {};
 
-  const contents = h("div",
+  const componentContent = h("div",
     { className: classes.content },
     [
       buttons.before,
@@ -40,7 +42,6 @@ export const _Search = ({ h, a, useState, TextField, ...props }) => {
         {},
         textfieldAttrs,
         {
-          key: "input",
           onChange: newState => {
             setSearchState(newState);
             if (textfieldAttrs.onChange) {
@@ -54,7 +55,7 @@ export const _Search = ({ h, a, useState, TextField, ...props }) => {
   );
   const content = [
     props.before,
-    contents,
+    componentContent,
     props.after
   ];
   

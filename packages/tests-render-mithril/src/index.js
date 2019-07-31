@@ -34,11 +34,11 @@ const index = {
         { className: "index-list" },
         routes.map(route => (
           h(ListTile, {
+            element: h.route.Link,
             title: route.name,
             hoverable: true,
             url: {
               href: route.path,
-              oncreate: h.route.link
             }
           })
         ))
@@ -50,7 +50,7 @@ const index = {
 let scrollTop = document.scrollingElement
   ? document.scrollingElement.scrollTop
   : document.scrollTop;
-h.route.prefix("#");
+h.route.prefix = "#";
 const mountNode = document.querySelector("#app");
 const routeData = {
   "/": {

@@ -4,7 +4,6 @@ export default ({ h, a, Dialog, List, ListTile }) => {
   const tile = (title, selected, disabled) =>
     h(ListTile, {
       title,
-      key: title, // for React
       selected,
       disabled,
       ink: true,

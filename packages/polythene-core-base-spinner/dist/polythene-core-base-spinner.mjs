@@ -205,16 +205,17 @@ var _BaseSpinner = function _BaseSpinner(_ref) {
     "data-test-id": props.testId
   }, {
     className: [classes.component, props.instanceClass, classForSize(classes, props.size), props.singleColor ? classes.singleColor : null, props.raised ? classes.raised : null, props.animated ? classes.animated : null, props.permanent ? classes.permanent : null, isVisible ? classes.visible : null, props.className || props[a["class"]]].join(" ")
-  }, props.events); // if (state.hide) {
-  //   setTimeout(() => { hideSpinner(state, attrs); }, 0);
-  // }
+  }, props.events);
 
+  var content = [props.before, props.content, props.after];
 
-  var content = [props.before, props.content, props.after].filter(Boolean);
-  return h("div", componentProps, [props.raised && content.length > 0 ? h(Shadow, {
-    key: "shadow",
-    shadowDepth: props.shadowDepth
-  }) : null, content]);
+  if (props.raised && content.length > 0) {
+    content.push(h(Shadow, {
+      shadowDepth: props.shadowDepth
+    }));
+  }
+
+  return h("div", componentProps, content);
 };
 
 export { _BaseSpinner };

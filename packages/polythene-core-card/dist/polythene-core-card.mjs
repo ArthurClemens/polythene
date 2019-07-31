@@ -58,8 +58,24 @@ function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
 }
 
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+    return arr2;
+  }
+}
+
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArray(iter) {
+  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
 }
 
 function _iterableToArrayLimit(arr, i) {
@@ -86,6 +102,10 @@ function _iterableToArrayLimit(arr, i) {
   }
 
   return _arr;
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
 }
 
 function _nonIterableRest() {
@@ -140,15 +160,12 @@ var createOverlay = function createOverlay(_ref) {
   var element = props.element || "div";
   var content = props.content.map(dispatcher);
   return h("div", {
-    key: props.key || "card-overlay",
     style: props.style,
     className: [classes.overlay, props.sheet ? classes.overlaySheet : null, props.tone === "light" ? null : "pe-dark-tone", // default dark tone
     props.tone === "light" ? "pe-light-tone" : null].join(" ")
   }, [h(element, {
-    key: "content",
     className: [classes.overlayContent, props.className || props[a["class"]]].join(" ")
   }, content), h("div", {
-    key: "dimmer",
     className: classes.mediaDimmer
   })]);
 };
@@ -159,7 +176,6 @@ var createAny = function createAny(_ref2) {
       a = _ref2.a;
   var element = props.element || "div";
   return h(element, _extends({}, filterSupportedAttributes(props), {
-    key: props.key || "card-any",
     className: [classes.any, props.tight ? classes.textTight : null, props.className || props[a["class"]]].join(" ")
   }), props.content);
 };
@@ -170,7 +186,6 @@ var createText = function createText(_ref3) {
       a = _ref3.a;
   var element = props.element || "div";
   return h(element, _extends({}, filterSupportedAttributes(props), {
-    key: props.key || "card-text",
     className: [classes.text, props.tight ? classes.textTight : null, props.className || props[a["class"]]].join(" ")
   }, props.events), props.content);
 };
@@ -182,7 +197,6 @@ var createHeader = function createHeader(_ref4) {
       Icon = _ref4.Icon,
       ListTile = _ref4.ListTile;
   return h(ListTile, _extends({}, props, {
-    key: props.key || "card-header",
     className: [classes.header, props.className || props[a["class"]]].join(" ")
   }, props.icon ? {
     front: h(Icon, props.icon)
@@ -207,14 +221,14 @@ var _Card = function _Card(_ref5) {
   }, props.url, props.events);
 
   var dispatcher = function dispatcher(block) {
-    var key = Object.keys(block)[0];
+    var blockName = Object.keys(block)[0];
 
-    var props = _extends({}, block[key], {
+    var props = _extends({}, block[blockName], {
       dispatcher: dispatcher,
-      key: key
+      key: undefined
     });
 
-    switch (key) {
+    switch (blockName) {
       case "actions":
         return h(CardActions, props);
 
@@ -256,22 +270,21 @@ var _Card = function _Card(_ref5) {
         });
 
       default:
-        throw "Content type \"".concat(key, "\" does not exist");
+        throw "Content type \"".concat(blockName, "\" does not exist");
     }
   };
 
-  var contents = [props.before, Array.isArray(props.content) ? props.content.map(dispatcher) : props.content, // deprecated
-  props.after];
+  var blocks = Array.isArray(props.content) ? props.content.map(dispatcher) : [props.content]; // deprecated;
+
+  var componentContent = [props.before].concat(_toConsumableArray(blocks), [props.after]);
   var shadowDepth = props.shadowDepth !== undefined ? props.shadowDepth : props.z; // deprecated
 
   var content = [h(Shadow, {
     shadowDepth: shadowDepth !== undefined ? shadowDepth : 1,
-    animated: true,
-    key: "shadow"
+    animated: true
   }), h("div", {
-    className: classes.content,
-    key: "content"
-  }, contents), props.children];
+    className: classes.content
+  }, componentContent), props.children];
   var element = props.element || props.url ? "a" : "div";
   return h(element, componentProps, content);
 };
@@ -294,9 +307,10 @@ var mediaSizeClass = function mediaSizeClass() {
 
 var initImage = function initImage(_ref) {
   var dom = _ref.dom,
-      img = _ref.img,
+      src = _ref.src,
       ratio = _ref.ratio,
       origin = _ref.origin;
+  var img = new Image();
 
   img.onload = function () {
     // use a background image on the image container
@@ -312,6 +326,8 @@ var initImage = function initImage(_ref) {
     var originClass = origin === "start" ? classes.mediaOriginStart : origin === "end" ? classes.mediaOriginEnd : classes.mediaOriginCenter;
     dom.classList.add(originClass);
   };
+
+  img.src = src;
 };
 
 var _CardMedia = function _CardMedia(_ref2) {
@@ -338,7 +354,7 @@ var _CardMedia = function _CardMedia(_ref2) {
     var img = domElement.querySelector("img") || domElement.querySelector("iframe");
     initImage({
       dom: domElement,
-      img: img,
+      src: img.src,
       ratio: ratio,
       origin: origin
     });
@@ -349,19 +365,14 @@ var _CardMedia = function _CardMedia(_ref2) {
   }), props.testId && {
     "data-test-id": props.testId
   }, {
-    key: "card-media",
     className: [classes.media, mediaSizeClass(props.size), ratio === "landscape" ? classes.mediaRatioLandscape : classes.mediaRatioSquare, props.className || props[a["class"]]].join(" ")
   }, props.events);
 
   var dispatcher = props.dispatcher;
-  var content = [_extends({}, props.content, {
-    key: "content"
-  }), props.overlay ? dispatcher({
-    overlay: props.overlay,
-    key: "overlay"
+  var content = [props.content, props.overlay ? dispatcher({
+    overlay: props.overlay
   }) : props.showDimmer && h("div", {
-    className: classes.mediaDimmer,
-    key: "dimmer"
+    className: classes.mediaDimmer
   })];
   return h(props.element || "div", componentProps, content);
 };
@@ -412,7 +423,6 @@ var _CardActions = function _CardActions(_ref) {
   var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
     "data-test-id": props.testId
   }, {
-    key: "card-actions",
     className: [classes.actions, props.layout !== "vertical" ? buttonClasses.row : null, actionClassForLayout(props.layout), props.border || props.bordered ? classes.actionsBorder : null, props.tight ? classes.actionsTight : null, props.className || props[a["class"]]].join(" ")
   }, props.events);
 
@@ -432,7 +442,6 @@ var _CardPrimary = function _CardPrimary(_ref) {
   var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
     "data-test-id": props.testId
   }, {
-    key: "card-primary",
     className: [classes.primary, props.tight ? classes.primaryTight : null, primaryHasMedia ? classes.primaryHasMedia : null, props.className || props[a["class"]]].join(" ")
   }, props.events);
 
@@ -443,17 +452,14 @@ var _CardPrimary = function _CardPrimary(_ref) {
       || pAttrs.props // React
       ? pAttrs || pAttrs.props : h("div", {
         className: classes.title,
-        key: "title",
         style: pAttrs.style
       }, [pAttrs.title, pAttrs.subtitle ? h("div", {
-        className: classes.subtitle,
-        key: "subtitle"
+        className: classes.subtitle
       }, pAttrs.subtitle) : null]);
     },
     media: function media(pAttrs) {
       return h("div", {
         className: classes.primaryMedia,
-        key: "media",
         style: pAttrs.style
       }, dispatcher({
         media: pAttrs
@@ -471,10 +477,9 @@ var _CardPrimary = function _CardPrimary(_ref) {
     return primaryDispatch[key] ? primaryDispatch[key](pAttrs) : block;
   }) : [props.title ? primaryDispatch.title({
     title: props.title,
-    subtitle: props.subtitle,
-    key: "title"
+    subtitle: props.subtitle
   }) : null, props.media ? primaryDispatch.media(props.media) : null, props.actions ? primaryDispatch.actions(props.actions) : null, props.content];
-  return h(props.element || "div", componentProps, content);
+  return h.apply(void 0, [props.element || "div", componentProps].concat(_toConsumableArray(content)));
 };
 
 export { _Card, _CardActions, _CardMedia, _CardPrimary };

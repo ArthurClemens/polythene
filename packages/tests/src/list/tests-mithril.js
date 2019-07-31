@@ -11,7 +11,6 @@ const mithrilTests = ({ List, Icon, ListTile, h }) => {
   const createUserListTile = (title, subtitle, filename, showSecondary) =>
     h(ListTile, {
       title,
-      key: title,
       subtitle,
       hoverable: true,
       front: h(Icon, {

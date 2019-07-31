@@ -80,7 +80,7 @@ Displays a list element as part of a [List](list.md).
 | **subContent**   | optional | String, hyperscript or component | | Secondary content (no height restriction) |
 | **subtitle**     | optional | String | | Secondary text content (1 line high) |
 | **title**        | optional | String | | The text content |
-| **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) or `to` (for React Router) | | URL location; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
+| **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) or `to` (for React Router) | | URL location; Mithril 2.x: only use `url.href` and set `element` to `m.route.Link`; Mithril 1,x: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 
 
 <a id="list-tile-secondary-content-options"></a>
@@ -91,7 +91,7 @@ Displays a list element as part of a [List](list.md).
 | **secondary.content** | optional | String, hyperscript or component | | Secondary content |
 | **secondary.element** | optional | String | | HTML element for secondary content |
 | **secondary.icon** | optional | Object |  | [Icon](Icon.md) options object for icon in secondary content; will be placed above secondary.content |
-| **secondary.url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) | | URL for secondary content; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
+| **secondary.url** | optional | Object with `href`, optionally `oncreate` (for Mithril 1.x) or `onClick` (for React) | | URL for secondary content; Mithril 2.x: only use `url.href` and set `element` to `m.route.Link`; Mithril 1.x: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 
 
 <a id="common-component-options"></a>

@@ -90,7 +90,26 @@ front: m(Icon, {
 
 Both primary and secondary content can be set as link. For a general principle, see: [URLs and router links](../../handling-urls.md).
 
-To make the primary content a link:
+To make the primary content a link.
+
+For Mithril 2.x:
+
+~~~javascript
+m(ListTile, {
+  title: "My title",
+  front: m(Icon, {
+    size: "large",
+    avatar: true,
+    src: "app/images/1.png"
+  }),
+  element: m.route.Link,
+  url: {
+    href: "/favs"
+  }
+})
+~~~
+
+For Mithril 1.x:
 
 ~~~javascript
 m(ListTile, {

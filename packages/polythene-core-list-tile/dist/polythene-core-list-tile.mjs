@@ -105,6 +105,8 @@ var _ListTile = function _ListTile(_ref) {
       Icon = _ref.Icon,
       props = _objectWithoutProperties(_ref, ["h", "a", "Ripple", "Icon"]);
 
+  // Remove unused props
+  delete props.key;
   var hasTabIndex = !props.header && !props.url && !(props.secondary && props.secondary.url);
   var heightClass = props.subtitle ? classes.hasSubtitle : props.highSubtitle ? classes.hasHighSubtitle : props.front || props.indent ? classes.hasFront : null;
 
@@ -118,15 +120,10 @@ var _ListTile = function _ListTile(_ref) {
   }, hasTabIndex && _defineProperty({}, a.tabindex, props[a.tabindex] || 0) // events and url are attached to primary content to not interfere with controls
   );
 
-  var primaryProps = _extends({}, {
-    key: "primary"
-  }, props);
-
+  var primaryProps = props;
   delete primaryProps.id;
   delete primaryProps[a["class"]];
-  var contents = [props.ink && !props.disabled ? h(Ripple, _extends({}, props.ripple, {
-    key: "ripple"
-  })) : null, primaryContent({
+  var componentContent = [props.ink && !props.disabled ? h(Ripple, _extends({}, props.ripple)) : null, primaryContent({
     h: h,
     a: a,
     props: primaryProps
@@ -136,7 +133,7 @@ var _ListTile = function _ListTile(_ref) {
     Icon: Icon,
     props: props.secondary
   }) : null];
-  var content = [props.before, contents, props.after];
+  var content = [props.before].concat(componentContent, [props.after]);
   return h("div", // because primary or secondary content can be an "a", the container is always defined as "div", and option `element` is passed to primary content
   componentProps, content);
 };
@@ -149,15 +146,11 @@ var primaryContent = function primaryContent(_ref3) {
   var element = props.element ? props.element : url ? "a" : "div";
   var contentFrontClass = [classes.content, classes.contentFront, props.compactFront ? classes.compactFront : null].join(" ");
   var frontComp = props.front || props.indent ? h("div", _extends({}, {
-    key: "front"
-  }, {
     className: contentFrontClass
   }), props.front) : null;
   var hasTabIndex = !props.header && props.url;
 
   var elementProps = _extends({}, filterSupportedAttributes(props), props.events, {
-    key: "primary"
-  }, {
     className: classes.primary,
     style: null
   }, hasTabIndex && _defineProperty({}, a.tabindex, props[a.tabindex] || 0), url);
@@ -166,20 +159,12 @@ var primaryContent = function primaryContent(_ref3) {
     className: classes.content,
     style: props.style
   }, [props.title && !props.content ? h("div", _extends({}, {
-    key: "title"
-  }, {
     className: classes.title
   }), props.title) : null, props.subtitle ? h("div", _extends({}, {
-    key: "subtitle"
-  }, {
     className: classes.subtitle
   }), props.subtitle) : null, props.highSubtitle ? h("div", _extends({}, {
-    key: "highSubtitle"
-  }, {
     className: classes.subtitle + " " + classes.highSubtitle
   }), props.highSubtitle) : null, props.subContent ? h("div", _extends({}, {
-    key: "subContent"
-  }, {
     className: classes.subContent
   }), props.subContent) : null, props.children])];
   return h(element, elementProps, content);
@@ -196,9 +181,7 @@ var secondaryContent = function secondaryContent(_ref5) {
   var hasTabIndex = props.url;
   return h(element, _extends({}, url, {
     className: classes.secondary
-  }, props.events, filterSupportedAttributes(props), hasTabIndex && _defineProperty({}, a.tabindex, props[a.tabindex] || 0), {
-    key: "secondary"
-  }), h("div", {
+  }, props.events, filterSupportedAttributes(props), hasTabIndex && _defineProperty({}, a.tabindex, props[a.tabindex] || 0)), h("div", {
     className: classes.content
   }, [props.icon ? h(Icon, props.icon) : null, props.content ? props.content : null]));
 };

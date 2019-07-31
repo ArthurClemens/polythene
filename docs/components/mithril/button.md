@@ -45,7 +45,21 @@ m(Button, {
 <a id="links"></a>
 ### Links
 
-Add a route URL:
+Add a route URL.
+
+For Mithril 2.x:
+
+~~~javascript
+m(Button, {
+  label: "Button",
+  element: m.route.Link,
+  url: {
+    href: "/index",
+  }
+})
+~~~
+
+For Mithril 1.x:
 
 ~~~javascript
 m(Button, {

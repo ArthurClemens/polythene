@@ -137,6 +137,8 @@ var _SelectionControl = function _SelectionControl(_ref) {
       ViewControl = _ref.ViewControl,
       props = _objectWithoutProperties(_ref, ["h", "a", "useState", "ViewControl"]);
 
+  // remove unused props
+  delete props.key;
   var defaultChecked = props.defaultChecked !== undefined ? props.defaultChecked : props.checked || false;
 
   var _useState = useState(defaultChecked),
@@ -205,10 +207,7 @@ var _SelectionControl = function _SelectionControl(_ref) {
     inactive: inactive,
     checked: isChecked,
     events: _defineProperty({}, a.onkeydown, viewControlKeyDownHandler)
-  })), props.label ? h(".".concat(classes.label), {
-    key: "label"
-  }, props.label) : null, h("input", _extends({}, props.events, {
-    key: "input",
+  })), props.label ? h(".".concat(classes.label), props.label) : null, h("input", _extends({}, props.events, {
     name: props.name,
     type: props.type,
     value: props.value,
@@ -229,8 +228,7 @@ var createIcon = function createIcon(h, iconType, props, className) {
   return (// if props.iconOn/props.iconOff is passed, use that icon options object and ignore size
     // otherwise create a new object
     _extends({}, {
-      className: className,
-      key: iconType
+      className: className
     }, props[iconType] ? props[iconType] : {
       svg: {
         content: h.trust(props.icons[iconType])

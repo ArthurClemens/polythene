@@ -2,6 +2,9 @@ import { filterSupportedAttributes, classForSize } from "polythene-core";
 import classes from "polythene-css-classes/selection-control";
 
 export const _SelectionControl = ({ h, a, useState, ViewControl, ...props }) => {
+  // remove unused props
+  delete props.key;
+
   const defaultChecked = props.defaultChecked !== undefined
     ? props.defaultChecked
     : props.checked || false;
@@ -103,14 +106,12 @@ export const _SelectionControl = ({ h, a, useState, ViewControl, ...props }) => 
       )),
       props.label
         ? h(`.${classes.label}`,
-          { key: "label" },
           props.label
         )
         : null,
       h("input", Object.assign({},
         props.events,
         {
-          key: "input",
           name: props.name,
           type: props.type,
           value: props.value,

@@ -17,11 +17,11 @@
     "README.md"
   ],
   "dependencies": {
-    "cyano-mithril": "^0.5.2",
-    "polythene-core-selection-control": "1.6.5",
-    "polythene-core-switch": "1.6.5",
-    "polythene-mithril-icon-button": "1.6.5",
-    "polythene-mithril-shadow": "1.6.5"
+    "cyano-mithril": "0.6.1",
+    "polythene-core-selection-control": "^1.6.5",
+    "polythene-core-switch": "^1.6.5",
+    "polythene-mithril-icon-button": "^1.6.5",
+    "polythene-mithril-shadow": "^1.6.5"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.16"

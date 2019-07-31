@@ -246,7 +246,6 @@ export const _TextField = ({ h, a, useState, useEffect, useRef, getRef, ...props
   const requiredIndicator = allProps.required && allProps.requiredIndicator !== ""
     ? h("span",
       {
-        key: "required",
         className: classes.requiredIndicator
       },
       allProps.requiredIndicator || "*"
@@ -255,7 +254,6 @@ export const _TextField = ({ h, a, useState, useEffect, useRef, getRef, ...props
   const optionalIndicator = !allProps.required && allProps.optionalIndicator
     ? h("span",
       {
-        key: "optional",
         className: classes.optionalIndicator
       },
       allProps.optionalIndicator
@@ -265,17 +263,15 @@ export const _TextField = ({ h, a, useState, useEffect, useRef, getRef, ...props
     ? [allProps.label, requiredIndicator, optionalIndicator]
     : null;
 
-  const contents = [
+  const componentContent = [
     h("div",
       {
         className: classes.inputArea,
-        key: "input-area"
       },
       [
         label
           ? h("label",
             {
-              key: "label",
               className: classes.label,
             },
             label)
@@ -283,7 +279,6 @@ export const _TextField = ({ h, a, useState, useEffect, useRef, getRef, ...props
         h(inputType, Object.assign(
           {},
           {
-            key: "input",
             className: classes.input,
             disabled: allProps.disabled
           },
@@ -375,7 +370,6 @@ export const _TextField = ({ h, a, useState, useEffect, useRef, getRef, ...props
     allProps.counter
       ? h("div",
         {
-          key: 'counter',
           className: classes.counter
         },
         ((value.length) || 0) + " / " + allProps.counter
@@ -384,7 +378,6 @@ export const _TextField = ({ h, a, useState, useEffect, useRef, getRef, ...props
     allProps.help && !showError
       ? h("div",
         {
-          key: "help",
           className: [
             classes.help,
             allProps.focusHelp ? classes.focusHelp : null
@@ -396,7 +389,6 @@ export const _TextField = ({ h, a, useState, useEffect, useRef, getRef, ...props
     showError
       ? h("div",
         {
-          key: "error",
           className: classes.error
         },
         errorMessage
@@ -404,7 +396,6 @@ export const _TextField = ({ h, a, useState, useEffect, useRef, getRef, ...props
       : showErrorPlaceholder && !allProps.help
         ? h("div",
           {
-            key: "error-placeholder",
             className: classes.errorPlaceholder
           }
         )
@@ -413,7 +404,7 @@ export const _TextField = ({ h, a, useState, useEffect, useRef, getRef, ...props
 
   const content = [
     props.before,
-    contents,
+    ...componentContent,
     props.after
   ];
 

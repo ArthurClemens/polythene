@@ -437,21 +437,17 @@ var _Menu = function _Menu(_ref) {
   });
 
   var shadowDepth = props.shadowDepth !== undefined ? props.shadowDepth : DEFAULT_SHADOW_DEPTH;
-  var contents = [h("div", {
-    key: "backdrop",
+  var componentContent = [h("div", {
     className: classes.backdrop
   }), h("div", {
-    className: classes.panel,
-    key: "panel"
+    className: classes.panel
   }, [h(Shadow, {
     shadowDepth: shadowDepth,
-    animated: true,
-    key: "shadow"
+    animated: true
   }), h("div", {
-    className: classes.content,
-    key: "content"
+    className: classes.content
   }, props.content || props.children)])];
-  var content = [props.before, contents, props.after];
+  var content = [props.before].concat(componentContent, [props.after]);
   return h(props.element || "div", componentProps, content);
 };
 

@@ -415,7 +415,6 @@ var _Slider = function _Slider(_ref) {
     return acc[a["on".concat(evt)]] = onStartTrack, acc;
   }, {})), [h("div", {
     className: classes.trackPart + " " + classes.trackPartValue,
-    key: "trackPartValue",
     style: {
       flex: flexValueCss,
       msFlex: flexValueCss,
@@ -426,8 +425,7 @@ var _Slider = function _Slider(_ref) {
   }, h("div", {
     className: classes.trackBarValue
   }))), h("div", _extends({}, {
-    className: classes.control,
-    key: "control"
+    className: classes.control
   }, props.disabled ? {
     disabled: true
   } : (_ref3 = {}, _defineProperty(_ref3, a.tabindex, props[a.tabindex] || 0), _defineProperty(_ref3, a.onfocus, function () {
@@ -455,17 +453,15 @@ var _Slider = function _Slider(_ref) {
       increment(true);
     }
 
-    readRangeData(); // updatePinPosition();
+    readRangeData();
   }), _ref3), !props.disabled && pointerStartDownEvent.reduce(function (acc, evt) {
     return acc[a["on".concat(evt)]] = onInitDrag, acc;
   }, {}), props.events ? props.events : null, hasTicks ? {
     step: stepCount
   } : null), props.icon ? h("div", {
-    className: classes.thumb,
-    key: "icon"
+    className: classes.thumb
   }, props.icon) : null), h("div", {
     className: classes.trackPart + " " + classes.trackPartRest,
-    key: "trackPartRest",
     style: {
       flex: flexRestCss,
       msFlex: flexRestCss,
@@ -478,11 +474,9 @@ var _Slider = function _Slider(_ref) {
   }, h("div", {
     className: classes.trackBarValue
   }))), hasTicks && !props.disabled ? h("div", {
-    className: classes.ticks,
-    key: "ticks"
+    className: classes.ticks
   }, generateTickMarks(h, stepCount, stepSize, value)) : null, hasTicks && props.pin && !props.disabled ? h("div", {
     className: classes.pin,
-    key: "pin",
     value: value
   }) : null]), props.after];
   return h(props.element || "div", componentProps, content);

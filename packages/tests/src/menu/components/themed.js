@@ -19,14 +19,12 @@ export default ({ h, List, ListTile }) => {
       ink: true,
       className: "menu-tests-blue-menu-list-tile",
       hoverable: true,
-      key: "yes" // for React
     }),
     h(ListTile, {
       title: "No",
       ink: true,
       className: "menu-tests-blue-menu-list-tile",
       hoverable: true,
-      key: "no" // for React
     })
   ]);
 
@@ -38,7 +36,6 @@ export default ({ h, List, ListTile }) => {
         backgroundColor: themeColor,
         color: "#fff"
       },
-      key: "yes" // for React
     }),
     h(ListTile, {
       title: "No",
@@ -47,7 +44,6 @@ export default ({ h, List, ListTile }) => {
         backgroundColor: themeColor,
         color: "#fff"
       },
-      key: "no" // for React
     })
   ]);
 

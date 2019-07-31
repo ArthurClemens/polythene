@@ -70,22 +70,18 @@ export const _BaseSpinner = ({ h, a, useReducer, useState, useEffect, getRef, Sh
     props.events
   );
 
-  // if (state.hide) {
-  //   setTimeout(() => { hideSpinner(state, attrs); }, 0);
-  // }
-
   const content = [
     props.before,
     props.content,
-    props.after,
-  ].filter(Boolean);
+    props.after
+  ];
+
+  if (props.raised && content.length > 0) {
+    content.push(h(Shadow, { shadowDepth: props.shadowDepth }))
+  }
 
   return h("div",
-    componentProps, [
-      props.raised && content.length > 0
-        ? h(Shadow, { key: "shadow", shadowDepth: props.shadowDepth })
-        : null,
-      content
-    ]
+    componentProps,
+    content 
   );
 };

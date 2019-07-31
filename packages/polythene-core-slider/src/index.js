@@ -265,7 +265,6 @@ export const _Slider = ({ h, a, useState, useEffect, useRef, getRef, ...props })
         h("div",
           {
             className: classes.trackPart + " " + classes.trackPartValue,
-            key: "trackPartValue",
             style: {
               flex: flexValueCss,
               msFlex: flexValueCss,
@@ -280,7 +279,6 @@ export const _Slider = ({ h, a, useState, useEffect, useRef, getRef, ...props })
           {},
           {
             className: classes.control,
-            key: "control"
           },
           props.disabled
             ? { disabled: true }
@@ -308,7 +306,6 @@ export const _Slider = ({ h, a, useState, useEffect, useRef, getRef, ...props })
                   increment(true);
                 }
                 readRangeData();
-                // updatePinPosition();
               }
             },
           !props.disabled &&
@@ -327,7 +324,6 @@ export const _Slider = ({ h, a, useState, useEffect, useRef, getRef, ...props })
           ? h("div",
             {
               className: classes.thumb,
-              key: "icon"
             },
             props.icon
           )
@@ -336,7 +332,6 @@ export const _Slider = ({ h, a, useState, useEffect, useRef, getRef, ...props })
         h("div",
           {
             className: classes.trackPart + " " + classes.trackPartRest,
-            key: "trackPartRest",
             style: {
               flex: flexRestCss,
               msFlex: flexRestCss,
@@ -352,7 +347,6 @@ export const _Slider = ({ h, a, useState, useEffect, useRef, getRef, ...props })
           ? h("div",
             {
               className: classes.ticks,
-              key: "ticks"
             },
             generateTickMarks(h, stepCount, stepSize, value)
           )
@@ -361,7 +355,6 @@ export const _Slider = ({ h, a, useState, useEffect, useRef, getRef, ...props })
           ? h("div",
             {
               className: classes.pin,
-              key: "pin",
               value
             }
           )

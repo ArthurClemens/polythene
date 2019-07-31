@@ -8,10 +8,10 @@ The contents of the `url` object is different for Mithril and React.
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Mithril](#mithril)
-  - [Router links](#router-links)
+  - [Router links Mithril 1.x](#router-links-mithril-1x)
   - [External links](#external-links)
 - [React](#react)
-  - [Router links](#router-links-1)
+  - [Router links](#router-links)
   - [External links](#external-links-1)
 
 <!-- /MarkdownTOC -->
@@ -26,14 +26,15 @@ Mithril includes [a built-in router](https://mithril.js.org/#routing).
 To [make a link a router link](https://mithril.js.org/route.html#mroutelink), it should either:
 
 * be written with a hashbang: `"#!/index"`
-* have attribute `oncreate: m.route.link`
+* or (Mithril 2.x) have element `m.route.Link`
+* or (Mithril 1.x) have attribute `oncreate: m.route.link`
   * and if the href attribute is not static, the onupdate hook must also be set: `onupdate: m.route.link`
 
 
 <a id="router-links"></a>
-### Router links
+### Router links Mithril 1.x
 
-<a href="https://flems.io/#0=N4Igxg9gdgzhA2BTEAucD4EMAONEBMQAaEGMAJw1QG0AGIgRloDYBmAXRIDMBLJGGqCiYAtsjQA6ABYAXEfGLooMxMtQgAPPB5QA1gAIp5RFwC8AHRCyZuFAHo7mcjKkBXcmCRjYEgOY8XVwAjCR4IRxg8GRg7bAQATxdVRDtEAA9RbH47Li8YCTBIy31jeAtSGXj+KUREGUsAPnMoZo0ych5sGX0YD3LrWwcnQI8vVXz-QJCwiKiYuPhEmqgUmBlMKHxMeGgUhaXkgFoRAKM+WISklePTjvhDtY2tnZWJACsYRo07ds6ZJpaUDaFD+PT6lgGMHsjmcblGiG8E1OwVC4UwkTq80uy1W602212F0WV0Qh0KWOJOLJkQeeOeu3enxADW+vy6ANa+B4ADd9Dx8OVKBB6szvlzuQ1FHgkGAZGFYOpaChaIdmCgAEwMEAAXyIQlE4hAjMUkGUqhk6lNa30wH0ACFXDIZNB9Nr9KZ9PsSQBuZrNK3dACSm3S7ptfpk3J4iAA7ih9AAKACU7oa+mozX0+nMcgTEIYliI2ZAAAkIGJLEmiJms-oRAmHU7oEXgDXayVMDw8Ph4zJyK5ENWoO2c1ggoh4PHLABxCD6Z2ezC+RD6AvENu19yT8PD9u1owmKcgWJLxBrod72vQCiITAqeMiCSUR2ICTaPQbrPajfapM19g5s02q+oCAb6AACqeDBhq2LSRtGcaJimphphmu45vW+aFsWkHLqulYXrW9aNs6UAtp+HZdgQvb9oOG6jpg47bjOc4LlI5aIIWFFbvGsGXlmB5cEedhcbul7XsYd6IA+T4QC+b46LoFHfmJrp-ruAH1FAwF+lAYEiHJygAHIQPgK4evgEBgK43gyBIACOA7kPEADKE6ILKEDkHmIAAMRCiKSYgY+z4qBI2DGLwaQ+b5lYgWBoWIAAInemAwTWlgiag+jBmZaSEZl2BQZY8a4WeQHBbJL4JgZrjGaZg7FllRaJSl6xBbpUrubK8oCGg6pKgwACcOp6iAwhiOoBSRCa0AqGoaBBKZ8Q7lmRX4FyUC+PGA3YGkIHal1MpytAfUgAwKAMMwOqcCA766H11D6pNaAnC4dwAAIrGkFokFu6iQtCdXYLovgFOWdhvWc8AfeqEi0PDhweBIzCQ7cfASCcUDGiQlTYIabIWtq7DakAA" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+<a href="https://flems.io/#0=N4Igxg9gdgzhA2BTEAucD4EMAONEBMQAaEGMAJw1QG0AGIgRloDYBmAXRIDMBLJGGqCiYAtsjQA6ABYAXEfGLooMxMtQgAPPB5QA1gAIp5RFwC8AHRCyZuFAHo7mcjKkBXcmCRjYEgOY8XVwAjCR4IRxg8GRg7bAQATxdVRDtEAA9RbH47Li8YCTBIy31jeAtSGXj+KUREGUsAPnMoZo0ych5sGX0YD3LrWwcnQI8vVXz-QJCwiKiYuPhEmqgUmBlMKHxMeGgUhaXkgFoRAKM+WISklePTjvhDtY2tnZWJACsYRo07ds6ZJpaUDaFD+PT6lgGMHsjmcblGiG8E1OwVC4UwkTq80uy1W602212F0WV0Qh0KWOJOLJkQeeOeu3enxADW+vy6ANa+B4ADd9Dx8OVKBB6szvlzuQ1FHgkGAZGFYOpaChaIdmCgAEwMEAAXyIQlE4hAjMUkGUqhk6lNa30wH0ACFXDIZNB9Nr9KZ9PsSQBuZrNK3dACSm3S7ptfpk3J4iAA7ih9AAKACU7oa+mozX0+nMcgTEIYliI2ZAAAkIGJLEmiJms-oRAmHU7oEXgDXayVMDw8Ph4zJyK5ENWoO2c1ggoh4PHLABxCD6Z2ezC+RD6AvENu19yT8PD9u1owmKcgWJLxBrod72vQCiITAqeMiCSUR2ICTaPQbrPajfapM19g5s02q+oCAb6AACqeDBhq2LSRtGcaJimphphmu45vW+aFsWkHLqulYXrW9aNs6UAtp+HZdgQvb9oOG6jpg47bjOc4LlI5aIIWFFbvGsGXlmB5cEedhcbul7XsYd6IA+T4QC+b46LoFHfmJrp-ruAH1FAwF+lAYEiHJygAHIQPgK4evgEBgK43gyBIACOA7kPEADKE6ILKEDkHmIAAMRCiKSYgY+z4qBI2DGLwaRhpYvmWCBYGhYgAAid6YDBNaWCJqD6MGZlpIRWXYFBljxrhZ5AcFskvgmBmuMZpmDsW2VFklqXrEFukmuW2B8Ig5DqEEjETlK7myvKAhoAwADsKAMAALDqeogMIYjqAUkTdWaahoEEpnxDuWbFfgXJQL48bqrQ2BpCB2qjTKcrQJNIAMHNzA6pwIDvrok3UPqa1oCcLh3AAAgwEjg+9JBbuokLQvV2C6L4BTlnYQNnPAYMQxIzBo7cfDGiQlTYIabIWtq7DakAA" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
 m(Button, {

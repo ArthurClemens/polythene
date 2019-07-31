@@ -102,6 +102,7 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
           const openDialogs = document.querySelectorAll(openDialogsSelector);
           if (openDialogs[openDialogs.length - 1] === domElement) {
             hideDialog({ hideDelay: 0 });
+            unsubscribe("keydown", handleEscape);
           }
         }
       };
@@ -178,13 +179,11 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
   const content = [
     h("div",
       {
-        key: "backdrop",
         className: classes.backdrop
       }
     ),
     h("div",
       {
-        key: "touch",
         className: classes.touch
       }
     ),
@@ -194,7 +193,6 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
           classes.content,
           props.menu ? classes.menuContent : null
         ].join(" "),
-        key: "content"
       },
       [
         props.fullScreen
@@ -204,7 +202,6 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
               ? shadowDepth
               : DEFAULT_SHADOW_DEPTH,
             animated: true,
-            key: "shadow"
           }),
         props.before,
         pane,

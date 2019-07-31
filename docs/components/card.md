@@ -64,7 +64,7 @@ This implementation closely follows the [design specification](https://material.
 | --------------- | -------------- | -------- | ----------- | --------------- |
 | **content**     | required | Array |  | List of option objects for distinct areas - see below; to pass other content, use `children` |
 | **shadowDepth** | optional | Number 0-5 | 1 | Depth of the shadow |
-| **url**         | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) or `to` (for React Router) | | URL for the entire card; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
+| **url**         | optional | Object with `href`, optionally `oncreate` (for Mithril 1.x) or `onClick` (for React) or `to` (for React Router) | | URL for the entire card; Mithril 2.x: only use `url.href` and set `element` to `m.route.Link`; Mithril 1.x: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 
 Next to the card itself, each content parts has a set of options:
 

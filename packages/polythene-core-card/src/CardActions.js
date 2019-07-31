@@ -15,7 +15,6 @@ export const _CardActions = ({ h, a, ...props }) => {
     filterSupportedAttributes(props),
     props.testId && { "data-test-id": props.testId },
     {
-      key: "card-actions",
       className: [
         classes.actions,
         props.layout !== "vertical" ? buttonClasses.row : null,

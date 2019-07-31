@@ -36,11 +36,9 @@ export const _Shadow = ({ h, a, ...props }) => {
     [
       content,
       h("div", {
-        key: "bottom",
         className: [classes.bottomShadow].join(" ")
       }),
       h("div", {
-        key: "top",
         className: [classes.topShadow].join(" ")
       })
     ]

@@ -17,11 +17,11 @@
     "README.md"
   ],
   "dependencies": {
-    "cyano-react": "^0.5.2",
-    "polythene-core": "1.6.5",
-    "polythene-core-menu": "1.6.5",
-    "polythene-css-classes": "1.6.5",
-    "polythene-react-shadow": "1.6.5"
+    "cyano-react": "0.6.1",
+    "polythene-core": "^1.6.5",
+    "polythene-core-menu": "^1.6.5",
+    "polythene-css-classes": "^1.6.5",
+    "polythene-react-shadow": "^1.6.5"
   },
   "devDependencies": {
     "@types/react": "^16.8.19"

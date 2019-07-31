@@ -118,7 +118,6 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
         : h("div",
           {
             className: classes.label,
-            key: "label"
           },
           h("div",
             {
@@ -131,51 +130,48 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
       : props.children;
   
 
+  const componentContent = h("div",
+    {
+      className: classes.content,
+      style: props.style
+    },
+    [
+      h(Shadow, {
+        shadowDepth: shadowDepth !== undefined
+          ? shadowDepth
+          : 0,
+        animated: true
+      }),
+      disabled || noink
+        ? null
+        : h(Ripple, Object.assign({},
+          {
+            target: domElement
+          },
+          props.ripple
+        )),
+      h("div",
+        {
+          className: classes.wash
+        },
+        h("div", { className: classes.washColor })
+      ),
+      
+      buttonContent,
+      props.dropdown
+        ? h(Icon,
+          {
+            className: classes.dropdown,
+            svg: { content: h.trust(iconDropdownDown) }
+          }
+        )
+        : null
+    ]
+  );
   return h(props.element || "a",
     componentProps, [
       props.before,
-      h("div",
-        {
-          className: classes.content,
-          style: props.style
-        },
-        [
-          h(Shadow, {
-            key: "shadow",
-            shadowDepth: shadowDepth !== undefined
-              ? shadowDepth
-              : 0,
-            animated: true
-          }),
-          disabled || noink
-            ? null
-            : h(Ripple, Object.assign({},
-              {
-                key: "ripple",
-                target: domElement
-              },
-              props.ripple
-            )),
-          h("div",
-            {
-              key: "wash",
-              className: classes.wash
-            },
-            h("div", { className: classes.washColor })
-          ),
-          
-          buttonContent,
-          props.dropdown
-            ? h(Icon,
-              {
-                className: classes.dropdown,
-                key: "dropdown",
-                svg: { content: h.trust(iconDropdownDown) }
-              }
-            )
-            : null
-        ]
-      ),
+      componentContent,
       props.after,
     ]
   );

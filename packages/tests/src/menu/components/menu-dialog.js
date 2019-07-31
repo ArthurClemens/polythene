@@ -2,7 +2,6 @@ export default ({ h, a, List, ListTile, Dialog })  => {
 
   const createListTile = title => {
     return h(ListTile, {
-      key: title,
       title,
       events: {
         [a.onclick]: () => Dialog.hide()

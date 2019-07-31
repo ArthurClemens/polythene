@@ -12,7 +12,6 @@ const createIcon = (h, iconType, props, className) => (
     {},
     {
       className,
-      key: iconType
     },
     props[iconType]
       ? props[iconType]

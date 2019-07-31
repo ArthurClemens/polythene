@@ -249,13 +249,12 @@ var _DialogPane = function _DialogPane(_ref) {
     className: [classes.content, props.menu ? classes.menuContent : null].join(" "),
     style: props.style
   }, [props.header ? props.header : props.title ? h("div", {
-    className: [classes.header, classes.headerWithTitle].join(" "),
-    key: "title"
+    className: [classes.header, classes.headerWithTitle].join(" ") // key: "title"
+
   }, h("div", {
     className: classes.title
   }, props.title)) : null, h("div", _defineProperty({
-    className: classes.body,
-    key: "body"
+    className: classes.body
   }, a.onscroll, function () {
     setIsScrolling(true);
     clearTimeout(scrollWatchIdRef.current);
@@ -263,11 +262,11 @@ var _DialogPane = function _DialogPane(_ref) {
       setIsScrolling(false);
     }, SCROLL_WATCH_END_TIMER);
   }), props.content || props.body || props.menu), props.footer ? h("div", {
-    className: classes.footer,
-    key: "footer"
+    className: classes.footer // key: "footer"
+
   }, props.footer) : props.footerButtons ? h("div", {
-    className: [classes.footer, classes.footerWithButtons, buttonClasses.row].join(" "),
-    key: "footer"
+    className: [classes.footer, classes.footerWithButtons, buttonClasses.row].join(" ") // key: "footer"
+
   }, h("div", {
     className: classes.actions
   }, props.footerButtons)) : null]);

@@ -61,7 +61,7 @@ var classes = {
 
 var blade = function blade(num, h) {
   return h("div", {
-    key: "blade-".concat(num),
+    // key: `blade-${num}`,
     className: classes.blade
   });
 };
@@ -72,7 +72,7 @@ var _Spinner = function _Spinner(_ref) {
       props = _objectWithoutProperties(_ref, ["h", "BaseSpinner"]);
 
   var content = props.content || h("div", {
-    key: "content",
+    // key: "content",
     className: classes.blades
   }, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (num) {
     return blade(num, h);

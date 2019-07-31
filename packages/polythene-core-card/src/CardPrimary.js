@@ -14,7 +14,6 @@ export const _CardPrimary = ({ h, a, ...props }) => {
     filterSupportedAttributes(props),
     props.testId && { "data-test-id": props.testId },
     {
-      key: "card-primary",
       className: [
         classes.primary,
         props.tight ? classes.primaryTight : null,
@@ -34,7 +33,6 @@ export const _CardPrimary = ({ h, a, ...props }) => {
         : h("div",
           {
             className: classes.title,
-            key: "title",
             style: pAttrs.style
           },
           [
@@ -43,7 +41,6 @@ export const _CardPrimary = ({ h, a, ...props }) => {
               ? h("div",
                 { 
                   className: classes.subtitle,
-                  key: "subtitle"
                 },
                 pAttrs.subtitle
               )
@@ -55,7 +52,6 @@ export const _CardPrimary = ({ h, a, ...props }) => {
       return h("div",
         {
           className: classes.primaryMedia,
-          key: "media",
           style: pAttrs.style
         },
         dispatcher({ media: pAttrs })
@@ -77,7 +73,6 @@ export const _CardPrimary = ({ h, a, ...props }) => {
         ? primaryDispatch.title({
           title: props.title,
           subtitle: props.subtitle,
-          key: "title"
         })
         : null,
       props.media ? primaryDispatch.media(props.media) : null,
@@ -85,5 +80,5 @@ export const _CardPrimary = ({ h, a, ...props }) => {
       props.content
     ];
 
-  return h(props.element || "div", componentProps, content);
+  return h(props.element || "div", componentProps, ...content);
 };

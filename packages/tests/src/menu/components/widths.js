@@ -14,7 +14,6 @@ const createSizedMenu = ({ width, h, Menu, List, ListTile }) => {
   };
   const widthStr = width.toString();
   return h(Menu, {
-    key: widthStr,
     width,
     permanent: true,
     content: h(List, {
@@ -23,7 +22,6 @@ const createSizedMenu = ({ width, h, Menu, List, ListTile }) => {
       tiles: widthTexts[widthStr].map((label) =>
         h(ListTile, {
           title: label,
-          key: label
         })
       )
     }),

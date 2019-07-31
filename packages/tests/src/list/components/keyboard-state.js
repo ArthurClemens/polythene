@@ -56,7 +56,6 @@ export default ({ h, a, List, ListTile }) => {
   const createTile = ({ title, header, selected, hoverable, onSelect }) =>
     h(ListTile, {
       title,
-      key: title,
       header,
       selected,
       hoverable,

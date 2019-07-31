@@ -88,6 +88,26 @@ function _objectWithoutProperties(source, excluded) {
   return target;
 }
 
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+    return arr2;
+  }
+}
+
+function _iterableToArray(iter) {
+  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
 var listTileClasses = {
   component: "pe-list-tile",
   // elements
@@ -149,6 +169,9 @@ var _List = function _List(_ref) {
       ListTile = _ref.ListTile,
       props = _objectWithoutProperties(_ref, ["h", "a", "ListTile"]);
 
+  // Remove unused props
+  delete props.key;
+
   var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
     "data-test-id": props.testId
   }, {
@@ -163,14 +186,12 @@ var _List = function _List(_ref) {
   }
 
   var tiles = props.tiles ? props.tiles : props.content ? props.content : props.children;
-  var contents = [headerOpts ? h(ListTile, _objectSpread({
-    key: "header"
-  }, props.all, headerOpts, {
+  var componentContent = [headerOpts ? h(ListTile, _objectSpread({}, props.all, headerOpts, {
     header: true
-  })) : undefined, props.all ? tiles.map(function (tileOpts) {
+  })) : undefined].concat(_toConsumableArray(props.all ? tiles.map(function (tileOpts) {
     return h(ListTile, _objectSpread({}, props.all, tileOpts));
-  }) : tiles];
-  var content = [props.before, contents, props.after];
+  }) : tiles));
+  var content = [props.before].concat(_toConsumableArray(componentContent), [props.after]);
   return h(props.element || "div", componentProps, content);
 };
 

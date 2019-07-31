@@ -20,7 +20,7 @@ const ClearButton = ({ clear }) =>
     icon={{ svg: { content: iconClear } }}
     ink={false}
     events={{ onClick: clear }}
-    key="clear"
+    // key="clear"
   />;
 
 const SearchIcon = () =>

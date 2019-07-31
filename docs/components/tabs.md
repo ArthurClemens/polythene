@@ -83,7 +83,7 @@ These options can be grouped into `tabsOpts` and applied to all tabs.
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
 | **label** | required | String | | The button label |
 | **selected** | optional | Boolean | false | Set to `true` to show the button as selected |
-| **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) or `to` (for React Router) | | URL location; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
+| **url** | optional | Object with `href`, optionally `oncreate` (for Mithril 1.x) or `onClick` (for React) or `to` (for React Router) | | URL location; Mithril 2.x: for in-app route linking set  only use `url.href` and set `element` to `m.route.Link`; Mithril 1.x: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 
 
 <a id="common-component-options"></a>

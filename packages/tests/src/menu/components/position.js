@@ -39,7 +39,6 @@ const createPositionContainer = ({ h, a, Menu, List, ListTile, Shadow, IconButto
     const attrs = vnode.attrs;
     const show = state.show();
     return h(".position-container.layout.vertical",
-      { key: attrs.id },
       [
         vnode.attrs.barPosition === "bottom"
           ? h(".flex")
@@ -62,7 +61,6 @@ const createPositionContainer = ({ h, a, Menu, List, ListTile, Shadow, IconButto
                   positionSelected: false,
                   ink: true,
                   hoverable: true,
-                  key: title
                 })
               )
             })

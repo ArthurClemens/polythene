@@ -316,6 +316,7 @@ var _Dialog = function _Dialog(_ref2) {
           hideDialog({
             hideDelay: 0
           });
+          unsubscribe("keydown", handleEscape);
         }
       }
     };
@@ -373,18 +374,14 @@ var _Dialog = function _Dialog(_ref2) {
   });
   var shadowDepth = props.shadowDepth;
   var content = [h("div", {
-    key: "backdrop",
     className: classes.backdrop
   }), h("div", {
-    key: "touch",
     className: classes.touch
   }), h("div", {
-    className: [classes.content, props.menu ? classes.menuContent : null].join(" "),
-    key: "content"
+    className: [classes.content, props.menu ? classes.menuContent : null].join(" ")
   }, [props.fullScreen ? null : h(Shadow, {
     shadowDepth: shadowDepth !== undefined ? shadowDepth : DEFAULT_SHADOW_DEPTH,
-    animated: true,
-    key: "shadow"
+    animated: true
   }), props.before, pane, props.after])];
   return h("div", componentProps, content);
 };

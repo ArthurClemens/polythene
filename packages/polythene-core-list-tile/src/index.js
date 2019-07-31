@@ -2,6 +2,8 @@ import { filterSupportedAttributes } from "polythene-core";
 import classes from "polythene-css-classes/list-tile";
 
 export const _ListTile = ({ h, a, Ripple, Icon, ...props }) => {
+  // Remove unused props
+  delete props.key;
   
   const hasTabIndex = !props.header && !props.url && !(props.secondary && props.secondary.url);
   const heightClass = props.subtitle
@@ -40,19 +42,14 @@ export const _ListTile = ({ h, a, Ripple, Icon, ...props }) => {
     // events and url are attached to primary content to not interfere with controls
   );
 
-  const primaryProps = Object.assign(
-    {},
-    { key: "primary" },
-    props
-  );
+  const primaryProps = props;
   delete primaryProps.id;
   delete primaryProps[a.class];
-  const contents = [
+  const componentContent = [
     props.ink && !props.disabled
       ? h(Ripple,
           Object.assign({},
             props.ripple,
-            { key: "ripple" }
           )
         )
       : null,
@@ -63,7 +60,7 @@ export const _ListTile = ({ h, a, Ripple, Icon, ...props }) => {
   ];
   const content = [
     props.before,
-    contents,
+    ...componentContent,
     props.after
   ];
 
@@ -90,7 +87,6 @@ const primaryContent = ({ h, a, props }) => {
   const frontComp = props.front || props.indent
     ? h("div", Object.assign(
       {},
-      { key: "front" },
       { className: contentFrontClass }
     ), props.front)
     : null;
@@ -99,7 +95,6 @@ const primaryContent = ({ h, a, props }) => {
     {},
     filterSupportedAttributes(props),
     props.events,
-    { key: "primary" },
     {
       className: classes.primary,
       style: null
@@ -120,28 +115,24 @@ const primaryContent = ({ h, a, props }) => {
           props.title && !props.content
             ? h("div", Object.assign(
               {},
-              { key: "title" },
               { className: classes.title }
             ), props.title)
             : null,
           props.subtitle
             ? h("div", Object.assign(
               {},
-              { key: "subtitle" },
               { className: classes.subtitle }
             ), props.subtitle)
             : null,
           props.highSubtitle
             ? h("div", Object.assign(
               {},
-              { key: "highSubtitle" },
               { className: classes.subtitle + " " + classes.highSubtitle }
             ), props.highSubtitle)
             : null,
           props.subContent
             ? h("div", Object.assign(
               {},
-              { key: "subContent" },
               { className: classes.subContent }
             ), props.subContent)
             : null,
@@ -172,7 +163,6 @@ const secondaryContent = ({ h, a, Icon, props = {} }) => {
       props.events,
       filterSupportedAttributes(props),
       hasTabIndex && { [a.tabindex]: props[a.tabindex] || 0 },
-      { key: "secondary" },
     ),
     h("div",
       { className: classes.content },

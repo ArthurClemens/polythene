@@ -91,7 +91,7 @@ export const _DialogPane = ({ h, a, useState, useEffect, useRef, getRef, ...unpa
     props.formOptions
   );
 
-  const contents = h("div",
+  const componentContent = h("div",
     {
       className: [
         classes.content,
@@ -109,7 +109,6 @@ export const _DialogPane = ({ h, a, useState, useEffect, useRef, getRef, ...unpa
                 classes.header,
                 classes.headerWithTitle
               ].join(" "),
-              key: "title"
             },
             h("div",
               { className: classes.title },
@@ -120,7 +119,6 @@ export const _DialogPane = ({ h, a, useState, useEffect, useRef, getRef, ...unpa
       h("div",
         {
           className: classes.body,
-          key: "body",
           [a.onscroll]: () => {
             setIsScrolling(true);
             clearTimeout(scrollWatchIdRef.current);
@@ -135,7 +133,6 @@ export const _DialogPane = ({ h, a, useState, useEffect, useRef, getRef, ...unpa
         ? h("div",
           {
             className: classes.footer,
-            key: "footer"
           },
           props.footer
         )
@@ -147,7 +144,6 @@ export const _DialogPane = ({ h, a, useState, useEffect, useRef, getRef, ...unpa
                 classes.footerWithButtons,
                 buttonClasses.row
               ].join(" "),
-              key: "footer"
             },
             h("div",
               { className: classes.actions },
@@ -159,7 +155,7 @@ export const _DialogPane = ({ h, a, useState, useEffect, useRef, getRef, ...unpa
   );
   const content = [
     props.before,
-    contents,
+    componentContent,
     props.after
   ];
   return h(props.element || "form", componentProps, content);

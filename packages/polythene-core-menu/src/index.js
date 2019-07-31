@@ -271,28 +271,24 @@ export const _Menu = ({ h, a, useReducer, useState, useEffect, useRef, getRef, S
     ? props.shadowDepth
     : DEFAULT_SHADOW_DEPTH; 
 
-  const contents = [
+  const componentContent = [
     h("div",
       {
-        key: "backdrop",
         className: classes.backdrop,
       }
     ),
     h("div",
       {
         className: classes.panel,
-        key: "panel",
       },
       [
         h(Shadow, {
           shadowDepth,
           animated: true,
-          key: "shadow",
         }),
         h("div", 
           {
             className: classes.content,
-            key: "content",
           },
           props.content || props.children
         )
@@ -302,7 +298,7 @@ export const _Menu = ({ h, a, useReducer, useState, useEffect, useRef, getRef, S
 
   const content = [
     props.before,
-    contents,
+    ...componentContent,
     props.after
   ];
 

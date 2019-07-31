@@ -272,14 +272,13 @@ export const _Tabs = ({ h, a, getRef, useState, useEffect, ScrollButton, Tab, ..
       {
         // Internal options, should not get overridden
         index,
-        key: buttonOpts.key || `tab-${index}`,
         onSelect: () =>
           updateWithTabIndex({
             index,
             animate: props.noIndicatorSlide
               ? false
               : true
-          })
+          }),
       }
     );
     return h(Tab, buttonOptsCombined);
@@ -290,7 +289,6 @@ export const _Tabs = ({ h, a, getRef, useState, useEffect, ScrollButton, Tab, ..
     scrollButtonAtStart = h(ScrollButton, Object.assign(
       {},
       {
-        key: "backward",
         icon: props.scrollIconBackward,
         className: classes.scrollButtonAtStart,
         position: "start",
@@ -303,7 +301,6 @@ export const _Tabs = ({ h, a, getRef, useState, useEffect, ScrollButton, Tab, ..
     scrollButtonAtEnd = h(ScrollButton, Object.assign(
       {},
       {
-        key: "forward",
         icon: props.scrollIconForward,
         className: classes.scrollButtonAtEnd,
         position: "end",
@@ -319,31 +316,33 @@ export const _Tabs = ({ h, a, getRef, useState, useEffect, ScrollButton, Tab, ..
     ? null
     : h("div",
       {
-        key: "indicator",
         className: classes.indicator
       }
     );
+
+  const componentContent = [
+    scrollButtonAtStart,
+    h("div",
+      {
+        className: [
+          classes.tabRow,
+          props.centered ? classes.tabRowCentered : null,
+          props.scrollable ? classes.tabRowIndent : null
+        ].join(" ")
+      },
+      [
+        ...tabRow,
+        tabIndicator
+      ]
+    ),
+    scrollButtonAtEnd,
+  ];
 
   return h("div",
     componentProps,
     [
       props.before,
-      scrollButtonAtStart,
-      h("div",
-        {
-          key: "tabrow",
-          className: [
-            classes.tabRow,
-            props.centered ? classes.tabRowCentered : null,
-            props.scrollable ? classes.tabRowIndent : null
-          ].join(" ")
-        },
-        [
-          tabRow,
-          tabIndicator
-        ]
-      ),
-      scrollButtonAtEnd,
+      ...componentContent,
       props.after
     ]
   );

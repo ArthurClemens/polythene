@@ -17,11 +17,11 @@
     "README.md"
   ],
   "dependencies": {
-    "cyano-react": "^0.5.2",
-    "polythene-core-tabs": "1.6.5",
-    "polythene-react-button": "1.6.5",
-    "polythene-react-icon": "1.6.5",
-    "polythene-react-icon-button": "1.6.5"
+    "cyano-react": "0.6.1",
+    "polythene-core-tabs": "^1.6.5",
+    "polythene-react-button": "^1.6.5",
+    "polythene-react-icon": "^1.6.5",
+    "polythene-react-icon-button": "^1.6.5"
   },
   "devDependencies": {
     "@types/react": "^16.8.19"

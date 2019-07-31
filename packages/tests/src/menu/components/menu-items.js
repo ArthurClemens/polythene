@@ -2,7 +2,6 @@
 export default ({ h, Menu, List, ListTile }) => {
   const tile = (left, right, disabled) =>
     h(ListTile, {
-      key: left, // for React
       title: left,
       secondary: { content: right },
       hoverable: true,
@@ -15,7 +14,6 @@ export default ({ h, Menu, List, ListTile }) => {
         permanent: true,
         content: [
           h(List, {
-            key: "one", // for React
             compact: true,
             tiles: [
               tile("Bold", "\u2318B"),
@@ -27,7 +25,6 @@ export default ({ h, Menu, List, ListTile }) => {
             ]
           }),
           h(List, {
-            key: "two", // for React
             compact: true,
             tiles: [
               tile("Clear formatting", "\u2318/", true),

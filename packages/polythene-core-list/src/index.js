@@ -12,7 +12,9 @@ const paddingClass = (attr = "both") =>
   paddingClasses[attr];
 
 export const _List = ({ h, a, ListTile, ...props }) => {
-
+  // Remove unused props
+  delete props.key;
+  
   const componentProps = Object.assign(
     {},
     filterSupportedAttributes(props),
@@ -48,16 +50,16 @@ export const _List = ({ h, a, ListTile, ...props }) => {
     : props.content
       ? props.content
       : props.children;
-  const contents = [
+  
+  const componentContent = [
     headerOpts
       ? h(ListTile, {
-        key: "header",
         ...props.all,
         ...headerOpts,
         header: true
       })
       : undefined,
-    props.all
+    ...(props.all
       ? tiles.map(tileOpts => 
         h(ListTile, {
           ...props.all,
@@ -65,11 +67,14 @@ export const _List = ({ h, a, ListTile, ...props }) => {
         })
       )
       : tiles
+    )
   ];
+
   const content = [
     props.before,
-    contents,
+    ...componentContent,
     props.after
   ];
+  
   return h(props.element || "div", componentProps, content);
 };

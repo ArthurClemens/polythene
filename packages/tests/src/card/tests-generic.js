@@ -29,8 +29,8 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
   const avatarImageUrl = fileName => `http://arthurclemens.github.io/assets/polythene/examples/avatar-${fileName}`;
 
   const twoButtonRow = [
-    h(Button, { label: "Action 1", key: "one" }),
-    h(Button, { label: "Action 2", key: "two" })
+    h(Button, { label: "Action 1" }),
+    h(Button, { label: "Action 2" })
   ];
 
   const twoButtonAndLessRow = [
@@ -53,7 +53,9 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
   ];
 
   const iconButtonRow = [
-    h(".flex", { key: "space" }),
+    h(".flex",
+      { key: "space" }
+    ),
     h(IconButton, {
       icon: { svg: { content: iconHeart } },
       key: "heart"
@@ -108,7 +110,6 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
   const titleImage = (size, title) => [
     {
       primary: {
-        key: "title",
         title: title,
         subtitle: "Subtitle",
         media: {
@@ -123,7 +124,6 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
     {
       actions: {
         content: twoButtonRow,
-        key: "actions"
       }
     }];
 
@@ -136,12 +136,11 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
               ratio: ratio,
               size: "large",
               content: h("img", {
-                key: "image",
                 src: landscapeImage
               })
             }
           },
-          h(".flex", { key: "space" }),
+          h(".flex"),
           { actions: verticalButtonActions }
         ]
       }
@@ -178,17 +177,14 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
               h(ListTile, {
                 title: listTitle,
                 subtitle: listSubtitle,
-                key: "one" // for React
               }),
               h(ListTile, {
                 title: listTitle,
                 subtitle: listSubtitle,
-                key: "two" // for React
               }),
               h(ListTile, {
                 title: listTitle,
                 subtitle: listSubtitle,
-                key: "three" // for React
               })
             ]
           }))
@@ -383,9 +379,9 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
               tight: true,
               content: h(List, { border: true }, [
                 // keys for React
-                h(ListTile, { hoverable: true, key: "one" }, "Action 1"),
-                h(ListTile, { hoverable: true, key: "two" }, "Action 2"),
-                h(ListTile, { hoverable: true, key: "three" }, "Action 3"),
+                h(ListTile, { hoverable: true }, "Action 1"),
+                h(ListTile, { hoverable: true }, "Action 2"),
+                h(ListTile, { hoverable: true }, "Action 3"),
               ])
             }
           }
@@ -673,7 +669,6 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
                 content: [
                   {
                     primary: {
-                      key: "title",
                       title: "Primary title",
                     }
                   },
@@ -705,7 +700,6 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
                 content: [
                   {
                     primary: {
-                      key: "title",
                       title: "Primary title",
                     }
                   },
@@ -900,7 +894,6 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             actions: {
               content: [
                 h(Button, {
-                  key: "one",
                   label: "Action 1",
                   events: {
                     [a.onclick]: e => {
@@ -911,7 +904,6 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
                   }
                 }),
                 h(Button, {
-                  key: "two",
                   label: "Action 2",
                   events: {
                     [a.onclick]: e => {
@@ -938,10 +930,10 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             primary: {
               content: [
                 {
-                  title: h(".pe-card__title", { key: "title" },
+                  title: h(".pe-card__title",
                     [
-                      h(".pe-card__subtitle", { key: "subtitle" }, "Travel"),
-                      h("span", { key: "title-content" }, "Road Trip")
+                      h(".pe-card__subtitle", "Travel"),
+                      h("span", "Road Trip")
                     ]
                   )
                 },
@@ -1246,9 +1238,9 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             layout: "vertical",
             tight: true,
             content: h(List, { border: true }, [
-              h(ListTile, { hoverable: true, key: "one" }, "Action 1"),
-              h(ListTile, { hoverable: true, key: "two" }, "Action 2"),
-              h(ListTile, { hoverable: true, key: "three" }, "Action 3"),
+              h(ListTile, { hoverable: true }, "Action 1"),
+              h(ListTile, { hoverable: true }, "Action 2"),
+              h(ListTile, { hoverable: true }, "Action 3"),
             ])
           }
         }]

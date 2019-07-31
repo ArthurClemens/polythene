@@ -11,9 +11,9 @@ const navBar = (name, previous, doc) =>
   }, [
     previous && h(IconButton, {
       icon: { svg: { content: iconBack } },
+      element: h.route.Link,
       url: {
         href: "/",
-        oncreate: h.route.link
       },
       style: { color: "#0091EA" }
     }),
@@ -30,7 +30,6 @@ const results = ({ name, tests }) => (
     }
     const testName = `test-${(test.name)}`;
     return h([css.resultRow, test.interactive ? css.interactive : null].join(""), {
-      key: testName,
       className: [testName.replace(/[^\w\d]/g, "-").toLowerCase(), test.className || null].join(" "),
     }, [
       h(css.resultTitle,

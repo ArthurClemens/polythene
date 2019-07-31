@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom";
 
 const reactTests = ({ List, Icon, ListTile, h }) => {
 
-  const createUserListTile = (key, title, subtitle, filename) =>
+  const createUserListTile = (title, subtitle, filename) =>
     h(withRouter(({ history }) => 
       h(ListTile, {
         title,
@@ -22,11 +22,11 @@ const reactTests = ({ List, Icon, ListTile, h }) => {
           onClick: e => (e.preventDefault(), history.push("/shadow"))
         }
       })
-    ), { key });
+    ));
 
-  const listTileJennifer = key => createUserListTile(key, "Jennifer Barker", "Starting post doc", "avatar-1");
-  const listTileAli = key => createUserListTile(key, "Ali Connors", "Brunch this weekend?", "avatar-2");
-  const listTileGrace = key => createUserListTile(key, "Grace VanDam", "Binge watching...", "avatar-3");
+  const listTileJennifer = () => createUserListTile("Jennifer Barker", "Starting post doc", "avatar-1");
+  const listTileAli = () => createUserListTile("Ali Connors", "Brunch this weekend?", "avatar-2");
+  const listTileGrace = () => createUserListTile("Grace VanDam", "Binge watching...", "avatar-3");
 
   return [
     {
@@ -38,27 +38,25 @@ const reactTests = ({ List, Icon, ListTile, h }) => {
       component: () =>
         <div>
           <List
-            key="one"
             header={{
               title: "Friends"
             }}
             border
             tiles={[
-              listTileJennifer("urls 1"),
-              listTileAli("urls 2"),
-              listTileGrace("urls 3")
+              listTileJennifer(),
+              listTileAli(),
+              listTileGrace()
             ]}
           />
           <List
-            key="two"
             header={{
               title: "Friends"
             }}
             border
             tiles={[
-              listTileJennifer("urls 4"),
-              listTileAli("urls 5"),
-              listTileGrace("urls 6")
+              listTileJennifer(),
+              listTileAli(),
+              listTileGrace()
             ]}
           />
         </div>
@@ -79,12 +77,12 @@ const reactTests = ({ List, Icon, ListTile, h }) => {
                 sticky: true
               }}
               tiles={[
-                listTileJennifer(ord + "1"),
-                listTileAli(ord + "2"),
-                listTileGrace(ord + "3"),
-                listTileJennifer(ord + "4"),
-                listTileAli(ord + "5"),
-                listTileGrace(ord + "6")
+                listTileJennifer(),
+                listTileAli(),
+                listTileGrace(),
+                listTileJennifer(),
+                listTileAli(),
+                listTileGrace()
               ]}
             />
           )}
@@ -101,21 +99,21 @@ const reactTests = ({ List, Icon, ListTile, h }) => {
             indent: true
           }}
         >
-          <ListTile key="one" indent title="Jennifer Barker" subtitle="Starting post doc" front={
+          <ListTile indent title="Jennifer Barker" subtitle="Starting post doc" front={
             <Icon
               src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png"
               avatar
               size="large"
             />}
           />
-          <ListTile key="two" indent title="Ali Connors" subtitle="Brunch this weekend?" front={
+          <ListTile indent title="Ali Connors" subtitle="Brunch this weekend?" front={
             <Icon
               src="http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png"
               avatar
               size="large"
             />}
           />
-          <ListTile key="three" indent title="Grace VanDam" subtitle="Binge watching..." front={
+          <ListTile indent title="Grace VanDam" subtitle="Binge watching..." front={
             <Icon
               src="http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png"
               avatar

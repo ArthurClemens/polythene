@@ -12,7 +12,6 @@ const reactTests = ({ h, Menu, List, ListTile }) => {
 
   const Tile = (left, right, disabled = false) =>
     <ListTile
-      key={left}
       title={left}
       secondary={{ content: right }}
       hoverable
@@ -39,7 +38,6 @@ const reactTests = ({ h, Menu, List, ListTile }) => {
           permanent
         >
           <List
-            key="one"
             compact
             tiles={[
               Tile("Bold", "\u2318B"),
@@ -51,7 +49,6 @@ const reactTests = ({ h, Menu, List, ListTile }) => {
             ]}
           />
           <List
-            key="two"
             compact
             tiles={[
               Tile("Clear formatting", "\u2318/", true),

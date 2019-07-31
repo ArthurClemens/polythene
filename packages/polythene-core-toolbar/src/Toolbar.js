@@ -20,25 +20,24 @@ export const _Toolbar = ({ h, a, Shadow, ...props }) => {
     props.events
   );
 
-  const content = [
-    props.before,
-    props.content || props.children,
-    props.after
-  ];
+  const componentContent = props.content || props.children;
 
   const shadow = props.shadowDepth !== undefined
     ? h(Shadow, {
       shadowDepth: props.shadowDepth,
       animated: true,
-      key: "shadow"
     })
     : null;
 
+  const content = [
+    props.before,
+    componentContent,
+    props.after,
+    shadow
+  ];
+
   return h(props.element || "div",
     componentProps,
-    [
-      content,
-      shadow
-    ]
+    content,
   );
 };

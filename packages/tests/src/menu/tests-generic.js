@@ -33,7 +33,7 @@ export default ({ h, a, Menu, List, ListTile, Button, Shadow, IconButton, Icon, 
   MenuCSS.addStyle(".tests-menu-themed-behavior-top", {
     top_menu: true,
     z:        99999, // z-depth
-    height:   "50vh"
+    maxHeight: "50vh"
   });
 
   const ExposedDropdown = exposed({ h, a, Menu, List, ListTile, Button });

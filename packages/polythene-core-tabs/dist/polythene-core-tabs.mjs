@@ -477,7 +477,6 @@ var _Tabs = function _Tabs(_ref) {
     }, props.all, {
       // Internal options, should not get overridden
       index: index,
-      key: buttonOpts.key || "tab-".concat(index),
       onSelect: function onSelect() {
         return updateWithTabIndex({
           index: index,
@@ -493,7 +492,6 @@ var _Tabs = function _Tabs(_ref) {
 
   if (props.scrollable) {
     scrollButtonAtStart = h(ScrollButton, _extends({}, {
-      key: "backward",
       icon: props.scrollIconBackward,
       className: classes.scrollButtonAtStart,
       position: "start",
@@ -503,7 +501,6 @@ var _Tabs = function _Tabs(_ref) {
       isRTL: RTL
     }));
     scrollButtonAtEnd = h(ScrollButton, _extends({}, {
-      key: "forward",
       icon: props.scrollIconForward,
       className: classes.scrollButtonAtEnd,
       position: "end",
@@ -515,13 +512,12 @@ var _Tabs = function _Tabs(_ref) {
   }
 
   var tabIndicator = props.hideIndicator ? null : h("div", {
-    key: "indicator",
     className: classes.indicator
   });
-  return h("div", componentProps, [props.before, scrollButtonAtStart, h("div", {
-    key: "tabrow",
+  var componentContent = [scrollButtonAtStart, h("div", {
     className: [classes.tabRow, props.centered ? classes.tabRowCentered : null, props.scrollable ? classes.tabRowIndent : null].join(" ")
-  }, [tabRow, tabIndicator]), scrollButtonAtEnd, props.after]);
+  }, [].concat(_toConsumableArray(tabRow), [tabIndicator])), scrollButtonAtEnd];
+  return h("div", componentProps, [props.before].concat(componentContent, [props.after]));
 };
 
 var _Tab = function _Tab(_ref) {

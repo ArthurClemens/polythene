@@ -17,9 +17,9 @@
     "README.md"
   ],
   "dependencies": {
-    "cyano-mithril": "^0.5.2",
-    "polythene-core-icon": "1.6.5",
-    "polythene-mithril-svg": "1.6.5"
+    "cyano-mithril": "0.6.1",
+    "polythene-core-icon": "^1.6.5",
+    "polythene-mithril-svg": "^1.6.5"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.16"

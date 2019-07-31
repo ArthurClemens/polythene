@@ -29,7 +29,6 @@ export default ({ h, a, Drawer, Toolbar, IconButton, createContent, showMenuIcon
       const toolbarRow = [
         showMenuIcon && h(IconButton,
           {
-            key: "icon",
             icon: { svg: { content: h.trust(iconMenuSVG) } },
             events: {
               [a.onclick]: () => state.show()
@@ -40,7 +39,6 @@ export default ({ h, a, Drawer, Toolbar, IconButton, createContent, showMenuIcon
         ),
         h("div",
           {
-            key: "title",
             className: "pe-toolbar__title"
           },
           "Title"
@@ -66,7 +64,6 @@ export default ({ h, a, Drawer, Toolbar, IconButton, createContent, showMenuIcon
           !pushToolbar && ToolbarInstance,
           h("div",
             {
-              key: "content", // for React
               style: {
                 position: "relative",
                 overflow: "hidden",
@@ -84,7 +81,6 @@ export default ({ h, a, Drawer, Toolbar, IconButton, createContent, showMenuIcon
               [
                 h("div",
                   {
-                    key: "drawer", // for React
                     style: {
                       padding: drawerOpts.floating ? "20px" : 0
                     }

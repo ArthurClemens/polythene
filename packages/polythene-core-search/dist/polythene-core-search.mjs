@@ -112,6 +112,8 @@ var _Search = function _Search(_ref) {
       TextField = _ref.TextField,
       props = _objectWithoutProperties(_ref, ["h", "a", "useState", "TextField"]);
 
+  delete props.key;
+
   var _useState = useState({}),
       _useState2 = _slicedToArray(_useState, 2),
       searchState = _useState2[0],
@@ -126,10 +128,9 @@ var _Search = function _Search(_ref) {
   var searchStateName = getNameOfState(searchState);
   var buttons = (props.buttons || {})[searchStateName] || {};
   var textfieldAttrs = props.textfield || {};
-  var contents = h("div", {
+  var componentContent = h("div", {
     className: classes.content
   }, [buttons.before, h(TextField, _extends({}, textfieldAttrs, {
-    key: "input",
     onChange: function onChange(newState) {
       setSearchState(newState);
 
@@ -138,7 +139,7 @@ var _Search = function _Search(_ref) {
       }
     }
   })), buttons.after]);
-  var content = [props.before, contents, props.after];
+  var content = [props.before, componentContent, props.after];
   return h(props.element || "div", componentProps, content);
 };
 

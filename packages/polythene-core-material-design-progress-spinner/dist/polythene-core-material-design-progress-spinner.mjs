@@ -236,17 +236,17 @@ var _Spinner = function _Spinner(_ref2) {
     props: props
   });
   var content = props.content || h("div", {
-    key: "content",
+    // key: "content",
     className: classes.animation,
     style: {
       width: size + "px",
       height: size + "px"
     }
   }, [h("div", {
-    key: "left",
+    // key: "left",
     className: [classes.circle, classes.circleLeft].join(" ")
   }), h("div", {
-    key: "right",
+    // key: "right",
     className: [classes.circle, classes.circleRight].join(" ")
   })]);
 

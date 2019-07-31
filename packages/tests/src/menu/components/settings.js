@@ -40,7 +40,6 @@ export default ({ h, a, Menu, List, ListTile }) => ({
             tiles: menuOptions.map((setting, index) =>
               h(ListTile, {
                 title: setting,
-                key: setting, // for React
                 selected: index === selectedIndex,
                 ink: true,
                 hoverable: true,
@@ -63,7 +62,6 @@ export default ({ h, a, Menu, List, ListTile }) => ({
             h(ListTile, {
               id,
               title: "When device is locked",
-              key: "one", // for React
               subtitle: menuOptions[selectedIndex],
               events: {
                 [a.onclick]: () => state.show(true)
@@ -73,13 +71,11 @@ export default ({ h, a, Menu, List, ListTile }) => ({
             }),
             h(ListTile, {
               title: "Item 2",
-              key: "two", // for React
               disabled: true,
               hoverable: true,
             }),
             h(ListTile, {
               title: "Item 3",
-              key: "three", // for React
               disabled: true,
               hoverable: true,
             })
