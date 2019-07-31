@@ -115,6 +115,4 @@ var vars = {
   z_dialog: 7000
 };
 
-// @ts-check
-
 export { vars };

@@ -27,6 +27,4 @@ export { vars } from 'polythene-style';
 // };
 var componentConfig = {};
 
-// @ts-check
-
 export { componentConfig };

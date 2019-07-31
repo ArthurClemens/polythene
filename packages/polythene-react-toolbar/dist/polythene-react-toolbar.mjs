@@ -13,6 +13,4 @@ var ToolbarTitle = cast(_ToolbarTitle, {
   a: a
 });
 
-// @ts-check
-
 export { Toolbar, ToolbarTitle };

@@ -245,12 +245,11 @@ var _DialogPane = function _DialogPane(_ref) {
     className: [classes.component, props.fullBleed ? classes.fullBleed : null, showTopBorder ? classes.borderTop : null, showBottomBorder ? classes.borderBottom : null, withHeader ? classes.withHeader : null, withFooter ? classes.withFooter : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
   }, props.formOptions);
 
-  var contents = h("div", {
+  var componentContent = h("div", {
     className: [classes.content, props.menu ? classes.menuContent : null].join(" "),
     style: props.style
   }, [props.header ? props.header : props.title ? h("div", {
-    className: [classes.header, classes.headerWithTitle].join(" ") // key: "title"
-
+    className: [classes.header, classes.headerWithTitle].join(" ")
   }, h("div", {
     className: classes.title
   }, props.title)) : null, h("div", _defineProperty({
@@ -262,15 +261,13 @@ var _DialogPane = function _DialogPane(_ref) {
       setIsScrolling(false);
     }, SCROLL_WATCH_END_TIMER);
   }), props.content || props.body || props.menu), props.footer ? h("div", {
-    className: classes.footer // key: "footer"
-
+    className: classes.footer
   }, props.footer) : props.footerButtons ? h("div", {
-    className: [classes.footer, classes.footerWithButtons, buttonClasses.row].join(" ") // key: "footer"
-
+    className: [classes.footer, classes.footerWithButtons, buttonClasses.row].join(" ")
   }, h("div", {
     className: classes.actions
   }, props.footerButtons)) : null]);
-  var content = [props.before, contents, props.after];
+  var content = [props.before, componentContent, props.after];
   return h(props.element || "form", componentProps, content);
 };
 

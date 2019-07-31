@@ -13,20 +13,35 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-function _objectSpread(target) {
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
 
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
     }
-
-    ownKeys.forEach(function (key) {
-      _defineProperty(target, key, source[key]);
-    });
   }
 
   return target;
@@ -157,7 +172,7 @@ var _Conditional = function _Conditional(_ref) {
   }
 
   var visible = mode !== modes.hidden;
-  return visible ? h(props.instance, _objectSpread({}, props, {
+  return visible ? h(props.instance, _objectSpread2({}, props, {
     didHide:
     /**
      * @param {any} args
@@ -689,7 +704,7 @@ var Multi = function Multi(_ref) {
       return resolveHide(instanceId);
     };
 
-    return _objectSpread({}, mOptions, {
+    return _objectSpread2({}, mOptions, {
       // keyId: mOptions.queue ? new Date().getTime() : undefined, // to force rendering a new component
       instanceId: instanceId,
       spawn: spawn,
@@ -793,7 +808,7 @@ var Multi = function Multi(_ref) {
     : h(mOptions.holderSelector, {
       className: props.position === "container" ? "pe-multiple--container" : "pe-multiple--screen"
     }, candidates.map(function (itemData) {
-      return h(mOptions.instance, _objectSpread({}, unpackAttrs(props), {
+      return h(mOptions.instance, _objectSpread2({}, unpackAttrs(props), {
         fromMultipleClear: clear,
         spawnId: spawn,
         // from mOptions:
@@ -839,24 +854,24 @@ var initialTransitionState = {
 var transitionStateReducer = function transitionStateReducer(state, type) {
   switch (type) {
     case TRANSITION_TYPES.SHOW:
-      return _objectSpread({}, state, {
+      return _objectSpread2({}, state, {
         isTransitioning: true,
         isVisible: true
       });
 
     case TRANSITION_TYPES.HIDE:
-      return _objectSpread({}, state, {
+      return _objectSpread2({}, state, {
         isTransitioning: true
       });
 
     case TRANSITION_TYPES.SHOW_DONE:
-      return _objectSpread({}, state, {
+      return _objectSpread2({}, state, {
         isTransitioning: false,
         isVisible: true
       });
 
     case TRANSITION_TYPES.HIDE_DONE:
-      return _objectSpread({}, state, {
+      return _objectSpread2({}, state, {
         isTransitioning: false,
         isVisible: false
       });
@@ -1039,7 +1054,7 @@ var transitionComponent = function transitionComponent(_ref) {
   var transitions = props.transitions;
   var fn = isShow ? show : hide;
 
-  var opts1 = _objectSpread({}, props, domElements, {
+  var opts1 = _objectSpread2({}, props, {}, domElements, {
     showClass: showClass,
     transitionClass: transitionClass,
     duration: duration,
@@ -1047,9 +1062,9 @@ var transitionComponent = function transitionComponent(_ref) {
     timingFunction: timingFunction
   });
 
-  var opts2 = _objectSpread({}, opts1, transitions ? (isShow ? transitions.show : transitions.hide)(opts1) : undefined);
+  var opts2 = _objectSpread2({}, opts1, {}, transitions ? (isShow ? transitions.show : transitions.hide)(opts1) : undefined);
 
-  var opts3 = _objectSpread({}, opts2, {
+  var opts3 = _objectSpread2({}, opts2, {}, {
     duration: opts2.duration !== undefined ? opts2.duration : DEFAULT_DURATION,
     hasDuration: opts2.duration !== undefined,
     delay: opts2.delay !== undefined ? opts2.delay : DEFAULT_DELAY,

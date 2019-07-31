@@ -33,20 +33,35 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-function _objectSpread(target) {
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
 
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
     }
-
-    ownKeys.forEach(function (key) {
-      _defineProperty(target, key, source[key]);
-    });
   }
 
   return target;
@@ -325,7 +340,7 @@ var _TextField = function _TextField(_ref) {
       };
 
       if (JSON.stringify(status) !== JSON.stringify(previousStatusRef.current)) {
-        props.onChange(_objectSpread({}, status, {
+        props.onChange(_objectSpread2({}, status, {
           el: inputElRef.current,
           setInputState: function setInputState(newState) {
             var hasNewValue = newState.value !== undefined && newState.value !== inputElRef.current.value;
@@ -388,7 +403,7 @@ var _TextField = function _TextField(_ref) {
     className: [classes.component, isInvalid ? classes.stateInvalid : "", hasFocusRef.current ? classes.stateFocused : "", isDirtyRef.current ? classes.stateDirty : "", props.floatingLabel ? classes.hasFloatingLabel : "", props.disabled ? classes.stateDisabled : "", props.readonly ? classes.stateReadonly : "", props.dense ? classes.isDense : "", props.required ? classes.isRequired : "", props.fullWidth ? classes.hasFullWidth : "", props.counter ? classes.hasCounter : "", props.hideSpinner !== false && props.hideSpinner !== undefined ? classes.hideSpinner : "", props.hideClear !== false && props.hideClear !== undefined ? classes.hideClear : "", props.hideValidation ? classes.hideValidation : "", props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
   });
 
-  var allProps = _objectSpread({}, props, props.domAttributes);
+  var allProps = _objectSpread2({}, props, {}, props.domAttributes);
 
   var errorMessage = props.error || errorRef.current;
   var type = allProps.multiLine ? null : !allProps.type || allProps.type === "submit" || allProps.type === "search" ? "text" : allProps.type;
@@ -471,7 +486,7 @@ var _TextField = function _TextField(_ref) {
     rows: allProps.rows
   } : null, allProps.placeholder !== undefined ? {
     placeholder: allProps.placeholder
-  } : null, allProps.domAttributes !== undefined ? _objectSpread({}, allProps.domAttributes) : null))]), allProps.counter ? h("div", {
+  } : null, allProps.domAttributes !== undefined ? _objectSpread2({}, allProps.domAttributes) : null))]), allProps.counter ? h("div", {
     className: classes.counter
   }, (value.length || 0) + " / " + allProps.counter) : null, allProps.help && !showError ? h("div", {
     className: [classes.help, allProps.focusHelp ? classes.focusHelp : null].join(" ")

@@ -63,20 +63,35 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-function _objectSpread(target) {
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
 
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
     }
-
-    ownKeys.forEach(function (key) {
-      _defineProperty(target, key, source[key]);
-    });
   }
 
   return target;
@@ -84,7 +99,7 @@ function _objectSpread(target) {
 
 var _selected = function selected(selector, vars, tint) {
   var selectedTextColor = vars["color_" + tint + "_selected_text"];
-  return sel(selector, _objectSpread({}, selectedTextColor !== "inherit" ? {
+  return sel(selector, _objectSpread2({}, selectedTextColor !== "inherit" ? {
     "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
       color: selectedTextColor
     }
@@ -665,7 +680,7 @@ var themeVars = {
  * @type {ListTileVars} listTileVars
  */
 
-var listTileVars = _objectSpread({
+var listTileVars = _objectSpread2({
   /**
    * Generate general styles, not defined by variables
    */

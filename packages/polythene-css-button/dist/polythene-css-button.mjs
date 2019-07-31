@@ -62,20 +62,35 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-function _objectSpread(target) {
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
 
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
     }
-
-    ownKeys.forEach(function (key) {
-      _defineProperty(target, key, source[key]);
-    });
   }
 
   return target;
@@ -281,9 +296,9 @@ var hoverTintFns = function hoverTintFns(tint) {
   }), _ref2;
 };
 
-var lightTintFns = _objectSpread({}, generalFns, tintFns("light"));
+var lightTintFns = _objectSpread2({}, generalFns, {}, tintFns("light"));
 
-var darkTintFns = _objectSpread({}, generalFns, tintFns("dark"));
+var darkTintFns = _objectSpread2({}, generalFns, {}, tintFns("dark"));
 
 var lightTintHoverFns = hoverTintFns("light");
 var darkTintHoverFns = hoverTintFns("dark");
@@ -383,7 +398,7 @@ var _contained = function contained(selector) {
   });
 };
 
-var varFns$1 = _objectSpread({
+var varFns$1 = _objectSpread2({
   general_styles: function general_styles(selector) {
     return [sel(selector, [alignLeft(), {
       display: "inline-block",
@@ -610,7 +625,7 @@ var borderVars = {
  * @type {TextButtonVars} textButtonVars
  */
 
-var textButtonVars = _objectSpread({
+var textButtonVars = _objectSpread2({
   /**
    * Generate general styles, not defined by variables
    */
@@ -651,9 +666,9 @@ var textButtonVars = _objectSpread({
   color_dark_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
   color_dark_icon: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
   color_dark_separator: rgba(vars.color_dark_foreground, vars.blend_dark_border_light)
-}, borderVars, themeVars);
+}, borderVars, {}, themeVars);
 
-var themeVars$1 = _objectSpread({
+var themeVars$1 = _objectSpread2({
   border: false,
   contained: true
 }, sharedVars);
@@ -661,7 +676,7 @@ var themeVars$1 = _objectSpread({
  * @type {ContainedButtonVars} containedButtonVars
  */
 
-var containedButtonVars = _objectSpread({
+var containedButtonVars = _objectSpread2({
   /**
    * Generate general styles, not defined by variables
    */

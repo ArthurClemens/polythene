@@ -495,6 +495,7 @@ export default ({ h, a, Tabs }) => {
           )
       }
     },
+
     // {
     //   name: "Option: scrollable (RTL) (does not work with Chrome)",
     //   component: {

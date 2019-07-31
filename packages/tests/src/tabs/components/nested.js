@@ -65,9 +65,9 @@ const subTabsNew = ({ h, Tabs }) => {
             onChange: ({ index }) => state.currentTabIndex(index)
           }),
           h(".content",
-            {
-              key: "content"
-            },
+            // {
+            //   key: "content"
+            // },
             [
               h("h5",
                 tabs[currentTabIndex].label
@@ -98,7 +98,7 @@ export default ({ h, Tabs }) => {
     view: ({ state }) => {
       const currentTabIndex = state.currentTabIndex();
       const id = tabs[currentTabIndex].id;
-      return h("div", [
+      return h("div", null, [
         h(Tabs, {
           tabs,
           autofit: true,
@@ -107,13 +107,16 @@ export default ({ h, Tabs }) => {
         h(".tests-nested-tabs-main",
           null,
           [
-            h("h3", { key: "title" },
+            h("h3",
+              null,
               tabs[currentTabIndex].label
             ),
-            h(".text", { key: "text" },
+            h(".text",
+              null,
               `${tabs[currentTabIndex].label} ${lorem}`
             ),
-            h("div", { key: id }, 
+            h("div",
+              null,
               id === "new" && h(SubTabsNew)
             )
           ]

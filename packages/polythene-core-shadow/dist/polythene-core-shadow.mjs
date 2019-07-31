@@ -84,10 +84,8 @@ var _Shadow = function _Shadow(_ref) {
 
   var content = [props.before, props.content ? props.content : props.children, props.after];
   return h(props.element || "div", componentProps, [content, h("div", {
-    // key: "bottom",
     className: [classes.bottomShadow].join(" ")
   }), h("div", {
-    // key: "top",
     className: [classes.topShadow].join(" ")
   })]);
 };
