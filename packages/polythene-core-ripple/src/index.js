@@ -6,7 +6,7 @@ export { rippleAnimation };
 
 export const _Ripple = ({ h, a, getRef, useRef, useState, useEffect, ...props }) => {
   const [domElement, setDomElement] = useState();
-  const animationCountRef = useRef(0);
+  const animationCountRef = useRef();
   const triggerEl = props.target || (domElement ? domElement.parentElement : undefined);
 
   const tap = e => {
@@ -27,6 +27,15 @@ export const _Ripple = ({ h, a, getRef, useRef, useState, useEffect, ...props })
       animationCountRef.current++;
   };
 
+  // count
+  useEffect(
+    () => {
+      animationCountRef.current = 0;
+    },
+    []
+  );
+
+  // triggerEl
   useEffect(
     () => {
       if (triggerEl && triggerEl.addEventListener) {

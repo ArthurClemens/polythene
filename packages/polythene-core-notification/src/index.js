@@ -21,12 +21,11 @@ export const _Notification = ({ h, a, useState, useEffect, useRef, getRef, useRe
   const [isPaused, setIsPaused] = useState(false);
   const containerElRef = useRef();
   const titleElRef = useRef();
-  const timerRef = useRef(new Timer());
+  const timerRef = useRef();
   
   const isVisible = (transitionState || initialTransitionState).isVisible;
   const isTransitioning = (transitionState || initialTransitionState).isTransitioning;
   const isHiding = (transitionState || initialTransitionState).isHiding;
-  const timer = timerRef && timerRef.current;
 
   const transitionOptions = ({ isShow, referrer }) => ({
     dispatchTransitionState,
@@ -44,7 +43,7 @@ export const _Notification = ({ h, a, useState, useEffect, useRef, getRef, useRe
           const timeoutSeconds = timeout !== undefined
             ? timeout
             : DEFAULT_TIME_OUT;
-          timer.start(() => hideNotification(), timeoutSeconds);
+            timerRef.current.start(() => hideNotification(), timeoutSeconds);
         }     
       }
       : null,
@@ -64,21 +63,21 @@ export const _Notification = ({ h, a, useState, useEffect, useRef, getRef, useRe
 
   const pause = () => {
     setIsPaused(true);
-    if (timer) {
-      timer.pause();
+    if (timerRef.current) {
+      timerRef.current.pause();
     }
   };
   
   const unpause = () => {
     setIsPaused(false);
-    if (timer) {
-      timer.resume();
+    if (timerRef.current) {
+      timerRef.current.resume();
     }
   };
   
   const stopTimer = () => {
-    if (timer) {
-      timer.stop();
+    if (timerRef.current) {
+      timerRef.current.stop();
     }
   };
 
@@ -87,6 +86,14 @@ export const _Notification = ({ h, a, useState, useEffect, useRef, getRef, useRe
       return () => {
         stopTimer();
       }
+    },
+    []
+  );
+
+  // Timer
+  useEffect(
+    () => {
+      timerRef.current = new Timer();
     },
     []
   );

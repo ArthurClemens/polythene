@@ -37,11 +37,11 @@ export const _Slider = ({ h, a, useState, useEffect, useRef, getRef, ...props })
   const [value, setValue] = useState();
   const [previousValue, setPreviousValue] = useState();
   const [isActive, setIsActive] = useState(false);
-  const isDraggingRef = useRef(false);
-  const clickOffsetRef = useRef(0);
-  const rangeWidthRef = useRef(0);
-  const rangeOffsetRef = useRef(0);
-  const controlWidthRef = useRef(0);
+  const isDraggingRef = useRef();
+  const clickOffsetRef = useRef();
+  const rangeWidthRef = useRef();
+  const rangeOffsetRef = useRef();
+  const controlWidthRef = useRef();
 
   const updatePinPosition = () => {
     if (controlElRef.current && pinElRef.current) {
@@ -170,6 +170,19 @@ export const _Slider = ({ h, a, useState, useEffect, useRef, getRef, ...props })
     setHasFocus(true);
   };
   
+  // State refs
+  useEffect(
+    () => {
+      isDraggingRef.current = false;
+      clickOffsetRef.current = 0;
+      rangeWidthRef.current = 0;
+      rangeOffsetRef.current = 0;
+      controlWidthRef.current = 0;
+    },
+    []
+  );
+
+  // DOM children
   useEffect(
     () => {
       if (!domElement) {
@@ -186,6 +199,7 @@ export const _Slider = ({ h, a, useState, useEffect, useRef, getRef, ...props })
     [domElement]
   );
 
+  // Pin position
   useEffect(
     () => {
       if (!props.pin) {

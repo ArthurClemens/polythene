@@ -165,11 +165,10 @@ var _Notification = function _Notification(_ref) {
 
   var containerElRef = useRef();
   var titleElRef = useRef();
-  var timerRef = useRef(new Timer());
+  var timerRef = useRef();
   var isVisible = (transitionState || initialTransitionState).isVisible;
   var isTransitioning = (transitionState || initialTransitionState).isTransitioning;
   var isHiding = (transitionState || initialTransitionState).isHiding;
-  var timer = timerRef && timerRef.current;
 
   var transitionOptions = function transitionOptions(_ref2) {
     var isShow = _ref2.isShow,
@@ -186,7 +185,7 @@ var _Notification = function _Notification(_ref) {
 
         if (timeout === 0) ; else {
           var timeoutSeconds = timeout !== undefined ? timeout : DEFAULT_TIME_OUT;
-          timer.start(function () {
+          timerRef.current.start(function () {
             return hideNotification();
           }, timeoutSeconds);
         }
@@ -219,22 +218,22 @@ var _Notification = function _Notification(_ref) {
   var pause = function pause() {
     setIsPaused(true);
 
-    if (timer) {
-      timer.pause();
+    if (timerRef.current) {
+      timerRef.current.pause();
     }
   };
 
   var unpause = function unpause() {
     setIsPaused(false);
 
-    if (timer) {
-      timer.resume();
+    if (timerRef.current) {
+      timerRef.current.resume();
     }
   };
 
   var stopTimer = function stopTimer() {
-    if (timer) {
-      timer.stop();
+    if (timerRef.current) {
+      timerRef.current.stop();
     }
   };
 
@@ -242,6 +241,10 @@ var _Notification = function _Notification(_ref) {
     return function () {
       stopTimer();
     };
+  }, []); // Timer
+
+  useEffect(function () {
+    timerRef.current = new Timer();
   }, []); // DOM elements
 
   useEffect(function () {

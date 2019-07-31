@@ -208,10 +208,10 @@ var _TextField = function _TextField(_ref) {
   var inputElRef = useRef();
   var previousValueRef = useRef();
   var previousStatusRef = useRef();
-  var isDirtyRef = useRef(defaultValue !== "");
-  var hasFocusRef = useRef(false);
-  var isTouchedRef = useRef(false);
-  var errorRef = useRef(props.error);
+  var isDirtyRef = useRef();
+  var hasFocusRef = useRef();
+  var isTouchedRef = useRef();
+  var errorRef = useRef();
   var inputType = props.multiLine ? "textarea" : "input";
   var showErrorPlaceholder = !!(props.valid !== undefined || props.validate || props.min || props.max || props[a.minlength] || props[a.maxlength] || props.required || props.pattern);
 
@@ -354,7 +354,15 @@ var _TextField = function _TextField(_ref) {
         previousStatusRef.current = status;
       }
     }
-  };
+  }; // State refs
+
+
+  useEffect(function () {
+    isDirtyRef.current = defaultValue !== "";
+    hasFocusRef.current = false;
+    isTouchedRef.current = false;
+    errorRef.current = props.error;
+  }, []); // Input DOM element
 
   useEffect(function () {
     if (!domElement) {

@@ -13,7 +13,7 @@ const LongText = () => (
 const _Updating = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [, setUpdate] = useState();
-  const countRef = useRef(0);
+  const countRef = useRef();
   const intervalIdRef = useRef();
   
   const increaseCount = () => {
@@ -21,6 +21,14 @@ const _Updating = () => {
     setUpdate(countRef.current);
   };
 
+  // Count state
+  useEffect(
+    () => {
+      countRef.current = 0;
+    },
+    []
+  );
+  
   useEffect(
     () => {
       if (isVisible) {

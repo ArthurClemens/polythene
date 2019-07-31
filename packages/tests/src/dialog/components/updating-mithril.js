@@ -8,7 +8,7 @@ const trustedLongText = h.trust(longText);
 const _Updating = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [, setUpdate] = useState();
-  const countRef = useRef(0);
+  const countRef = useRef();
   const intervalIdRef = useRef();
   
   const increaseCount = () => {
@@ -30,6 +30,15 @@ const _Updating = () => {
     }
   });
 
+  // Count state
+  useEffect(
+    () => {
+      countRef.current = 0;
+    },
+    []
+  );
+
+  // Show
   useEffect(
     () => {
       if (isVisible) {

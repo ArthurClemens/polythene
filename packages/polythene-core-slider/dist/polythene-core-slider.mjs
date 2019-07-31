@@ -196,11 +196,11 @@ var _Slider = function _Slider(_ref) {
       isActive = _useState12[0],
       setIsActive = _useState12[1];
 
-  var isDraggingRef = useRef(false);
-  var clickOffsetRef = useRef(0);
-  var rangeWidthRef = useRef(0);
-  var rangeOffsetRef = useRef(0);
-  var controlWidthRef = useRef(0);
+  var isDraggingRef = useRef();
+  var clickOffsetRef = useRef();
+  var rangeWidthRef = useRef();
+  var rangeOffsetRef = useRef();
+  var controlWidthRef = useRef();
 
   var updatePinPosition = function updatePinPosition() {
     if (controlElRef.current && pinElRef.current) {
@@ -347,7 +347,16 @@ var _Slider = function _Slider(_ref) {
     deFocus();
     focusElementRef.current = element;
     setHasFocus(true);
-  };
+  }; // State refs
+
+
+  useEffect(function () {
+    isDraggingRef.current = false;
+    clickOffsetRef.current = 0;
+    rangeWidthRef.current = 0;
+    rangeOffsetRef.current = 0;
+    controlWidthRef.current = 0;
+  }, []); // DOM children
 
   useEffect(function () {
     if (!domElement) {
@@ -361,7 +370,8 @@ var _Slider = function _Slider(_ref) {
     handleNewValue({
       value: defaultValue
     });
-  }, [domElement]);
+  }, [domElement]); // Pin position
+
   useEffect(function () {
     if (!props.pin) {
       return;

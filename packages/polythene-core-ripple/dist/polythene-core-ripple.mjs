@@ -205,7 +205,7 @@ var _Ripple = function _Ripple(_ref) {
       domElement = _useState2[0],
       setDomElement = _useState2[1];
 
-  var animationCountRef = useRef(0);
+  var animationCountRef = useRef();
   var triggerEl = props.target || (domElement ? domElement.parentElement : undefined);
 
   var tap = function tap(e) {
@@ -232,7 +232,12 @@ var _Ripple = function _Ripple(_ref) {
       animationCountRef.current--;
     });
     animationCountRef.current++;
-  };
+  }; // count
+
+
+  useEffect(function () {
+    animationCountRef.current = 0;
+  }, []); // triggerEl
 
   useEffect(function () {
     if (triggerEl && triggerEl.addEventListener) {

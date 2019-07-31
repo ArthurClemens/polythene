@@ -22,10 +22,10 @@ export const _TextField = ({ h, a, useState, useEffect, useRef, getRef, ...props
   const inputElRef = useRef();
   const previousValueRef = useRef();
   const previousStatusRef = useRef();
-  const isDirtyRef = useRef(defaultValue !== "");
-  const hasFocusRef = useRef(false);
-  const isTouchedRef = useRef(false);
-  const errorRef = useRef(props.error);
+  const isDirtyRef = useRef();
+  const hasFocusRef = useRef();
+  const isTouchedRef = useRef();
+  const errorRef = useRef();
   const inputType = props.multiLine ? "textarea" : "input";
   const showErrorPlaceholder = !!(props.valid !== undefined || props.validate || props.min || props.max || props[a.minlength] || props[a.maxlength] || props.required || props.pattern);
 
@@ -150,6 +150,18 @@ export const _TextField = ({ h, a, useState, useEffect, useRef, getRef, ...props
     }
   };
   
+  // State refs
+  useEffect(
+    () => {
+      isDirtyRef.current = defaultValue !== "";
+      hasFocusRef.current = false;
+      isTouchedRef.current = false;
+      errorRef.current = props.error;
+    },
+    []
+  );
+
+  // Input DOM element
   useEffect(
     () => {
       if (!domElement) {
