@@ -28,49 +28,57 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
 
   const avatarImageUrl = fileName => `http://arthurclemens.github.io/assets/polythene/examples/avatar-${fileName}`;
 
-  const twoButtonRow = [
-    h(Button, { label: "Action 1" }),
-    h(Button, { label: "Action 2" })
-  ];
+  const TwoButtonRow = ({
+    view: () => [
+      h(Button, { label: "Action 1", key: "button-1" }),
+      h(Button, { label: "Action 2", key: "button-2" })
+    ]
+  });
 
-  const twoButtonAndLessRow = [
-    h(Button, {
-      label: "Action 1",
-      key: "one"
-    }),
-    h(Button, {
-      label: "Action 2",
-      key: "two"
-    }),
-    h(".flex", { key: "space" }),
-    h(IconButton, {
-      key: "three",
-      icon: {
-        size: "medium",
-        svg: { content: iconLess }
-      }
-    })
-  ];
+  const TwoButtonAndLessRow = ({
+    view: () => [
+      h(Button, {
+        label: "Action 1",
+        key: "one"
+      }),
+      h(Button, {
+        label: "Action 2",
+        key: "two"
+      }),
+      h(".flex",
+        { key: "space" }
+      ),
+      h(IconButton, {
+        key: "three",
+        icon: {
+          size: "medium",
+          svg: { content: iconLess }
+        }
+      })
+    ]
+  });
 
-  const iconButtonRow = [
-    h(".flex",
-      { key: "space" }
-    ),
-    h(IconButton, {
-      icon: { svg: { content: iconHeart } },
-      key: "heart"
-    }),
-    h(IconButton, {
-      icon: { svg: { content: iconBookmark } },
-      key: "bookmark"
-    }),
-    h(IconButton, {
-      icon: { svg: { content: iconShare } },
-      key: "share"
-    })
-  ];
+  const IconButtonRow = ({
+    view: () => [
+      h(".flex",
+        { key: "space" }
+      ),
+      h(IconButton, {
+        icon: { svg: { content: iconHeart } },
+        key: "heart"
+      }),
+      h(IconButton, {
+        icon: { svg: { content: iconBookmark } },
+        key: "bookmark"
+      }),
+      h(IconButton, {
+        icon: { svg: { content: iconShare } },
+        key: "share"
+      })
+    ]
+  });
 
-  const justifiedButtonActions = {
+  const justifiedButtonActions = () => ({
     layout: "justified",
     tight: true,
     content: [
@@ -87,25 +95,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
         key: "share"
       })
     ]
-  };
-
-  const verticalButtonActions = {
-    layout: "vertical",
-    content: [
-      h(IconButton, {
-        icon: { svg: { content: iconHeart } },
-        key: "heart"
-      }),
-      h(IconButton, {
-        icon: { svg: { content: iconBookmark } },
-        key: "bookmark"
-      }),
-      h(IconButton, {
-        icon: { svg: { content: iconShare } },
-        key: "share"
-      })
-    ]
-  };
+  });
 
   const titleImage = (size, title) => [
     {
@@ -123,7 +113,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
     },
     {
       actions: {
-        content: twoButtonRow,
+        content: h(TwoButtonRow),
       }
     }];
 
@@ -141,13 +131,31 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           },
           h(".flex"),
-          { actions: verticalButtonActions }
+          {
+            actions: {
+              layout: "vertical",
+              content: [
+                h(IconButton, {
+                  icon: { svg: { content: iconHeart } },
+                  key: "heart"
+                }),
+                h(IconButton, {
+                  icon: { svg: { content: iconBookmark } },
+                  key: "bookmark"
+                }),
+                h(IconButton, {
+                  icon: { svg: { content: iconShare } },
+                  key: "share"
+                })
+              ]
+            }
+          }
         ]
       }
     }
   ];
 
-  const tabsContent = {
+  const TabsContent = {
     view: () => 
       h(Tabs, {
         tabs: [
@@ -166,6 +174,21 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
   });
 
   return [
+    // {
+    //   name: "Primary with title and subtitle, before and after",
+    //   component: Card,
+    //   attrs: () => ({
+    //     content: [{
+    //       primary: {
+    //         title: "Primary title",
+    //         subtitle: "Subtitle"
+    //       }
+    //     }],
+    //     before: h("div", "Before"),
+    //     after: h("div", "After"),
+    //   }
+    // },
+    
     {
       name: "Any content (list)",
       component: {
@@ -195,39 +218,25 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
       component: {
         view: () =>
           // Testing child node
-          h(Card, null, h(tabsContent))
+          h(Card, null, h(TabsContent))
       }  
     },
-    // {
-    //   name: "Primary with title and subtitle, before and after",
-    //   component: Card,
-    //   attrs: {
-    //     content: [{
-    //       primary: {
-    //         title: "Primary title",
-    //         subtitle: "Subtitle"
-    //       }
-    //     }],
-    //     before: h("div", "Before"),
-    //     after: h("div", "After"),
-    //   }
-    // },
     {
       name: "Primary with title and subtitle",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [{
           primary: {
             title: "Primary title",
             subtitle: "Subtitle"
           }
         }]
-      }
+      })
     },
     {
       name: "Themed (color)",
       component: Card,
-      attrs: {
+      attrs: () => ({
         className: "tests-card-colored-card",
         content: [{
           primary: {
@@ -235,12 +244,12 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             subtitle: "Subtitle"
           }
         }]
-      }
+      })
     },
     {
       name: "Header with icon",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             header: {
@@ -261,12 +270,12 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           }
         ]
-      }
+      })
     },
     {
       name: "Primary text with supporting text",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             media: {
@@ -282,12 +291,12 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           }
         ]
-      }
+      })
     },
     {
       name: "Primary text with action row and text",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             media: {
@@ -303,18 +312,18 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           },
           {
-            actions: { content: twoButtonAndLessRow }
+            actions: { content: h(TwoButtonAndLessRow) }
           },
           {
             text: { content: ipsum }
           }
         ]
-      }
+      })
     },
     {
       name: "Bottom action row, border",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             header: {
@@ -340,16 +349,16 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
           {
             actions: {
               border: true,
-              content: twoButtonAndLessRow
+              content: h(TwoButtonAndLessRow)
             }
           }
         ]
-      }
+      })
     },
     {
       name: "Bottom action row, vertical",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             header: {
@@ -386,7 +395,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           }
         ]
-      }
+      })
     },
 
     // 16:9 square
@@ -394,7 +403,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
     {
       name: "16:9 media with square image, anchor origin: default",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             media: {
@@ -404,15 +413,15 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           },
           {
-            actions: { content: iconButtonRow }
+            actions: { content: h(IconButtonRow) }
           }
         ]
-      }
+      })
     },
     {
       name: "16:9 media with square image, anchor origin: start",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             media: {
@@ -423,15 +432,15 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           },
           {
-            actions: { content: iconButtonRow }
+            actions: { content: h(IconButtonRow) }
           }
         ]
-      }
+      })
     },
     {
       name: "16:9 media with square image, anchor origin: end",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             media: {
@@ -442,10 +451,10 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           },
           {
-            actions: { content: iconButtonRow }
+            actions: { content: h(IconButtonRow) }
           }
         ]
-      }
+      })
     },
 
     // 16:9 landscape
@@ -453,7 +462,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
     {
       name: "16:9 media with landscape image, anchor origin: default",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             media: {
@@ -463,15 +472,15 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           },
           {
-            actions: { content: iconButtonRow }
+            actions: { content: h(IconButtonRow) }
           }
         ]
-      }
+      })
     },
     {
       name: "16:9 media with landscape image, anchor origin: start",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             media: {
@@ -482,15 +491,15 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           },
           {
-            actions: { content: iconButtonRow }
+            actions: { content: h(IconButtonRow) }
           }
         ]
-      }
+      })
     },
     {
       name: "16:9 media with landscape image, anchor origin: end",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             media: {
@@ -501,10 +510,10 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           },
           {
-            actions: { content: iconButtonRow }
+            actions: { content: h(IconButtonRow) }
           }
         ]
-      }
+      })
     },
 
     // 16:9 portrait
@@ -512,7 +521,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
     {
       name: "16:9 media with portrait image, anchor origin: default",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             media: {
@@ -522,15 +531,15 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           },
           {
-            actions: { content: iconButtonRow }
+            actions: { content: h(IconButtonRow) }
           }
         ]
-      }
+      })
     },
     {
       name: "16:9 media with portrait image, anchor origin: start",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             media: {
@@ -541,15 +550,15 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           },
           {
-            actions: { content: iconButtonRow }
+            actions: { content: h(IconButtonRow) }
           }
         ]
-      }
+      })
     },
     {
       name: "16:9 media with portrait image, anchor origin: end",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             media: {
@@ -560,10 +569,10 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           },
           {
-            actions: { content: iconButtonRow }
+            actions: { content: h(IconButtonRow) }
           }
         ]
-      }
+      })
     },
 
     // 1:1 portrait
@@ -571,7 +580,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
     {
       name: "1:1 media with square image, anchor origin: default",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             media: {
@@ -582,15 +591,15 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           },
           {
-            actions: { content: iconButtonRow }
+            actions: { content: h(IconButtonRow) }
           }
         ]
-      }
+      })
     },
     {
       name: "1:1 media with landscape image, anchor origin: start",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             media: {
@@ -602,15 +611,15 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           },
           {
-            actions: { content: iconButtonRow }
+            actions: { content: h(IconButtonRow) }
           }
         ]
-      }
+      })
     },
     {
       name: "1:1 media with landscape image, anchor origin: end",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             media: {
@@ -622,15 +631,15 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           },
           {
-            actions: { content: iconButtonRow }
+            actions: { content: h(IconButtonRow) }
           }
         ]
-      }
+      })
     },
     {
       name: "Video media",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             media: {
@@ -645,10 +654,10 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           },
           {
-            actions: { content: iconButtonRow }
+            actions: { content: h(IconButtonRow) }
           }
         ]
-      }
+      })
     },
 
     // Overlay
@@ -656,7 +665,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
     {
       name: "Overlay with sheet (default dark tone)",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             media: {
@@ -673,20 +682,20 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
                     }
                   },
                   {
-                    actions: { content: twoButtonRow }
+                    actions: { content: h(TwoButtonRow) }
                   }
                 ]
               }
             }
           }
         ]
-      }
+      })
     },
 
     {
       name: "Overlay with sheet (light tone)",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             media: {
@@ -704,20 +713,20 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
                     }
                   },
                   {
-                    actions: { content: twoButtonRow }
+                    actions: { content: h(TwoButtonRow) }
                   }
                 ]
               }
             }
           }
         ]
-      }
+      })
     },
 
     {
       name: "Overlay without sheet",
       component: Card,
-      attrs: {
+      attrs: () => ({
         content: [
           {
             media: {
@@ -736,10 +745,10 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           },
           {
-            actions: justifiedButtonActions
+            actions: justifiedButtonActions()
           }
         ]
-      }
+      })
     },
 
     // Title image
@@ -747,48 +756,48 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
     {
       name: "Title image, small",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "400px" },
         content: titleImage("small", "Title")
-      }
+      })
     },
     {
       name: "Title image, regular",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "400px" },
         content: titleImage("regular", "Title")
-      }
+      })
     },
     {
       name: "Title image, medium",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "400px" },
         content: titleImage("medium", "Title")
-      }
+      })
     },
     {
       name: "Title image, size large, square",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "360px" },
         content: titleImageExtraLarge("square")
-      }
+      })
     },
     {
       name: "Title image, size large, landscape",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "360px" },
         content: titleImageExtraLarge("landscape")
-      }
+      })
     },
 
     {
       name: "Card URL",
       component: Card,
-      attrs: {
+      attrs: () => ({
         url: {
           href: "http://en.wikipedia.org/wiki/Road_to_Nowhere"
         },
@@ -818,12 +827,12 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           }
         ]
-      }
+      })
     },
     {
       name: "Card events",
       component: Card,
-      attrs: {
+      attrs: () => ({
         events: {
           [a.onmouseover]: function(e) {
             if (e.target.className === "pe-card__media__dimmer") {
@@ -917,13 +926,13 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           }
         ]
-      }
+      })
     },
 
     {
       name: "Custom Card white",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "360px" },
         content: [
           {
@@ -953,16 +962,15 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             text: { content: "A road trip is a long distance journey on the road. Typically, road trips are long distances traveled by automobile." }
           },
           {
-            actions: { content: twoButtonRow }
+            actions: { content: h(TwoButtonRow) }
           }
         ]
-      }
+      })
     },
-
     {
       name: "Custom Card sand",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "360px", backgroundColor: "#B89E58" },
         className: "pe-dark-tone",
         content: [
@@ -990,13 +998,13 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           }
         ]
-      }
+      })
     },
 
     {
       name: "Custom Card blue",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "360px", backgroundColor: "#227586" },
         className: "pe-dark-tone",
         content: [
@@ -1024,13 +1032,13 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           }
         ]
-      }
+      })
     },
 
     {
       name: "Custom Card purple",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "360px", backgroundColor: "#871E6A" },
         className: "pe-dark-tone",
         content: [
@@ -1054,7 +1062,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           }
         ]
-      }
+      })
     },
 
     // Depth
@@ -1062,7 +1070,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
     {
       name: "Depth normal, tight text",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "170px" },
         content: [{
           text: {
@@ -1070,12 +1078,12 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             content: "Normal"
           }
         }]
-      }
+      })
     },
     {
       name: "Shadow depth 0, tight text",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "170px" },
         content: [{
           text: {
@@ -1084,12 +1092,12 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
           }
         }],
         shadowDepth: 0
-      }
+      })
     },
     {
       name: "Shadow depth 2, tight text",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "170px" },
         content: [{
           text: {
@@ -1098,13 +1106,13 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
           }
         }],
         shadowDepth: 2
-      }
+      })
     },
 
     {
       name: "Header + any",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "400px" },
         content: [
           {
@@ -1127,7 +1135,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           }
         ]
-      }
+      })
     },
 
     // Separate elements
@@ -1135,7 +1143,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
     {
       name: "Separate elements - media",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "400px" },
         content: [{
           media: {
@@ -1144,24 +1152,24 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             })
           }
         }]
-      }
+      })
     },
     {
       name: "Separate elements - text",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "400px" },
         content: [{
           text: {
             content: h.trust("<strong>Normal - (visual) 24px bottom padding</strong> " + ipsum)
           }
         }]
-      }
+      })
     },
     {
       name: "Separate elements - tight text",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "400px" },
         content: [{
           text: {
@@ -1169,12 +1177,12 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             content: h.trust("<strong>Tight - (visual) 16px bottom padding</strong> " + ipsum)
           }
         }]
-      }
+      })
     },
     {
       name: "Separate elements - header with avatar",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "400px" },
         content: [{
           header: {
@@ -1187,12 +1195,12 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }
           }
         }]
-      }
+      })
     },
     {
       name: "Separate elements - normal primary title",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "400px" },
         content: [{
           primary: {
@@ -1200,12 +1208,12 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             subtitle: "Normal - (visual) 24px bottom padding"
           }
         }]
-      }
+      })
     },
     {
       name: "Separate elements - tight primary title",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "400px" },
         content: [{
           primary: {
@@ -1214,24 +1222,24 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             tight: true
           }
         }]
-      }
+      })
     },
     {
       name: "Separate elements - actions",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "400px" },
         content: [{
           actions: {
-            content: twoButtonRow
+            content: h(TwoButtonRow)
           }
         }]
-      }
+      })
     },
     {
       name: "Separate elements - vertical actions",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "400px" },
         content: [{
           actions: {
@@ -1244,19 +1252,19 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             ])
           }
         }]
-      }
+      })
     },
     {
       name: "Separate elements - icon button actions",
       component: Card,
-      attrs: {
+      attrs: () => ({
         style: { maxWidth: "400px" },
         content: [{
           actions: {
-            content: iconButtonRow
+            content: h(IconButtonRow)
           }
         }]
-      }
+      })
     },
     
     {
@@ -1266,7 +1274,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
       name: "Texts -- dark theme class",
       component: Card,
       className: "pe-dark-tone",
-      attrs: {
+      attrs: () => ({
         content: [
           {
             header: {
@@ -1296,11 +1304,11 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
           }, {
             actions: {
               border: true,
-              content: twoButtonAndLessRow
+              content: h(TwoButtonAndLessRow)
             }
           }
         ]
-      }
+      })
     },
     {
       name: "Dark tone class + light theme class",
@@ -1341,7 +1349,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }, {
               actions: {
                 border: true,
-                content: twoButtonAndLessRow
+                content: h(TwoButtonAndLessRow)
               }
             }
           ]
@@ -1387,7 +1395,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
             }, {
               actions: {
                 border: true,
-                content: twoButtonAndLessRow
+                content: h(TwoButtonAndLessRow)
               }
             }
           ]
@@ -1430,7 +1438,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
                   {
                     actions: {
                       border: true,
-                      content: twoButtonAndLessRow
+                      content: h(TwoButtonAndLessRow)
                     }
                   }
                 ]

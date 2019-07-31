@@ -93,7 +93,6 @@ export const _Spinner = ({ h, useState, useEffect, BaseSpinner, ...props }) => {
 
   const content = props.content || h("div",
     {
-      // key: "content",
       className: classes.animation,
       style: {
         width: size + "px",
@@ -102,11 +101,9 @@ export const _Spinner = ({ h, useState, useEffect, BaseSpinner, ...props }) => {
     },
     [
       h("div", {
-        // key: "left",
         className: [classes.circle, classes.circleLeft].join(" ")
       }),
       h("div", {
-        // key: "right",
         className: [classes.circle, classes.circleRight].join(" ")
       })
     ]

@@ -59,7 +59,17 @@ if (typeof h.route.prefix === "function") {
 }
 const mountNode = document.querySelector("#app");
 const routeData = {
-  "/": index
+  "/": {
+    onmatch: () => {
+      if (document.scrollingElement) {
+        document.scrollingElement.scrollTop = scrollTop;
+      } else {
+        document.scrollTop = scrollTop || 0;
+      }
+      document.title = "Polythene Components for Mithril";
+      return index;
+    }
+  }
 };
 routes.forEach(route => routeData[route.path] = {
   onmatch: () => {

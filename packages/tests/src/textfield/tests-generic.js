@@ -652,35 +652,35 @@ export default ({ TextField, Button, h, a }) => {
       }
     },
 
-    // {
-    //   name: "Autocomplete form",
-    //   component: {
-    //     view: () => 
-    //       h("form",
-    //         { [a["autocomplete"]]: "on" }, 
-    //         h("div",
-    //           {
-    //             label: "Customer information"
-    //           },
-    //           [
-    //             h(TextField, {
-    //               type:               "email",
-    //               label:              "Email",
-    //               floatingLabel:      true,
-    //             }),
-    //             h(TextField, {
-    //               label:               "First name",
-    //               floatingLabel:      true,
-    //             }),
-    //             h(TextField, {
-    //               label:               "Last name",
-    //               floatingLabel:      true,
-    //             }),
-    //           ]
-    //         )
-    //       )
-    //   }
-    // },
+    {
+      name: "Autocomplete form",
+      component: {
+        view: () => 
+          h("form",
+            { [a["autocomplete"]]: "on" }, 
+            h("div",
+              {
+                label: "Customer information"
+              },
+              [
+                h(TextField, {
+                  type:               "email",
+                  label:              "Email",
+                  floatingLabel:      true,
+                }),
+                h(TextField, {
+                  label:               "First name",
+                  floatingLabel:      true,
+                }),
+                h(TextField, {
+                  label:               "Last name",
+                  floatingLabel:      true,
+                }),
+              ]
+            )
+          )
+      }
+    },
   ];
 };
 

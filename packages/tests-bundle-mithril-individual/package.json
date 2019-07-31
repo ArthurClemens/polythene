@@ -16,7 +16,7 @@
     "serve": "http-server -c-1 -p 5000 dist"
   },
   "dependencies": {
-    "mithril": "^2.0.3",
+    "mithril": ">=1.1.6",
     "polythene-css-card": "^1.6.5",
     "polythene-css-typography": "^1.6.5",
     "polythene-mithril-button": "^1.6.5",

@@ -23,27 +23,33 @@ const navBar = (name, previous, doc) =>
   ]));
 
 const results = ({ name, tests }) => (
-  h([css.results].join(" "), {
-    className: `tests-${name.replace(/[^\w\d]+/g, "-").toLowerCase()}`
-  }, tests.map(test => {
-    if (test.section) {
-      return h(css.sectionTitle, test.section);
-    }
-    const testName = `test-${(test.name)}`;
-    return h([css.resultRow, test.interactive ? css.interactive : null].join(""), {
-      className: [testName.replace(/[^\w\d]/g, "-").toLowerCase(), test.className || null].join(" "),
-    }, [
-      h(css.resultTitle,
-        { className: "result-title" },
-        test.name
-      ),
-      h(css.resultData,
-        h(css.resultDataRendered,
-          h(css.content, h(test.component, test.attrs, test.children))
-        )
-      )
-    ]);
-  }))
+  h([css.results].join(" "),
+    {
+      className: `tests-${name.replace(/[^\w\d]+/g, "-").toLowerCase()}`
+    },
+    tests.map(test => {
+      if (test.section) {
+        return h(css.sectionTitle, test.section);
+      }
+      const testName = `test-${(test.name)}`;
+      return h([css.resultRow, test.interactive ? css.interactive : null].join(""),
+        {
+          className: [testName.replace(/[^\w\d]/g, "-").toLowerCase(), test.className || null].join(" "),
+        },
+        [
+          h(css.resultTitle,
+            { className: "result-title" },
+            test.name
+          ),
+          h(css.resultData,
+            h(css.resultDataRendered,
+              h(css.content, h(test.component, typeof test.attrs === "function" ? test.attrs() : test.attrs, test.children))
+            )
+          )
+        ]
+      );
+    })
+  )
 );
   
 export default (route, previous) => ({

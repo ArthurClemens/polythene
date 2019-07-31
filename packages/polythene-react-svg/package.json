@@ -16,7 +16,7 @@
     "README.md"
   ],
   "dependencies": {
-    "cyano-react": "0.6.1",
+    "cyano-react": "^0.6.2",
     "polythene-core-svg": "^1.6.5"
   },
   "devDependencies": {

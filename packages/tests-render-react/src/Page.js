@@ -55,7 +55,7 @@ const Results = (name, tests) =>
         h(css.resultData, null,
           h(css.resultDataRendered, null,
             h(css.content, null,
-              h(test.component, test.attrs, test.children)
+              h(test.component, typeof test.attrs === "function" ? test.attrs() : test.attrs, test.children)
             )
           )
         )
