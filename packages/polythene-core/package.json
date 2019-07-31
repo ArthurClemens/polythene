@@ -17,7 +17,7 @@
     "README.md"
   ],
   "devDependencies": {
-    "@types/mithril": "^1.1.16"
+    "@types/mithril": "^2.0.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",
