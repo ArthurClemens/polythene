@@ -162,7 +162,7 @@ export const _Tabs = ({ h, a, getRef, useState, useEffect, ScrollButton, Tab, ..
   };
 
   const updateWithTabIndex = ({ index, animate }) => {
-    if (!tabs.length) {
+    if (!tabs || !tabs.length) {
       return;
     }
     setSelectedTabIndex(index);

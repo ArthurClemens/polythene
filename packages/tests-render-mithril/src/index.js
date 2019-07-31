@@ -34,11 +34,12 @@ const index = {
         { className: "index-list" },
         routes.map(route => (
           h(ListTile, {
-            element: h.route.Link,
+            element: h.route.Link || "a", // let this work for Mithril 1.1.6
             title: route.name,
             hoverable: true,
             url: {
               href: route.path,
+              oncreate: h.route.Link ? undefined : h.route.link // let this work for Mithril 1.1.6
             }
           })
         ))
@@ -50,20 +51,15 @@ const index = {
 let scrollTop = document.scrollingElement
   ? document.scrollingElement.scrollTop
   : document.scrollTop;
-h.route.prefix = "#";
+
+if (typeof h.route.prefix === "function") {
+  h.route.prefix("#");
+} else {
+  h.route.prefix = "#";
+}
 const mountNode = document.querySelector("#app");
 const routeData = {
-  "/": {
-    onmatch: () => {
-      if (document.scrollingElement) {
-        document.scrollingElement.scrollTop = scrollTop;
-      } else {
-        document.scrollTop = scrollTop || 0;
-      }
-      document.title = "Polythene Components for Mithril";
-      return index;
-    }
-  }
+  "/": index
 };
 routes.forEach(route => routeData[route.path] = {
   onmatch: () => {

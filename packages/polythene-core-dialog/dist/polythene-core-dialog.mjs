@@ -313,9 +313,7 @@ var _Dialog = function _Dialog(_ref2) {
         var openDialogs = document.querySelectorAll(openDialogsSelector);
 
         if (openDialogs[openDialogs.length - 1] === domElement) {
-          hideDialog({
-            hideDelay: 0
-          });
+          hideDialog();
           unsubscribe("keydown", handleEscape);
         }
       }

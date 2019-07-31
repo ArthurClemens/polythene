@@ -1,0 +1,31 @@
+{
+  "name": "polythene-tests-render-mithril-1.x",
+  "version": "1.6.5",
+  "description": "",
+  "private": true,
+  "main": "dist/js/test",
+  "module": "dist/js/test.mjs",
+  "scripts": {
+    "clean": "rm -rf dist/js/*",
+    "dev": "npm-run-all --parallel dev:watch dev:serve",
+    "dev:serve": "../../node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./scripts/webpack.config.dev.js --disableHostCheck true --port 3000 --host 0.0.0.0",
+    "dev:watch": "../../node_modules/webpack/bin/webpack.js --watch --config ./scripts/webpack.config.dev.js",
+    "webpack": "../../node_modules/webpack/bin/webpack.js --config ./scripts/webpack.config.prod.js",
+    "build": "npm run clean && npm run webpack",
+    "serve": "http-server -p 5000 dist"
+  },
+  "dependencies": {
+    "cyano-mithril": "0.6.1",
+    "mithril": "1.1.6",
+    "polythene-core": "^1.6.5",
+    "polythene-core-css": "^1.6.5",
+    "polythene-css": "^1.6.5",
+    "polythene-mithril": "^1.6.5",
+    "polythene-style": "^1.6.5",
+    "polythene-tests": "^1.6.5",
+    "polythene-utilities": "^1.6.5"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

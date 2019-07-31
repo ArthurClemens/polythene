@@ -373,7 +373,7 @@ var _Tabs = function _Tabs(_ref) {
     var index = _ref3.index,
         animate = _ref3.animate;
 
-    if (!tabs.length) {
+    if (!tabs || !tabs.length) {
       return;
     }
 

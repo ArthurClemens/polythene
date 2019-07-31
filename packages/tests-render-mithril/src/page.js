@@ -11,9 +11,10 @@ const navBar = (name, previous, doc) =>
   }, [
     previous && h(IconButton, {
       icon: { svg: { content: iconBack } },
-      element: h.route.Link,
+      element: h.route.Link || "a", // let this work for Mithril 1.1.6
       url: {
         href: "/",
+        oncreate: h.route.Link ? undefined : h.route.link // let this work for Mithril 1.1.6
       },
       style: { color: "#0091EA" }
     }),

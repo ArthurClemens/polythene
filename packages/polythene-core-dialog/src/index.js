@@ -101,7 +101,7 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
         if (e.key === "Escape" || e.key === "Esc") { // "Esc" for IE11
           const openDialogs = document.querySelectorAll(openDialogsSelector);
           if (openDialogs[openDialogs.length - 1] === domElement) {
-            hideDialog({ hideDelay: 0 });
+            hideDialog();
             unsubscribe("keydown", handleEscape);
           }
         }
