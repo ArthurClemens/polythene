@@ -134,8 +134,9 @@ var _SelectionControl = function _SelectionControl(_ref) {
   var h = _ref.h,
       a = _ref.a,
       useState = _ref.useState,
+      useEffect = _ref.useEffect,
       ViewControl = _ref.ViewControl,
-      props = _objectWithoutProperties(_ref, ["h", "a", "useState", "ViewControl"]);
+      props = _objectWithoutProperties(_ref, ["h", "a", "useState", "useEffect", "ViewControl"]);
 
   // remove unused props
   delete props.key;
@@ -146,9 +147,23 @@ var _SelectionControl = function _SelectionControl(_ref) {
       previousIsChecked = _useState2[0],
       setIsChecked = _useState2[1];
 
+  var _useState3 = useState(props.selectable),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isSelectable = _useState4[0],
+      setIsSelectable = _useState4[1];
+
   var isChecked = props.checked !== undefined ? props.checked : previousIsChecked;
-  var selectable = props.selectable !== undefined ? props.selectable(isChecked) : false;
-  var inactive = props.disabled || !selectable;
+  var inactive = props.disabled || !isSelectable; // define isSelectable
+  // This variable is set in the next tick to allow button interaction (e.g. ripples) to show
+  // before the button is set to inactive state
+
+  useEffect(function () {
+    var selectable = props.selectable !== undefined ? props.selectable(isChecked) : false;
+
+    if (selectable !== isSelectable) {
+      setIsSelectable(selectable);
+    }
+  }, [props.selectable, isChecked]);
 
   var notifyChange = function notifyChange(e, isChecked) {
     if (props.onChange) {

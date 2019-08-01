@@ -1,7 +1,7 @@
 import { filterSupportedAttributes, classForSize } from "polythene-core";
 import classes from "polythene-css-classes/selection-control";
 
-export const _SelectionControl = ({ h, a, useState, ViewControl, ...props }) => {
+export const _SelectionControl = ({ h, a, useState, useEffect, ViewControl, ...props }) => {
   // remove unused props
   delete props.key;
 
@@ -9,15 +9,29 @@ export const _SelectionControl = ({ h, a, useState, ViewControl, ...props }) => 
     ? props.defaultChecked
     : props.checked || false;
   const [previousIsChecked, setIsChecked] = useState(defaultChecked);
+  const [isSelectable, setIsSelectable] = useState(props.selectable);
   
   const isChecked = props.checked !== undefined
     ? props.checked
     : previousIsChecked;
-  const selectable = props.selectable !== undefined
-    ? props.selectable(isChecked)
-    : false;
-  const inactive = props.disabled || !selectable;
   
+  const inactive = props.disabled || !isSelectable;
+  
+  // define isSelectable
+  // This variable is set in the next tick to allow button interaction (e.g. ripples) to show
+  // before the button is set to inactive state
+  useEffect(
+    () => {
+      const selectable = props.selectable !== undefined
+        ? props.selectable(isChecked)
+        : false;
+      if (selectable !== isSelectable) {
+        setIsSelectable(selectable);
+      }
+    },
+    [props.selectable, isChecked]
+  );
+
   const notifyChange = (e, isChecked) => {
     if (props.onChange) {
       props.onChange({

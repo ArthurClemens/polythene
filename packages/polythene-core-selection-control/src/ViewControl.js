@@ -36,7 +36,7 @@ export const _ViewControl = ({ h, Icon, IconButton, ...props }) => {
       ripple: { center: true },
       disabled: props.disabled,
       events: props.events,
-      inactive: props.inactive
+      inactive: props.inactive,
     },
     props.iconButton // for example for hover behaviour
   ));

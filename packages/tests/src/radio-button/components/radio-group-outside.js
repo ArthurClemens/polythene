@@ -1,7 +1,7 @@
 
 const model = {
   name: "outside",
-  defaultCheckedValue: undefined,
+  defaultCheckedValue: "right",
   values: [
     {
       value: "left",
