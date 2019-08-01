@@ -99,3 +99,5 @@ export type show = showDynamic & showStatic;
 export type hide = <T>(spawnOptions?: SpawnOptions) => Promise<T>;
 
 export const _Dialog: (options: CyanoComponentOptions & AppearanceOptions) => any;
+
+export const openDialogsSelector: string;

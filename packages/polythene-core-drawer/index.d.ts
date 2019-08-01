@@ -79,3 +79,5 @@ export interface Options extends DialogOptions, DialogAppearanceOptions {
 }
 
 export const _Drawer: (options: CyanoComponentOptions & Options) => any;
+
+export const openDialogsSelector: string;
