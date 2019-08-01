@@ -479,7 +479,7 @@ var _CardPrimary = function _CardPrimary(_ref) {
     title: props.title,
     subtitle: props.subtitle
   }) : null, props.media ? primaryDispatch.media(props.media) : null, props.actions ? primaryDispatch.actions(props.actions) : null, props.content];
-  return h.apply(void 0, [props.element || "div", componentProps].concat(_toConsumableArray(content)));
+  return h(props.element || "div", componentProps, content);
 };
 
 export { _Card, _CardActions, _CardMedia, _CardPrimary };

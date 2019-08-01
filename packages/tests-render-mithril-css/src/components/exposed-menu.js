@@ -2,7 +2,6 @@ import stream from "mithril/stream";
 
 const menuOptions = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map(n => ({
   title: `Menu item ${n}`,
-  key: n,
 }));
   
 export default ({ renderer: h,  Menu, Button, List, ListTile }) => ({
@@ -44,7 +43,6 @@ export default ({ renderer: h,  Menu, Button, List, ListTile }) => ({
             tiles: menuOptions.map((item, index) =>
               h(ListTile, {
                 title: item.title,
-                key: item.key, // for React
                 id: `item-${index}`,
                 selected: index === selectedIndex,
                 ink: true,

@@ -44,24 +44,23 @@ const getTabs = currentRoute => {
   const tabs = [
     {
       label: "Search",
+      element: m.route.Link,
       url: {
         href: firstTabRoute,
-        oncreate: m.route.link,
-        onupdate: m.route.link,
       }
     },
     {
       label: "Matches",
+      element: m.route.Link,
       url: {
         href: "/matches",
-        oncreate: m.route.link,
       }
     },
     {
       label: "History",
+      element: m.route.Link,
       url: {
         href: "/history",
-        oncreate: m.route.link,
       }
     }
   ];
@@ -69,8 +68,7 @@ const getTabs = currentRoute => {
 }; 
 
 const Navigation = {
-  view: () => {
-    const currentRoute = m.route.get();
+  view: ({ attrs: { currentRoute } }) => {    
     const { tabs, selectedIndex } = getTabs(currentRoute);
     return m(Tabs, {
       tabs,
@@ -82,17 +80,18 @@ const Navigation = {
 };
 
 const App = {
-  view: () => 
-    m(".page", [
+  view: () => {
+    const currentRoute = m.route.get() || "/"; 
+    return m(".page", [
       m(".row", [
         m("h1", "Polythene for Mithril"),
         m("h2", "The first tab toggles routes home and search")
       ]),
       m(".row", 
         m(".component", [
-          m(Navigation),
+          m(Navigation, { currentRoute }),
           m(".tabs-body",
-            m("h1", m.route.get())
+            m("h1", currentRoute)
           ),
         ])
       ),
@@ -103,16 +102,20 @@ const App = {
             m("li", 
               m(Button, {
                 label: name,
-                href: route,
-                oncreate: m.route.link,
+                element: m.route.Link,
+                url: {
+                  href: route,
+                },
               })
             )
           ))
         ])
       )
     ])
+  }
 };
 
+m.route.prefix = "#";
 const routes = routeData.reduce((acc, { route }) => (
   acc[route] = App,
   acc

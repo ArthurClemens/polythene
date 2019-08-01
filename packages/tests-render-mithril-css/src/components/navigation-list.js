@@ -13,7 +13,6 @@ export default ({ renderer: h, Icon, List, ListTile, onClick=()=>{} }) => {
   const tile = ({ title, icon, index }) =>
     h(ListTile, {
       title,
-      key: `${title}-${index}`, // for React
       className: "tests-drawer-navigation-list",
       front: h(Icon, {
         svg: { content: h.trust(icon) }

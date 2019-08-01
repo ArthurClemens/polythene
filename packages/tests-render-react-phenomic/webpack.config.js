@@ -58,17 +58,15 @@ module.exports = config => ({
       {
         test: /\.css$/,
         use: [
-          !isProduction
-            ? "style-loader"
-            : MiniCssExtractPlugin.loader,
           {
-            loader: "css-loader",
+            loader: MiniCssExtractPlugin.loader,
             options: {
               modules: true,
               sourceMap: true,
               localIdentName: "[local]"
             }
           },
+          "css-loader",
         ]
       }
     ]

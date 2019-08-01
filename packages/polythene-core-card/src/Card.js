@@ -104,6 +104,7 @@ export const _Card = ({ h, a, CardActions, CardMedia, CardPrimary, Icon, ListTil
         key: undefined
       }
     );
+
     switch (blockName) {
     case "actions": 
       return h(CardActions, props);
@@ -127,7 +128,7 @@ export const _Card = ({ h, a, CardActions, CardMedia, CardPrimary, Icon, ListTil
   const blocks = Array.isArray(props.content)
     ? props.content.map(dispatcher)
     : [props.content]; // deprecated;
-
+  
   const componentContent = 
   [
     props.before,

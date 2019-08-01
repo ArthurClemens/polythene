@@ -80,5 +80,5 @@ export const _CardPrimary = ({ h, a, ...props }) => {
       props.content
     ];
 
-  return h(props.element || "div", componentProps, ...content);
+  return h(props.element || "div", componentProps, content);
 };
