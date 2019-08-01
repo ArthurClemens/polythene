@@ -459,7 +459,10 @@ var _Tabs = function _Tabs(_ref) {
   }
 
   var componentProps = _extends({}, getRef(function (dom) {
-    return dom && !domElement && setDomElement(dom);
+    return dom && !domElement && setTimeout(function () {
+      return setDomElement(dom);
+    }, 0) // delay for Mithril 1.x
+    ;
   }), filterSupportedAttributes(props), props.testId && {
     "data-test-id": props.testId
   }, {

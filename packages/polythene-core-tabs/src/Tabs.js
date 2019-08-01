@@ -238,7 +238,7 @@ export const _Tabs = ({ h, a, getRef, useState, useEffect, ScrollButton, Tab, ..
   const componentProps = Object.assign(
     {},
     getRef(dom => dom && !domElement && (
-      setDomElement(dom)
+      setTimeout(() => setDomElement(dom), 0) // delay for Mithril 1.x
     )),
     filterSupportedAttributes(props),
     props.testId && { "data-test-id": props.testId },

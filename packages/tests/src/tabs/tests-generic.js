@@ -124,9 +124,9 @@ export default ({ h, a, Tabs }) => {
     {
       name: "Option: content",
       component: Tabs,
-      attrs: {
+      attrs: () => ({
         content: threeButtons
-      }
+      })
     },
     {
       name: "Option: tabs (text buttons)",

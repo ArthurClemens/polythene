@@ -48,36 +48,17 @@ const index = {
     ]
 };
 
-let scrollTop = document.scrollingElement
-  ? document.scrollingElement.scrollTop
-  : document.scrollTop;
-
 if (typeof h.route.prefix === "function") {
   h.route.prefix("#");
 } else {
   h.route.prefix = "#";
 }
 const mountNode = document.querySelector("#app");
-const routeData = {
-  "/": {
-    onmatch: () => {
-      if (document.scrollingElement) {
-        document.scrollingElement.scrollTop = scrollTop;
-      } else {
-        document.scrollTop = scrollTop || 0;
-      }
-      document.title = "Polythene Components for Mithril";
-      return index;
-    }
-  }
-};
-routes.forEach(route => routeData[route.path] = {
-  onmatch: () => {
-    scrollTop = document.scrollingElement
-      ? document.scrollingElement.scrollTop
-      : document.scrollTop;
-    document.title = `Polythene: ${route.name}`;
-    return Page(route, "/");
-  }
+
+const routeData = routes.reduce((acc, route) => (
+  acc[route.path] = Page(route, "/"),
+  acc
+), {
+  "/": index
 });
 h.route(mountNode, "/", routeData);

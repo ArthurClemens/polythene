@@ -215,11 +215,10 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
     },
     {
       name: "Any content (tabs)",
-      component: {
-        view: () =>
-          // Testing child node
-          h(Card, null, h(TabsContent))
-      }  
+      component: Card,
+      attrs: () => ({
+        content: h(TabsContent)
+      }) 
     },
     {
       name: "Primary with title and subtitle",
