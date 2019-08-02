@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-drawer",
-  "version": "1.6.5",
+  "version": "1.7.0",
   "description": "",
   "main": "dist/polythene-react-drawer",
   "module": "dist/polythene-react-drawer.mjs",
@@ -18,10 +18,10 @@
   ],
   "dependencies": {
     "cyano-react": "^0.6.2",
-    "polythene-core": "^1.6.5",
-    "polythene-core-drawer": "^1.6.5",
-    "polythene-css-classes": "^1.6.5",
-    "polythene-react-dialog": "^1.6.5"
+    "polythene-core": "1.7.0",
+    "polythene-core-drawer": "1.7.0",
+    "polythene-css-classes": "1.7.0",
+    "polythene-react-dialog": "1.7.0"
   },
   "devDependencies": {
     "@types/react": "^16.8.23"

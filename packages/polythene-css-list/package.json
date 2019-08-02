@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-list",
-  "version": "1.6.5",
+  "version": "1.7.0",
   "description": "",
   "main": "dist/polythene-css-list",
   "module": "dist/polythene-css-list.mjs",
@@ -18,9 +18,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "1.6.5",
-    "polythene-css-classes": "1.6.5",
-    "polythene-theme": "1.6.5"
+    "polythene-core-css": "1.7.0",
+    "polythene-css-classes": "1.7.0",
+    "polythene-theme": "1.7.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

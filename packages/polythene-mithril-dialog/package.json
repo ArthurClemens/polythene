@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-dialog",
-  "version": "1.6.5",
+  "version": "1.7.0",
   "description": "",
   "main": "dist/polythene-mithril-dialog",
   "module": "dist/polythene-mithril-dialog.mjs",
@@ -18,11 +18,11 @@
   ],
   "dependencies": {
     "cyano-mithril": "^0.6.2",
-    "polythene-core": "^1.6.5",
-    "polythene-core-dialog": "^1.6.5",
-    "polythene-css-classes": "^1.6.5",
-    "polythene-mithril-dialog-pane": "^1.6.5",
-    "polythene-mithril-shadow": "^1.6.5"
+    "polythene-core": "1.7.0",
+    "polythene-core-dialog": "1.7.0",
+    "polythene-css-classes": "1.7.0",
+    "polythene-mithril-dialog-pane": "1.7.0",
+    "polythene-mithril-shadow": "1.7.0"
   },
   "devDependencies": {
     "@types/mithril": "^2.0.0"

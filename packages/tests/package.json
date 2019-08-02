@@ -1,22 +1,22 @@
 {
   "name": "polythene-tests",
-  "version": "1.6.5",
+  "version": "1.7.0",
   "private": true,
   "description": "",
   "main": "dist/polythene-tests",
   "module": "dist/polythene-tests.mjs",
   "sideEffects": false,
   "dependencies": {
-    "polythene-core-css": "^1.6.5",
-    "polythene-css": "^1.6.5",
-    "polythene-mithril": "^1.6.5",
-    "polythene-react": "^1.6.5"
+    "polythene-core-css": "1.7.0",
+    "polythene-css": "1.7.0",
+    "polythene-mithril": "1.7.0",
+    "polythene-react": "1.7.0"
   },
   "devDependencies": {
     "cyano-mithril": "^0.6.2",
     "cyano-react": "^0.6.2",
-    "polythene-core": "^1.6.5",
-    "polythene-theme": "^1.6.5",
+    "polythene-core": "1.7.0",
+    "polythene-theme": "1.7.0",
     "powerform": "^3.1.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-css",
-  "version": "1.6.5",
+  "version": "1.7.0",
   "description": "",
   "main": "dist/polythene-core-css",
   "module": "dist/polythene-core-css.mjs",
@@ -20,10 +20,10 @@
   "dependencies": {
     "j2c": "^1.0.0-4",
     "j2c-plugin-prefix-browser": "^1.0.7",
-    "polythene-core": "1.6.5"
+    "polythene-core": "1.7.0"
   },
   "devDependencies": {
-    "polythene-scripts": "1.6.5"
+    "polythene-scripts": "1.7.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-notification",
-  "version": "1.6.5",
+  "version": "1.7.0",
   "description": "",
   "main": "dist/polythene-mithril-notification",
   "module": "dist/polythene-mithril-notification.mjs",
@@ -18,9 +18,9 @@
   ],
   "dependencies": {
     "cyano-mithril": "^0.6.2",
-    "polythene-core": "^1.6.5",
-    "polythene-core-notification": "^1.6.5",
-    "polythene-css-classes": "^1.6.5"
+    "polythene-core": "1.7.0",
+    "polythene-core-notification": "1.7.0",
+    "polythene-css-classes": "1.7.0"
   },
   "devDependencies": {
     "@types/mithril": "^2.0.0"
