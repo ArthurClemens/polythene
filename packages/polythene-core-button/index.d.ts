@@ -34,10 +34,11 @@ export interface Options extends Partial<CommonOptions>, RaisedButtonOptions {
   /* START COMMON OPTIONS */
 
   /**
-   * HTML element tag; may also be "button".
+   * HTML element tag; string: for example "a" or "button".
+   * With Mithril 2.x: may contain `m.route.Link`
    * @default "a"
    */
-  element?: string;
+  element?: any;
 
   /**
    * Options object containing one or more standard events such as onclick (React: onClick).

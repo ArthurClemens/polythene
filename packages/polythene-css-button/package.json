@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-button",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "",
   "main": "dist/polythene-css-button",
   "module": "dist/polythene-css-button.mjs",
@@ -18,10 +18,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "1.7.0",
-    "polythene-css-classes": "1.7.0",
-    "polythene-css-shadow": "1.7.0",
-    "polythene-theme": "1.7.0"
+    "polythene-core-css": "1.7.1",
+    "polythene-css-classes": "1.7.1",
+    "polythene-css-shadow": "1.7.1",
+    "polythene-theme": "1.7.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-button-group",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "",
   "main": "dist/polythene-react-button-group",
   "module": "dist/polythene-react-button-group.mjs",
@@ -18,7 +18,7 @@
   ],
   "dependencies": {
     "cyano-react": "^0.6.2",
-    "polythene-core-button-group": "1.7.0"
+    "polythene-core-button-group": "1.7.1"
   },
   "devDependencies": {
     "@types/react": "^16.8.23"

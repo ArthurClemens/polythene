@@ -137,11 +137,12 @@ interface PrimaryContentOptions extends CommonListTileOptions {
   compactFront?: boolean;
 
   /**
-   * HTML element tag.
+   * HTML element tag; string: for example "a" or "button".
+   * With Mithril 2.x: may contain `m.route.Link`
    * If `url` is passed, the default value is "a".
    * @default "div"
    */
-  element?: string;
+  element?: any;
 
   /**
    * Content to show at the left of the primary content.

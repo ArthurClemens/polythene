@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-card",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "",
   "main": "dist/polythene-core-card",
   "module": "dist/polythene-core-card.mjs",
@@ -16,13 +16,13 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "1.7.0",
-    "polythene-css-classes": "1.7.0",
-    "polythene-theme": "1.7.0"
+    "polythene-core": "1.7.1",
+    "polythene-css-classes": "1.7.1",
+    "polythene-theme": "1.7.1"
   },
   "devDependencies": {
-    "polythene-core-icon": "1.7.0",
-    "polythene-core-list-tile": "1.7.0"
+    "polythene-core-icon": "1.7.1",
+    "polythene-core-list-tile": "1.7.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

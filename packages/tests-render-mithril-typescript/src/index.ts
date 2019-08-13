@@ -89,6 +89,7 @@ const AppDrawer = () => {
         m(Button, {
           raised: true,
           label: "Show",
+          element: m.route.Link,
           events: {
             onclick: () => state.show = true
           }
