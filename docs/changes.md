@@ -87,7 +87,7 @@ Mithril's API change may have some implications for code written with Polythene:
    ```javascript
    h(Button, {
      label: "Update",
-     element: h.route.Link, // Note the capital L
+     element: m.route.Link, // Note the capital L
      url: {
        selector: "a", // this is the default, so can be omitted
        href: route.path,

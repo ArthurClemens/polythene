@@ -169,10 +169,10 @@ export interface CommonOptions {
   testId: string;
 
   /**
-   * Generated HTML element.
+   * Tag name.
    * @default "div"
    */
-  element: string;
+  element: any;
 
   /**
    * For setting simple style attributes.
