@@ -274,6 +274,7 @@ export const _TextField = ({ h, a, useState, useEffect, useRef, getRef, ...props
   const label = allProps.label
     ? [allProps.label, requiredIndicator, optionalIndicator]
     : null;
+  const events = allProps.events || {};
 
   const componentContent = [
     h("div",
@@ -298,23 +299,26 @@ export const _TextField = ({ h, a, useState, useEffect, useRef, getRef, ...props
           allProps.name 
             ? { name: allProps.name }
             : null,
+          
+          events,
 
           !ignoreEvent(allProps, a.onclick)
             ? {
-              [a.onclick]: () => {
+              [a.onclick]: e => {
                 if (inactive) {
                   return;
                 }
                 // in case the browser does not give the field focus,
                 // for instance when the user tapped to the current field off screen
                 handleStateUpdate({ focus: true });
+                events[a.onclick] && events[a.onclick](e);
               }
             }
             : null,
 
           !ignoreEvent(allProps, a.onfocus)
             ? {
-              [a.onfocus]: () => {
+              [a.onfocus]: e => {
                 if (inactive) {
                   return;
                 }
@@ -327,16 +331,18 @@ export const _TextField = ({ h, a, useState, useEffect, useRef, getRef, ...props
                 if (domElement) {
                   domElement.classList.add(classes.stateFocused);
                 }
+                events[a.onfocus] && events[a.onfocus](e);
               }
             }
             : null,
               
           !ignoreEvent(allProps, a.onblur)
             ? {
-              [a.onblur]: () => {
+              [a.onblur]: e => {
                 handleStateUpdate({ type: "onblur", focus: false });
                 // same principle as onfocus
                 domElement.classList.remove(classes.stateFocused);
+                events[a.onblur] && events[a.onblur](e);
               }
             }
             : null,
@@ -347,6 +353,7 @@ export const _TextField = ({ h, a, useState, useEffect, useRef, getRef, ...props
                 // default input event
                 // may be overwritten by props.events
                 handleStateUpdate({ type: "input" });
+                events[a.oninput] && events[a.oninput](e);
               }
             }
             : null,
@@ -359,11 +366,11 @@ export const _TextField = ({ h, a, useState, useEffect, useRef, getRef, ...props
                 } else if (e.key === "Escape" || e.key === "Esc") {
                   handleStateUpdate({ focus: false });
                 }
+                events[a.onkeydown] && events[a.onkeydown](e);
               }
             }
             : null,
-
-          allProps.events ? allProps.events : null, // NOTE: may overwrite oninput
+          
           allProps.required !== undefined && !!allProps.required ?       { required: true } : null,
           allProps[a.readonly] !== undefined && !!allProps[a.readonly] ? { [a.readonly]: true } : null,
           allProps.pattern !== undefined ?                            { pattern: allProps.pattern } : null,

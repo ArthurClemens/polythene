@@ -1,4 +1,5 @@
 import focus from "./components/focus";
+import events from "./components/events";
 import onChange from "./components/onChange";
 import setValue from "./components/set-value";
 import { TextFieldCSS } from "polythene-css";
@@ -29,6 +30,7 @@ export default ({ TextField, Button, h, a }) => {
   const ipsum = "Lorem ipsum dolor sit amet, idque signiferumque at usu, eum recusabo aliquando id. Deleniti percipitur concludaturque eu eos. Vix elitr feugait ne. Mel agam integre eu, has minim aliquid salutandi eu. Est nusquam abhorreant ne. Ei wisi dicant eam, vix tota reque persequeris an. Quo in theophrastus reprehendunt, ius te graecis epicuri volutpat.";
   const shortIpsum = "Lorem ipsum dolor sit amet,";
   const Focus = focus({ h, a, TextField, Button });
+  const Events = events({ h, a, TextField });
   const OnChange = onChange({ h, a, TextField, Button });
   const SetValue = setValue({ h, a, TextField, Button });
   
@@ -442,6 +444,15 @@ export default ({ TextField, Button, h, a }) => {
             [a.maxlength]: 30
           })
         ])
+      }
+    },
+    {
+      name: "Test events",
+      interactive: true,
+      component: {
+        view: () => block(
+          h(Events)
+        )
       }
     },
     {

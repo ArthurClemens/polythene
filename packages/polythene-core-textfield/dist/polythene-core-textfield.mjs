@@ -424,6 +424,7 @@ var _TextField = function _TextField(_ref) {
     className: classes.optionalIndicator
   }, allProps.optionalIndicator) : null;
   var label = allProps.label ? [allProps.label, requiredIndicator, optionalIndicator] : null;
+  var events = allProps.events || {};
   var componentContent = [h("div", {
     className: classes.inputArea
   }, [label ? h("label", {
@@ -435,7 +436,7 @@ var _TextField = function _TextField(_ref) {
     type: type
   } : null, allProps.name ? {
     name: allProps.name
-  } : null, !ignoreEvent(allProps, a.onclick) ? _defineProperty({}, a.onclick, function () {
+  } : null, events, !ignoreEvent(allProps, a.onclick) ? _defineProperty({}, a.onclick, function (e) {
     if (inactive) {
       return;
     } // in case the browser does not give the field focus,
@@ -445,7 +446,8 @@ var _TextField = function _TextField(_ref) {
     handleStateUpdate({
       focus: true
     });
-  }) : null, !ignoreEvent(allProps, a.onfocus) ? _defineProperty({}, a.onfocus, function () {
+    events[a.onclick] && events[a.onclick](e);
+  }) : null, !ignoreEvent(allProps, a.onfocus) ? _defineProperty({}, a.onfocus, function (e) {
     if (inactive) {
       return;
     }
@@ -460,19 +462,23 @@ var _TextField = function _TextField(_ref) {
     if (domElement) {
       domElement.classList.add(classes.stateFocused);
     }
-  }) : null, !ignoreEvent(allProps, a.onblur) ? _defineProperty({}, a.onblur, function () {
+
+    events[a.onfocus] && events[a.onfocus](e);
+  }) : null, !ignoreEvent(allProps, a.onblur) ? _defineProperty({}, a.onblur, function (e) {
     handleStateUpdate({
       type: "onblur",
       focus: false
     }); // same principle as onfocus
 
     domElement.classList.remove(classes.stateFocused);
+    events[a.onblur] && events[a.onblur](e);
   }) : null, !ignoreEvent(allProps, a.oninput) ? _defineProperty({}, a.oninput, function (e) {
     // default input event
     // may be overwritten by props.events
     handleStateUpdate({
       type: "input"
     });
+    events[a.oninput] && events[a.oninput](e);
   }) : null, !ignoreEvent(allProps, a.onkeydown) ? _defineProperty({}, a.onkeydown, function (e) {
     if (e.key === "Enter") {
       isTouchedRef.current = true;
@@ -481,8 +487,9 @@ var _TextField = function _TextField(_ref) {
         focus: false
       });
     }
-  }) : null, allProps.events ? allProps.events : null, // NOTE: may overwrite oninput
-  allProps.required !== undefined && !!allProps.required ? {
+
+    events[a.onkeydown] && events[a.onkeydown](e);
+  }) : null, allProps.required !== undefined && !!allProps.required ? {
     required: true
   } : null, allProps[a.readonly] !== undefined && !!allProps[a.readonly] ? _defineProperty({}, a.readonly, true) : null, allProps.pattern !== undefined ? {
     pattern: allProps.pattern
