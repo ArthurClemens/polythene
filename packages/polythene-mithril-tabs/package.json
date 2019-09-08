@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-tabs",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "",
   "main": "dist/polythene-mithril-tabs",
   "module": "dist/polythene-mithril-tabs.mjs",
@@ -18,10 +18,10 @@
   ],
   "dependencies": {
     "cyano-mithril": "^0.6.2",
-    "polythene-core-tabs": "1.7.1",
-    "polythene-mithril-button": "1.7.1",
-    "polythene-mithril-icon": "1.7.1",
-    "polythene-mithril-icon-button": "1.7.1"
+    "polythene-core-tabs": "1.7.2",
+    "polythene-mithril-button": "1.7.2",
+    "polythene-mithril-icon": "1.7.2",
+    "polythene-mithril-icon-button": "1.7.2"
   },
   "devDependencies": {
     "@types/mithril": "^2.0.0"

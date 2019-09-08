@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-ripple",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "",
   "main": "dist/polythene-react-ripple",
   "module": "dist/polythene-react-ripple.mjs",
@@ -18,7 +18,7 @@
   ],
   "dependencies": {
     "cyano-react": "^0.6.2",
-    "polythene-core-ripple": "1.7.1"
+    "polythene-core-ripple": "1.7.2"
   },
   "devDependencies": {
     "@types/react": "^16.8.23"

@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-toolbar",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "",
   "main": "dist/polythene-core-toolbar",
   "module": "dist/polythene-core-toolbar.mjs",
@@ -16,9 +16,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "1.7.1",
-    "polythene-css-classes": "1.7.1",
-    "polythene-theme": "1.7.1"
+    "polythene-core": "1.7.2",
+    "polythene-css-classes": "1.7.2",
+    "polythene-theme": "1.7.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

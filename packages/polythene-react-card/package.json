@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-card",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "",
   "main": "dist/polythene-react-card",
   "module": "dist/polythene-react-card.mjs",
@@ -18,10 +18,10 @@
   ],
   "dependencies": {
     "cyano-react": "^0.6.2",
-    "polythene-core-card": "1.7.1",
-    "polythene-react-icon": "1.7.1",
-    "polythene-react-list-tile": "1.7.1",
-    "polythene-react-shadow": "1.7.1"
+    "polythene-core-card": "1.7.2",
+    "polythene-react-icon": "1.7.2",
+    "polythene-react-list-tile": "1.7.2",
+    "polythene-react-shadow": "1.7.2"
   },
   "devDependencies": {
     "@types/react": "^16.8.23"

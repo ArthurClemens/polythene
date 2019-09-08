@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-svg",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "",
   "main": "dist/polythene-react-svg",
   "module": "dist/polythene-react-svg.mjs",
@@ -17,7 +17,7 @@
   ],
   "dependencies": {
     "cyano-react": "^0.6.2",
-    "polythene-core-svg": "1.7.1"
+    "polythene-core-svg": "1.7.2"
   },
   "devDependencies": {
     "@types/react": "^16.8.23"

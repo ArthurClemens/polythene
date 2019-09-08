@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-icon",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "",
   "main": "dist/polythene-mithril-icon",
   "module": "dist/polythene-mithril-icon.mjs",
@@ -18,8 +18,8 @@
   ],
   "dependencies": {
     "cyano-mithril": "^0.6.2",
-    "polythene-core-icon": "1.7.1",
-    "polythene-mithril-svg": "1.7.1"
+    "polythene-core-icon": "1.7.2",
+    "polythene-mithril-svg": "1.7.2"
   },
   "devDependencies": {
     "@types/mithril": "^2.0.0"

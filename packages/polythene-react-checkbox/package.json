@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-checkbox",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "",
   "main": "dist/polythene-react-checkbox",
   "module": "dist/polythene-react-checkbox.mjs",
@@ -18,10 +18,10 @@
   ],
   "dependencies": {
     "cyano-react": "^0.6.2",
-    "polythene-core-checkbox": "1.7.1",
-    "polythene-core-selection-control": "1.7.1",
-    "polythene-react-icon": "1.7.1",
-    "polythene-react-icon-button": "1.7.1"
+    "polythene-core-checkbox": "1.7.2",
+    "polythene-core-selection-control": "1.7.2",
+    "polythene-react-icon": "1.7.2",
+    "polythene-react-icon-button": "1.7.2"
   },
   "devDependencies": {
     "@types/react": "^16.8.23"

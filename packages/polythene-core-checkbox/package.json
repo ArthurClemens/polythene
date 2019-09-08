@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-checkbox",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "",
   "main": "dist/polythene-core-checkbox",
   "module": "dist/polythene-core-checkbox.mjs",
@@ -16,10 +16,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "1.7.1",
-    "polythene-core-selection-control": "1.7.1",
-    "polythene-css-classes": "1.7.1",
-    "polythene-theme": "1.7.1"
+    "polythene-core": "1.7.2",
+    "polythene-core-selection-control": "1.7.2",
+    "polythene-css-classes": "1.7.2",
+    "polythene-theme": "1.7.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",
