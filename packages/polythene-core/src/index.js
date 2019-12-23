@@ -9,3 +9,4 @@ export { isTouch, pointerStartEvent, pointerEndEvent, pointerStartDownEvent, poi
 export { Multi } from "./multi";
 export { show, hide, transitionComponent, transitionStateReducer, initialTransitionState } from "./transition";
 export { throttle, subscribe, unsubscribe, emit } from "./events";
+export { createDialogicStyles } from "./dialogic";

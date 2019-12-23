@@ -227,16 +227,18 @@ var minWidth = "320px";
 var _backdrop = function backdrop(selector, vars) {
   return (// eslint-disable-line no-unused-vars
     sel(selector, {
-      ".pe-dialog--visible .pe-dialog__backdrop": {
-        display: "block",
-        opacity: 1
+      "&.pe-dialog-show-start, &.pe-dialog-show-end": {
+        " .pe-dialog__backdrop": {
+          display: "block",
+          opacity: 1
+        }
       }
     })
   );
 };
 
 var fullScreen = function fullScreen(selector, vars) {
-  return sel(selector, [createMarker(vars, behaviorVars), {
+  return console.log("createMarker", createMarker(vars, behaviorVars)), sel(selector, [createMarker(vars, behaviorVars), {
     padding: 0,
     " .pe-dialog__content": {
       width: "100%" // for IE 11
@@ -288,8 +290,11 @@ var varFns = _objectSpread2({
       }
     }];
   },
+  animation_show_css: function animation_show_css(selector, vars) {
+    return [sel("".concat(selector, "-show-end"), [vars.animation_show_css]), sel("".concat(selector, "-hide-start"), [vars.animation_show_css])];
+  },
   animation_hide_css: function animation_hide_css(selector, vars) {
-    return [sel(selector, [vars.animation_hide_css])];
+    return [sel("".concat(selector, "-show-start"), [vars.animation_hide_css]), sel("".concat(selector, "-hide-end"), [vars.animation_hide_css])];
   },
   position: function position(selector, vars) {
     return [sel(selector, {
@@ -315,11 +320,6 @@ var varFns = _objectSpread2({
       "&, .pe-dialog__content": {
         transitionTimingFunction: vars.animation_timing_function
       }
-    })];
-  },
-  animation_show_css: function animation_show_css(selector, vars) {
-    return [sel(selector, {
-      ".pe-dialog--visible": vars.animation_show_css
     })];
   },
   border_radius: function border_radius(selector, vars) {

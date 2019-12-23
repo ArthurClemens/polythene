@@ -13,13 +13,15 @@ const minWidth = "320px";
  */
 const backdrop = (selector, vars) => // eslint-disable-line no-unused-vars
   sel(selector, {
-    ".pe-dialog--visible .pe-dialog__backdrop": {
-      display: "block",
-      opacity: 1,
+    "&.pe-dialog-show-start, &.pe-dialog-show-end": {
+      " .pe-dialog__backdrop": {
+        display: "block",
+        opacity: 1,
+      }
     }
   });
 
-const fullScreen = (selector, vars) =>
+const fullScreen = (selector, vars) => 
   sel(selector, [
     createMarker(vars, behaviorVars),
     {
@@ -83,10 +85,21 @@ const varFns = {
         height: "100%",
         minWidth,
       },
-    }
+    },
+  ],
+  animation_show_css: (selector, vars) => [
+    sel(`${selector}-show-end`, [
+      vars.animation_show_css
+    ]),
+    sel(`${selector}-hide-start`, [
+      vars.animation_show_css
+    ]),
   ],
   animation_hide_css: (selector, vars) => [
-    sel(selector, [
+    sel(`${selector}-show-start`, [
+      vars.animation_hide_css
+    ]),
+    sel(`${selector}-hide-end`, [
       vars.animation_hide_css
     ]),
   ],
@@ -114,11 +127,6 @@ const varFns = {
       "&, .pe-dialog__content": {
         transitionTimingFunction: vars.animation_timing_function,
       }
-    }),
-  ],
-  animation_show_css: (selector, vars) => [
-    sel(selector, {
-      ".pe-dialog--visible": vars.animation_show_css,
     }),
   ],
   border_radius: (selector, vars) => [

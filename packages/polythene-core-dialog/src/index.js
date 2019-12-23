@@ -1,5 +1,6 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, stylePropCompare, transitionStateReducer, initialTransitionState } from "polythene-core";
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, stylePropCompare, transitionStateReducer, initialTransitionState, createDialogicStyles } from "polythene-core";
 import classes from "polythene-css-classes/dialog";
+import { dialog, Dialog as _Dialog } from "dialogic-mithril";
 
 const DEFAULT_SHADOW_DEPTH = 3;
 
@@ -21,45 +22,25 @@ const createPane = ({ h, Pane, props }) =>
     title: props.title,
   });
 
-export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer, Pane, Shadow, openDialogsSelector, ...props }) => {
-  const [transitionState, dispatchTransitionState] = useReducer(transitionStateReducer, initialTransitionState);
+export const _DialogComponent = ({ h, a, useState, useEffect, useRef, getRef, useReducer, Pane, Shadow, openDialogsSelector, ...props }) => {
   const [domElement, setDomElement] = useState();
+  const dialogElRef = useRef();
   const backdropElRef = useRef();
   const touchElRef = useRef();
   const contentElRef = useRef();
-  
-  const isVisible = (transitionState || initialTransitionState).isVisible;
-  const isTransitioning = (transitionState || initialTransitionState).isTransitioning;
 
-  const transitionOptions = ({ isShow, hideDelay = props.hideDelay, referrer }) => ({
-    transitionState,
-    dispatchTransitionState,
-    instanceId: props.instanceId,
-    props: Object.assign({}, props, {
-      hideDelay
-    }),
-    isShow,
-    domElements: {
-      el: domElement,
-      contentEl: contentElRef.current,
-      backdropEl: backdropElRef.current,
-    },
-    showClass: classes.visible,
-    transitionClass: classes.transition,
-    referrer,
-  });
-  
-  const showDialog = () => (
-    transitionComponent(transitionOptions({ isShow: true }))
-  );
-  
-  const hideDialog = ({ hideDelay, referrer } = {}) => (
-    transitionComponent(transitionOptions({ isShow: false, hideDelay, referrer } ))
-  );
+  const hideDialog = () => {
+    dialog.hide({
+      dialogic: {
+        spawn: props.spawnId,
+        id: props.instanceId
+      }
+    });
+  };
   
   const isModal = () =>
     props.modal
-    || (domElement && domElement.classList.contains(classes.modal))
+    || (dialogElRef.current && dialogElRef.current.classList.contains(classes.modal))
     || stylePropCompare({
       element: domElement,
       pseudoSelector: ":before",
@@ -67,9 +48,12 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
       contains: `"${"modal"}"`
     });
 
+  console.log("domElement", domElement);
+  console.log("dialogElRef.current", dialogElRef.current);
+
   const isFullScreen = () =>
     props.fullScreen
-    || (domElement && domElement.classList.contains(classes.fullScreen))
+    || (dialogElRef.current && dialogElRef.current.classList.contains(classes.fullScreen))
     || stylePropCompare({
       element: domElement,
       pseudoSelector: ":before",
@@ -86,6 +70,41 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
       backdropElRef.current = domElement.querySelector(`.${classes.backdrop}`);
       touchElRef.current = domElement.querySelector(`.${classes.touch}`);
       contentElRef.current = domElement.querySelector(`.${classes.content}`);
+      dialogElRef.current = domElement.parentNode;
+      
+      const handleClick = e => {
+        if (e.target !== dialogElRef.current && e.target !== backdropElRef.current && e.target !== touchElRef.current) {
+          return;
+        }
+        if (isModal()) {
+          // not allowed
+          return;
+        }
+        hideDialog();
+      };
+      dialogElRef.current.addEventListener("click", handleClick);
+
+      const fullScreen = isFullScreen();
+      const modal = isModal();
+
+      const classNames = [
+        props.parentClassName/* || classes.component*/,
+        props.fromMultipleClassName,
+        fullScreen ? classes.fullScreen : null,
+        modal ? classes.modal : null,
+        props.backdrop ? classes.showBackdrop : null,
+        // classes.visible is set in showDialog though transition
+        props.tone === "dark" ? "pe-dark-tone" : null,
+        props.tone === "light" ? "pe-light-tone" : null,
+        props.className || props[a.class],
+      ].filter(Boolean);
+      if (classNames.length) {
+        dialogElRef.current.classList.add(...classNames);
+      }
+      
+      return () => {
+        dialogElRef.current.removeEventListener("click", handleClick);
+      }
     },
     [domElement]
   );
@@ -93,14 +112,14 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
   // Handle Escape key
   useEffect(
     () => {
-      if (!domElement || props.inactive) {
+      if (!dialogElRef.current || props.inactive) {
         return;
       }
       const handleEscape = e => {
         if (props.disableEscape && (isFullScreen() || isModal())) return;
         if (e.key === "Escape" || e.key === "Esc") { // "Esc" for IE11
           const openDialogs = document.querySelectorAll(openDialogsSelector);
-          if (openDialogs[openDialogs.length - 1] === domElement) {
+          if (openDialogs[openDialogs.length - 1] === dialogElRef.current) {
             hideDialog();
             unsubscribe("keydown", handleEscape);
           }
@@ -115,25 +134,6 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
     [domElement, props.inactive]
   );
   
-  // Show / hide logic
-  useEffect(
-    () => {
-      if (!domElement || isTransitioning) {
-        return;
-      }
-      if (props.hide) {
-        if (isVisible) {
-          hideDialog();
-        }
-      } else if (props.show) {
-        if (!isVisible) {
-          showDialog();
-        }
-      }
-    },
-    [domElement, isTransitioning, isVisible, props.hide, props.show]
-  );
-  
   const componentProps = Object.assign(
     {}, 
     filterSupportedAttributes(props, { remove: ["style"] }), // style set in content, and set by show/hide transition
@@ -142,30 +142,8 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
       props.ref && props.ref(dom)
     )),
     {
-      className: [
-        props.parentClassName || classes.component,
-        props.fromMultipleClassName,
-        props.fullScreen ? classes.fullScreen : null,
-        props.modal ? classes.modal : null,
-        props.backdrop ? classes.showBackdrop : null,
-        // classes.visible is set in showDialog though transition
-        props.tone === "dark" ? "pe-dark-tone" : null,
-        props.tone === "light" ? "pe-light-tone" : null,
-        props.className || props[a.class],
-      ].join(" "),
-      "data-spawn-id": props.spawnId,       // received from Multi
-      "data-instance-id": props.instanceId, // received from Multi
-      // click backdrop: close dialog
-      [a.onclick]: e => {
-        if (e.target !== domElement && e.target !== backdropElRef.current && e.target !== touchElRef.current) {
-          return;
-        }
-        if (isModal()) {
-          // not allowed
-          return;
-        }
-        hideDialog();
-      }
+      "data-spawn-id": props.spawnId,
+      "data-instance-id": props.instanceId,
     }
   );
 
@@ -209,5 +187,36 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
       ]
     )
   ];
+
   return h("div", componentProps, content);
+};
+
+export { _Dialog };
+
+export const _show = ({ DialogComponent }) => (props = {}, spawnProps = {}) => {
+  const { styles, otherProps: componentProps } = createDialogicStyles(props);
+  const { spawn, id } = spawnProps;
+  return dialog.show({
+    dialogic: {
+      className: classes.component,
+      component: DialogComponent,
+      styles,
+      spawn,
+      id,
+    },
+    ...componentProps,
+    spawnId: spawn,
+    instanceId: id
+  })
+};
+
+export const _hide = ({ spawn, id } = {}) => {
+  return dialog.hide({
+    dialogic: {
+      spawn,
+      id,
+    },
+    spawnId: spawn,
+    instanceId: id
+  })
 };

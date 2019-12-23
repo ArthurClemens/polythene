@@ -1,4 +1,6 @@
-import { transitionStateReducer, initialTransitionState, subscribe, unsubscribe, transitionComponent, filterSupportedAttributes, stylePropCompare } from 'polythene-core';
+import { stylePropCompare, subscribe, unsubscribe, filterSupportedAttributes, createDialogicStyles } from 'polythene-core';
+import { dialog } from 'dialogic-mithril';
+export { Dialog as _Dialog } from 'dialogic-mithril';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -31,6 +33,40 @@ function _extends() {
   };
 
   return _extends.apply(this, arguments);
+}
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
 }
 
 function _objectWithoutPropertiesLoose(source, excluded) {
@@ -73,8 +109,24 @@ function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
 }
 
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+    return arr2;
+  }
+}
+
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArray(iter) {
+  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
 }
 
 function _iterableToArrayLimit(arr, i) {
@@ -101,6 +153,10 @@ function _iterableToArrayLimit(arr, i) {
   }
 
   return _arr;
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
 }
 
 function _nonIterableRest() {
@@ -200,7 +256,7 @@ var createPane = function createPane(_ref) {
   });
 };
 
-var _Dialog = function _Dialog(_ref2) {
+var _DialogComponent = function _DialogComponent(_ref2) {
   var h = _ref2.h,
       a = _ref2.a,
       useState = _ref2.useState,
@@ -213,66 +269,27 @@ var _Dialog = function _Dialog(_ref2) {
       openDialogsSelector = _ref2.openDialogsSelector,
       props = _objectWithoutProperties(_ref2, ["h", "a", "useState", "useEffect", "useRef", "getRef", "useReducer", "Pane", "Shadow", "openDialogsSelector"]);
 
-  var _useReducer = useReducer(transitionStateReducer, initialTransitionState),
-      _useReducer2 = _slicedToArray(_useReducer, 2),
-      transitionState = _useReducer2[0],
-      dispatchTransitionState = _useReducer2[1];
-
   var _useState = useState(),
       _useState2 = _slicedToArray(_useState, 2),
       domElement = _useState2[0],
       setDomElement = _useState2[1];
 
+  var dialogElRef = useRef();
   var backdropElRef = useRef();
   var touchElRef = useRef();
   var contentElRef = useRef();
-  var isVisible = (transitionState || initialTransitionState).isVisible;
-  var isTransitioning = (transitionState || initialTransitionState).isTransitioning;
-
-  var transitionOptions = function transitionOptions(_ref3) {
-    var isShow = _ref3.isShow,
-        _ref3$hideDelay = _ref3.hideDelay,
-        hideDelay = _ref3$hideDelay === void 0 ? props.hideDelay : _ref3$hideDelay,
-        referrer = _ref3.referrer;
-    return {
-      transitionState: transitionState,
-      dispatchTransitionState: dispatchTransitionState,
-      instanceId: props.instanceId,
-      props: _extends({}, props, {
-        hideDelay: hideDelay
-      }),
-      isShow: isShow,
-      domElements: {
-        el: domElement,
-        contentEl: contentElRef.current,
-        backdropEl: backdropElRef.current
-      },
-      showClass: classes.visible,
-      transitionClass: classes.transition,
-      referrer: referrer
-    };
-  };
-
-  var showDialog = function showDialog() {
-    return transitionComponent(transitionOptions({
-      isShow: true
-    }));
-  };
 
   var hideDialog = function hideDialog() {
-    var _ref4 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        hideDelay = _ref4.hideDelay,
-        referrer = _ref4.referrer;
-
-    return transitionComponent(transitionOptions({
-      isShow: false,
-      hideDelay: hideDelay,
-      referrer: referrer
-    }));
+    dialog.hide({
+      dialogic: {
+        spawn: props.spawnId,
+        id: props.instanceId
+      }
+    });
   };
 
   var isModal = function isModal() {
-    return props.modal || domElement && domElement.classList.contains(classes.modal) || stylePropCompare({
+    return props.modal || dialogElRef.current && dialogElRef.current.classList.contains(classes.modal) || stylePropCompare({
       element: domElement,
       pseudoSelector: ":before",
       prop: "content",
@@ -280,8 +297,11 @@ var _Dialog = function _Dialog(_ref2) {
     });
   };
 
+  console.log("domElement", domElement);
+  console.log("dialogElRef.current", dialogElRef.current);
+
   var isFullScreen = function isFullScreen() {
-    return props.fullScreen || domElement && domElement.classList.contains(classes.fullScreen) || stylePropCompare({
+    return props.fullScreen || dialogElRef.current && dialogElRef.current.classList.contains(classes.fullScreen) || stylePropCompare({
       element: domElement,
       pseudoSelector: ":before",
       prop: "content",
@@ -298,10 +318,42 @@ var _Dialog = function _Dialog(_ref2) {
     backdropElRef.current = domElement.querySelector(".".concat(classes.backdrop));
     touchElRef.current = domElement.querySelector(".".concat(classes.touch));
     contentElRef.current = domElement.querySelector(".".concat(classes.content));
+    dialogElRef.current = domElement.parentNode;
+
+    var handleClick = function handleClick(e) {
+      if (e.target !== dialogElRef.current && e.target !== backdropElRef.current && e.target !== touchElRef.current) {
+        return;
+      }
+
+      if (isModal()) {
+        // not allowed
+        return;
+      }
+
+      hideDialog();
+    };
+
+    dialogElRef.current.addEventListener("click", handleClick);
+    var fullScreen = isFullScreen();
+    var modal = isModal();
+    var classNames = [props.parentClassName
+    /* || classes.component*/
+    , props.fromMultipleClassName, fullScreen ? classes.fullScreen : null, modal ? classes.modal : null, props.backdrop ? classes.showBackdrop : null, // classes.visible is set in showDialog though transition
+    props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].filter(Boolean);
+
+    if (classNames.length) {
+      var _dialogElRef$current$;
+
+      (_dialogElRef$current$ = dialogElRef.current.classList).add.apply(_dialogElRef$current$, _toConsumableArray(classNames));
+    }
+
+    return function () {
+      dialogElRef.current.removeEventListener("click", handleClick);
+    };
   }, [domElement]); // Handle Escape key
 
   useEffect(function () {
-    if (!domElement || props.inactive) {
+    if (!dialogElRef.current || props.inactive) {
       return;
     }
 
@@ -312,7 +364,7 @@ var _Dialog = function _Dialog(_ref2) {
         // "Esc" for IE11
         var openDialogs = document.querySelectorAll(openDialogsSelector);
 
-        if (openDialogs[openDialogs.length - 1] === domElement) {
+        if (openDialogs[openDialogs.length - 1] === dialogElRef.current) {
           hideDialog();
           unsubscribe("keydown", handleEscape);
         }
@@ -323,47 +375,17 @@ var _Dialog = function _Dialog(_ref2) {
     return function () {
       unsubscribe("keydown", handleEscape);
     };
-  }, [domElement, props.inactive]); // Show / hide logic
-
-  useEffect(function () {
-    if (!domElement || isTransitioning) {
-      return;
-    }
-
-    if (props.hide) {
-      if (isVisible) {
-        hideDialog();
-      }
-    } else if (props.show) {
-      if (!isVisible) {
-        showDialog();
-      }
-    }
-  }, [domElement, isTransitioning, isVisible, props.hide, props.show]);
+  }, [domElement, props.inactive]);
 
   var componentProps = _extends({}, filterSupportedAttributes(props, {
     remove: ["style"]
   }), // style set in content, and set by show/hide transition
   getRef(function (dom) {
     return dom && !domElement && (setDomElement(dom), props.ref && props.ref(dom));
-  }), _defineProperty({
-    className: [props.parentClassName || classes.component, props.fromMultipleClassName, props.fullScreen ? classes.fullScreen : null, props.modal ? classes.modal : null, props.backdrop ? classes.showBackdrop : null, // classes.visible is set in showDialog though transition
-    props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" "),
+  }), {
     "data-spawn-id": props.spawnId,
-    // received from Multi
     "data-instance-id": props.instanceId
-  }, a.onclick, function (e) {
-    if (e.target !== domElement && e.target !== backdropElRef.current && e.target !== touchElRef.current) {
-      return;
-    }
-
-    if (isModal()) {
-      // not allowed
-      return;
-    }
-
-    hideDialog();
-  }));
+  });
 
   var pane = props.panesOptions && props.panesOptions.length ? h(Pane, props.panesOptions[0]) : props.panes && props.panes.length ? props.panes[0] : createPane({
     h: h,
@@ -383,5 +405,45 @@ var _Dialog = function _Dialog(_ref2) {
   }), props.before, pane, props.after])];
   return h("div", componentProps, content);
 };
+var _show = function _show(_ref3) {
+  var DialogComponent = _ref3.DialogComponent;
+  return function () {
+    var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var spawnProps = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-export { _Dialog, openDialogsSelector };
+    var _createDialogicStyles = createDialogicStyles(props),
+        styles = _createDialogicStyles.styles,
+        componentProps = _createDialogicStyles.otherProps;
+
+    var spawn = spawnProps.spawn,
+        id = spawnProps.id;
+    return dialog.show(_objectSpread2({
+      dialogic: {
+        className: classes.component,
+        component: DialogComponent,
+        styles: styles,
+        spawn: spawn,
+        id: id
+      }
+    }, componentProps, {
+      spawnId: spawn,
+      instanceId: id
+    }));
+  };
+};
+var _hide = function _hide() {
+  var _ref4 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      spawn = _ref4.spawn,
+      id = _ref4.id;
+
+  return dialog.hide({
+    dialogic: {
+      spawn: spawn,
+      id: id
+    },
+    spawnId: spawn,
+    instanceId: id
+  });
+};
+
+export { _DialogComponent, _hide, _show, openDialogsSelector };

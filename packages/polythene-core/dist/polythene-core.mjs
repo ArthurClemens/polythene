@@ -1089,4 +1089,37 @@ var transitionComponent = function transitionComponent(_ref) {
   });
 };
 
-export { Multi, _Conditional, classForSize, deprecation, emit, filterSupportedAttributes, getAnimationEndEvent, getStyle, hide, iconDropdownDown, iconDropdownUp, initialTransitionState, isClient, isRTL, isServer, isTouch, pointerEndDownEvent, pointerEndEvent, pointerMoveEvent, pointerStartDownEvent, pointerStartEvent, show, styleDurationToMs, stylePropCompare, subscribe, throttle, transitionComponent, transitionStateReducer, unpackAttrs, unsubscribe };
+var createDialogicStyles = function createDialogicStyles(_ref) {
+  var showDelay = _ref.showDelay,
+      showDuration = _ref.showDuration,
+      showTimingFunction = _ref.showTimingFunction,
+      hideDelay = _ref.hideDelay,
+      hideDuration = _ref.hideDuration,
+      hideTimingFunction = _ref.hideTimingFunction,
+      styles = _ref.styles,
+      otherProps = _objectWithoutProperties(_ref, ["showDelay", "showDuration", "showTimingFunction", "hideDelay", "hideDuration", "hideTimingFunction", "styles"]);
+
+  var _styles = styles === undefined ? showDelay !== undefined || showDuration !== undefined || showTimingFunction || hideDelay !== undefined || hideDuration !== undefined || hideTimingFunction ? {
+    showStart: _objectSpread2({}, showDelay ? {
+      transitionDelay: "".concat(showDelay * 1000, "ms")
+    } : undefined, {}, showDuration ? {
+      transitionDuration: "".concat(showDuration * 1000, "ms")
+    } : undefined, {}, showTimingFunction ? {
+      transitionTimingFunction: "".concat(showTimingFunction)
+    } : undefined),
+    hideStart: _objectSpread2({}, hideDelay ? {
+      transitionDelay: "".concat(hideDelay * 1000, "ms")
+    } : undefined, {}, hideDuration ? {
+      transitionDuration: "".concat(hideDuration * 1000, "ms")
+    } : undefined, {}, hideTimingFunction ? {
+      transitionTimingFunction: "".concat(hideTimingFunction)
+    } : undefined)
+  } : undefined : styles;
+
+  return {
+    styles: _styles,
+    otherProps: otherProps
+  };
+};
+
+export { Multi, _Conditional, classForSize, createDialogicStyles, deprecation, emit, filterSupportedAttributes, getAnimationEndEvent, getStyle, hide, iconDropdownDown, iconDropdownUp, initialTransitionState, isClient, isRTL, isServer, isTouch, pointerEndDownEvent, pointerEndEvent, pointerMoveEvent, pointerStartDownEvent, pointerStartEvent, show, styleDurationToMs, stylePropCompare, subscribe, throttle, transitionComponent, transitionStateReducer, unpackAttrs, unsubscribe };

@@ -76,16 +76,27 @@ export default ({ h, a, Dialog, Button, Toolbar, ToolbarTitle, IconButton, List,
       component: {
         view: () => Opener({
           body: "Hello",
-          transitions: {
-            show: ({ el }) => ({
-              duration:   .5,
-              before:     () => (el.style.opacity = 0, el.style.transform = "translate3d(0, 20px, 0)"),
-              transition: () => (el.style.opacity = 1, el.style.transform = "translate3d(0, 0px,  0)")
-            }),
-            hide: ({ el }) => ({
-              duration:   .5,
-              transition: () => el.style.opacity = 0,
-            })
+          styles: () => {
+            const height = 20;
+          
+            return {
+              default: {
+                transition: "all 500ms ease-in-out",
+              },
+              showStart: {
+                opacity: "0",
+                transform: `translate3d(0, ${height}px, 0)`,
+              },
+              showEnd: {
+                opacity: "1",
+                transform: "translate3d(0, 0px,  0)",
+              },
+              hideEnd: {
+                transitionDuration: "500ms",
+                transform: `translate3d(0, ${height}px, 0)`,
+                opacity: "0",
+              },
+            }
           }
         })
       }

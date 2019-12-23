@@ -45,7 +45,7 @@ export default ({ h, a, Toolbar, ToolbarTitle, IconButton, Button, Dialog, isFul
           [a.onclick]: () => (
             Dialog
               .hide({ id: DIALOG_CONFIRM }) // hide confirm dialog
-              .then(Dialog.hide) // hide main dialog
+              .then(() => Dialog.hide()) // hide main dialog
           )
         }
       })
