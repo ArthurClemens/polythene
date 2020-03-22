@@ -277,11 +277,8 @@
 }
 
 .pe-no-touch .pe-light-tone .pe-list-tile.tests-drawer-navigation-list:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected),
-.pe-no-touch .pe-list-tile.tests-drawer-navigation-list:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected) {
-  color: #e01d5f;
-}
-
 .pe-no-touch .pe-light-tone .pe-list-tile.tests-drawer-navigation-list:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected) .pe-list-tile__primary .pe-list-tile__content-front,
+.pe-no-touch .pe-list-tile.tests-drawer-navigation-list:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected),
 .pe-no-touch .pe-list-tile.tests-drawer-navigation-list:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected) .pe-list-tile__primary .pe-list-tile__content-front {
   color: #e01d5f;
 }

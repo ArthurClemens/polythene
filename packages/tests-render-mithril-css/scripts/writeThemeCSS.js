@@ -1,4 +1,4 @@
-const { writeCSS } = require("polythene-scripts");
+const { writej2c } = require("write-j2c");
 const { CardCSS, ButtonCSS, IconCSS, DialogCSS, MenuCSS, DrawerCSS, ListTileCSS } = require("polythene-css");
 
 const breakPointSmall = 480;
@@ -106,7 +106,7 @@ const styles = [
   )
 ];
 
-writeCSS({
+writej2c({
   styles,
   path: "./dist/css/theme.css",
   autoPrefix: true,

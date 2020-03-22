@@ -1,5 +1,5 @@
 /* global process */
-const { writeCSS }  = require("../../packages/polythene-scripts/dist/polythene-scripts");
+const { writej2c }  = require("write-j2c");
 const fs            = require("fs");
 const path          = require("path");
 const baseDir       = process.cwd();
@@ -12,7 +12,7 @@ const shortName     = name.replace("-css-", "-");
 const outPath       = path.resolve(baseDir, `./dist/${shortName}.css`);
 
 if (styles) {
-  writeCSS({
+  writej2c({
     path: outPath,
     styles,
     beautify: true,

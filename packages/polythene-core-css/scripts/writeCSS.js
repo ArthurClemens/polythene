@@ -1,10 +1,10 @@
-const { writeCSS }  = require("polythene-scripts");
+const { writej2c }  = require("write-j2c");
 
 const inPath        = "../dist/polythene-core-css.js";
 const styles        = require(inPath);
 
-writeCSS({
+writej2c({
   path: "./dist/polythene-layout-styles.css",
-  styles: [styles.layoutStyles],
+  styles: styles.layoutStyles,
   beautify: true,
 });

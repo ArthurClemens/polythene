@@ -1,5 +1,5 @@
 # Polythene scripts
 
-Polythene utility package.
+This package is deprecated.
 
-[Documentation](https://github.com/ArthurClemens/polythene/tree/master/docs/packages/polythene-scripts.md)
+Function `writeCSS` is replaced with standalone package `write-j2c` at https://github.com/ArthurClemens/write-j2c

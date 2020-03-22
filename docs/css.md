@@ -113,13 +113,13 @@ Theming options are more limited than using CSS-in-JS as styles will not be adde
 
 Creating CSS is very similar to CSS-in-JS, but instead of `addStyle` you call `getStyle` to fetch the styles before writing them to a file.
 
-`writeCSS` is provided by `polythene-scripts` - see [available options](packages/polythene-scripts.md#write-css).
+`writej2c` is provided by library `write-j2c` - see [write-j2c documentation](https://github.com/ArthurClemens/write-j2c).
 
 For example, to create a CSS file that contains themed CSS for Card and Button, you could write:
 
 ```javascript
 // ./scripts/writeThemeCSS.js
-const { writeCSS } = require("polythene-scripts")
+const { writej2c } = require("write-j2c")
 const { CardCSS, ButtonCSS } = require("polythene-css")
 
 const styles = [
@@ -133,7 +133,7 @@ const styles = [
   })
 ]
 
-writeCSS({
+writej2c({
   styles,
   path: "./dist/css/theme.css",
   autoPrefix: true,
@@ -144,7 +144,7 @@ writeCSS({
 ... and in your `package.json` build script:
 
 ```json
-"build": "npm run writeCSS && webpack --config scripts/webpack.config.prod.js"
+"build": "node ./scripts/writeThemeCSS.js && webpack --config scripts/webpack.config.prod.js"
 ```
 
 

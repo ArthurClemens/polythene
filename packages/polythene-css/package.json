@@ -53,10 +53,7 @@
     "polythene-css-textfield": "1.7.2",
     "polythene-css-toolbar": "1.7.2",
     "polythene-css-typography": "1.7.2",
-    "polythene-scripts": "1.7.2"
-  },
-  "devDependencies": {
-    "polythene-scripts": "1.7.2"
+    "write-j2c": "1.0.3"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",
