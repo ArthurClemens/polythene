@@ -253,10 +253,7 @@
 }
 
 .pe-card .pe-card__actions {
-  padding-right: 8px;
-  padding-left: 8px;
-  padding-top: 0;
-  padding-bottom: 0;
+  padding: 0 8px;
 }
 
 .pe-card .pe-card__actions.pe-card__actions--vertical:not(.pe-card__actions--tight) {
@@ -319,15 +316,17 @@
   height: 72px;
 }
 
+.pe-card .pe-card__text {
+  padding-bottom: 9px;
+  padding-top: 10px;
+}
+
 .pe-card .pe-card__text:last-child {
   padding-bottom: 17px;
 }
 
 .pe-card .pe-card__text {
-  padding-right: 16px;
-  padding-left: 16px;
-  padding-top: 10px;
-  padding-bottom: 9px;
+  padding: 10px 16px 9px;
 }
 
 .pe-card .pe-card__text.pe-card__text--tight,

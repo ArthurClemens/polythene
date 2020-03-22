@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-button-group",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "",
   "main": "dist/polythene-mithril-button-group",
   "module": "dist/polythene-mithril-button-group.mjs",
@@ -18,7 +18,7 @@
   ],
   "dependencies": {
     "cyano-mithril": "^0.6.2",
-    "polythene-core-button-group": "1.7.2"
+    "polythene-core-button-group": "1.7.3"
   },
   "devDependencies": {
     "@types/mithril": "^2.0.0"

@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-radio-group",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "",
   "main": "dist/polythene-core-radio-group",
   "module": "dist/polythene-core-radio-group.mjs",
@@ -16,12 +16,12 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "1.7.2",
-    "polythene-css-classes": "1.7.2",
-    "polythene-theme": "1.7.2"
+    "polythene-core": "1.7.3",
+    "polythene-css-classes": "1.7.3",
+    "polythene-theme": "1.7.3"
   },
   "devDependencies": {
-    "polythene-core-radio-button": "1.7.2"
+    "polythene-core-radio-button": "1.7.3"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",
