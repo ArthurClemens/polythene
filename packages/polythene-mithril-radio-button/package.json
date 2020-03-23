@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-radio-button",
-  "version": "1.7.3",
+  "version": "1.7.4",
   "description": "",
   "main": "dist/polythene-mithril-radio-button",
   "module": "dist/polythene-mithril-radio-button.mjs",
@@ -18,10 +18,10 @@
   ],
   "dependencies": {
     "cyano-mithril": "^0.6.2",
-    "polythene-core-radio-button": "1.7.3",
-    "polythene-core-selection-control": "1.7.3",
-    "polythene-mithril-icon": "1.7.3",
-    "polythene-mithril-icon-button": "1.7.3"
+    "polythene-core-radio-button": "1.7.4",
+    "polythene-core-selection-control": "1.7.4",
+    "polythene-mithril-icon": "1.7.4",
+    "polythene-mithril-icon-button": "1.7.4"
   },
   "devDependencies": {
     "@types/mithril": "^2.0.0"

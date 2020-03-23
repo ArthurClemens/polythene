@@ -1,6 +1,6 @@
 {
   "name": "tests-render-mithril-typescript",
-  "version": "1.7.3",
+  "version": "1.7.4",
   "description": "",
   "private": true,
   "scripts": {
@@ -11,13 +11,13 @@
     "webpack": "ENTRY=./src/index.ts ../../node_modules/webpack/bin/webpack.js --config ../../scripts/bundling/webpack.config.prod.js",
     "build": "npm run clean && npm run webpack",
     "serve": "http-server -p 5000 dist",
-    "typecheck": "../../node_modules/typescript/bin/tsc --noEmit --strict --esModuleInterop src/index.ts"
+    "typecheck": "../../node_modules/typescript/bin/tsc --p ./tsconfig.json"
   },
   "dependencies": {
     "es6-object-assign": "^1.1.0",
     "mithril": ">=1.1.6",
-    "polythene-css": "1.7.3",
-    "polythene-mithril": "1.7.3"
+    "polythene-css": "1.7.4",
+    "polythene-mithril": "1.7.4"
   },
   "devDependencies": {
     "@types/mithril": "^2.0.0",

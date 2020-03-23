@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-card",
-  "version": "1.7.3",
+  "version": "1.7.4",
   "description": "",
   "main": "dist/polythene-mithril-card",
   "module": "dist/polythene-mithril-card.mjs",
@@ -18,10 +18,10 @@
   ],
   "dependencies": {
     "cyano-mithril": "^0.6.2",
-    "polythene-core-card": "1.7.3",
-    "polythene-mithril-icon": "1.7.3",
-    "polythene-mithril-list-tile": "1.7.3",
-    "polythene-mithril-shadow": "1.7.3"
+    "polythene-core-card": "1.7.4",
+    "polythene-mithril-icon": "1.7.4",
+    "polythene-mithril-list-tile": "1.7.4",
+    "polythene-mithril-shadow": "1.7.4"
   },
   "devDependencies": {
     "@types/mithril": "^2.0.0"
