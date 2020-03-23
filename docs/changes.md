@@ -2,6 +2,9 @@
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="2,3" -->
 - [1.7](#17)
+  - [1.7.4](#174)
+  - [1.7.3](#173)
+  - [1.7.2](#172)
   - [1.7.1](#171)
   - [1.7.0](#170)
     - [Mithril 2.x](#mithril-2x)
@@ -60,13 +63,26 @@
 
 ## 1.7
 
-### 1.7.1
+### 1.7.4
+
+Added typing for Mithril 1.x (Button and ListTile).
+
+### 1.7.3
 
 * Removed `polythene-scripts`: function `writeCSS` is replaced with standalone package `write-j2c` at https://github.com/ArthurClemens/write-j2c.
 
-Bug fixe:
+Bug fix:
 
 * Added 2 missing `index.d.ts` entries.
+
+
+### 1.7.2
+
+Fixes a bug in TextField where event options were overwritten.
+
+### 1.7.1
+
+Fixes TS typings for Mithril's `m.route.Link`.
 
 ### 1.7.0
 
