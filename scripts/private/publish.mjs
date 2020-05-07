@@ -36,15 +36,16 @@ const maybePublish = filename => {
       console.log(`npm for ${name} is at ${version}`); // eslint-disable-line no-console
       if (version !== newVersion) {
         if (isTestRun) {
-          console.log("DRY RUN", `Publish: ${name}`); // eslint-disable-line no-console
-          resolve(filename);
-        } else {
-          shell.cd(path.dirname(filename));
-          shell.exec("npm publish --tag=fixed-version-1.1.5");
-          shell.cd(baseDir);
-          child_process.execSync("sleep 1");
-          resolve(filename);
+          console.log("Dry run");
         }
+        const cmd = isTestRun
+          ? `npm publish --dry-run --tag ${newVersion}`
+          : `npm publish --tag ${newVersion}`
+        shell.cd(path.dirname(filename));
+        shell.exec(cmd);
+        shell.cd(baseDir);
+        child_process.execSync("sleep 1");
+        resolve(filename);
       } else {
         reject(filename);
       }
