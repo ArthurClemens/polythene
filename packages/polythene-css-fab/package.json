@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-fab",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "description": "",
   "main": "dist/polythene-css-fab",
   "module": "dist/polythene-css-fab.mjs",
@@ -18,9 +18,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "1.5.5",
-    "polythene-css-classes": "1.5.5",
-    "polythene-theme": "1.5.5"
+    "polythene-core-css": "1.5.6",
+    "polythene-css-classes": "1.5.6",
+    "polythene-theme": "1.5.6"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

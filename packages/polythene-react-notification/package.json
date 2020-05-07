@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-notification",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "description": "",
   "main": "dist/polythene-react-notification",
   "module": "dist/polythene-react-notification.mjs",
@@ -17,10 +17,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "1.5.5",
-    "polythene-core-notification": "1.5.5",
-    "polythene-css-classes": "1.5.5",
-    "polythene-react-base": "1.5.5"
+    "polythene-core": "1.5.6",
+    "polythene-core-notification": "1.5.6",
+    "polythene-css-classes": "1.5.6",
+    "polythene-react-base": "1.5.6"
   },
   "devDependencies": {
     "@types/react": "^16.7.20"

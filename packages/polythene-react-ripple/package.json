@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-ripple",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "description": "",
   "main": "dist/polythene-react-ripple",
   "module": "dist/polythene-react-ripple.mjs",
@@ -17,8 +17,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-ripple": "1.5.5",
-    "polythene-react-base": "1.5.5"
+    "polythene-core-ripple": "1.5.6",
+    "polythene-react-base": "1.5.6"
   },
   "devDependencies": {
     "@types/react": "^16.7.20"

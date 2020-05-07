@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-toolbar",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "description": "",
   "main": "dist/polythene-react-toolbar",
   "module": "dist/polythene-react-toolbar.mjs",
@@ -17,9 +17,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-toolbar": "1.5.5",
-    "polythene-react-base": "1.5.5",
-    "polythene-react-shadow": "1.5.5"
+    "polythene-core-toolbar": "1.5.6",
+    "polythene-react-base": "1.5.6",
+    "polythene-react-shadow": "1.5.6"
   },
   "devDependencies": {
     "@types/react": "^16.7.20"

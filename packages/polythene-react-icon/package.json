@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-icon",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "description": "",
   "main": "dist/polythene-react-icon",
   "module": "dist/polythene-react-icon.mjs",
@@ -17,9 +17,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-icon": "1.5.5",
-    "polythene-react-base": "1.5.5",
-    "polythene-react-svg": "1.5.5"
+    "polythene-core-icon": "1.5.6",
+    "polythene-react-base": "1.5.6",
+    "polythene-react-svg": "1.5.6"
   },
   "devDependencies": {
     "@types/react": "^16.7.20"
