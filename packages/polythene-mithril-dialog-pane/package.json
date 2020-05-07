@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-dialog-pane",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "",
   "main": "dist/polythene-mithril-dialog-pane",
   "module": "dist/polythene-mithril-dialog-pane.mjs",
@@ -17,8 +17,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-dialog-pane": "^1.5.4",
-    "polythene-mithril-base": "^1.5.4"
+    "polythene-core-dialog-pane": "1.5.5",
+    "polythene-mithril-base": "1.5.5"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.14"

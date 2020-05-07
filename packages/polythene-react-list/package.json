@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-list",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "",
   "main": "dist/polythene-react-list",
   "module": "dist/polythene-react-list.mjs",
@@ -17,9 +17,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-list": "^1.5.4",
-    "polythene-react-base": "^1.5.4",
-    "polythene-react-list-tile": "^1.5.4"
+    "polythene-core-list": "1.5.5",
+    "polythene-react-base": "1.5.5",
+    "polythene-react-list-tile": "1.5.5"
   },
   "devDependencies": {
     "@types/react": "^16.7.20"

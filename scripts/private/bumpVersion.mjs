@@ -22,7 +22,7 @@ const update = filename => {
         console.log("DRY RUN", `"change version to": "${newVersion}"`); // eslint-disable-line no-console
       } else {
         shell.sed("-i", `"version": ".*"`, `"version": "${newVersion}"`, filename);
-        shell.sed("-i", `"polythene-(.*)": ".*?"`, `"polythene-$1": "^${newVersion}"`, filename);
+        shell.sed("-i", `"polythene-(.*)": ".*?"`, `"polythene-$1": "${newVersion}"`, filename);
       }
       resolve(filename);
     } else {
@@ -46,4 +46,17 @@ async function collectAndUpdate() {
   console.log(`Not updated: ${rejected.length}`, rejected.length > 0 ? rejected : "");
 }
 
+const updateLernaVersion = () => {
+  const filename = "./lerna.json";
+  console.log("------------------------------"); // eslint-disable-line no-console
+  console.log(`lerna.json`); // eslint-disable-line no-console
+  if (isTestRun) {
+    console.log("DRY RUN", `"change version to": "${newVersion}"`); // eslint-disable-line no-console
+  } else {
+    shell.sed("-i", `"version": ".*"`, `"version": "${newVersion}"`, filename);
+  }
+};
+
 collectAndUpdate();
+updateLernaVersion();
+

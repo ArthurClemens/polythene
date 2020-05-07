@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-search",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "",
   "main": "dist/polythene-core-search",
   "module": "dist/polythene-core-search.mjs",
@@ -16,12 +16,12 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.5.4",
-    "polythene-css-classes": "^1.5.4",
-    "polythene-theme": "^1.5.4"
+    "polythene-core": "1.5.5",
+    "polythene-css-classes": "1.5.5",
+    "polythene-theme": "1.5.5"
   },
   "devDependencies": {
-    "polythene-core-textfield": "^1.5.4"
+    "polythene-core-textfield": "1.5.5"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

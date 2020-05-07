@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-icon-button",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "",
   "main": "dist/polythene-css-icon-button",
   "module": "dist/polythene-css-icon-button.mjs",
@@ -18,10 +18,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "^1.5.4",
-    "polythene-css-button": "^1.5.4",
-    "polythene-css-classes": "^1.5.4",
-    "polythene-theme": "^1.5.4"
+    "polythene-core-css": "1.5.5",
+    "polythene-css-button": "1.5.5",
+    "polythene-css-classes": "1.5.5",
+    "polythene-theme": "1.5.5"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

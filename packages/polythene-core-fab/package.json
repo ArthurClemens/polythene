@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-fab",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "",
   "main": "dist/polythene-core-fab",
   "module": "dist/polythene-core-fab.mjs",
@@ -16,13 +16,13 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.5.4",
-    "polythene-css-classes": "^1.5.4",
-    "polythene-theme": "^1.5.4"
+    "polythene-core": "1.5.5",
+    "polythene-css-classes": "1.5.5",
+    "polythene-theme": "1.5.5"
   },
   "devDependencies": {
-    "polythene-core-button": "^1.5.4",
-    "polythene-core-icon": "^1.5.4"
+    "polythene-core-button": "1.5.5",
+    "polythene-core-icon": "1.5.5"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

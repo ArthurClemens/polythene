@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-textfield",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "",
   "main": "dist/polythene-mithril-textfield",
   "module": "dist/polythene-mithril-textfield.mjs",
@@ -17,8 +17,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-textfield": "^1.5.4",
-    "polythene-mithril-base": "^1.5.4"
+    "polythene-core-textfield": "1.5.5",
+    "polythene-mithril-base": "1.5.5"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.14"
