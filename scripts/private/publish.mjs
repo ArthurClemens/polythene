@@ -39,8 +39,8 @@ const maybePublish = filename => {
           console.log("Dry run");
         }
         const cmd = isTestRun
-          ? `npm publish --dry-run --tag ${newVersion}`
-          : `npm publish --tag ${newVersion}`
+          ? `npm publish --dry-run --tag fixed-version-${newVersion}`
+          : `npm publish --tag fixed-version-${newVersion}`
         shell.cd(path.dirname(filename));
         shell.exec(cmd);
         shell.cd(baseDir);
