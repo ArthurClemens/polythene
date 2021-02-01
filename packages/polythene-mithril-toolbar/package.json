@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-toolbar",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "description": "",
   "main": "dist/polythene-mithril-toolbar",
   "module": "dist/polythene-mithril-toolbar.mjs",
@@ -18,8 +18,8 @@
   ],
   "dependencies": {
     "cyano-mithril": "^0.6.2",
-    "polythene-core-toolbar": "1.7.4",
-    "polythene-mithril-shadow": "1.7.4"
+    "polythene-core-toolbar": "1.7.5",
+    "polythene-mithril-shadow": "1.7.5"
   },
   "devDependencies": {
     "@types/mithril": "^2.0.0"

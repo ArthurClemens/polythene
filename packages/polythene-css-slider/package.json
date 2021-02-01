@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-slider",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "description": "",
   "main": "dist/polythene-css-slider",
   "module": "dist/polythene-css-slider.mjs",
@@ -18,9 +18,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "1.7.4",
-    "polythene-css-classes": "1.7.4",
-    "polythene-theme": "1.7.4"
+    "polythene-core-css": "1.7.5",
+    "polythene-css-classes": "1.7.5",
+    "polythene-theme": "1.7.5"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

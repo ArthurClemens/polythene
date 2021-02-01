@@ -1,6 +1,6 @@
 {
   "name": "polythene-tests-render-react",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "private": true,
   "main": "dist/js/test",
   "module": "dist/js/test.mjs",
@@ -14,13 +14,13 @@
   "dependencies": {
     "cyano-react": "^0.6.2",
     "mithril": ">=1.1.6",
-    "polythene-core": "1.7.4",
-    "polythene-core-css": "1.7.4",
-    "polythene-css": "1.7.4",
-    "polythene-react": "1.7.4",
-    "polythene-style": "1.7.4",
-    "polythene-tests": "1.7.4",
-    "polythene-utilities": "1.7.4",
+    "polythene-core": "1.7.5",
+    "polythene-core-css": "1.7.5",
+    "polythene-css": "1.7.5",
+    "polythene-react": "1.7.5",
+    "polythene-style": "1.7.5",
+    "polythene-tests": "1.7.5",
+    "polythene-utilities": "1.7.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1"
