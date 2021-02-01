@@ -224,11 +224,12 @@ var _Tabs = function _Tabs(_ref) {
   var h = _ref.h,
       a = _ref.a,
       getRef = _ref.getRef,
+      useRef = _ref.useRef,
       useState = _ref.useState,
       useEffect = _ref.useEffect,
       ScrollButton = _ref.ScrollButton,
       Tab = _ref.Tab,
-      props = _objectWithoutProperties(_ref, ["h", "a", "getRef", "useState", "useEffect", "ScrollButton", "Tab"]);
+      props = _objectWithoutProperties(_ref, ["h", "a", "getRef", "useRef", "useState", "useEffect", "ScrollButton", "Tab"]);
 
   var buttons = getButtons(props);
 
@@ -247,31 +248,27 @@ var _Tabs = function _Tabs(_ref) {
       setRTL = _useState4[1];
 
   var tabIndex = getIndex(props) || 0;
+  var selectedTabIndexRef = useRef(tabIndex);
 
-  var _useState5 = useState(tabIndex),
+  var _useState5 = useState(false),
       _useState6 = _slicedToArray(_useState5, 2),
-      selectedTabIndex = _useState6[0],
-      setSelectedTabIndex = _useState6[1];
+      isScrollButtonAtStart = _useState6[0],
+      setIsScrollButtonAtStart = _useState6[1];
 
   var _useState7 = useState(false),
       _useState8 = _slicedToArray(_useState7, 2),
-      isScrollButtonAtStart = _useState8[0],
-      setIsScrollButtonAtStart = _useState8[1];
+      isScrollButtonAtEnd = _useState8[0],
+      setIsScrollButtonAtEnd = _useState8[1];
 
-  var _useState9 = useState(false),
+  var _useState9 = useState([]),
       _useState10 = _slicedToArray(_useState9, 2),
-      isScrollButtonAtEnd = _useState10[0],
-      setIsScrollButtonAtEnd = _useState10[1];
+      tabs = _useState10[0],
+      setTabs = _useState10[1];
 
-  var _useState11 = useState([]),
+  var _useState11 = useState(),
       _useState12 = _slicedToArray(_useState11, 2),
-      tabs = _useState12[0],
-      setTabs = _useState12[1];
-
-  var _useState13 = useState(),
-      _useState14 = _slicedToArray(_useState13, 2),
-      previousSelectedTabIndex = _useState14[0],
-      setPreviousSelectedTabIndex = _useState14[1];
+      previousSelectedTabIndex = _useState12[0],
+      setPreviousSelectedTabIndex = _useState12[1];
 
   var managesScroll = props.scrollable && !isTouch;
   var tabRowElement = domElement && domElement.querySelector(".".concat(classes.tabRow));
@@ -296,9 +293,9 @@ var _Tabs = function _Tabs(_ref) {
   var handleScrollButtonClick = function handleScrollButtonClick(e, direction) {
     e.stopPropagation();
     e.preventDefault();
-    var newIndex = scrollButtonGetNewIndex(selectedTabIndex, tabs)[direction];
+    var newIndex = scrollButtonGetNewIndex(selectedTabIndexRef.current, tabs)[direction];
 
-    if (newIndex !== selectedTabIndex) {
+    if (newIndex !== selectedTabIndexRef.current) {
       updateWithTabIndex({
         index: newIndex,
         animate: true
@@ -312,8 +309,8 @@ var _Tabs = function _Tabs(_ref) {
     var scrollLeft = tabRowElement.scrollLeft;
     var minTabIndex = 0;
     var maxTabIndex = tabs.length - 1;
-    var isAtStart = tabRowElement.scrollLeft === 0 && selectedTabIndex === minTabIndex;
-    var isAtEnd = scrollLeft >= tabRowElement.scrollWidth - domElement.getBoundingClientRect().width - 1 && selectedTabIndex === maxTabIndex;
+    var isAtStart = tabRowElement.scrollLeft === 0 && selectedTabIndexRef.current === minTabIndex;
+    var isAtEnd = scrollLeft >= tabRowElement.scrollWidth - domElement.getBoundingClientRect().width - 1 && selectedTabIndexRef.current === maxTabIndex;
     setIsScrollButtonAtStart(isAtStart);
     setIsScrollButtonAtEnd(isAtEnd);
   };
@@ -377,7 +374,7 @@ var _Tabs = function _Tabs(_ref) {
       return;
     }
 
-    setSelectedTabIndex(index);
+    selectedTabIndexRef.current = index;
     var selectedTabElement = tabs[index].dom;
 
     if (selectedTabElement) {
@@ -426,8 +423,9 @@ var _Tabs = function _Tabs(_ref) {
     };
 
     var redraw = function redraw() {
-      return redrawLargestWidth(), updateWithTabIndex({
-        index: selectedTabIndex,
+      redrawLargestWidth();
+      updateWithTabIndex({
+        index: selectedTabIndexRef.current,
         animate: false
       });
     };
@@ -475,7 +473,7 @@ var _Tabs = function _Tabs(_ref) {
 
     var buttonOptsCombined = _extends({}, buttonOpts, {
       // These options can be overridden by `all`
-      selected: index === selectedTabIndex,
+      selected: index === selectedTabIndexRef.current,
       animateOnTap: props.animateOnTap !== false ? true : false
     }, props.all, {
       // Internal options, should not get overridden

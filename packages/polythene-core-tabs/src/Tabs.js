@@ -53,7 +53,7 @@ const sortByLargestWidth = (a, b) =>
       ? -1
       : 0;
 
-export const _Tabs = ({ h, a, getRef, useState, useEffect, ScrollButton, Tab, ...props }) => {
+export const _Tabs = ({ h, a, getRef, useRef, useState, useEffect, ScrollButton, Tab, ...props }) => {
   const buttons = getButtons(props);
   if (buttons.length === 0) {
     throw new Error("No tabs specified");
@@ -62,7 +62,7 @@ export const _Tabs = ({ h, a, getRef, useState, useEffect, ScrollButton, Tab, ..
   const [domElement, setDomElement] = useState();
   const [RTL, setRTL] = useState(false);
   const tabIndex = getIndex(props) || 0;
-  const [selectedTabIndex, setSelectedTabIndex] = useState(tabIndex);
+  const selectedTabIndexRef = useRef(tabIndex);
   const [isScrollButtonAtStart, setIsScrollButtonAtStart] = useState(false);
   const [isScrollButtonAtEnd, setIsScrollButtonAtEnd] = useState(false);
   const [tabs, setTabs] = useState([]);
@@ -72,7 +72,7 @@ export const _Tabs = ({ h, a, getRef, useState, useEffect, ScrollButton, Tab, ..
   const tabRowElement = domElement && domElement.querySelector(`.${classes.tabRow}`);
   const tabIndicatorElement = domElement && domElement.querySelector(`.${classes.indicator}`);
   const isTabsInited = !!domElement && tabs.length === buttons.length;
-
+  
   useEffect(
     () => {
       if (!tabRowElement) return;
@@ -93,8 +93,8 @@ export const _Tabs = ({ h, a, getRef, useState, useEffect, ScrollButton, Tab, ..
   const handleScrollButtonClick = (e, direction ) => {
     e.stopPropagation();
     e.preventDefault();
-    const newIndex = scrollButtonGetNewIndex(selectedTabIndex, tabs)[direction];
-    if (newIndex !== selectedTabIndex) {
+    const newIndex = scrollButtonGetNewIndex(selectedTabIndexRef.current, tabs)[direction];
+    if (newIndex !== selectedTabIndexRef.current) {
       updateWithTabIndex({ index: newIndex, animate: true });
     } else {
       scrollToTab(newIndex);
@@ -105,8 +105,8 @@ export const _Tabs = ({ h, a, getRef, useState, useEffect, ScrollButton, Tab, ..
     const scrollLeft = tabRowElement.scrollLeft;
     const minTabIndex = 0;
     const maxTabIndex = tabs.length - 1;
-    const isAtStart = (tabRowElement.scrollLeft === 0) && (selectedTabIndex === minTabIndex);
-    const isAtEnd = (scrollLeft >= (tabRowElement.scrollWidth - domElement.getBoundingClientRect().width - 1)) && (selectedTabIndex === maxTabIndex);
+    const isAtStart = (tabRowElement.scrollLeft === 0) && (selectedTabIndexRef.current === minTabIndex);
+    const isAtEnd = (scrollLeft >= (tabRowElement.scrollWidth - domElement.getBoundingClientRect().width - 1)) && (selectedTabIndexRef.current === maxTabIndex);
     setIsScrollButtonAtStart(isAtStart);
     setIsScrollButtonAtEnd(isAtEnd);
   };
@@ -165,7 +165,7 @@ export const _Tabs = ({ h, a, getRef, useState, useEffect, ScrollButton, Tab, ..
     if (!tabs || !tabs.length) {
       return;
     }
-    setSelectedTabIndex(index);
+    selectedTabIndexRef.current = index;
     const selectedTabElement = tabs[index].dom;
     if (selectedTabElement) {
       updateIndicator({ selectedTabElement, animate });
@@ -198,10 +198,10 @@ export const _Tabs = ({ h, a, getRef, useState, useEffect, ScrollButton, Tab, ..
         }
       };
     
-      const redraw = () => (
-        redrawLargestWidth(),
-        updateWithTabIndex({ index: selectedTabIndex, animate: false })
-      );
+      const redraw = () => {
+        redrawLargestWidth();
+        updateWithTabIndex({ index: selectedTabIndexRef.current, animate: false });
+      };
     
       const handleFontEvent = ({ name }) =>
         name === "active" || name === "inactive"
@@ -265,14 +265,14 @@ export const _Tabs = ({ h, a, getRef, useState, useEffect, ScrollButton, Tab, ..
       buttonOpts,
       {
         // These options can be overridden by `all`
-        selected: index === selectedTabIndex,
+        selected: index === selectedTabIndexRef.current,
         animateOnTap: (props.animateOnTap !== false) ? true : false
       },
       props.all,
       {
         // Internal options, should not get overridden
         index,
-        onSelect: () =>
+        onSelect: () => 
           updateWithTabIndex({
             index,
             animate: props.noIndicatorSlide
