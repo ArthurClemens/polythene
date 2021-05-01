@@ -6,7 +6,7 @@
   "module": "dist/js/test.mjs",
   "scripts": {
     "dev": "npm-run-all --parallel dev:watch dev:serve",
-    "dev:serve": "../../node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ../../scripts/bundling/webpack.config.dev.js --disableHostCheck true --port 4000 --host 0.0.0.0",
+    "dev:serve": "../../node_modules/.bin/webpack serve --config ../../scripts/bundling/webpack.config.dev.js --port 4000 --host 0.0.0.0",
     "dev:watch": "../../node_modules/webpack/bin/webpack.js --watch --config ../../scripts/bundling/webpack.config.dev.js",
     "build": "../../node_modules/webpack/bin/webpack.js --config ../../scripts/bundling/webpack.config.prod.js",
     "serve": "http-server -p 5000 dist"

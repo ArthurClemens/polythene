@@ -8,15 +8,15 @@
   "scripts": {
     "clean": "rm -rf dist/js/*",
     "dev": "npm-run-all --parallel dev:watch dev:serve",
-    "dev:serve": "../../node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ../../scripts/bundling/webpack.config.dev.js --disableHostCheck true --port 3000 --host 0.0.0.0",
+    "dev:serve": "../../node_modules/.bin/webpack serve --config ../../scripts/bundling/webpack.config.dev.js --port 3000 --host 0.0.0.0",
     "dev:watch": "../../node_modules/webpack/bin/webpack.js --watch --config ../../scripts/bundling/webpack.config.dev.js",
     "webpack": "../../node_modules/webpack/bin/webpack.js --config ../../scripts/bundling/webpack.config.prod.js",
     "build": "npm run clean && npm run webpack",
     "serve": "http-server -p 5000 dist"
   },
   "dependencies": {
-    "cyano-mithril": "^0.6.2",
-    "mithril": ">=1.1.6",
+    "cyano-mithril": "^0.6.8",
+    "mithril": ">=2.0.4",
     "polythene-core": "1.7.4",
     "polythene-core-css": "1.7.4",
     "polythene-css": "1.7.4",

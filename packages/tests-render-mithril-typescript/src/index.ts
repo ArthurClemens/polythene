@@ -82,7 +82,9 @@ const AppDrawer = () => {
   };
   return {
     view: () => {
-      const navItemClick = () => state.show = false
+      const navItemClick = () => {
+        state.show = false;
+      };
       return [
         // For simplicity use a regular button to show the drawer
         // usually this would be the app bar's menu button
@@ -91,7 +93,10 @@ const AppDrawer = () => {
           label: "Show",
           element: m.route.Link,
           events: {
-            onclick: () => state.show = true
+            onclick: (e) => {
+              e.preventDefault();
+              state.show = true;
+            }
           }
         }),
         m(Drawer, {
@@ -101,7 +106,7 @@ const AppDrawer = () => {
           show: state.show,
           didHide: () => state.show = false // sync state with component
         })
-      ]
+      ];
     }
   };
 };
