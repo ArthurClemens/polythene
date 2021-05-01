@@ -31,11 +31,8 @@
   opacity: 0;
 }
 
+.pe-button.pe-icon-button.pe-button--has-hover:hover .pe-button__wash,
 .pe-button.pe-icon-button:focus:not(:active) .pe-button__wash {
-  opacity: 1;
-}
-
-.pe-button.pe-icon-button.pe-button--has-hover:hover .pe-button__wash {
   opacity: 1;
 }
 

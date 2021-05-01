@@ -88,7 +88,7 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-var generalFns = {
+var generalFns$1 = {
   general_styles: function general_styles(selector) {
     return [sel(selector, {
       ".pe-button--selected": {
@@ -100,7 +100,7 @@ var generalFns = {
   }
 };
 
-var tintFns = function tintFns(tint) {
+var tintFns$1 = function tintFns(tint) {
   var _ref;
 
   return _ref = {}, _defineProperty(_ref, "color_" + tint + "_selected", function (selector, vars) {
@@ -128,14 +128,14 @@ var tintFns = function tintFns(tint) {
   }), _ref;
 };
 
-var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var lightTintFns$1 = _extends({}, generalFns$1, tintFns$1("light"));
 
-var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+var darkTintFns$1 = _extends({}, generalFns$1, tintFns$1("dark"));
 
 var tabColor = createColor({
   varFns: {
-    lightTintFns: lightTintFns,
-    darkTintFns: darkTintFns
+    lightTintFns: lightTintFns$1,
+    darkTintFns: darkTintFns$1
   }
 });
 
@@ -145,7 +145,7 @@ var tab_label_transition_property_animation_duration = function tab_label_transi
   });
 };
 
-var varFns = {
+var varFns$1 = {
   general_styles: function general_styles(selector) {
     return [sel(selector, [flex.flex(), flex.flexIndex("none"), {
       userSelect: "none",
@@ -332,10 +332,10 @@ var varFns = {
   }
 };
 var tabLayout = createLayout({
-  varFns: varFns
+  varFns: varFns$1
 });
 
-var generalFns$1 = {
+var generalFns = {
   general_styles: function general_styles(selector) {
     return [sel(selector, {
       " .pe-tabs__scroll-button": {
@@ -356,7 +356,7 @@ var generalFns$1 = {
   }
 };
 
-var tintFns$1 = function tintFns(tint) {
+var tintFns = function tintFns(tint) {
   return _defineProperty({}, "color_" + tint + "_tab_indicator", function (selector, vars) {
     return [sel(selector, {
       " .pe-tabs__indicator": {
@@ -366,14 +366,14 @@ var tintFns$1 = function tintFns(tint) {
   });
 };
 
-var lightTintFns$1 = _extends({}, generalFns$1, tintFns$1("light"));
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
 
-var darkTintFns$1 = _extends({}, generalFns$1, tintFns$1("dark"));
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
 
 var tabsColor = createColor({
   varFns: {
-    lightTintFns: lightTintFns$1,
-    darkTintFns: darkTintFns$1
+    lightTintFns: lightTintFns,
+    darkTintFns: darkTintFns
   }
 });
 
@@ -398,7 +398,7 @@ var _tabs_indent = function tabs_indent(selector, vars, isRTL) {
   });
 };
 
-var varFns$1 = {
+var varFns = {
   general_styles: function general_styles(selector) {
     return [sel(selector, [alignLeft(), {
       userSelect: "none",
@@ -549,7 +549,7 @@ var varFns$1 = {
   }
 };
 var tabsLayout = createLayout({
-  varFns: varFns$1
+  varFns: varFns
 });
 
 // @ts-check

@@ -312,6 +312,44 @@ var flex$1 = {
   selfStretch: selfStretch
 };
 
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+
+    if (enumerableOnly) {
+      symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    }
+
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
 function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -325,40 +363,6 @@ function _defineProperty(obj, key, value) {
   }
 
   return obj;
-}
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(source, true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(source).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
 }
 
 function _objectWithoutPropertiesLoose(source, excluded) {
@@ -455,13 +459,13 @@ var ellipsis = function ellipsis(lines, lineHeight) {
       display: "-webkit-box",
       wordBreak: "break-word"
     } : undefined
-  }, _objectSpread2({
+  }, _objectSpread2(_objectSpread2({
     overflow: "hidden",
     textOverflow: "ellipsis",
     textRendering: "auto"
   }, lineHeight !== undefined ? {
     maxHeight: lines * lineHeight + unit
-  } : undefined, {}, lineHeight === 1 ? {
+  } : undefined), lineHeight === 1 ? {
     wordWrap: "nowrap"
   } : undefined)];
 };
@@ -1556,16 +1560,16 @@ var createStyle = function createStyle(_ref2) {
       componentVars = _ref2$componentVars === void 0 ? {} : _ref2$componentVars,
       customVars = _ref2.customVars;
 
-  var allVars = _objectSpread2({}, componentVars, {}, customVars);
+  var allVars = _objectSpread2(_objectSpread2({}, componentVars), customVars);
 
   var currentVars = customVars ? customVars : allVars;
 
-  var general_styles = componentVars.general_styles,
-      otherVars = _objectWithoutProperties(componentVars, ["general_styles"]);
+  componentVars.general_styles;
+      var otherVars = _objectWithoutProperties(componentVars, ["general_styles"]);
 
   var baseLayout = superStyle !== undefined ? customVars !== undefined ? superStyle(selector, componentVars, customVars) : superStyle(selector, otherVars) : [];
 
-  var fns = _objectSpread2({}, customVars ? customVarFns : {}, {}, varFns);
+  var fns = _objectSpread2(_objectSpread2({}, customVars ? customVarFns : {}), varFns);
 
   return baseLayout.concat(Object.keys(varMixin(currentVars)).map(function (v) {
     return fns && fns[v] !== undefined ? fns[v](scopedSelector, allVars) : null;
@@ -1808,7 +1812,7 @@ var createMarker = function createMarker(vars, behaviorVars) {
  * @type {Array<Style>} classes
  */
 
-var classes = [{
+var classes$1 = [{
   ".layout, .layout.horizontal": flex$1.layout,
   ".layout.horizontal.inline, .layout.vertical.inline": flex$1.layoutInline,
   ".layout.horizontal": flex$1.layoutHorizontal,
@@ -1860,7 +1864,7 @@ var classes = [{
  * @typedef {{[selector:string] : object}} Style
  * @type {Array<Style>} classes
  */
-var classes$1 = [{
+var classes = [{
   ".pe-block": {
     display: "block"
   },
@@ -1908,13 +1912,13 @@ var classes$1 = [{
  * @type {Array<Style>} layoutStyles
  */
 
-var layoutStyles = [classes, classes$1];
+var layoutStyles = [classes$1, classes];
 /**
  * @returns {void}
  */
 
 var addLayoutStyles = function addLayoutStyles() {
-  return styler.add("pe-layout", classes, classes$1);
+  return styler.add("pe-layout", classes$1, classes);
 };
 
 export { addLayoutStyles, createColor, createLayout, createMarker, flex$1 as flex, layoutStyles, mixin, rgba, sel, selectorRTL, styler };

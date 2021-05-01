@@ -2,6 +2,44 @@ import { createColor, createLayout, sel, flex, rgba, styler } from 'polythene-co
 import { color as color$1, customLayoutFns } from 'polythene-css-notification';
 import { vars } from 'polythene-theme';
 
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+
+    if (enumerableOnly) {
+      symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    }
+
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
 function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -15,40 +53,6 @@ function _defineProperty(obj, key, value) {
   }
 
   return obj;
-}
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(source, true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(source).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
 }
 
 var notificationClasses = {
@@ -67,7 +71,7 @@ var notificationClasses = {
   visible: "pe-notification--visible"
 };
 
-var classes = _objectSpread2({}, notificationClasses, {
+var classes = _objectSpread2(_objectSpread2({}, notificationClasses), {}, {
   component: "pe-notification pe-snackbar",
   // elements
   holder: "pe-snackbar__holder",
@@ -81,7 +85,7 @@ var color = createColor({
   superColor: color$1
 });
 
-var varFns = {
+var varFns$1 = {
   general_styles: function general_styles(selector) {
     return [sel(selector, [flex.layoutCenterCenter, {
       position: "fixed",
@@ -100,7 +104,7 @@ var varFns = {
   }
 };
 var holderLayout = createLayout({
-  varFns: varFns
+  varFns: varFns$1
 });
 
 var breakpoint = function breakpoint(breakpointSel) {
@@ -110,7 +114,7 @@ var breakpoint = function breakpoint(breakpointSel) {
 };
 
 var breakpointTabletPortraitUp = breakpoint("@media (min-width: ".concat(vars.breakpoint_for_tablet_portrait_up, "px)"));
-var varFns$1 = {
+var varFns = {
   general_styles: function general_styles(selector) {
     return [sel(selector, {
       width: "100%",
@@ -152,7 +156,7 @@ var varFns$1 = {
   }
 };
 var layout = createLayout({
-  varFns: varFns$1,
+  varFns: varFns,
   customVarFns: customLayoutFns
 });
 

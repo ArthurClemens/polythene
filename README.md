@@ -6,6 +6,8 @@ Material Design component library for [Mithril](http://mithril.js.org) and [Reac
 
 Can be used as general-purpose component library that includes dialogs, cards, notifications, lists, buttons, form elements, and more.
 
+Polythene is set up extremely modular: you may just take one or two components for your project without having to make major changes in your setup.
+
 <a href="https://arthurclemens.github.io/assets/polythene/docs/polythene-kitchen-sink.png" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/polythene-kitchen-sink-thumb.jpg" height="500" /></a>
 
 <a href="https://arthurclemens.github.io/assets/polythene/docs/polythene-kitchen-sink.png" target="_blank">Kitchen sink - click to enlarge</a>

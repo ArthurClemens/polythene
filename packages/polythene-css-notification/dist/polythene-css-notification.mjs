@@ -87,7 +87,7 @@ var color = createColor({
 });
 
 // @ts-check
-var varFns = {
+var varFns$1 = {
   general_styles: function general_styles(selector) {
     return [sel(selector, [flex.layoutCenterCenter, {
       // assumes position relative
@@ -110,7 +110,7 @@ var varFns = {
   }
 };
 var holderLayout = createLayout({
-  varFns: varFns
+  varFns: varFns$1
 });
 
 var title_single_padding_v_title_padding_h = function title_single_padding_v_title_padding_h(selector, vars) {
@@ -203,7 +203,7 @@ var customLayoutFns = {
   }
 };
 
-var varFns$1 = _extends({}, {
+var varFns = _extends({}, {
   general_styles: function general_styles(selector) {
     return [sel(selector, [flex.layoutCenter, {
       pointerEvents: "all",
@@ -243,7 +243,7 @@ var varFns$1 = _extends({}, {
 }, customLayoutFns);
 
 var layout = createLayout({
-  varFns: varFns$1
+  varFns: varFns
 });
 
 // @ts-check

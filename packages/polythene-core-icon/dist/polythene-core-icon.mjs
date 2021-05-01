@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, classForSize } from 'polythene-core';
+import { classForSize, filterSupportedAttributes } from 'polythene-core';
 
 function _extends() {
   _extends = Object.assign || function (target) {

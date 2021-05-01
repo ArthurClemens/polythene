@@ -1,4 +1,4 @@
-const glob = require("glob-fs")({ gitignore: true });
+const glob = require("glob");
 const shell = require("shelljs");
 
 const testDir = function(dir) {
@@ -8,4 +8,4 @@ const testDir = function(dir) {
   shell.cd("-");
 };
 
-glob.readdirSync("./packages/test-*").forEach(testDir);
+glob.sync("./packages/test-*").forEach(testDir);

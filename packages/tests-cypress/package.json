@@ -5,16 +5,16 @@
   "description": "",
   "sideEffects": false,
   "dependencies": {
-    "cyano-mithril": "^0.6.2",
-    "cyano-react": "^0.6.2",
+    "cyano-mithril": "^0.6.8",
+    "cyano-react": "^0.6.8",
     "polythene-tests": "1.7.5",
     "polythene-css": "1.7.5",
     "polythene-mithril": "1.7.5",
     "polythene-react": "1.7.5"
   },
   "peerDependencies": {
-    "mithril": ">=1.1.6",
-    "react": "^16.8.6"
+    "mithril": ">=2.0.4",
+    "react": "^17.0.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

@@ -10,7 +10,9 @@ config.mode = "production";
 
 config.optimization = {
   minimizer: [new TerserPlugin({
-    sourceMap: true
+    terserOptions: {
+      compress: {},
+    }
   })]
 };
 

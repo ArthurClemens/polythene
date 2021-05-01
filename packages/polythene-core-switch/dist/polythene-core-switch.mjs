@@ -78,9 +78,9 @@ var _Switch = function _Switch(_ref) {
 };
 
 var _ViewControl = function _ViewControl(_ref) {
-  var h = _ref.h,
-      a = _ref.a,
-      IconButton = _ref.IconButton,
+  var h = _ref.h;
+      _ref.a;
+      var IconButton = _ref.IconButton,
       Shadow = _ref.Shadow,
       props = _objectWithoutProperties(_ref, ["h", "a", "IconButton", "Shadow"]);
 

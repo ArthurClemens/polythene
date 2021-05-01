@@ -4,5 +4,8 @@
   "description": "",
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "true"
+  }
 }

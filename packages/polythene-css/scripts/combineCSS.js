@@ -1,5 +1,5 @@
 const fs           = require("fs");
-const glob         = require("glob-fs")();
+const glob         = require("glob");
 const { writej2c } = require("write-j2c");
 const outPath      = "./dist/polythene.css";
 
@@ -9,7 +9,7 @@ const stripComment = str =>
 const filterStyleCSS = file =>
   file !== "dist/polythene-typography.css";
 
-const files = glob.readdirSync("./dist/*.css");
+const files = glob.sync("./dist/*.css");
 
 const combinedFiles = files.filter(filterStyleCSS).reduce((acc, filename) =>
   acc + stripComment(fs.readFileSync(filename, "utf8")), "");

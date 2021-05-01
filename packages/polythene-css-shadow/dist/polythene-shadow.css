@@ -35,16 +35,10 @@
   transition: box-shadow .18s ease-out;
 }
 
-.pe-shadow.pe-shadow--depth-0 .pe-shadow__top {
-  box-shadow: none;
-}
-
+.pe-shadow.pe-shadow--depth-0 .pe-shadow__bottom,
+.pe-shadow.pe-shadow--depth-0 .pe-shadow__top,
 .pe-with-active-shadow.pe-shadow--depth-1:active .pe-shadow .pe-shadow__top,
 .pe-with-active-shadow.pe-shadow--depth-1:focus .pe-shadow .pe-shadow__top {
-  box-shadow: none;
-}
-
-.pe-shadow.pe-shadow--depth-0 .pe-shadow__bottom {
   box-shadow: none;
 }
 

@@ -12,8 +12,8 @@
     "serve": "http-server -p 5000 dist"
   },
   "dependencies": {
-    "cyano-react": "^0.6.2",
-    "mithril": ">=1.1.6",
+    "cyano-react": "^0.6.8",
+    "mithril": ">=2.0.4",
     "polythene-core": "1.7.5",
     "polythene-core-css": "1.7.5",
     "polythene-css": "1.7.5",
@@ -21,9 +21,9 @@
     "polythene-style": "1.7.5",
     "polythene-tests": "1.7.5",
     "polythene-utilities": "1.7.5",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.1"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5"

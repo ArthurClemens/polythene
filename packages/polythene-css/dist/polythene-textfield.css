@@ -350,22 +350,16 @@
   border-color: hsla(0, 0%, 100%, .1);
 }
 
-.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__label,
-.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__label {
-  color: #de3226;
-}
-
+.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--required .pe-textfield__label,
+.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--required .pe-textfield__label,
 .pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__counter,
 .pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__counter,
 .pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__error,
 .pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__error,
 .pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__help,
-.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__help {
-  color: #de3226;
-}
-
-.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--required .pe-textfield__label,
-.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--required .pe-textfield__label {
+.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__help,
+.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__label,
+.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__label {
   color: #de3226;
 }
 
@@ -488,27 +482,21 @@
   border-color: rgba(0, 0, 0, .11);
 }
 
-.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__label,
-.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__label,
-.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__label {
-  color: #dd2c00;
-}
-
+.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--required .pe-textfield__label,
+.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--required .pe-textfield__label,
 .pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__counter,
 .pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__counter,
 .pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__error,
 .pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__error,
 .pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__help,
 .pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__help,
+.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__label,
+.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__label,
+.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--required .pe-textfield__label,
 .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__counter,
 .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__error,
-.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__help {
-  color: #dd2c00;
-}
-
-.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--required .pe-textfield__label,
-.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--required .pe-textfield__label,
-.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--required .pe-textfield__label {
+.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__help,
+.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__label {
   color: #dd2c00;
 }
 

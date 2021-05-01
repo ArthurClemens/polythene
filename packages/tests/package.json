@@ -13,14 +13,14 @@
     "polythene-react": "1.7.5"
   },
   "devDependencies": {
-    "cyano-mithril": "^0.6.2",
-    "cyano-react": "^0.6.2",
+    "cyano-mithril": "^0.6.8",
+    "cyano-react": "^0.6.8",
     "polythene-core": "1.7.5",
     "polythene-theme": "1.7.5",
-    "powerform": "^3.1.5",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.1",
+    "powerform": "^4.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
     "recompose": "^0.30.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",

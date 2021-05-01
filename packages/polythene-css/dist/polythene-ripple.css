@@ -5,11 +5,10 @@
   bottom: 0;
   left: 0;
   color: inherit;
-  border-radius: inherit;
   pointer-events: none;
 }
 
-.pe-ripple:not(.pe-ripple--unconstrained) {
+.pe-ripple, .pe-ripple:not(.pe-ripple--unconstrained) {
   border-radius: inherit;
 }
 

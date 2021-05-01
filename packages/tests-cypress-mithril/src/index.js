@@ -9,32 +9,36 @@ addTypography();
 
 const index = {
   view: () =>
-    m(List,
-      routes.map(route => (
+    m(
+      List,
+      routes.map((route) =>
         m(ListTile, {
           title: route.name,
           hoverable: true,
           url: {
             href: route.path,
-            oncreate: m.route.link
-          }
+            oncreate: m.route.link,
+          },
         })
-      ))
+      )
     ),
 };
 
-m.route.prefix("#");
+m.route.prefix = "#";
 const mountNode = document.querySelector("#app");
 const routeData = {
   "/": {
     onmatch: () => {
       return index;
-    }
-  }
+    },
+  },
 };
-routes.forEach(route => routeData[route.path] = {
-  onmatch: () => {
-    return Page(route, "/");
-  }
-});
+routes.forEach(
+  (route) =>
+    (routeData[route.path] = {
+      onmatch: () => {
+        return Page(route, "/");
+      },
+    })
+);
 m.route(mountNode, "/", routeData);

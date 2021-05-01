@@ -81,11 +81,8 @@
   opacity: 0;
 }
 
+.pe-text-button.pe-button--has-hover:hover .pe-button__wash,
 .pe-text-button:focus:not(:active) .pe-button__wash {
-  opacity: 1;
-}
-
-.pe-text-button.pe-button--has-hover:hover .pe-button__wash {
   opacity: 1;
 }
 

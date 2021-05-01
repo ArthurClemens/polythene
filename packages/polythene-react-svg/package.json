@@ -6,7 +6,7 @@
   "module": "dist/polythene-react-svg.mjs",
   "scripts": {
     "clean": "rm -rf dist/*",
-    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.es.js",
+    "rollup": "../../node_modules/rollup/dist/bin/rollup -c ../../scripts/bundling/rollup.umd.js && ../../node_modules/rollup/dist/bin/rollup -c ../../scripts/bundling/rollup.es.js",
     "build": "npm run clean && npm run rollup",
     "typecheck": "../../node_modules/typescript/bin/tsc --noEmit --strict --allowJs --checkJs --noImplicitAny false --lib es2015,DOM,ScriptHost --esModuleInterop true src/index.js"
   },
@@ -16,11 +16,11 @@
     "README.md"
   ],
   "dependencies": {
-    "cyano-react": "^0.6.2",
+    "cyano-react": "^0.6.8",
     "polythene-core-svg": "1.7.5"
   },
   "devDependencies": {
-    "@types/react": "^16.8.23"
+    "@types/react": "^17.0.4"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

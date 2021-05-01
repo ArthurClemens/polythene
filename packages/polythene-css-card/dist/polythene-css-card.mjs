@@ -74,14 +74,14 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-var generalFns = {
+var generalFns$2 = {
   general_styles: function general_styles(selector) {
     return [];
   } // eslint-disable-line no-unused-vars
 
 };
 
-var tintFns = function tintFns(tint) {
+var tintFns$2 = function tintFns(tint) {
   return _defineProperty({}, "color_" + tint + "_main_background", function (selector, vars) {
     return [sel(selector, {
       backgroundColor: vars["color_" + tint + "_main_background"]
@@ -89,14 +89,14 @@ var tintFns = function tintFns(tint) {
   });
 };
 
-var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var lightTintFns$2 = _extends({}, generalFns$2, tintFns$2("light"));
 
-var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+var darkTintFns$2 = _extends({}, generalFns$2, tintFns$2("dark"));
 
 var color = createColor({
   varFns: {
-    lightTintFns: lightTintFns,
-    darkTintFns: darkTintFns
+    lightTintFns: lightTintFns$2,
+    darkTintFns: darkTintFns$2
   }
 });
 
@@ -567,14 +567,14 @@ var layout = createLayout({
   varFns: varFns
 });
 
-var generalFns$2 = {
+var generalFns = {
   general_styles: function general_styles(selector) {
     return [];
   } // eslint-disable-line no-unused-vars
 
 };
 
-var tintFns$2 = function tintFns(tint) {
+var tintFns = function tintFns(tint) {
   return _defineProperty({}, "color_" + tint + "_overlay_background", function (selector, vars) {
     return [sel(selector, {
       " .pe-card__overlay__content": {
@@ -584,14 +584,14 @@ var tintFns$2 = function tintFns(tint) {
   });
 };
 
-var lightTintFns$2 = _extends({}, generalFns$2, tintFns$2("light"));
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
 
-var darkTintFns$2 = _extends({}, generalFns$2, tintFns$2("dark"));
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
 
 var overlayColor = createColor({
   varFns: {
-    lightTintFns: lightTintFns$2,
-    darkTintFns: darkTintFns$2
+    lightTintFns: lightTintFns,
+    darkTintFns: darkTintFns
   }
 });
 

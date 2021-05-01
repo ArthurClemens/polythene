@@ -1,22 +1,2 @@
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-textfield'), require('cyano-mithril')) :
-	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-textfield', 'cyano-mithril'], factory) :
-	(global = global || self, factory(global.polythene = {}, global['polythene-core-textfield'], global['cyano-mithril']));
-}(this, function (exports, polytheneCoreTextfield, cyanoMithril) { 'use strict';
-
-	var TextField = cyanoMithril.cast(polytheneCoreTextfield._TextField, {
-	  h: cyanoMithril.h,
-	  a: cyanoMithril.a,
-	  useEffect: cyanoMithril.useEffect,
-	  useState: cyanoMithril.useState,
-	  useRef: cyanoMithril.useRef,
-	  getRef: cyanoMithril.getRef
-	});
-	TextField["displayName"] = "TextField";
-
-	exports.TextField = TextField;
-
-	Object.defineProperty(exports, '__esModule', { value: true });
-
-}));
+!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core-textfield"),require("cyano-mithril")):"function"==typeof define&&define.amd?define(["exports","polythene-core-textfield","cyano-mithril"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self).polythene={},e["polythene-core-textfield"],e["cyano-mithril"])}(this,(function(e,t,i){"use strict";var o=i.cast(t._TextField,{h:i.h,a:i.a,useEffect:i.useEffect,useState:i.useState,useRef:i.useRef,getRef:i.getRef});o.displayName="TextField",e.TextField=o,Object.defineProperty(e,"__esModule",{value:!0})}));
 //# sourceMappingURL=polythene-mithril-textfield.js.map

@@ -9,4 +9,4 @@ npm-debug*
 
 packages/tests-render-mithril/dist/js/*
 packages/tests-render-react/dist/js/*
-.idea/*
+.idea

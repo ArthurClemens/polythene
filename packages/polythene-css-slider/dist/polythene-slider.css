@@ -1,9 +1,4 @@
 .pe-slider {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
       -ms-flex-direction: row;
   -webkit-flex-direction: row;
           flex-direction: row;
@@ -11,18 +6,20 @@
           flex-grow: 1;
        user-select: none;
   -moz-user-select: none;
-  align-items: center;
 }
 
-.pe-slider>.pe-icon {
+.pe-slider, .pe-slider>.pe-icon {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
+  align-items: center;
+}
+
+.pe-slider>.pe-icon {
   -ms-flex-align: center;
   -webkit-align-items: center;
-          align-items: center;
 }
 
 .pe-slider .pe-slider__track {
@@ -59,16 +56,13 @@
   z-index: 1;
 }
 
-.pe-slider .pe-slider__control:before {
+.pe-slider .pe-slider__control:after, .pe-slider .pe-slider__control:before {
   content: "";
   position: absolute;
   border-radius: 50%;
 }
 
 .pe-slider .pe-slider__control:after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
   border-style: solid;
 }
 
@@ -154,18 +148,16 @@
   transition-property: transform;
   transform: translateZ(0) scale(0) translate(0);
   transform-origin: bottom;
-  position: absolute;
   z-index: 1;
   height: 0;
-  left: 0;
-  top: 0;
   pointer-events: none;
 }
 
-.pe-slider .pe-slider__pin:after, .pe-slider .pe-slider__pin:before {
+.pe-slider .pe-slider__pin, .pe-slider .pe-slider__pin:after,
+.pe-slider .pe-slider__pin:before {
   position: absolute;
-  top: 0;
   left: 0;
+  top: 0;
 }
 
 .pe-slider .pe-slider__pin:before {
@@ -184,11 +176,8 @@
   transform: translateZ(0) scale(1) translateY(-24px);
 }
 
+.pe-slider:not(.pe-slider--disabled).pe-slider--track .pe-slider__track,
 .pe-slider:not(.pe-slider--disabled) .pe-slider__control {
-  cursor: pointer;
-}
-
-.pe-slider:not(.pe-slider--disabled).pe-slider--track .pe-slider__track {
   cursor: pointer;
 }
 
@@ -249,11 +238,7 @@
   transform: scale(.5);
 }
 
-.pe-slider {
-  height: 52px;
-}
-
-.pe-slider>.pe-icon {
+.pe-slider, .pe-slider>.pe-icon {
   height: 52px;
 }
 

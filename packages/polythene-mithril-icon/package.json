@@ -7,7 +7,7 @@
   "sideEffects": false,
   "scripts": {
     "clean": "rm -rf dist/*",
-    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.es.js",
+    "rollup": "../../node_modules/rollup/dist/bin/rollup -c ../../scripts/bundling/rollup.umd.js && ../../node_modules/rollup/dist/bin/rollup -c ../../scripts/bundling/rollup.es.js",
     "build": "npm run clean && npm run rollup",
     "typecheck": "../../node_modules/typescript/bin/tsc --noEmit --strict --allowJs --checkJs --noImplicitAny false --lib es2015,DOM,ScriptHost --esModuleInterop true src/index.js"
   },
@@ -17,12 +17,12 @@
     "README.md"
   ],
   "dependencies": {
-    "cyano-mithril": "^0.6.2",
+    "cyano-mithril": "^0.6.8",
     "polythene-core-icon": "1.7.5",
     "polythene-mithril-svg": "1.7.5"
   },
   "devDependencies": {
-    "@types/mithril": "^2.0.0"
+    "@types/mithril": "^2.0.7"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

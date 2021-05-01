@@ -59,16 +59,10 @@
 }
 
 .pe-list-tile:not(.pe-list-tile--header) .pe-list-tile__primary {
-  -webkit-box-flex: 1;
-     -moz-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  -webkit-flex-basis: px;
-            flex-basis: px;
   position: relative;
 }
 
+.pe-list-tile:not(.pe-list-tile--header) .pe-list-tile__primary,
 .pe-list-tile:not(.pe-list-tile--header) .pe-list-tile__primary .pe-list-tile__content:not(.pe-list-tile__content-front) {
   -webkit-box-flex: 1;
      -moz-box-flex: 1;
@@ -405,6 +399,10 @@ html.pe-no-touch .pe-list-tile.pe-list-tile--selectable:not(.pe-list-tile--heade
   color: hsla(0, 0%, 100%, .7);
 }
 
+.pe-dark-tone.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) .pe-list-tile__primary,
+.pe-dark-tone .pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) .pe-list-tile__primary,
+.pe-dark-tone.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) pe-list-tile__secondary,
+.pe-dark-tone .pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) pe-list-tile__secondary,
 .pe-dark-tone.pe-list-tile.pe-list-tile--selected.pe-dark-tone.pe-list-tile .pe-list-tile__primary,
 .pe-dark-tone .pe-list-tile.pe-list-tile--selected.pe-dark-tone.pe-list-tile .pe-list-tile__primary,
 .pe-dark-tone.pe-list-tile.pe-list-tile--selected.pe-dark-tone .pe-list-tile .pe-list-tile__primary,
@@ -413,13 +411,6 @@ html.pe-no-touch .pe-list-tile.pe-list-tile--selectable:not(.pe-list-tile--heade
 .pe-dark-tone .pe-list-tile.pe-list-tile--selected.pe-dark-tone.pe-list-tile pe-list-tile__secondary,
 .pe-dark-tone.pe-list-tile.pe-list-tile--selected.pe-dark-tone .pe-list-tile pe-list-tile__secondary,
 .pe-dark-tone .pe-list-tile.pe-list-tile--selected.pe-dark-tone .pe-list-tile pe-list-tile__secondary {
-  background-color: hsla(0, 0%, 100%, .08);
-}
-
-.pe-dark-tone.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) .pe-list-tile__primary,
-.pe-dark-tone .pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) .pe-list-tile__primary,
-.pe-dark-tone.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) pe-list-tile__secondary,
-.pe-dark-tone .pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) pe-list-tile__secondary {
   background-color: hsla(0, 0%, 100%, .08);
 }
 
@@ -488,15 +479,10 @@ html.pe-no-touch .pe-list-tile.pe-list-tile--selectable:not(.pe-list-tile--heade
   color: rgba(0, 0, 0, .54);
 }
 
-.pe-light-tone.pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__primary:focus,
-.pe-light-tone .pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__primary:focus,
-.pe-light-tone.pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__secondary:focus,
-.pe-light-tone .pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__secondary:focus,
-.pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__primary:focus,
-.pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__secondary:focus {
-  background-color: rgba(0, 0, 0, .06);
-}
-
+.pe-light-tone.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) .pe-list-tile__primary,
+.pe-light-tone .pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) .pe-list-tile__primary,
+.pe-light-tone.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) pe-list-tile__secondary,
+.pe-light-tone .pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) pe-list-tile__secondary,
 .pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile .pe-list-tile__primary,
 .pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile .pe-list-tile__primary,
 .pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile .pe-list-tile__primary,
@@ -509,28 +495,24 @@ html.pe-no-touch .pe-list-tile.pe-list-tile--selectable:not(.pe-list-tile--heade
 .pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-list-tile .pe-list-tile__primary,
 .pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-list-tile pe-list-tile__secondary,
 .pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-list-tile pe-list-tile__secondary,
+.pe-light-tone.pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__primary:focus,
+.pe-light-tone .pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__primary:focus,
+.pe-light-tone.pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__secondary:focus,
+.pe-light-tone .pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__secondary:focus,
+.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) .pe-list-tile__primary,
+.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) pe-list-tile__secondary,
 .pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile .pe-list-tile__primary,
 .pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile .pe-list-tile__primary,
 .pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile pe-list-tile__secondary,
 .pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile pe-list-tile__secondary,
 .pe-list-tile.pe-list-tile--selected.pe-list-tile .pe-list-tile__primary,
-.pe-list-tile.pe-list-tile--selected.pe-list-tile pe-list-tile__secondary {
+.pe-list-tile.pe-list-tile--selected.pe-list-tile pe-list-tile__secondary,
+.pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__primary:focus,
+.pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__secondary:focus {
   background-color: rgba(0, 0, 0, .06);
 }
 
-.pe-light-tone.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) .pe-list-tile__primary,
-.pe-light-tone .pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) .pe-list-tile__primary,
-.pe-light-tone.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) pe-list-tile__secondary,
-.pe-light-tone .pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) pe-list-tile__secondary,
-.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) .pe-list-tile__primary,
-.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) pe-list-tile__secondary {
-  background-color: rgba(0, 0, 0, .06);
-}
-
-.pe-no-touch .pe-dark-tone .pe-list-tile:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected) {
-  color: #fff;
-}
-
+.pe-no-touch .pe-dark-tone .pe-list-tile:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected),
 .pe-no-touch .pe-dark-tone .pe-list-tile:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected) .pe-list-tile__primary .pe-list-tile__content-front {
   color: #fff;
 }
@@ -541,11 +523,8 @@ html.pe-no-touch .pe-list-tile.pe-list-tile--selectable:not(.pe-list-tile--heade
 }
 
 .pe-no-touch .pe-light-tone .pe-list-tile:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected),
-.pe-no-touch .pe-list-tile:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected) {
-  color: rgba(0, 0, 0, .87);
-}
-
 .pe-no-touch .pe-light-tone .pe-list-tile:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected) .pe-list-tile__primary .pe-list-tile__content-front,
+.pe-no-touch .pe-list-tile:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected),
 .pe-no-touch .pe-list-tile:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected) .pe-list-tile__primary .pe-list-tile__content-front {
   color: rgba(0, 0, 0, .87);
 }

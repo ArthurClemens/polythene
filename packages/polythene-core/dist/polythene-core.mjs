@@ -1,3 +1,41 @@
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+
+    if (enumerableOnly) {
+      symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    }
+
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
 function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -11,40 +49,6 @@ function _defineProperty(obj, key, value) {
   }
 
   return obj;
-}
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(source, true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(source).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
 }
 
 function _objectWithoutPropertiesLoose(source, excluded) {
@@ -84,7 +88,7 @@ function _objectWithoutProperties(source, excluded) {
 }
 
 function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
 
 function _arrayWithHoles(arr) {
@@ -92,13 +96,17 @@ function _arrayWithHoles(arr) {
 }
 
 function _iterableToArrayLimit(arr, i) {
+  var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]);
+
+  if (_i == null) return;
   var _arr = [];
   var _n = true;
   var _d = false;
-  var _e = undefined;
+
+  var _s, _e;
 
   try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
       _arr.push(_s.value);
 
       if (i && _arr.length === i) break;
@@ -117,8 +125,25 @@ function _iterableToArrayLimit(arr, i) {
   return _arr;
 }
 
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+
+  return arr2;
+}
+
 function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
 // @ts-check
@@ -172,7 +197,7 @@ var _Conditional = function _Conditional(_ref) {
   }
 
   var visible = mode !== modes.hidden;
-  return visible ? h(props.instance, _objectSpread2({}, props, {
+  return visible ? h(props.instance, _objectSpread2(_objectSpread2({}, props), {}, {
     didHide:
     /**
      * @param {any} args
@@ -704,7 +729,7 @@ var Multi = function Multi(_ref) {
       return resolveHide(instanceId);
     };
 
-    return _objectSpread2({}, mOptions, {
+    return _objectSpread2(_objectSpread2({}, mOptions), {}, {
       // keyId: mOptions.queue ? new Date().getTime() : undefined, // to force rendering a new component
       instanceId: instanceId,
       spawn: spawn,
@@ -808,7 +833,7 @@ var Multi = function Multi(_ref) {
     : h(mOptions.holderSelector, {
       className: props.position === "container" ? "pe-multiple--container" : "pe-multiple--screen"
     }, candidates.map(function (itemData) {
-      return h(mOptions.instance, _objectSpread2({}, unpackAttrs(props), {
+      return h(mOptions.instance, _objectSpread2(_objectSpread2({}, unpackAttrs(props)), {}, {
         fromMultipleClear: clear,
         spawnId: spawn,
         // from mOptions:
@@ -854,24 +879,24 @@ var initialTransitionState = {
 var transitionStateReducer = function transitionStateReducer(state, type) {
   switch (type) {
     case TRANSITION_TYPES.SHOW:
-      return _objectSpread2({}, state, {
+      return _objectSpread2(_objectSpread2({}, state), {}, {
         isTransitioning: true,
         isVisible: true
       });
 
     case TRANSITION_TYPES.HIDE:
-      return _objectSpread2({}, state, {
+      return _objectSpread2(_objectSpread2({}, state), {}, {
         isTransitioning: true
       });
 
     case TRANSITION_TYPES.SHOW_DONE:
-      return _objectSpread2({}, state, {
+      return _objectSpread2(_objectSpread2({}, state), {}, {
         isTransitioning: false,
         isVisible: true
       });
 
     case TRANSITION_TYPES.HIDE_DONE:
-      return _objectSpread2({}, state, {
+      return _objectSpread2(_objectSpread2({}, state), {}, {
         isTransitioning: false,
         isVisible: false
       });
@@ -1035,8 +1060,8 @@ var transitionComponent = function transitionComponent(_ref) {
       beforeTransition = _ref.beforeTransition,
       afterTransition = _ref.afterTransition,
       showClass = _ref.showClass,
-      transitionClass = _ref.transitionClass,
-      referrer = _ref.referrer;
+      transitionClass = _ref.transitionClass;
+      _ref.referrer;
 
   if (isTransitioning) {
     return Promise.resolve();
@@ -1054,7 +1079,7 @@ var transitionComponent = function transitionComponent(_ref) {
   var transitions = props.transitions;
   var fn = isShow ? show : hide;
 
-  var opts1 = _objectSpread2({}, props, {}, domElements, {
+  var opts1 = _objectSpread2(_objectSpread2(_objectSpread2({}, props), domElements), {}, {
     showClass: showClass,
     transitionClass: transitionClass,
     duration: duration,
@@ -1062,9 +1087,9 @@ var transitionComponent = function transitionComponent(_ref) {
     timingFunction: timingFunction
   });
 
-  var opts2 = _objectSpread2({}, opts1, {}, transitions ? (isShow ? transitions.show : transitions.hide)(opts1) : undefined);
+  var opts2 = _objectSpread2(_objectSpread2({}, opts1), transitions ? (isShow ? transitions.show : transitions.hide)(opts1) : undefined);
 
-  var opts3 = _objectSpread2({}, opts2, {}, {
+  var opts3 = _objectSpread2(_objectSpread2({}, opts2), {
     duration: opts2.duration !== undefined ? opts2.duration : DEFAULT_DURATION,
     hasDuration: opts2.duration !== undefined,
     delay: opts2.delay !== undefined ? opts2.delay : DEFAULT_DELAY,
