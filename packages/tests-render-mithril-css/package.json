@@ -1,6 +1,6 @@
 {
   "name": "polythene-tests-render-mithril-css",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "description": "",
   "private": true,
   "main": "dist/js/test.js",
@@ -18,8 +18,8 @@
   },
   "dependencies": {
     "mithril": ">=1.1.6",
-    "polythene-css": "1.7.4",
-    "polythene-mithril": "1.7.4",
+    "polythene-css": "1.7.5",
+    "polythene-mithril": "1.7.5",
     "write-j2c": "1.0.3"
   },
   "devDependencies": {

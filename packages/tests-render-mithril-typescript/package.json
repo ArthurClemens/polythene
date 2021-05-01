@@ -1,6 +1,6 @@
 {
   "name": "tests-render-mithril-typescript",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "description": "",
   "private": true,
   "scripts": {
@@ -16,8 +16,8 @@
   "dependencies": {
     "es6-object-assign": "^1.1.0",
     "mithril": ">=1.1.6",
-    "polythene-css": "1.7.4",
-    "polythene-mithril": "1.7.4"
+    "polythene-css": "1.7.5",
+    "polythene-mithril": "1.7.5"
   },
   "devDependencies": {
     "@types/mithril": "^2.0.0",

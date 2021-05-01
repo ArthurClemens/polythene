@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-toolbar",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "description": "",
   "main": "dist/polythene-react-toolbar",
   "module": "dist/polythene-react-toolbar.mjs",
@@ -18,8 +18,8 @@
   ],
   "dependencies": {
     "cyano-react": "^0.6.2",
-    "polythene-core-toolbar": "1.7.4",
-    "polythene-react-shadow": "1.7.4"
+    "polythene-core-toolbar": "1.7.5",
+    "polythene-react-shadow": "1.7.5"
   },
   "devDependencies": {
     "@types/react": "^16.8.23"

@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-dialog",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "description": "",
   "main": "dist/polythene-core-dialog",
   "module": "dist/polythene-core-dialog.mjs",
@@ -16,12 +16,12 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "1.7.4",
-    "polythene-css-classes": "1.7.4",
-    "polythene-theme": "1.7.4"
+    "polythene-core": "1.7.5",
+    "polythene-css-classes": "1.7.5",
+    "polythene-theme": "1.7.5"
   },
   "devDependencies": {
-    "polythene-core-dialog-pane": "1.7.4"
+    "polythene-core-dialog-pane": "1.7.5"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

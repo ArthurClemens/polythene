@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-tabs",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "description": "",
   "main": "dist/polythene-core-tabs",
   "module": "dist/polythene-core-tabs.mjs",
@@ -16,16 +16,16 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "1.7.4",
-    "polythene-core-icon-button": "1.7.4",
-    "polythene-css-button": "1.7.4",
-    "polythene-css-classes": "1.7.4",
-    "polythene-theme": "1.7.4",
-    "polythene-utilities": "1.7.4"
+    "polythene-core": "1.7.5",
+    "polythene-core-icon-button": "1.7.5",
+    "polythene-css-button": "1.7.5",
+    "polythene-css-classes": "1.7.5",
+    "polythene-theme": "1.7.5",
+    "polythene-utilities": "1.7.5"
   },
   "devDependencies": {
-    "polythene-core-button": "1.7.4",
-    "polythene-core-icon": "1.7.4"
+    "polythene-core-button": "1.7.5",
+    "polythene-core-icon": "1.7.5"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",
