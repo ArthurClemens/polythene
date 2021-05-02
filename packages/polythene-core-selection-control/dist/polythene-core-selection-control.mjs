@@ -1,4 +1,4 @@
-import { classForSize, filterSupportedAttributes } from 'polythene-core';
+import { classForSize, filterSupportedAttributes, createUid } from 'polythene-core';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -232,9 +232,12 @@ var _SelectionControl = function _SelectionControl(_ref) {
     "data-test-id": props.testId
   }, {
     className: [classes.component, props.instanceClass, // for instance pe-checkbox-control
-    isChecked ? classes.on : classes.off, props.disabled ? classes.disabled : null, inactive ? classes.inactive : null, classForSize(classes, props.size), props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
-  });
+    isChecked ? classes.on : classes.off, props.disabled ? classes.disabled : null, inactive ? classes.inactive : null, classForSize(classes, props.size), props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ") // Note that role will be set on the button element
 
+  }); // Id to match the label to the control
+
+
+  var uid = createUid();
   var content = h("label", _extends({}, {
     className: classes.formLabel
   }, viewControlClickHandler && _defineProperty({}, a.onclick, function (e) {
@@ -243,7 +246,13 @@ var _SelectionControl = function _SelectionControl(_ref) {
     inactive: inactive,
     checked: isChecked,
     events: _defineProperty({}, a.onkeydown, viewControlKeyDownHandler)
-  })), props.label ? h(".".concat(classes.label), props.label) : null, h("input", _extends({}, props.events, {
+  }, props.label ? {
+    aria: {
+      "aria-labelledby": uid
+    }
+  } : undefined)), props.label ? h(".".concat(classes.label), {
+    id: uid
+  }, props.label) : null, h("input", _extends({}, props.events, {
     name: props.name,
     type: props.type,
     value: props.value,

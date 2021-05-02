@@ -71,7 +71,8 @@ var _Switch = function _Switch(_ref) {
     },
     // default: always selectable, regardless of the checked state
     instanceClass: classes.component,
-    type: "checkbox"
+    type: "checkbox",
+    role: props.role || "switch"
   });
 
   return h(SelectionControl, componentProps);
@@ -107,7 +108,13 @@ var _ViewControl = function _ViewControl(_ref) {
     disabled: props.disabled,
     events: props.events,
     ink: props.ink || false,
-    inactive: props.inactive
+    inactive: props.inactive,
+    aria: _extends({}, props.aria, {
+      role: "switch",
+      id: props.id,
+      "aria-checked": props.checked.toString(),
+      "aria-readonly": (props.disabled || props.inactive).toString()
+    })
   }, props.iconButton))]);
 };
 

@@ -311,7 +311,9 @@ var _Button = function _Button(_ref) {
     props.events && props.events[a.onkeyup] && props.events[a.onkeyup](e);
   }), _objectSpread3)), props.url, disabled ? {
     disabled: true
-  } : null);
+  } : null, props.aria || {
+    role: "button"
+  });
 
   var noink = props.ink !== undefined && props.ink === false;
   var buttonContent = props.content ? props.content : props.label !== undefined ? _typeof(props.label) === "object" ? props.label : h("div", {

@@ -5,7 +5,18 @@ import { getDepthClass } from "polythene-core-shadow";
 
 const DEFAULT_SHADOW_DEPTH = 1;
 
-export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Shadow, Icon, ...props }) => {
+export const _Button = ({
+  h,
+  a,
+  getRef,
+  useState,
+  useEffect,
+  useRef,
+  Ripple,
+  Shadow,
+  Icon,
+  ...props
+}) => {
   const events = props.events || {};
   const [domElement, setDomElement] = useState();
   const [isInactive, setIsInactive] = useState(props.inactive);
@@ -14,7 +25,9 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
   const onClickHandler = events[a.onclick] || (() => {});
   const onKeyUpHandler = events[a.onkeyup] || onClickHandler;
   const shadowDepth = props.raised
-    ? props.shadowDepth !== undefined ? props.shadowDepth : DEFAULT_SHADOW_DEPTH
+    ? props.shadowDepth !== undefined
+      ? props.shadowDepth
+      : DEFAULT_SHADOW_DEPTH
     : 0;
   const animateOnTap = props.animateOnTap !== false ? true : false;
 
@@ -23,25 +36,26 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
       return;
     }
     setIsInactive(true);
-    setTimeout(() => (
-      setIsInactive(false)
-    ), props.inactivate * 1000);
+    setTimeout(() => setIsInactive(false), props.inactivate * 1000);
   };
 
-  const hasHover = !disabled && !props.selected && (
-    props.raised
-      ? props.wash
-      : props.wash !== false
-  );
+  const hasHover =
+    !disabled &&
+    !props.selected &&
+    (props.raised ? props.wash : props.wash !== false);
 
-  const handleMouseLeave = e => {
+  const handleMouseLeave = (e) => {
     domElement.blur();
     domElement.removeEventListener("mouseleave", handleMouseLeave);
   };
 
-  const componentProps = Object.assign({},
-    filterSupportedAttributes(props, { add: [a.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
-    getRef(dom => {
+  const componentProps = Object.assign(
+    {},
+    filterSupportedAttributes(props, {
+      add: [a.formaction, "type"],
+      remove: ["style"],
+    }), // Set style on content, not on component
+    getRef((dom) => {
       if (!dom || domElement) {
         return;
       }
@@ -69,7 +83,7 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
         disabled ? classes.disabled : null,
         inactive ? classes.inactive : null,
         props.separatorAtStart ? classes.separatorAtStart : null,
-        (props.border || props.borders) ? classes.border : null,
+        props.border || props.borders ? classes.border : null,
         props.dropdown ? classes.hasDropdown : null,
         props.dropdown
           ? props.dropdown.open
@@ -79,100 +93,108 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
         props.tone === "dark" ? "pe-dark-tone" : null,
         props.tone === "light" ? "pe-light-tone" : null,
         props.className || props[a.class],
-      ].join(" ")
+      ].join(" "),
     },
-    inactive ? null : {
-      [a.tabindex]: disabled || inactive
-        ? -1
-        : props[a.tabindex] || 0,
-      ...events,
-      [a.onmousedown]: e => (
-        domElement && domElement.addEventListener && domElement.addEventListener("mouseleave", handleMouseLeave),
-        props.events && props.events[a.onmousedown] && props.events[a.onmousedown](e)
-      ),
-      [a.onclick]: e => (
-        document.activeElement === domElement && document.activeElement.blur(),
-        handleInactivate(e),
-        onClickHandler(e)
-      ),
-      [a.onkeyup]: e => {
-        if (e.keyCode === 13 && document.activeElement === domElement) {
-          document.activeElement.blur();
-          if (onKeyUpHandler) {
-            onKeyUpHandler(e);
-          }
-        }
-        props.events && props.events[a.onkeyup] && props.events[a.onkeyup](e)
-      }
-    },
+    inactive
+      ? null
+      : {
+          [a.tabindex]: disabled || inactive ? -1 : props[a.tabindex] || 0,
+          ...events,
+          [a.onmousedown]: (e) => (
+            domElement &&
+              domElement.addEventListener &&
+              domElement.addEventListener("mouseleave", handleMouseLeave),
+            props.events &&
+              props.events[a.onmousedown] &&
+              props.events[a.onmousedown](e)
+          ),
+          [a.onclick]: (e) => (
+            document.activeElement === domElement &&
+              document.activeElement.blur(),
+            handleInactivate(e),
+            onClickHandler(e)
+          ),
+          [a.onkeyup]: (e) => {
+            if (e.keyCode === 13 && document.activeElement === domElement) {
+              document.activeElement.blur();
+              if (onKeyUpHandler) {
+                onKeyUpHandler(e);
+              }
+            }
+            props.events &&
+              props.events[a.onkeyup] &&
+              props.events[a.onkeyup](e);
+          },
+        },
     props.url,
     disabled ? { disabled: true } : null,
+    props.aria || { role: "button" }
   );
 
   const noink = props.ink !== undefined && props.ink === false;
   const buttonContent = props.content
     ? props.content
     : props.label !== undefined
-      ? typeof props.label === "object"
-        ? props.label
-        : h("div",
+    ? typeof props.label === "object"
+      ? props.label
+      : h(
+          "div",
           {
             className: classes.label,
           },
-          h("div",
+          h(
+            "div",
             {
               className: classes.textLabel,
-              style: props.textStyle
+              style: props.textStyle,
             },
             props.label
           )
         )
-      : props.children;
-  
+    : props.children;
 
-  const componentContent = h("div",
+  const componentContent = h(
+    "div",
     {
       className: classes.content,
-      style: props.style
+      style: props.style,
     },
     [
       h(Shadow, {
-        shadowDepth: shadowDepth !== undefined
-          ? shadowDepth
-          : 0,
-        animated: true
+        shadowDepth: shadowDepth !== undefined ? shadowDepth : 0,
+        animated: true,
       }),
       disabled || noink
         ? null
-        : h(Ripple, Object.assign({},
-          {
-            target: domElement
-          },
-          props.ripple
-        )),
-      h("div",
+        : h(
+            Ripple,
+            Object.assign(
+              {},
+              {
+                target: domElement,
+              },
+              props.ripple
+            )
+          ),
+      h(
+        "div",
         {
-          className: classes.wash
+          className: classes.wash,
         },
         h("div", { className: classes.washColor })
       ),
-      
       buttonContent,
       props.dropdown
-        ? h(Icon,
-          {
+        ? h(Icon, {
             className: classes.dropdown,
-            svg: { content: h.trust(iconDropdownDown) }
-          }
-        )
-        : null
+            svg: { content: h.trust(iconDropdownDown) },
+          })
+        : null,
     ]
   );
-  return h(props.element || "a",
-    componentProps, [
-      props.before,
-      componentContent,
-      props.after,
-    ]
-  );
+  return h(props.element || "a", componentProps, [
+    props.before,
+    componentContent,
+    props.after,
+  ]);
 };
