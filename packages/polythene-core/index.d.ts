@@ -266,6 +266,11 @@ export interface CommonOptions {
      * Boolean as string.
      */
     "aria-readonly"?: string;
+
+    /**
+     * Boolean as string.
+     */
+    "aria-disabled"?: string;
   };
 }
 

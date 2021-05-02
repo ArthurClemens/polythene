@@ -49,6 +49,16 @@ export const _Button = ({
     domElement.removeEventListener("mouseleave", handleMouseLeave);
   };
 
+  const aria = Object.assign(
+    {},
+    props.aria || { role: "button" },
+    disabled || inactive
+      ? {
+          "aria-disabled": "true",
+        }
+      : undefined
+  );
+
   const componentProps = Object.assign(
     {},
     filterSupportedAttributes(props, {
@@ -69,36 +79,40 @@ export const _Button = ({
       className: [
         classes.super,
         props.parentClassName || classes.component,
-        props.contained ? classes.contained : null,
+        props.contained ? classes.contained : undefined,
         // Raised button classes
-        props.raised ? classes.contained : null,
-        props.raised ? classes.raised : null,
-        props.raised && animateOnTap ? shadowClasses.with_active_shadow : null,
-        props.raised && animateOnTap ? getDepthClass(shadowDepth + 1) : null,
+        props.raised ? classes.contained : undefined,
+        props.raised ? classes.raised : undefined,
+        props.raised && animateOnTap
+          ? shadowClasses.with_active_shadow
+          : undefined,
+        props.raised && animateOnTap
+          ? getDepthClass(shadowDepth + 1)
+          : undefined,
         //
-        hasHover ? classes.hasHover : null,
-        props.selected ? classes.selected : null,
-        props.highLabel ? classes.highLabel : null,
-        props.extraWide ? classes.extraWide : null,
-        disabled ? classes.disabled : null,
-        inactive ? classes.inactive : null,
-        props.separatorAtStart ? classes.separatorAtStart : null,
-        props.border || props.borders ? classes.border : null,
-        props.dropdown ? classes.hasDropdown : null,
+        hasHover ? classes.hasHover : undefined,
+        props.selected ? classes.selected : undefined,
+        props.highLabel ? classes.highLabel : undefined,
+        props.extraWide ? classes.extraWide : undefined,
+        disabled ? classes.disabled : undefined,
+        inactive ? classes.inactive : undefined,
+        props.separatorAtStart ? classes.separatorAtStart : undefined,
+        props.border || props.borders ? classes.border : undefined,
+        props.dropdown ? classes.hasDropdown : undefined,
         props.dropdown
           ? props.dropdown.open
             ? classes.dropdownOpen
             : classes.dropdownClosed
-          : null,
-        props.tone === "dark" ? "pe-dark-tone" : null,
-        props.tone === "light" ? "pe-light-tone" : null,
+          : undefined,
+        props.tone === "dark" ? "pe-dark-tone" : undefined,
+        props.tone === "light" ? "pe-light-tone" : undefined,
         props.className || props[a.class],
       ].join(" "),
+      [a.tabindex]: (props[a.tabindex] || 0).toString(), // do not set to -1 when disabled or inactive to allow screen readers to access the button
     },
     inactive
       ? null
       : {
-          [a.tabindex]: disabled || inactive ? -1 : props[a.tabindex] || 0,
           ...events,
           [a.onmousedown]: (e) => (
             domElement &&
@@ -127,8 +141,8 @@ export const _Button = ({
           },
         },
     props.url,
-    disabled ? { disabled: true } : null,
-    props.aria || { role: "button" }
+    disabled ? { disabled: true } : undefined,
+    aria
   );
 
   const noink = props.ink !== undefined && props.ink === false;
@@ -165,7 +179,7 @@ export const _Button = ({
         animated: true,
       }),
       disabled || noink
-        ? null
+        ? undefined
         : h(
             Ripple,
             Object.assign(

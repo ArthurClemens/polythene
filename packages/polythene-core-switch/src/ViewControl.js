@@ -53,7 +53,6 @@ export const _ViewControl = ({ h, a, IconButton, Shadow, ...props }) => {
             role: "switch",
             id: props.id,
             "aria-checked": props.checked.toString(),
-            "aria-readonly": (props.disabled || props.inactive).toString(),
           }),
         },
         props.iconButton

@@ -112,8 +112,7 @@ var _ViewControl = function _ViewControl(_ref) {
     aria: _extends({}, props.aria, {
       role: "switch",
       id: props.id,
-      "aria-checked": props.checked.toString(),
-      "aria-readonly": (props.disabled || props.inactive).toString()
+      "aria-checked": props.checked.toString()
     })
   }, props.iconButton))]);
 };

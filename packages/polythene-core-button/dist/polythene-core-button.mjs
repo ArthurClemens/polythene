@@ -223,7 +223,7 @@ var shadowClasses = {
 
 var DEFAULT_SHADOW_DEPTH = 1;
 var _Button = function _Button(_ref) {
-  var _objectSpread3;
+  var _objectSpread2$1;
 
   var h = _ref.h,
       a = _ref.a,
@@ -275,6 +275,12 @@ var _Button = function _Button(_ref) {
     domElement.removeEventListener("mouseleave", handleMouseLeave);
   };
 
+  var aria = _extends({}, props.aria || {
+    role: "button"
+  }, disabled || inactive ? {
+    "aria-disabled": "true"
+  } : undefined);
+
   var componentProps = _extends({}, filterSupportedAttributes(props, {
     add: [a.formaction, "type"],
     remove: ["style"]
@@ -291,15 +297,15 @@ var _Button = function _Button(_ref) {
     }
   }), props.testId && {
     "data-test-id": props.testId
-  }, {
-    className: [classes["super"], props.parentClassName || classes.component, props.contained ? classes.contained : null, // Raised button classes
-    props.raised ? classes.contained : null, props.raised ? classes.raised : null, props.raised && animateOnTap ? shadowClasses.with_active_shadow : null, props.raised && animateOnTap ? getDepthClass(shadowDepth + 1) : null, //
-    hasHover ? classes.hasHover : null, props.selected ? classes.selected : null, props.highLabel ? classes.highLabel : null, props.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, props.separatorAtStart ? classes.separatorAtStart : null, props.border || props.borders ? classes.border : null, props.dropdown ? classes.hasDropdown : null, props.dropdown ? props.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
-  }, inactive ? null : _objectSpread2(_objectSpread2(_defineProperty({}, a.tabindex, disabled || inactive ? -1 : props[a.tabindex] || 0), events), {}, (_objectSpread3 = {}, _defineProperty(_objectSpread3, a.onmousedown, function (e) {
+  }, _defineProperty({
+    className: [classes["super"], props.parentClassName || classes.component, props.contained ? classes.contained : undefined, // Raised button classes
+    props.raised ? classes.contained : undefined, props.raised ? classes.raised : undefined, props.raised && animateOnTap ? shadowClasses.with_active_shadow : undefined, props.raised && animateOnTap ? getDepthClass(shadowDepth + 1) : undefined, //
+    hasHover ? classes.hasHover : undefined, props.selected ? classes.selected : undefined, props.highLabel ? classes.highLabel : undefined, props.extraWide ? classes.extraWide : undefined, disabled ? classes.disabled : undefined, inactive ? classes.inactive : undefined, props.separatorAtStart ? classes.separatorAtStart : undefined, props.border || props.borders ? classes.border : undefined, props.dropdown ? classes.hasDropdown : undefined, props.dropdown ? props.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : undefined, props.tone === "dark" ? "pe-dark-tone" : undefined, props.tone === "light" ? "pe-light-tone" : undefined, props.className || props[a["class"]]].join(" ")
+  }, a.tabindex, (props[a.tabindex] || 0).toString()), inactive ? null : _objectSpread2(_objectSpread2({}, events), {}, (_objectSpread2$1 = {}, _defineProperty(_objectSpread2$1, a.onmousedown, function (e) {
     return domElement && domElement.addEventListener && domElement.addEventListener("mouseleave", handleMouseLeave), props.events && props.events[a.onmousedown] && props.events[a.onmousedown](e);
-  }), _defineProperty(_objectSpread3, a.onclick, function (e) {
+  }), _defineProperty(_objectSpread2$1, a.onclick, function (e) {
     return document.activeElement === domElement && document.activeElement.blur(), handleInactivate(), onClickHandler(e);
-  }), _defineProperty(_objectSpread3, a.onkeyup, function (e) {
+  }), _defineProperty(_objectSpread2$1, a.onkeyup, function (e) {
     if (e.keyCode === 13 && document.activeElement === domElement) {
       document.activeElement.blur();
 
@@ -309,11 +315,9 @@ var _Button = function _Button(_ref) {
     }
 
     props.events && props.events[a.onkeyup] && props.events[a.onkeyup](e);
-  }), _objectSpread3)), props.url, disabled ? {
+  }), _objectSpread2$1)), props.url, disabled ? {
     disabled: true
-  } : null, props.aria || {
-    role: "button"
-  });
+  } : undefined, aria);
 
   var noink = props.ink !== undefined && props.ink === false;
   var buttonContent = props.content ? props.content : props.label !== undefined ? _typeof(props.label) === "object" ? props.label : h("div", {
@@ -328,7 +332,7 @@ var _Button = function _Button(_ref) {
   }, [h(Shadow, {
     shadowDepth: shadowDepth !== undefined ? shadowDepth : 0,
     animated: true
-  }), disabled || noink ? null : h(Ripple, _extends({}, {
+  }), disabled || noink ? undefined : h(Ripple, _extends({}, {
     target: domElement
   }, props.ripple)), h("div", {
     className: classes.wash
