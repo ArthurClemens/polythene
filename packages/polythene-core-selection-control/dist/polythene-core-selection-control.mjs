@@ -1,4 +1,4 @@
-import { classForSize, filterSupportedAttributes, createUid } from 'polythene-core';
+import { createUid, classForSize, filterSupportedAttributes } from 'polythene-core';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -210,11 +210,19 @@ var _SelectionControl = function _SelectionControl(_ref) {
     var newChecked = !isChecked;
     setIsChecked(newChecked);
     notifyChange(e, newChecked);
-  };
+  }; // Id to match the label to the control
 
+
+  var uid = createUid();
+
+  var aria = _extends({}, props.aria, props.label ? {
+    "aria-labelledby": uid
+  } : undefined);
+
+  var isAriaButton = aria.role === "button";
   var viewControlClickHandler = props.events && props.events[a.onclick];
   var viewControlKeyDownHandler = props.events && props.events[a.onkeydown] ? props.events[a.onkeydown] : function (e) {
-    if (e.key === "Enter" || e.keyCode === 32) {
+    if (e.key === "Space" || e.keyCode === 32 || isAriaButton && (e.key === "Enter" || e.keyCode === 13)) {
       e.preventDefault();
 
       if (viewControlClickHandler) {
@@ -232,12 +240,9 @@ var _SelectionControl = function _SelectionControl(_ref) {
     "data-test-id": props.testId
   }, {
     className: [classes.component, props.instanceClass, // for instance pe-checkbox-control
-    isChecked ? classes.on : classes.off, props.disabled ? classes.disabled : null, inactive ? classes.inactive : null, classForSize(classes, props.size), props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ") // Note that role will be set on the button element
+    isChecked ? classes.on : classes.off, props.disabled ? classes.disabled : null, inactive ? classes.inactive : null, classForSize(classes, props.size), props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
+  });
 
-  }); // Id to match the label to the control
-
-
-  var uid = createUid();
   var content = h("label", _extends({}, {
     className: classes.formLabel
   }, viewControlClickHandler && _defineProperty({}, a.onclick, function (e) {
@@ -245,12 +250,9 @@ var _SelectionControl = function _SelectionControl(_ref) {
   })), [props.before, h(ViewControl, _extends({}, props, {
     inactive: inactive,
     checked: isChecked,
-    events: _defineProperty({}, a.onkeydown, viewControlKeyDownHandler)
-  }, props.label ? {
-    aria: {
-      "aria-labelledby": uid
-    }
-  } : undefined)), props.label ? h(".".concat(classes.label), {
+    events: _defineProperty({}, a.onkeydown, viewControlKeyDownHandler),
+    aria: aria
+  })), props.label ? h(".".concat(classes.label), {
     id: uid
   }, props.label) : null, h("input", _extends({}, props.events, {
     name: props.name,
@@ -288,7 +290,8 @@ var _ViewControl = function _ViewControl(_ref) {
   var h = _ref.h,
       Icon = _ref.Icon,
       IconButton = _ref.IconButton,
-      props = _objectWithoutProperties(_ref, ["h", "Icon", "IconButton"]);
+      aria = _ref.aria,
+      props = _objectWithoutProperties(_ref, ["h", "Icon", "IconButton", "aria"]);
 
   var element = props.element || ".".concat(classes.box);
   var content = h(IconButton, _extends({}, {
@@ -303,7 +306,8 @@ var _ViewControl = function _ViewControl(_ref) {
     },
     disabled: props.disabled,
     events: props.events,
-    inactive: props.inactive
+    inactive: props.inactive,
+    aria: aria
   }, props.iconButton // for example for hover behaviour
   ));
   return h(element, null, content);

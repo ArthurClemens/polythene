@@ -65,12 +65,30 @@ export const _SelectionControl = ({
     notifyChange(e, newChecked);
   };
 
+  // Id to match the label to the control
+  const uid = createUid();
+
+  const aria = Object.assign(
+    {},
+    props.aria,
+    props.label
+      ? {
+          "aria-labelledby": uid,
+        }
+      : undefined
+  );
+  const isAriaButton = aria.role === "button";
+
   const viewControlClickHandler = props.events && props.events[a.onclick];
   const viewControlKeyDownHandler =
     props.events && props.events[a.onkeydown]
       ? props.events[a.onkeydown]
       : (e) => {
-          if (e.key === "Enter" || e.keyCode === 32) {
+          if (
+            e.key === "Space" ||
+            e.keyCode === 32 ||
+            (isAriaButton && (e.key === "Enter" || e.keyCode === 13))
+          ) {
             e.preventDefault();
             if (viewControlClickHandler) {
               viewControlClickHandler(e);
@@ -96,12 +114,8 @@ export const _SelectionControl = ({
         props.tone === "light" ? "pe-light-tone" : null,
         props.className || props[a.class],
       ].join(" "),
-      // Note that role will be set on the button element
     }
   );
-
-  // Id to match the label to the control
-  const uid = createUid();
 
   const content = h(
     "label",
@@ -118,25 +132,15 @@ export const _SelectionControl = ({
       props.before,
       h(
         ViewControl,
-        Object.assign(
-          {},
-          props,
-          {
-            inactive,
-            checked: isChecked,
-            events: {
-              // Only use key down event; click events are handled by input element
-              [a.onkeydown]: viewControlKeyDownHandler,
-            },
+        Object.assign({}, props, {
+          inactive,
+          checked: isChecked,
+          events: {
+            // Only use key down event; click events are handled by input element
+            [a.onkeydown]: viewControlKeyDownHandler,
           },
-          props.label
-            ? {
-                aria: {
-                  "aria-labelledby": uid,
-                },
-              }
-            : undefined
-        )
+          aria,
+        })
       ),
       props.label ? h(`.${classes.label}`, { id: uid }, props.label) : null,
       h(

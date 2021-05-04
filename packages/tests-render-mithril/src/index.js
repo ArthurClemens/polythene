@@ -13,39 +13,41 @@ addLayoutStyles();
 const TITLE = "Polythene Components for Mithril";
 
 const navBar = () =>
-  h(css.headerRow, h(Toolbar,
-    {
-      style: { backgroundColor: "rgba(255,255,255,.93)" }
-    },
-    h(ToolbarTitle, {
-      text: TITLE
-    })
-  ));
+  h(
+    css.headerRow,
+    h(
+      Toolbar,
+      {
+        style: { backgroundColor: "rgba(255,255,255,.93)" },
+      },
+      h(ToolbarTitle, {
+        text: TITLE,
+      })
+    )
+  );
 
 const index = {
-  oncreate: () => (
-    document.title = TITLE
-  ),
-  view: () =>
-    [
-      navBar(),
-      h(".navbar-spacer"),
-      h(List,
-        { className: "index-list" },
-        routes.map(route => (
-          h(ListTile, {
-            element: h.route.Link || "a", // let this work for Mithril 1.1.6
-            title: route.name,
-            hoverable: true,
-            url: {
-              href: route.path,
-              oncreate: h.route.Link ? undefined : h.route.link // let this work for Mithril 1.1.6
-            }
-          })
-        ))
-      ),
-      h(Footer)
-    ]
+  oncreate: () => (document.title = TITLE),
+  view: () => [
+    navBar(),
+    h(".navbar-spacer"),
+    h(
+      List,
+      { className: "index-list" },
+      routes.map((route) =>
+        h(ListTile, {
+          element: h.route.Link || "a", // let this work for Mithril 2.x
+          title: route.name,
+          hoverable: true,
+          url: {
+            href: route.path,
+            oncreate: h.route.Link ? undefined : h.route.link, // let this work for Mithril 1.1.6
+          },
+        })
+      )
+    ),
+    h(Footer),
+  ],
 };
 
 if (typeof h.route.prefix === "function") {
@@ -55,10 +57,10 @@ if (typeof h.route.prefix === "function") {
 }
 const mountNode = document.querySelector("#app");
 
-const routeData = routes.reduce((acc, route) => (
-  acc[route.path] = Page(route, "/"),
-  acc
-), {
-  "/": index
-});
+const routeData = routes.reduce(
+  (acc, route) => ((acc[route.path] = Page(route, "/")), acc),
+  {
+    "/": index,
+  }
+);
 h.route(mountNode, "/", routeData);

@@ -281,6 +281,8 @@ var _Button = function _Button(_ref) {
     "aria-disabled": "true"
   } : undefined);
 
+  var isAriaButton = aria.role === "button";
+
   var componentProps = _extends({}, filterSupportedAttributes(props, {
     add: [a.formaction, "type"],
     remove: ["style"]
@@ -306,15 +308,18 @@ var _Button = function _Button(_ref) {
   }), _defineProperty(_objectSpread2$1, a.onclick, function (e) {
     return document.activeElement === domElement && document.activeElement.blur(), handleInactivate(), onClickHandler(e);
   }), _defineProperty(_objectSpread2$1, a.onkeyup, function (e) {
-    if (e.keyCode === 13 && document.activeElement === domElement) {
-      document.activeElement.blur();
+    if (document.activeElement === domElement) {
+      if (e.key === "Space" || e.keyCode === 32 || isAriaButton && (e.key === "Enter" || e.keyCode === 13)) {
+        // document.activeElement.blur();
+        if (onKeyUpHandler) {
+          onKeyUpHandler(e);
+        }
+      }
 
-      if (onKeyUpHandler) {
-        onKeyUpHandler(e);
+      if (props.events && props.events[a.onkeyup]) {
+        props.events[a.onkeyup](e);
       }
     }
-
-    props.events && props.events[a.onkeyup] && props.events[a.onkeyup](e);
   }), _objectSpread2$1)), props.url, disabled ? {
     disabled: true
   } : undefined, aria);

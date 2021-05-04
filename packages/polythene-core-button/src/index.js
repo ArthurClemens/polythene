@@ -58,6 +58,7 @@ export const _Button = ({
         }
       : undefined
   );
+  const isAriaButton = aria.role === "button";
 
   const componentProps = Object.assign(
     {},
@@ -129,15 +130,21 @@ export const _Button = ({
             onClickHandler(e)
           ),
           [a.onkeyup]: (e) => {
-            if (e.keyCode === 13 && document.activeElement === domElement) {
-              document.activeElement.blur();
-              if (onKeyUpHandler) {
-                onKeyUpHandler(e);
+            if (document.activeElement === domElement) {
+              if (
+                e.key === "Space" ||
+                e.keyCode === 32 ||
+                (isAriaButton && (e.key === "Enter" || e.keyCode === 13))
+              ) {
+                // For accessibility: don't blur
+                if (onKeyUpHandler) {
+                  onKeyUpHandler(e);
+                }
+              }
+              if (props.events && props.events[a.onkeyup]) {
+                props.events[a.onkeyup](e);
               }
             }
-            props.events &&
-              props.events[a.onkeyup] &&
-              props.events[a.onkeyup](e);
           },
         },
     props.url,

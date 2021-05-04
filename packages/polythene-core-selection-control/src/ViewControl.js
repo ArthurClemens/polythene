@@ -20,7 +20,7 @@ const createIcon = (h, iconType, props, className) =>
     props.size ? { size: props.size } : null
   );
 
-export const _ViewControl = ({ h, Icon, IconButton, ...props }) => {
+export const _ViewControl = ({ h, Icon, IconButton, aria, ...props }) => {
   const element = props.element || `.${classes.box}`;
   const content = h(
     IconButton,
@@ -37,6 +37,7 @@ export const _ViewControl = ({ h, Icon, IconButton, ...props }) => {
         disabled: props.disabled,
         events: props.events,
         inactive: props.inactive,
+        aria,
       },
       props.iconButton // for example for hover behaviour
     )
