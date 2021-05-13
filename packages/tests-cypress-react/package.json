@@ -9,7 +9,11 @@
     "dev:serve": "../../node_modules/.bin/webpack serve --config ../../scripts/bundling/webpack.config.dev.js --port 3000 --host 0.0.0.0",
     "dev:watch": "../../node_modules/webpack/bin/webpack.js --watch --config ../../scripts/bundling/webpack.config.dev.js",
     "build": "../../node_modules/webpack/bin/webpack.js --config ../../scripts/bundling/webpack.config.prod.js",
-    "serve": "http-server -p 5000 dist"
+    "serve": "http-server -p 8080 dist",
+    "test": "npm run build && start-server-and-test serve 8080 cypress:run",
+    "test:i": "npm run build && npm-run-all --parallel dev cypress:open",
+    "cypress:run": "../../node_modules/cypress/bin/cypress run",
+    "cypress:open": "../../node_modules/cypress/bin/cypress open --config baseUrl=http://localhost:3000/#,integrationFolder=../tests-cypress-specs,testFiles=**/*.spec.js,video=false"
   },
   "dependencies": {
     "cyano-react": "^0.6.8",
@@ -22,6 +26,8 @@
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
-    "npm-run-all": "^4.1.5"
+    "http-server": "^0.12.3",
+    "npm-run-all": "^4.1.5",
+    "start-server-and-test": "^1.12.1"
   }
 }

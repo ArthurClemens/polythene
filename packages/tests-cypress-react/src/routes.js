@@ -1,16 +1,32 @@
+import testButton from "polythene-tests-cypress/Button/tests-react";
+import testTextField from "polythene-tests-cypress/TextField/tests-react";
 
-import testTextField from "polythene-tests-cypress/textfield/tests-react";
-
-export default [
+const routeData = [
   {
-    path: "/textfield",
+    path: "/Button",
+    name: "Button",
+    tests: testButton,
+  },
+  {
+    path: "/TextField",
     name: "Text Field",
     tests: testTextField,
-  }
-]
-  .concat(testTextField.map(test => ({
-    path: test.path,
-    name: test.name,
-    tests: [test],
-  })))
-;
+  },
+];
+
+const routes = routeData.reduce(
+  (acc, route) => [
+    ...acc,
+    route,
+    // ...route.tests.map((test) => {
+    //   return {
+    //     path: test.path,
+    //     name: `- ${test.name}`,
+    //     tests: [test],
+    //   };
+    // }),
+  ],
+  []
+);
+
+export default routes;

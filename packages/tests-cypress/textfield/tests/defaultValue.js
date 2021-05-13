@@ -1,13 +1,12 @@
-
 export default ({ rootPath, h, TextField }) => ({
   path: `${rootPath}/defaultValue`,
   name: "Text Field: defaultValue",
   component: {
-    view: () => 
+    view: () =>
       h(TextField, {
         testId: "defaultValue",
         defaultValue: "Text",
-        key: "field" // for React
-      })
-  }
+        key: "field",
+      }),
+  },
 });

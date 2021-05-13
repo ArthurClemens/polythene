@@ -13,18 +13,22 @@ const index = {
       List,
       routes.map((route) =>
         m(ListTile, {
+          element: m.route.Link,
           title: route.name,
           hoverable: true,
           url: {
             href: route.path,
-            oncreate: m.route.link,
           },
         })
       )
     ),
 };
 
-m.route.prefix = "#";
+if (typeof m.route.prefix === "function") {
+  m.route.prefix("#");
+} else {
+  m.route.prefix = "#";
+}
 const mountNode = document.querySelector("#app");
 const routeData = {
   "/": {
