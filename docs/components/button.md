@@ -4,15 +4,16 @@ Displays a text button with a [Ripple](ripple.md) effect.
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Main features](#main-features)
-- [Usage](#usage)
-- [Keyboard control](#keyboard-control)
-- [Options](#options)
-  - [Button specific options](#button-specific-options)
-  - [Raised button options](#raised-button-options)
-  - [Common component options](#common-component-options)
-- [Composition](#composition)
-- [CSS classes](#css-classes)
+- [Button](#button)
+  - [Main features](#main-features)
+  - [Usage](#usage)
+  - [Keyboard control](#keyboard-control)
+  - [Options](#options)
+    - [Button specific options](#button-specific-options)
+    - [Raised button options](#raised-button-options)
+    - [Common component options](#common-component-options)
+  - [Composition](#composition)
+  - [CSS classes](#css-classes)
 
 <!-- /MarkdownTOC -->
 
@@ -66,7 +67,7 @@ Press TAB to navigate to a button - it will show a highlight. Press ENTER to exe
 | **label** | use `label` or `content` | String |  | The button label |
 | **ripple** | optional (valid if `ink` is `true`) | Options object |  | Pass [ripple](ripple.md) options to define ripple behavior |
 | **selected** | optional | Boolean | false | Set to `true` to show the button as selected |
-| **separatorAtStart** | optional | Boolean | false | Set to `true` to add a separator - normally placed at the left, with RTL languages at the right side |
+| **separatorAtStart** | optional | Boolean | false | For buttons in [Button Group](button-group.md); set to `true` to add a separator - normally placed at the left, with RTL languages at the right side |
 | **textStyle**  | optional | Object |  | Style object for the text label |
 | **url** | optional | Object with `href`, optionally `oncreate` (for Mithril 1.x) or `onClick` (for React) or `to` (for React Router) |  | URL location; Mithril 2.x: only use `url.href` and set `element` to `m.route.Link`; Mithril 1.x: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 | **wash** | optional | Boolean | true | Set to false to hide the effect on hover |

@@ -15,6 +15,8 @@ export const _Icon = ({ h, a, SVG, ...props }) => {
         props.tone === "light" ? "pe-light-tone" : null,
         props.className || props[a.class],
       ].join(" "),
+      role: props.role || "img",
+      "aria-hidden": props["aria-hidden"],
     },
     props.events
   );
@@ -24,15 +26,12 @@ export const _Icon = ({ h, a, SVG, ...props }) => {
     props.content
       ? props.content
       : props.svg
-        ? h(SVG, props.svg)
-        : props.src
-          ? h("img", { src: props.src })
-          : props.children,
-    props.after
+      ? h(SVG, props.svg)
+      : props.src
+      ? h("img", { src: props.src })
+      : props.children,
+    props.after,
   ];
 
-  return h(props.element || "div",
-    componentProps,
-    content
-  );
+  return h(props.element || "div", componentProps, content);
 };

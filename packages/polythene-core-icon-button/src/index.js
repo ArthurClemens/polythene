@@ -4,8 +4,8 @@ export const _IconButton = ({ h, Icon, Button, ...props }) => {
   const content = props.content
     ? props.content
     : props.icon
-      ? h(Icon, props.icon)
-      : props.children;
+    ? h(Icon, props.icon)
+    : props.children;
   const buttonProps = Object.assign(
     {},
     {
@@ -17,7 +17,7 @@ export const _IconButton = ({ h, Icon, Button, ...props }) => {
       ].join(" "),
       // defaults
       wash: false,
-      animateOnTap: false
+      animateOnTap: false,
     },
     props
   );

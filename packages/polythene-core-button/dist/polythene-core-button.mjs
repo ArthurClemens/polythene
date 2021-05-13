@@ -275,9 +275,12 @@ var _Button = function _Button(_ref) {
     domElement.removeEventListener("mouseleave", handleMouseLeave);
   };
 
-  var aria = _extends({}, props.aria || {
+  var aria = _extends({}, // default:
+  props.element === "button" ? {
     role: "button"
-  }, disabled || inactive ? {
+  } : {}, // attrs:
+  props.aria, // overrides:
+  disabled || inactive ? {
     "aria-disabled": "true"
   } : undefined);
 
@@ -303,14 +306,14 @@ var _Button = function _Button(_ref) {
     className: [classes["super"], props.parentClassName || classes.component, props.contained ? classes.contained : undefined, // Raised button classes
     props.raised ? classes.contained : undefined, props.raised ? classes.raised : undefined, props.raised && animateOnTap ? shadowClasses.with_active_shadow : undefined, props.raised && animateOnTap ? getDepthClass(shadowDepth + 1) : undefined, //
     hasHover ? classes.hasHover : undefined, props.selected ? classes.selected : undefined, props.highLabel ? classes.highLabel : undefined, props.extraWide ? classes.extraWide : undefined, disabled ? classes.disabled : undefined, inactive ? classes.inactive : undefined, props.separatorAtStart ? classes.separatorAtStart : undefined, props.border || props.borders ? classes.border : undefined, props.dropdown ? classes.hasDropdown : undefined, props.dropdown ? props.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : undefined, props.tone === "dark" ? "pe-dark-tone" : undefined, props.tone === "light" ? "pe-light-tone" : undefined, props.className || props[a["class"]]].join(" ")
-  }, a.tabindex, (props[a.tabindex] || 0).toString()), inactive ? null : _objectSpread2(_objectSpread2({}, events), {}, (_objectSpread2$1 = {}, _defineProperty(_objectSpread2$1, a.onmousedown, function (e) {
+  }, a.tabindex, isAriaButton ? (props[a.tabindex] || 0).toString() : undefined), inactive ? null : _objectSpread2(_objectSpread2({}, events), {}, (_objectSpread2$1 = {}, _defineProperty(_objectSpread2$1, a.onmousedown, function (e) {
     return domElement && domElement.addEventListener && domElement.addEventListener("mouseleave", handleMouseLeave), props.events && props.events[a.onmousedown] && props.events[a.onmousedown](e);
   }), _defineProperty(_objectSpread2$1, a.onclick, function (e) {
     return document.activeElement === domElement && document.activeElement.blur(), handleInactivate(), onClickHandler(e);
   }), _defineProperty(_objectSpread2$1, a.onkeyup, function (e) {
     if (document.activeElement === domElement) {
       if (e.key === "Space" || e.keyCode === 32 || isAriaButton && (e.key === "Enter" || e.keyCode === 13)) {
-        // document.activeElement.blur();
+        // For accessibility: don't blur
         if (onKeyUpHandler) {
           onKeyUpHandler(e);
         }
@@ -347,7 +350,8 @@ var _Button = function _Button(_ref) {
     className: classes.dropdown,
     svg: {
       content: h.trust(iconDropdownDown)
-    }
+    },
+    "aria-hidden": "true"
   }) : null]);
   return h(props.element || "a", componentProps, [props.before, componentContent, props.after]);
 };

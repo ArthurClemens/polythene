@@ -51,7 +51,11 @@ export const _Button = ({
 
   const aria = Object.assign(
     {},
-    props.aria || { role: "button" },
+    // default:
+    props.element === "button" ? { role: "button" } : {},
+    // attrs:
+    props.aria,
+    // overrides:
     disabled || inactive
       ? {
           "aria-disabled": "true",
@@ -109,7 +113,9 @@ export const _Button = ({
         props.tone === "light" ? "pe-light-tone" : undefined,
         props.className || props[a.class],
       ].join(" "),
-      [a.tabindex]: (props[a.tabindex] || 0).toString(), // do not set to -1 when disabled or inactive to allow screen readers to access the button
+      [a.tabindex]: isAriaButton
+        ? (props[a.tabindex] || 0).toString()
+        : undefined, // do not set to -1 when disabled or inactive to allow screen readers to access the button
     },
     inactive
       ? null
@@ -209,6 +215,7 @@ export const _Button = ({
         ? h(Icon, {
             className: classes.dropdown,
             svg: { content: h.trust(iconDropdownDown) },
+            "aria-hidden": "true",
           })
         : null,
     ]
