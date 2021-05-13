@@ -110,6 +110,9 @@ var varFns$1 = {
       textDecoration: "none",
       textAlign: "center",
       cursor: "pointer",
+      background: "none",
+      border: "none",
+      fontSize: 0,
       ".pe-button--selected, &.pe-button--disabled, &.pe-button--inactive": {
         cursor: "default",
         pointerEvents: "none"
@@ -315,8 +318,8 @@ var superColor = createColor({
   }
 });
 
-/** 
- * @param {boolean} isRTL 
+/**
+ * @param {boolean} isRTL
  */
 
 var alignSide = function alignSide(isRTL) {

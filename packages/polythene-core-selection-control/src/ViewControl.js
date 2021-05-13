@@ -37,6 +37,7 @@ export const _ViewControl = ({ h, Icon, IconButton, aria, ...props }) => {
         disabled: props.disabled,
         events: props.events,
         inactive: props.inactive,
+        [a.tabindex]: "0",
         aria,
       },
       props.iconButton // for example for hover behaviour

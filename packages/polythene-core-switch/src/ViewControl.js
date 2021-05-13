@@ -17,6 +17,19 @@ export const _ViewControl = ({ h, a, IconButton, Shadow, ...props }) => {
   const shadowDepth = props.checked ? shadowDepthOn : shadowDepthOff;
   const raised = props.raised !== undefined ? props.raised : true;
 
+  const aria = Object.assign(
+    {},
+    // default:
+    { role: "switch" },
+    // attrs:
+    props.aria,
+    // state overrides:
+    {
+      id: props.id,
+      "aria-checked": props.checked.toString(),
+    }
+  );
+
   return h(element, null, [
     h("div", {
       className: classes.track,
@@ -49,11 +62,8 @@ export const _ViewControl = ({ h, a, IconButton, Shadow, ...props }) => {
           events: props.events,
           ink: props.ink || false,
           inactive: props.inactive,
-          aria: Object.assign({}, props.aria, {
-            role: "switch",
-            id: props.id,
-            "aria-checked": props.checked.toString(),
-          }),
+          [a.tabindex]: "0",
+          aria,
         },
         props.iconButton
       )

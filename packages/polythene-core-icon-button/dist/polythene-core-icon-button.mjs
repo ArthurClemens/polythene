@@ -70,6 +70,7 @@ var _IconButton = function _IconButton(_ref) {
   var content = props.content ? props.content : props.icon ? h(Icon, props.icon) : props.children;
 
   var buttonProps = _extends({}, {
+    element: props.element || "button",
     content: h("div", {
       className: classes.content
     }, content),

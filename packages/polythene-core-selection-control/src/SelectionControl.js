@@ -79,9 +79,15 @@ export const _SelectionControl = ({
   );
   const isAriaButton = aria.role === "button";
 
-  const viewControlClickHandler = props.events && props.events[a.onclick];
-  const viewControlKeyDownHandler =
-    props.events && props.events[a.onkeydown]
+  const viewControlClickHandler = (e) => {
+    e.preventDefault();
+    toggle(e);
+    if (props.events && props.events[a.onclick]) {
+      props.events[a.onclick](e);
+    }
+  };
+  const viewControlKeyDownHandler = props.events
+    ? props.events[a.onkeydown]
       ? props.events[a.onkeydown]
       : (e) => {
           if (
@@ -90,13 +96,13 @@ export const _SelectionControl = ({
             (isAriaButton && (e.key === "Enter" || e.keyCode === 13))
           ) {
             e.preventDefault();
+            toggle(e);
             if (viewControlClickHandler) {
               viewControlClickHandler(e);
-            } else {
-              toggle(e);
             }
           }
-        };
+        }
+    : undefined;
 
   const componentProps = Object.assign(
     {},
@@ -123,9 +129,7 @@ export const _SelectionControl = ({
       {},
       {
         className: classes.formLabel,
-      },
-      viewControlClickHandler && {
-        [a.onclick]: (e) => (e.preventDefault(), viewControlClickHandler(e)),
+        [a.onclick]: viewControlClickHandler,
       }
     ),
     [

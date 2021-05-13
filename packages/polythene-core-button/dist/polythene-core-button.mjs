@@ -279,12 +279,12 @@ var _Button = function _Button(_ref) {
   props.element === "button" ? {
     role: "button"
   } : {}, // attrs:
-  props.aria, // overrides:
+  props.aria, // state overrides:
   disabled || inactive ? {
     "aria-disabled": "true"
   } : undefined);
 
-  var isAriaButton = aria.role === "button";
+  var isAriaButton = props.element === "button" || aria.role === "button";
 
   var componentProps = _extends({}, filterSupportedAttributes(props, {
     add: [a.formaction, "type"],
@@ -309,7 +309,8 @@ var _Button = function _Button(_ref) {
   }, a.tabindex, isAriaButton ? (props[a.tabindex] || 0).toString() : undefined), inactive ? null : _objectSpread2(_objectSpread2({}, events), {}, (_objectSpread2$1 = {}, _defineProperty(_objectSpread2$1, a.onmousedown, function (e) {
     return domElement && domElement.addEventListener && domElement.addEventListener("mouseleave", handleMouseLeave), props.events && props.events[a.onmousedown] && props.events[a.onmousedown](e);
   }), _defineProperty(_objectSpread2$1, a.onclick, function (e) {
-    return document.activeElement === domElement && document.activeElement.blur(), handleInactivate(), onClickHandler(e);
+    handleInactivate();
+    onClickHandler(e);
   }), _defineProperty(_objectSpread2$1, a.onkeyup, function (e) {
     if (document.activeElement === domElement) {
       if (e.key === "Space" || e.keyCode === 32 || isAriaButton && (e.key === "Enter" || e.keyCode === 13)) {

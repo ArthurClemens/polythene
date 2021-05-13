@@ -5,7 +5,7 @@ describe("Button", () => {
     cy.visit("/Button");
   });
   it("attrs", () => {
-    // defaults
+    // default
     cy.get("a[data-test-id=button-default]")
       .should("exist")
       .should("have.class", "pe-button")
@@ -36,7 +36,7 @@ describe("Button", () => {
       .should("have.attr", "tabindex", "0")
       .should("have.attr", "role", "button");
 
-    //attrs
+    // aria
     cy.get("[data-test-id=button-aria]")
       .should("exist")
       .should("have.attr", "role", "link");

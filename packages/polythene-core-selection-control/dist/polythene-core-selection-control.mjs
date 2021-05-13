@@ -220,18 +220,26 @@ var _SelectionControl = function _SelectionControl(_ref) {
   } : undefined);
 
   var isAriaButton = aria.role === "button";
-  var viewControlClickHandler = props.events && props.events[a.onclick];
-  var viewControlKeyDownHandler = props.events && props.events[a.onkeydown] ? props.events[a.onkeydown] : function (e) {
+
+  var viewControlClickHandler = function viewControlClickHandler(e) {
+    e.preventDefault();
+    toggle(e);
+
+    if (props.events && props.events[a.onclick]) {
+      props.events[a.onclick](e);
+    }
+  };
+
+  var viewControlKeyDownHandler = props.events ? props.events[a.onkeydown] ? props.events[a.onkeydown] : function (e) {
     if (e.key === "Space" || e.keyCode === 32 || isAriaButton && (e.key === "Enter" || e.keyCode === 13)) {
       e.preventDefault();
+      toggle(e);
 
       if (viewControlClickHandler) {
         viewControlClickHandler(e);
-      } else {
-        toggle(e);
       }
     }
-  };
+  } : undefined;
 
   var componentProps = _extends({}, filterSupportedAttributes(props, {
     remove: ["style"]
@@ -243,11 +251,9 @@ var _SelectionControl = function _SelectionControl(_ref) {
     isChecked ? classes.on : classes.off, props.disabled ? classes.disabled : null, inactive ? classes.inactive : null, classForSize(classes, props.size), props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
   });
 
-  var content = h("label", _extends({}, {
+  var content = h("label", _extends({}, _defineProperty({
     className: classes.formLabel
-  }, viewControlClickHandler && _defineProperty({}, a.onclick, function (e) {
-    return e.preventDefault(), viewControlClickHandler(e);
-  })), [props.before, h(ViewControl, _extends({}, props, {
+  }, a.onclick, viewControlClickHandler)), [props.before, h(ViewControl, _extends({}, props, {
     inactive: inactive,
     checked: isChecked,
     events: _defineProperty({}, a.onkeydown, viewControlKeyDownHandler),
@@ -287,6 +293,8 @@ var createIcon = function createIcon(h, iconType, props, className) {
 };
 
 var _ViewControl = function _ViewControl(_ref) {
+  var _extends2;
+
   var h = _ref.h,
       Icon = _ref.Icon,
       IconButton = _ref.IconButton,
@@ -294,7 +302,7 @@ var _ViewControl = function _ViewControl(_ref) {
       props = _objectWithoutProperties(_ref, ["h", "Icon", "IconButton", "aria"]);
 
   var element = props.element || ".".concat(classes.box);
-  var content = h(IconButton, _extends({}, {
+  var content = h(IconButton, _extends({}, (_extends2 = {
     element: "div",
     className: classes.button,
     style: props.style,
@@ -306,9 +314,8 @@ var _ViewControl = function _ViewControl(_ref) {
     },
     disabled: props.disabled,
     events: props.events,
-    inactive: props.inactive,
-    aria: aria
-  }, props.iconButton // for example for hover behaviour
+    inactive: props.inactive
+  }, _defineProperty(_extends2, a.tabindex, "0"), _defineProperty(_extends2, "aria", aria), _extends2), props.iconButton // for example for hover behaviour
   ));
   return h(element, null, content);
 };

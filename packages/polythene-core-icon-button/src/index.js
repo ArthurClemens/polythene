@@ -9,6 +9,7 @@ export const _IconButton = ({ h, Icon, Button, ...props }) => {
   const buttonProps = Object.assign(
     {},
     {
+      element: props.element || "button",
       content: h("div", { className: classes.content }, content),
       after: props.label && h("div", { className: classes.label }, props.label),
       parentClassName: [

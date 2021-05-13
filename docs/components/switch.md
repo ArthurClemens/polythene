@@ -4,11 +4,13 @@ Form control to toggle the state of a single option. Generates a styled checkbox
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Main features](#main-features)
-- [Usage](#usage)
-- [Options](#options)
-  - [Switch specific options](#switch-specific-options)
-- [CSS classes](#css-classes)
+- [Switch](#switch)
+  - [Main features](#main-features)
+  - [Usage](#usage)
+  - [Options](#options)
+    - [Switch specific options](#switch-specific-options)
+  - [Accessibility](#accessibility)
+  - [CSS classes](#css-classes)
 
 <!-- /MarkdownTOC -->
 
@@ -48,6 +50,12 @@ See: [Checkbox](checkbox.md#options)
 | **wash**      | optional       | Boolean    | true on touch devices | Set to false to always hide the wash (radial feedback); note that a (hidden) wash is still drawn to create a large tap target  |
 | **shadowDepthOff** | optional       | Number 0-5 | 1 | The shadow depth for the thumb in off state |
 | **shadowDepthOn**  | optional       | Number 0-5 | 2 | The shadow depth for the thumb in on state |
+
+
+## Accessibility
+
+ARIA attributes are passed to the button element of the Switch knob.
+
 
 
 

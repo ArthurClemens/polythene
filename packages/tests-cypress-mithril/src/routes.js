@@ -1,16 +1,22 @@
-import testButton from "polythene-tests-cypress/Button/tests-mithril";
-import testTextField from "polythene-tests-cypress/TextField/tests-mithril";
+import Button from "polythene-tests-cypress/Button/tests-mithril";
+import TextField from "polythene-tests-cypress/TextField/tests-mithril";
+import Switch from "polythene-tests-cypress/Switch/tests-mithril";
 
 const routeData = [
   {
     path: "/Button",
     name: "Button",
-    tests: testButton,
+    tests: Button,
+  },
+  {
+    path: "/Switch",
+    name: "Switch",
+    tests: Switch,
   },
   {
     path: "/TextField",
     name: "Text Field",
-    tests: testTextField,
+    tests: TextField,
   },
 ];
 

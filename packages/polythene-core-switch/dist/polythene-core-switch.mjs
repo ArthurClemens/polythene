@@ -1,3 +1,18 @@
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -79,9 +94,11 @@ var _Switch = function _Switch(_ref) {
 };
 
 var _ViewControl = function _ViewControl(_ref) {
-  var h = _ref.h;
-      _ref.a;
-      var IconButton = _ref.IconButton,
+  var _extends2;
+
+  var h = _ref.h,
+      a = _ref.a,
+      IconButton = _ref.IconButton,
       Shadow = _ref.Shadow,
       props = _objectWithoutProperties(_ref, ["h", "a", "IconButton", "Shadow"]);
 
@@ -92,10 +109,21 @@ var _ViewControl = function _ViewControl(_ref) {
   : 2;
   var shadowDepth = props.checked ? shadowDepthOn : shadowDepthOff;
   var raised = props.raised !== undefined ? props.raised : true;
+
+  var aria = _extends({}, // default:
+  {
+    role: "switch"
+  }, // attrs:
+  props.aria, // state overrides:
+  {
+    id: props.id,
+    "aria-checked": props.checked.toString()
+  });
+
   return h(element, null, [h("div", {
     className: classes.track,
     key: "track"
-  }), h(IconButton, _extends({}, {
+  }), h(IconButton, _extends({}, (_extends2 = {
     className: classes.thumb,
     key: "button",
     content: h("div", {
@@ -108,13 +136,8 @@ var _ViewControl = function _ViewControl(_ref) {
     disabled: props.disabled,
     events: props.events,
     ink: props.ink || false,
-    inactive: props.inactive,
-    aria: _extends({}, props.aria, {
-      role: "switch",
-      id: props.id,
-      "aria-checked": props.checked.toString()
-    })
-  }, props.iconButton))]);
+    inactive: props.inactive
+  }, _defineProperty(_extends2, a.tabindex, "0"), _defineProperty(_extends2, "aria", aria), _extends2), props.iconButton))]);
 };
 
 export { _Switch, _ViewControl };

@@ -55,14 +55,14 @@ export const _Button = ({
     props.element === "button" ? { role: "button" } : {},
     // attrs:
     props.aria,
-    // overrides:
+    // state overrides:
     disabled || inactive
       ? {
           "aria-disabled": "true",
         }
       : undefined
   );
-  const isAriaButton = aria.role === "button";
+  const isAriaButton = props.element === "button" || aria.role === "button";
 
   const componentProps = Object.assign(
     {},
@@ -129,12 +129,10 @@ export const _Button = ({
               props.events[a.onmousedown] &&
               props.events[a.onmousedown](e)
           ),
-          [a.onclick]: (e) => (
-            document.activeElement === domElement &&
-              document.activeElement.blur(),
-            handleInactivate(e),
-            onClickHandler(e)
-          ),
+          [a.onclick]: (e) => {
+            handleInactivate(e);
+            onClickHandler(e);
+          },
           [a.onkeyup]: (e) => {
             if (document.activeElement === domElement) {
               if (

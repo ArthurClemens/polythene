@@ -6,6 +6,9 @@
   text-decoration: none;
   text-align: center;
   cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 0;
 }
 
 .pe-button.pe-button--disabled, .pe-button.pe-button--inactive,

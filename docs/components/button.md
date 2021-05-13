@@ -12,6 +12,7 @@ Displays a text button with a [Ripple](ripple.md) effect.
     - [Button specific options](#button-specific-options)
     - [Raised button options](#raised-button-options)
     - [Common component options](#common-component-options)
+  - [Accessibility](#accessibility)
   - [Composition](#composition)
   - [CSS classes](#css-classes)
 
@@ -90,6 +91,7 @@ A raised button is a button with option `raised: true`.
 
 | **Parameter** | **Required** | **Type** | **Default** | **Description** |
 | --- | --- | --- | --- | --- |
+| **aria** | optional | Object | | ARIA attributes, for example "role", "aria-labelledby", etcetera |
 | **after** | optional | String, hyperscript or component |  | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **before** | optional | String, hyperscript or component |  | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **className** | optional | String |  | Extra CSS class appended to `pe-text-button` |
@@ -102,6 +104,17 @@ A raised button is a button with option `raised: true`.
 | **tone** | optional | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
+## Accessibility
+
+ARIA attributes:
+
+* A default Button (a link, or `a` tag) does not contain the attributes "role" or "tabindex".
+* With option `element: "button"`:
+  * `role="button"`
+  * `tabindex="0"`
+* With options `disabled: true` or `inactive: true`:
+  * `aria-disabled: "true"`
+* Custom ARIA properties can be set with option `aria`, for example: `aria: { role: "link" }`
 
 <a id="composition"></a>
 ## Composition
