@@ -1,5 +1,5 @@
 import { filterSupportedAttributes, iconDropdownDown } from 'polythene-core';
-import { getDepthClass } from 'polythene-core-shadow';
+import 'polythene-core-shadow';
 
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
@@ -304,7 +304,10 @@ var _Button = function _Button(_ref) {
     "data-test-id": props.testId
   }, _defineProperty({
     className: [classes["super"], props.parentClassName || classes.component, props.contained ? classes.contained : undefined, // Raised button classes
-    props.raised ? classes.contained : undefined, props.raised ? classes.raised : undefined, props.raised && animateOnTap ? shadowClasses.with_active_shadow : undefined, props.raised && animateOnTap ? getDepthClass(shadowDepth + 1) : undefined, //
+    props.raised ? classes.contained : undefined, props.raised ? classes.raised : undefined, props.raised && animateOnTap ? shadowClasses.with_active_shadow : undefined, // props.raised && animateOnTap
+    //   ? getDepthClass(shadowDepth + 1)
+    //   : undefined,
+    //
     hasHover ? classes.hasHover : undefined, props.selected ? classes.selected : undefined, props.highLabel ? classes.highLabel : undefined, props.extraWide ? classes.extraWide : undefined, disabled ? classes.disabled : undefined, inactive ? classes.inactive : undefined, props.separatorAtStart ? classes.separatorAtStart : undefined, props.border || props.borders ? classes.border : undefined, props.dropdown ? classes.hasDropdown : undefined, props.dropdown ? props.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : undefined, props.tone === "dark" ? "pe-dark-tone" : undefined, props.tone === "light" ? "pe-light-tone" : undefined, props.className || props[a["class"]]].join(" ")
   }, a.tabindex, isAriaButton ? (props[a.tabindex] || 0).toString() : undefined), inactive ? null : _objectSpread2(_objectSpread2({}, events), {}, (_objectSpread2$1 = {}, _defineProperty(_objectSpread2$1, a.onmousedown, function (e) {
     return domElement && domElement.addEventListener && domElement.addEventListener("mouseleave", handleMouseLeave), props.events && props.events[a.onmousedown] && props.events[a.onmousedown](e);

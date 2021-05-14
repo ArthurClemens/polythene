@@ -155,9 +155,10 @@ var _SelectionControl = function _SelectionControl(_ref) {
   var h = _ref.h,
       a = _ref.a,
       useState = _ref.useState,
+      useRef = _ref.useRef,
       useEffect = _ref.useEffect,
       ViewControl = _ref.ViewControl,
-      props = _objectWithoutProperties(_ref, ["h", "a", "useState", "useEffect", "ViewControl"]);
+      props = _objectWithoutProperties(_ref, ["h", "a", "useState", "useRef", "useEffect", "ViewControl"]);
 
   // remove unused props
   delete props.key;
@@ -213,10 +214,10 @@ var _SelectionControl = function _SelectionControl(_ref) {
   }; // Id to match the label to the control
 
 
-  var uid = createUid();
+  var uidRef = useRef(createUid());
 
   var aria = _extends({}, props.aria, props.label ? {
-    "aria-labelledby": uid
+    "aria-labelledby": uidRef.current
   } : undefined);
 
   var isAriaButton = aria.role === "button";
@@ -259,7 +260,7 @@ var _SelectionControl = function _SelectionControl(_ref) {
     events: _defineProperty({}, a.onkeydown, viewControlKeyDownHandler),
     aria: aria
   })), props.label ? h(".".concat(classes.label), {
-    id: uid
+    id: uidRef.current
   }, props.label) : null, h("input", _extends({}, props.events, {
     name: props.name,
     type: props.type,

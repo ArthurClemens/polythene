@@ -233,10 +233,10 @@ var _TextField = function _TextField(_ref) {
   var inputElRef = useRef();
   var previousValueRef = useRef();
   var previousStatusRef = useRef();
-  var isDirtyRef = useRef();
-  var hasFocusRef = useRef();
-  var isTouchedRef = useRef();
-  var errorRef = useRef();
+  var isDirtyRef = useRef(defaultValue !== "");
+  var hasFocusRef = useRef(false);
+  var isTouchedRef = useRef(false);
+  var errorRef = useRef(props.error);
   var inputType = props.multiLine ? "textarea" : "input";
   var showErrorPlaceholder = !!(props.valid !== undefined || props.validate || props.min || props.max || props[a.minlength] || props[a.maxlength] || props.required || props.pattern);
 
@@ -379,15 +379,7 @@ var _TextField = function _TextField(_ref) {
         previousStatusRef.current = status;
       }
     }
-  }; // State refs
-
-
-  useEffect(function () {
-    isDirtyRef.current = defaultValue !== "";
-    hasFocusRef.current = false;
-    isTouchedRef.current = false;
-    errorRef.current = props.error;
-  }, []); // Input DOM element
+  };
 
   useEffect(function () {
     if (!domElement) {
@@ -443,25 +435,29 @@ var _TextField = function _TextField(_ref) {
   var showError = isInvalid && errorMessage !== undefined;
   var inactive = allProps.disabled || allProps[a.readonly];
   var requiredIndicator = allProps.required && allProps.requiredIndicator !== "" ? h("span", {
+    key: "required",
     className: classes.requiredIndicator
   }, allProps.requiredIndicator || "*") : null;
   var optionalIndicator = !allProps.required && allProps.optionalIndicator ? h("span", {
+    key: "optional",
     className: classes.optionalIndicator
   }, allProps.optionalIndicator) : null;
   var label = allProps.label ? [allProps.label, requiredIndicator, optionalIndicator] : null;
-  var events = allProps.events || {};
-  var componentContent = [h("div", {
-    className: classes.inputArea
+  var contents = [h("div", {
+    className: classes.inputArea,
+    key: "input-area"
   }, [label ? h("label", {
+    key: "label",
     className: classes.label
   }, label) : null, h(inputType, _extends({}, {
+    key: "input",
     className: classes.input,
     disabled: allProps.disabled
   }, type ? {
     type: type
   } : null, allProps.name ? {
     name: allProps.name
-  } : null, events, !ignoreEvent(allProps, a.onclick) ? _defineProperty({}, a.onclick, function (e) {
+  } : null, !ignoreEvent(allProps, a.onclick) ? _defineProperty({}, a.onclick, function () {
     if (inactive) {
       return;
     } // in case the browser does not give the field focus,
@@ -471,8 +467,7 @@ var _TextField = function _TextField(_ref) {
     handleStateUpdate({
       focus: true
     });
-    events[a.onclick] && events[a.onclick](e);
-  }) : null, !ignoreEvent(allProps, a.onfocus) ? _defineProperty({}, a.onfocus, function (e) {
+  }) : null, !ignoreEvent(allProps, a.onfocus) ? _defineProperty({}, a.onfocus, function () {
     if (inactive) {
       return;
     }
@@ -487,23 +482,19 @@ var _TextField = function _TextField(_ref) {
     if (domElement) {
       domElement.classList.add(classes.stateFocused);
     }
-
-    events[a.onfocus] && events[a.onfocus](e);
-  }) : null, !ignoreEvent(allProps, a.onblur) ? _defineProperty({}, a.onblur, function (e) {
+  }) : null, !ignoreEvent(allProps, a.onblur) ? _defineProperty({}, a.onblur, function () {
     handleStateUpdate({
       type: "onblur",
       focus: false
     }); // same principle as onfocus
 
     domElement.classList.remove(classes.stateFocused);
-    events[a.onblur] && events[a.onblur](e);
   }) : null, !ignoreEvent(allProps, a.oninput) ? _defineProperty({}, a.oninput, function (e) {
     // default input event
     // may be overwritten by props.events
     handleStateUpdate({
       type: "input"
     });
-    events[a.oninput] && events[a.oninput](e);
   }) : null, !ignoreEvent(allProps, a.onkeydown) ? _defineProperty({}, a.onkeydown, function (e) {
     if (e.key === "Enter") {
       isTouchedRef.current = true;
@@ -512,9 +503,8 @@ var _TextField = function _TextField(_ref) {
         focus: false
       });
     }
-
-    events[a.onkeydown] && events[a.onkeydown](e);
-  }) : null, allProps.required !== undefined && !!allProps.required ? {
+  }) : null, allProps.events ? allProps.events : null, // NOTE: may overwrite oninput
+  allProps.required !== undefined && !!allProps.required ? {
     required: true
   } : null, allProps[a.readonly] !== undefined && !!allProps[a.readonly] ? _defineProperty({}, a.readonly, true) : null, allProps.pattern !== undefined ? {
     pattern: allProps.pattern
@@ -527,15 +517,19 @@ var _TextField = function _TextField(_ref) {
   } : null, allProps.placeholder !== undefined ? {
     placeholder: allProps.placeholder
   } : null, allProps.domAttributes !== undefined ? _objectSpread2({}, allProps.domAttributes) : null))]), allProps.counter ? h("div", {
+    key: "counter",
     className: classes.counter
   }, (value.length || 0) + " / " + allProps.counter) : null, allProps.help && !showError ? h("div", {
+    key: "help",
     className: [classes.help, allProps.focusHelp ? classes.focusHelp : null].join(" ")
   }, allProps.help) : null, showError ? h("div", {
+    key: "error",
     className: classes.error
   }, errorMessage) : showErrorPlaceholder && !allProps.help ? h("div", {
+    key: "error-placeholder",
     className: classes.errorPlaceholder
   }) : null];
-  var content = [props.before].concat(componentContent, [props.after]);
+  var content = [props.before, contents, props.after];
   return h(props.element || "div", componentProps, content);
 };
 

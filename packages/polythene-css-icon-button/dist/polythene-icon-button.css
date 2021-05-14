@@ -3,6 +3,7 @@
   align-items: center;
   cursor: pointer;
   border: none;
+  font-size: 0;
 }
 
 .pe-button.pe-icon-button .pe-button__content {

@@ -1,5 +1,5 @@
 import { _ViewControl, _Switch } from 'polythene-core-switch';
-import { cast, h, a, useState, useEffect } from 'cyano-react';
+import { cast, h, a, useState, useEffect, useRef } from 'cyano-react';
 import { Shadow } from 'polythene-react-shadow';
 import { IconButton } from 'polythene-react-icon-button';
 import { _SelectionControl } from 'polythene-core-selection-control';
@@ -16,6 +16,7 @@ var SelectionControl = cast(_SelectionControl, {
   a: a,
   useState: useState,
   useEffect: useEffect,
+  useRef: useRef,
   ViewControl: ViewControl
 });
 SelectionControl["displayName"] = "SelectionControl";

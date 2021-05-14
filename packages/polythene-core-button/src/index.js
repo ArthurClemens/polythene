@@ -91,9 +91,9 @@ export const _Button = ({
         props.raised && animateOnTap
           ? shadowClasses.with_active_shadow
           : undefined,
-        props.raised && animateOnTap
-          ? getDepthClass(shadowDepth + 1)
-          : undefined,
+        // props.raised && animateOnTap
+        //   ? getDepthClass(shadowDepth + 1)
+        //   : undefined,
         //
         hasHover ? classes.hasHover : undefined,
         props.selected ? classes.selected : undefined,

@@ -156,6 +156,7 @@ var varFns = {
       alignItems: "center",
       cursor: "pointer",
       border: "none",
+      fontSize: 0,
       " .pe-button__content": {
         display: "flex",
         alignItems: "center",

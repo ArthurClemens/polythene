@@ -112,7 +112,6 @@ var varFns$1 = {
       cursor: "pointer",
       background: "none",
       border: "none",
-      fontSize: 0,
       ".pe-button--selected, &.pe-button--disabled, &.pe-button--inactive": {
         cursor: "default",
         pointerEvents: "none"

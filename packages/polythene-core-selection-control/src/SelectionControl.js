@@ -9,6 +9,7 @@ export const _SelectionControl = ({
   h,
   a,
   useState,
+  useRef,
   useEffect,
   ViewControl,
   ...props
@@ -66,14 +67,14 @@ export const _SelectionControl = ({
   };
 
   // Id to match the label to the control
-  const uid = createUid();
+  const uidRef = useRef(createUid());
 
   const aria = Object.assign(
     {},
     props.aria,
     props.label
       ? {
-          "aria-labelledby": uid,
+          "aria-labelledby": uidRef.current,
         }
       : undefined
   );
@@ -146,7 +147,9 @@ export const _SelectionControl = ({
           aria,
         })
       ),
-      props.label ? h(`.${classes.label}`, { id: uid }, props.label) : null,
+      props.label
+        ? h(`.${classes.label}`, { id: uidRef.current }, props.label)
+        : null,
       h(
         "input",
         Object.assign(
