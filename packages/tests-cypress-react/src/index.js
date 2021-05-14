@@ -6,6 +6,7 @@ import { List, ListTile } from "polythene-react";
 import Page from "./Page";
 import routes from "./routes";
 import { h } from "polythene-tests/utils/enhanced-renderer";
+import "./app.css";
 
 addTypography();
 addLayoutStyles();

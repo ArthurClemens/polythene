@@ -1,11 +1,5 @@
-import testDefaultValue from "./tests/defaultValue";
-// import testRender from "./tests/render";
+import tests from "./TextField";
 
-const tests = [
-  testDefaultValue,
-  // testRender,
-];
-
-export default ({ TextField, h, a }) => {
-  return tests.map((t) => t({ rootPath: "/TextField", h, a, TextField }));
+export default ({ fromPolythene, h, a }) => {
+  return tests({ h, a, ...fromPolythene });
 };

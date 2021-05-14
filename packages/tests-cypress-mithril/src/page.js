@@ -1,32 +1,33 @@
-import m from "mithril";
+import h from "mithril";
 
-const results = ({ name, tests }) =>
-  m(
+const results = ({ name, tests }) => {
+  return h(
     "div",
     {
-      className: `tests-${name.replace(/[^\w\d]+/g, "-").toLowerCase()}`,
+      className: "page",
     },
     tests.map((test) => {
       if (test.section) {
-        return m("div", test.section);
+        return h("h3.page__section__title", test.section);
       }
       const testName = `test-${test.name}`;
-      return m(
+      return h(
         "div",
         {
-          key: test.key,
-          className: [
-            testName.replace(/[^\w\d]/g, "-").toLowerCase(),
-            test.className || null,
-          ].join(" "),
+          className: ["page__test", test.className || ""].join(" "),
         },
         [
-          m("div", { className: "result-title" }, test.name),
-          m(test.component, test.attrs, test.children),
+          h("div", { className: "page__test__title" }, test.name),
+          h(
+            "div",
+            { className: "page__test__content" },
+            h(test.component, test.attrs, test.children)
+          ),
         ]
       );
     })
   );
+};
 
 export default (route) => ({
   oncreate: () => scrollTo(0, 0),

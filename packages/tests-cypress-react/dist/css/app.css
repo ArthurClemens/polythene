@@ -4,16 +4,21 @@ body, html {
 }
 
 .page {
-  padding: 0;
+  padding: 0 0 40px 0;
 }
 
 .page__section__title {
+  margin: 0;
   padding: 15px 20px;
 }
 
 .page__test {
   padding: 15px 20px;
   border-top: 1px solid #ddd;
+  background: #f9f9f9;
+}
+.page__test:last-child {
+  border-bottom: 1px solid #ddd;
 }
 
 .page__test__title {

@@ -1,34 +1,32 @@
 import { h } from "polythene-tests/utils/enhanced-renderer";
 
-const Results = ({ name, tests }) => {
+const Page = ({ name, tests }) => {
   return h(
     "div",
     {
-      className: `tests-${name.replace(/[^\w\d]+/g, "-").toLowerCase()}`,
+      className: "page",
     },
     tests.map((test) => {
       if (test.section) {
-        return h("div", test.section);
+        return h("h3.page__section__title", test.section);
       }
       const testName = `test-${test.name}`;
       return h(
         "div",
         {
-          key: test.key,
-          className: [
-            testName.replace(/[^\w\d]/g, "-").toLowerCase(),
-            test.className || null,
-          ].join(" "),
+          className: ["page__test", test.className || ""].join(" "),
         },
         [
-          h("div", { className: "result-title" }, test.name),
-          h(test.component, test.attrs, test.children),
+          h("div", { className: "page__test__title" }, test.name),
+          h(
+            "div",
+            { className: "page__test__content" },
+            h(test.component, test.attrs, test.children)
+          ),
         ]
       );
     })
   );
 };
 
-// const Page = ({ name, tests }) => h("div", h(Results, { name, tests }));
-
-export default Results;
+export default Page;

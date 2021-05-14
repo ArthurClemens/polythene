@@ -1,8 +1,9 @@
 import m from "mithril";
 import { addLayoutStyles, addTypography } from "polythene-css";
-import Page from "./Page";
+import Page from "./page";
 import { List, ListTile } from "polythene-mithril";
 import routes from "./routes";
+import "./app.css";
 
 addLayoutStyles();
 addTypography();
@@ -24,11 +25,8 @@ const index = {
     ),
 };
 
-if (typeof m.route.prefix === "function") {
-  m.route.prefix("#");
-} else {
-  m.route.prefix = "#";
-}
+m.route.prefix = "#";
+
 const mountNode = document.querySelector("#app");
 const routeData = {
   "/": {

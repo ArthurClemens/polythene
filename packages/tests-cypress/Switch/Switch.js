@@ -1,78 +1,101 @@
-export default ({ rootPath, a, h, Switch }) => ({
-  path: rootPath,
-  name: "Switch",
-  component: {
-    view: () => [
-      // default
-      h(
-        "div",
-        { key: "switch-default" },
+export default ({ a, h, Switch }) => [
+  {
+    section: "Switch",
+  },
+  {
+    name: "default",
+    component: {
+      view: () =>
         h(Switch, {
           testId: "switch-default",
-        })
-      ),
-
-      // name
-      h(
-        "div",
-        { key: "switch-name" },
+        }),
+    },
+  },
+  {
+    name: "name",
+    component: {
+      view: () =>
         h(Switch, {
           name: "some-name",
           testId: "switch-name",
-        })
-      ),
-
-      // value
-      h(
-        "div",
-        { key: "switch-value" },
+        }),
+    },
+  },
+  {
+    name: "value",
+    component: {
+      view: () =>
         h(Switch, {
           value: "some-value",
           testId: "switch-value",
-        })
-      ),
-
-      // label
-      h(
-        "div",
-        { key: "switch-label" },
+        }),
+    },
+  },
+  {
+    name: "label",
+    component: {
+      view: () =>
         h(Switch, {
           label: "label",
           testId: "switch-label",
-        })
-      ),
-
-      // defaultChecked
-      h(
-        "div",
-        { key: "switch-defaultChecked" },
+        }),
+    },
+  },
+  {
+    name: "defaultChecked",
+    component: {
+      view: () =>
         h(Switch, {
           defaultChecked: true,
           testId: "switch-defaultChecked",
-        })
-      ),
-
-      // disabled
-      h(
-        "div",
-        { key: "switch-disabled" },
+        }),
+    },
+  },
+  {
+    name: "disabled",
+    component: {
+      view: () =>
         h(Switch, {
           disabled: true,
           testId: "switch-disabled",
-        })
-      ),
-
-      // onclick
-      h(
-        "div",
-        { key: "switch-onclick" },
+        }),
+    },
+  },
+  {
+    name: "aria",
+    component: {
+      view: () =>
+        h(Switch, {
+          aria: {
+            role: "button",
+          },
+          testId: "switch-aria",
+        }),
+    },
+  },
+  {
+    name: "onclick",
+    component: {
+      view: () =>
         h(Switch, {
           events: {
             [a.onclick]: () => console.log("onclick"),
           },
           testId: "switch-onclick",
-        })
-      ),
-    ],
+        }),
+    },
   },
-});
+
+  // TODO:
+  // size
+  // icon
+  // selectable
+  // iconButton
+  // shadowDepthOff
+  // onChange
+  // events
+  // Setting the checked state
+  // style
+  // theme
+  // rtl
+];
