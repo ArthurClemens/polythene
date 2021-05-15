@@ -1,4 +1,8 @@
-import { filterSupportedAttributes } from "polythene-core";
+import {
+  filterSupportedAttributes,
+  createUid,
+  processDataset,
+} from "polythene-core";
 import classes from "polythene-css-classes/textfield";
 
 const DEFAULT_VALID_STATE = {
@@ -18,6 +22,9 @@ export const _TextField = ({
   getRef,
   ...props
 }) => {
+  // Id to match the label to the control
+  const uidRef = useRef(createUid());
+
   const defaultValue =
     props.defaultValue !== undefined && props.defaultValue !== null
       ? props.defaultValue.toString()
@@ -27,6 +34,7 @@ export const _TextField = ({
 
   const [domElement, setDomElement] = useState();
   const [isInvalid, setIsInvalid] = useState(false);
+  const [, setHasFocus] = useState(false);
   const [value, setValue] = useState(defaultValue);
   const inputElRef = useRef();
   const previousValueRef = useRef();
@@ -56,6 +64,7 @@ export const _TextField = ({
     }
     if (focus !== undefined) {
       hasFocusRef.current = focus;
+      setHasFocus(focus); // force redraw
       if (focus) {
         inputElRef.current.focus();
       } else {
@@ -180,91 +189,6 @@ export const _TextField = ({
     }
   };
 
-  // State refs
-  useEffect(() => {
-    isDirtyRef.current = defaultValue !== "";
-    hasFocusRef.current = false;
-    isTouchedRef.current = false;
-    errorRef.current = props.error;
-  }, []);
-
-  // Input DOM element
-  useEffect(() => {
-    if (!domElement) {
-      return;
-    }
-    inputElRef.current = domElement.querySelector(inputType);
-    inputElRef.current.value = defaultValue;
-    handleStateUpdate();
-    checkValidity(); // handle `validateAtStart`
-    notifyState();
-  }, [domElement]);
-
-  // Handle value updates
-  useEffect(() => {
-    if (!inputElRef.current) {
-      return;
-    }
-    const value =
-      props.value !== undefined && props.value !== null
-        ? props.value
-        : inputElRef.current
-        ? inputElRef.current.value
-        : previousValueRef.current;
-    const valueStr =
-      value === undefined || value === null ? "" : value.toString();
-
-    if (inputElRef.current && previousValueRef.current !== valueStr) {
-      inputElRef.current.value = valueStr;
-      previousValueRef.current = valueStr;
-      handleStateUpdate({ type: "input" });
-    }
-  }, [inputElRef.current, props.value]);
-
-  // Handle error state updates
-  useEffect(() => {
-    if (!inputElRef.current) {
-      return;
-    }
-    checkValidity();
-    notifyState();
-  }, [props, inputElRef.current && inputElRef.current.value]);
-
-  const componentProps = Object.assign(
-    {},
-    filterSupportedAttributes(props),
-    props.testId && { "data-test-id": props.testId },
-    getRef(
-      (dom) =>
-        dom && !domElement && (setDomElement(dom), props.ref && props.ref(dom))
-    ),
-    {
-      className: [
-        classes.component,
-        isInvalid ? classes.stateInvalid : "",
-        hasFocusRef.current ? classes.stateFocused : "",
-        isDirtyRef.current ? classes.stateDirty : "",
-        props.floatingLabel ? classes.hasFloatingLabel : "",
-        props.disabled ? classes.stateDisabled : "",
-        props.readonly ? classes.stateReadonly : "",
-        props.dense ? classes.isDense : "",
-        props.required ? classes.isRequired : "",
-        props.fullWidth ? classes.hasFullWidth : "",
-        props.counter ? classes.hasCounter : "",
-        props.hideSpinner !== false && props.hideSpinner !== undefined
-          ? classes.hideSpinner
-          : "",
-        props.hideClear !== false && props.hideClear !== undefined
-          ? classes.hideClear
-          : "",
-        props.hideValidation ? classes.hideValidation : "",
-        props.tone === "dark" ? "pe-dark-tone" : null,
-        props.tone === "light" ? "pe-light-tone" : null,
-        props.className || props[a.class],
-      ].join(" "),
-    }
-  );
-
   const allProps = {
     ...props,
     ...props.domAttributes,
@@ -315,6 +239,7 @@ export const _TextField = ({
               "label",
               {
                 className: classes.label,
+                [a.for]: uidRef.current,
               },
               label
             )
@@ -326,9 +251,11 @@ export const _TextField = ({
             {
               className: classes.input,
               disabled: allProps.disabled,
+              id: uidRef.current,
             },
             type ? { type } : null,
             allProps.name ? { name: allProps.name } : null,
+            allProps.aria,
 
             events,
 
@@ -470,6 +397,97 @@ export const _TextField = ({
         })
       : null,
   ];
+
+  // State refs
+  useEffect(() => {
+    isDirtyRef.current = defaultValue !== "";
+    hasFocusRef.current = false;
+    isTouchedRef.current = false;
+    errorRef.current = props.error;
+  }, []);
+
+  // Input DOM element
+  useEffect(() => {
+    if (!domElement) {
+      return;
+    }
+    inputElRef.current = domElement.querySelector(inputType);
+    inputElRef.current.value = defaultValue;
+
+    if (allProps[a.autofocus]) {
+      handleStateUpdate({ focus: true });
+    } else {
+      handleStateUpdate();
+    }
+    checkValidity(); // handle `validateAtStart`
+    notifyState();
+  }, [domElement]);
+
+  // Handle value updates
+  useEffect(() => {
+    if (!inputElRef.current) {
+      return;
+    }
+    const value =
+      props.value !== undefined && props.value !== null
+        ? props.value
+        : inputElRef.current
+        ? inputElRef.current.value
+        : previousValueRef.current;
+    const valueStr =
+      value === undefined || value === null ? "" : value.toString();
+
+    if (inputElRef.current && previousValueRef.current !== valueStr) {
+      inputElRef.current.value = valueStr;
+      previousValueRef.current = valueStr;
+      handleStateUpdate({ type: "input" });
+    }
+  }, [inputElRef.current, props.value]);
+
+  // Handle error state updates
+  useEffect(() => {
+    if (!inputElRef.current) {
+      return;
+    }
+    checkValidity();
+    notifyState();
+  }, [props, inputElRef.current && inputElRef.current.value]);
+
+  const componentProps = Object.assign(
+    {},
+    filterSupportedAttributes(props),
+    processDataset(props),
+    props.testId && { "data-test-id": props.testId },
+    getRef(
+      (dom) =>
+        dom && !domElement && (setDomElement(dom), props.ref && props.ref(dom))
+    ),
+    {
+      className: [
+        classes.component,
+        isInvalid ? classes.stateInvalid : "",
+        hasFocusRef.current ? classes.stateFocused : "",
+        isDirtyRef.current ? classes.stateDirty : "",
+        props.floatingLabel ? classes.hasFloatingLabel : "",
+        props.disabled ? classes.stateDisabled : "",
+        props.readonly ? classes.stateReadonly : "",
+        props.dense ? classes.isDense : "",
+        props.required ? classes.isRequired : "",
+        props.fullWidth ? classes.hasFullWidth : "",
+        props.counter ? classes.hasCounter : "",
+        props.hideSpinner !== false && props.hideSpinner !== undefined
+          ? classes.hideSpinner
+          : "",
+        props.hideClear !== false && props.hideClear !== undefined
+          ? classes.hideClear
+          : "",
+        props.hideValidation ? classes.hideValidation : "",
+        props.tone === "dark" ? "pe-dark-tone" : null,
+        props.tone === "light" ? "pe-light-tone" : null,
+        props.className || props[a.class],
+      ].join(" "),
+    }
+  );
 
   const content = [props.before, ...componentContent, props.after];
 

@@ -1,4 +1,4 @@
-import { filterSupportedAttributes } from 'polythene-core';
+import { createUid, processDataset, filterSupportedAttributes } from 'polythene-core';
 
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
@@ -213,6 +213,8 @@ var _TextField = function _TextField(_ref) {
       getRef = _ref.getRef,
       props = _objectWithoutProperties(_ref, ["h", "a", "useState", "useEffect", "useRef", "getRef"]);
 
+  // Id to match the label to the control
+  var uidRef = useRef(createUid());
   var defaultValue = props.defaultValue !== undefined && props.defaultValue !== null ? props.defaultValue.toString() : props.value !== undefined && props.value !== null ? props.value.toString() : "";
 
   var _useState = useState(),
@@ -225,18 +227,22 @@ var _TextField = function _TextField(_ref) {
       isInvalid = _useState4[0],
       setIsInvalid = _useState4[1];
 
-  var _useState5 = useState(defaultValue),
+  var _useState5 = useState(false),
       _useState6 = _slicedToArray(_useState5, 2),
-      value = _useState6[0],
-      setValue = _useState6[1];
+      setHasFocus = _useState6[1];
+
+  var _useState7 = useState(defaultValue),
+      _useState8 = _slicedToArray(_useState7, 2),
+      value = _useState8[0],
+      setValue = _useState8[1];
 
   var inputElRef = useRef();
   var previousValueRef = useRef();
   var previousStatusRef = useRef();
-  var isDirtyRef = useRef(defaultValue !== "");
-  var hasFocusRef = useRef(false);
-  var isTouchedRef = useRef(false);
-  var errorRef = useRef(props.error);
+  var isDirtyRef = useRef();
+  var hasFocusRef = useRef();
+  var isTouchedRef = useRef();
+  var errorRef = useRef();
   var inputType = props.multiLine ? "textarea" : "input";
   var showErrorPlaceholder = !!(props.valid !== undefined || props.validate || props.min || props.max || props[a.minlength] || props[a.maxlength] || props.required || props.pattern);
 
@@ -256,6 +262,7 @@ var _TextField = function _TextField(_ref) {
 
     if (focus !== undefined) {
       hasFocusRef.current = focus;
+      setHasFocus(focus); // force redraw
 
       if (focus) {
         inputElRef.current.focus();
@@ -381,6 +388,114 @@ var _TextField = function _TextField(_ref) {
     }
   };
 
+  var allProps = _objectSpread2(_objectSpread2({}, props), props.domAttributes);
+
+  var errorMessage = props.error || errorRef.current;
+  var type = allProps.multiLine ? null : !allProps.type || allProps.type === "submit" || allProps.type === "search" ? "text" : allProps.type;
+  var showError = isInvalid && errorMessage !== undefined;
+  var inactive = allProps.disabled || allProps[a.readonly];
+  var requiredIndicator = allProps.required && allProps.requiredIndicator !== "" ? h("span", {
+    className: classes.requiredIndicator
+  }, allProps.requiredIndicator || "*") : null;
+  var optionalIndicator = !allProps.required && allProps.optionalIndicator ? h("span", {
+    className: classes.optionalIndicator
+  }, allProps.optionalIndicator) : null;
+  var label = allProps.label ? [allProps.label, requiredIndicator, optionalIndicator] : null;
+  var events = allProps.events || {};
+  var componentContent = [h("div", {
+    className: classes.inputArea
+  }, [label ? h("label", _defineProperty({
+    className: classes.label
+  }, a["for"], uidRef.current), label) : null, h(inputType, _extends({}, {
+    className: classes.input,
+    disabled: allProps.disabled,
+    id: uidRef.current
+  }, type ? {
+    type: type
+  } : null, allProps.name ? {
+    name: allProps.name
+  } : null, allProps.aria, events, !ignoreEvent(allProps, a.onclick) ? _defineProperty({}, a.onclick, function (e) {
+    if (inactive) {
+      return;
+    } // in case the browser does not give the field focus,
+    // for instance when the user tapped to the current field off screen
+
+
+    handleStateUpdate({
+      focus: true
+    });
+    events[a.onclick] && events[a.onclick](e);
+  }) : null, !ignoreEvent(allProps, a.onfocus) ? _defineProperty({}, a.onfocus, function (e) {
+    if (inactive) {
+      return;
+    }
+
+    handleStateUpdate({
+      focus: true
+    }); // set CSS class manually in case field gets focus but is off screen
+    // and no redraw is triggered
+    // at the next redraw `hasFocusRef.current` will be read and the focus class be set
+    // in the props.class statement
+
+    if (domElement) {
+      domElement.classList.add(classes.stateFocused);
+    }
+
+    events[a.onfocus] && events[a.onfocus](e);
+  }) : null, !ignoreEvent(allProps, a.onblur) ? _defineProperty({}, a.onblur, function (e) {
+    handleStateUpdate({
+      type: "onblur",
+      focus: false
+    }); // same principle as onfocus
+
+    domElement.classList.remove(classes.stateFocused);
+    events[a.onblur] && events[a.onblur](e);
+  }) : null, !ignoreEvent(allProps, a.oninput) ? _defineProperty({}, a.oninput, function (e) {
+    // default input event
+    // may be overwritten by props.events
+    handleStateUpdate({
+      type: "input"
+    });
+    events[a.oninput] && events[a.oninput](e);
+  }) : null, !ignoreEvent(allProps, a.onkeydown) ? _defineProperty({}, a.onkeydown, function (e) {
+    if (e.key === "Enter") {
+      isTouchedRef.current = true;
+    } else if (e.key === "Escape" || e.key === "Esc") {
+      handleStateUpdate({
+        focus: false
+      });
+    }
+
+    events[a.onkeydown] && events[a.onkeydown](e);
+  }) : null, allProps.required !== undefined && !!allProps.required ? {
+    required: true
+  } : null, allProps[a.readonly] !== undefined && !!allProps[a.readonly] ? _defineProperty({}, a.readonly, true) : null, allProps.pattern !== undefined ? {
+    pattern: allProps.pattern
+  } : null, allProps[a.maxlength] !== undefined ? _defineProperty({}, a.maxlength, allProps[a.maxlength]) : null, allProps[a.minlength] !== undefined ? _defineProperty({}, a.minlength, allProps[a.minlength]) : null, allProps.max !== undefined ? {
+    max: allProps.max
+  } : null, allProps.min !== undefined ? {
+    min: allProps.min
+  } : null, allProps[a.autofocus] !== undefined ? _defineProperty({}, a.autofocus, allProps[a.autofocus]) : null, allProps[a.tabindex] !== undefined ? _defineProperty({}, a.tabindex, allProps[a.tabindex]) : null, allProps.rows !== undefined ? {
+    rows: allProps.rows
+  } : null, allProps.placeholder !== undefined ? {
+    placeholder: allProps.placeholder
+  } : null, allProps.domAttributes !== undefined ? _objectSpread2({}, allProps.domAttributes) : null))]), allProps.counter ? h("div", {
+    className: classes.counter
+  }, (value.length || 0) + " / " + allProps.counter) : null, allProps.help && !showError ? h("div", {
+    className: [classes.help, allProps.focusHelp ? classes.focusHelp : null].join(" ")
+  }, allProps.help) : null, showError ? h("div", {
+    className: classes.error
+  }, errorMessage) : showErrorPlaceholder && !allProps.help ? h("div", {
+    className: classes.errorPlaceholder
+  }) : null]; // State refs
+
+  useEffect(function () {
+    isDirtyRef.current = defaultValue !== "";
+    hasFocusRef.current = false;
+    isTouchedRef.current = false;
+    errorRef.current = props.error;
+  }, []); // Input DOM element
+
   useEffect(function () {
     if (!domElement) {
       return;
@@ -388,7 +503,15 @@ var _TextField = function _TextField(_ref) {
 
     inputElRef.current = domElement.querySelector(inputType);
     inputElRef.current.value = defaultValue;
-    handleStateUpdate();
+
+    if (allProps[a.autofocus]) {
+      handleStateUpdate({
+        focus: true
+      });
+    } else {
+      handleStateUpdate();
+    }
+
     checkValidity(); // handle `validateAtStart`
 
     notifyState();
@@ -420,7 +543,7 @@ var _TextField = function _TextField(_ref) {
     notifyState();
   }, [props, inputElRef.current && inputElRef.current.value]);
 
-  var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
+  var componentProps = _extends({}, filterSupportedAttributes(props), processDataset(props), props.testId && {
     "data-test-id": props.testId
   }, getRef(function (dom) {
     return dom && !domElement && (setDomElement(dom), props.ref && props.ref(dom));
@@ -428,108 +551,7 @@ var _TextField = function _TextField(_ref) {
     className: [classes.component, isInvalid ? classes.stateInvalid : "", hasFocusRef.current ? classes.stateFocused : "", isDirtyRef.current ? classes.stateDirty : "", props.floatingLabel ? classes.hasFloatingLabel : "", props.disabled ? classes.stateDisabled : "", props.readonly ? classes.stateReadonly : "", props.dense ? classes.isDense : "", props.required ? classes.isRequired : "", props.fullWidth ? classes.hasFullWidth : "", props.counter ? classes.hasCounter : "", props.hideSpinner !== false && props.hideSpinner !== undefined ? classes.hideSpinner : "", props.hideClear !== false && props.hideClear !== undefined ? classes.hideClear : "", props.hideValidation ? classes.hideValidation : "", props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
   });
 
-  var allProps = _objectSpread2(_objectSpread2({}, props), props.domAttributes);
-
-  var errorMessage = props.error || errorRef.current;
-  var type = allProps.multiLine ? null : !allProps.type || allProps.type === "submit" || allProps.type === "search" ? "text" : allProps.type;
-  var showError = isInvalid && errorMessage !== undefined;
-  var inactive = allProps.disabled || allProps[a.readonly];
-  var requiredIndicator = allProps.required && allProps.requiredIndicator !== "" ? h("span", {
-    key: "required",
-    className: classes.requiredIndicator
-  }, allProps.requiredIndicator || "*") : null;
-  var optionalIndicator = !allProps.required && allProps.optionalIndicator ? h("span", {
-    key: "optional",
-    className: classes.optionalIndicator
-  }, allProps.optionalIndicator) : null;
-  var label = allProps.label ? [allProps.label, requiredIndicator, optionalIndicator] : null;
-  var contents = [h("div", {
-    className: classes.inputArea,
-    key: "input-area"
-  }, [label ? h("label", {
-    key: "label",
-    className: classes.label
-  }, label) : null, h(inputType, _extends({}, {
-    key: "input",
-    className: classes.input,
-    disabled: allProps.disabled
-  }, type ? {
-    type: type
-  } : null, allProps.name ? {
-    name: allProps.name
-  } : null, !ignoreEvent(allProps, a.onclick) ? _defineProperty({}, a.onclick, function () {
-    if (inactive) {
-      return;
-    } // in case the browser does not give the field focus,
-    // for instance when the user tapped to the current field off screen
-
-
-    handleStateUpdate({
-      focus: true
-    });
-  }) : null, !ignoreEvent(allProps, a.onfocus) ? _defineProperty({}, a.onfocus, function () {
-    if (inactive) {
-      return;
-    }
-
-    handleStateUpdate({
-      focus: true
-    }); // set CSS class manually in case field gets focus but is off screen
-    // and no redraw is triggered
-    // at the next redraw `hasFocusRef.current` will be read and the focus class be set
-    // in the props.class statement
-
-    if (domElement) {
-      domElement.classList.add(classes.stateFocused);
-    }
-  }) : null, !ignoreEvent(allProps, a.onblur) ? _defineProperty({}, a.onblur, function () {
-    handleStateUpdate({
-      type: "onblur",
-      focus: false
-    }); // same principle as onfocus
-
-    domElement.classList.remove(classes.stateFocused);
-  }) : null, !ignoreEvent(allProps, a.oninput) ? _defineProperty({}, a.oninput, function (e) {
-    // default input event
-    // may be overwritten by props.events
-    handleStateUpdate({
-      type: "input"
-    });
-  }) : null, !ignoreEvent(allProps, a.onkeydown) ? _defineProperty({}, a.onkeydown, function (e) {
-    if (e.key === "Enter") {
-      isTouchedRef.current = true;
-    } else if (e.key === "Escape" || e.key === "Esc") {
-      handleStateUpdate({
-        focus: false
-      });
-    }
-  }) : null, allProps.events ? allProps.events : null, // NOTE: may overwrite oninput
-  allProps.required !== undefined && !!allProps.required ? {
-    required: true
-  } : null, allProps[a.readonly] !== undefined && !!allProps[a.readonly] ? _defineProperty({}, a.readonly, true) : null, allProps.pattern !== undefined ? {
-    pattern: allProps.pattern
-  } : null, allProps[a.maxlength] !== undefined ? _defineProperty({}, a.maxlength, allProps[a.maxlength]) : null, allProps[a.minlength] !== undefined ? _defineProperty({}, a.minlength, allProps[a.minlength]) : null, allProps.max !== undefined ? {
-    max: allProps.max
-  } : null, allProps.min !== undefined ? {
-    min: allProps.min
-  } : null, allProps[a.autofocus] !== undefined ? _defineProperty({}, a.autofocus, allProps[a.autofocus]) : null, allProps[a.tabindex] !== undefined ? _defineProperty({}, a.tabindex, allProps[a.tabindex]) : null, allProps.rows !== undefined ? {
-    rows: allProps.rows
-  } : null, allProps.placeholder !== undefined ? {
-    placeholder: allProps.placeholder
-  } : null, allProps.domAttributes !== undefined ? _objectSpread2({}, allProps.domAttributes) : null))]), allProps.counter ? h("div", {
-    key: "counter",
-    className: classes.counter
-  }, (value.length || 0) + " / " + allProps.counter) : null, allProps.help && !showError ? h("div", {
-    key: "help",
-    className: [classes.help, allProps.focusHelp ? classes.focusHelp : null].join(" ")
-  }, allProps.help) : null, showError ? h("div", {
-    key: "error",
-    className: classes.error
-  }, errorMessage) : showErrorPlaceholder && !allProps.help ? h("div", {
-    key: "error-placeholder",
-    className: classes.errorPlaceholder
-  }) : null];
-  var content = [props.before, contents, props.after];
+  var content = [props.before].concat(componentContent, [props.after]);
   return h(props.element || "div", componentProps, content);
 };
 
