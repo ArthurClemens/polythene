@@ -1,10 +1,15 @@
-import { filterSupportedAttributes, classForSize } from "polythene-core";
+import {
+  filterSupportedAttributes,
+  classForSize,
+  processDataset,
+} from "polythene-core";
 import classes from "polythene-css-classes/icon";
 
 export const _Icon = ({ h, a, SVG, ...props }) => {
   const componentProps = Object.assign(
     {},
     filterSupportedAttributes(props),
+    processDataset(props),
     props.testId && { "data-test-id": props.testId },
     {
       className: [

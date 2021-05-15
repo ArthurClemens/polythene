@@ -1,6 +1,4 @@
-import Button from "polythene-tests-cypress/Button/tests-react";
-import TextField from "polythene-tests-cypress/TextField/tests-react";
-import Switch from "polythene-tests-cypress/Switch/tests-react";
+import { Button, TextField, Switch } from "polythene-tests-cypress/react";
 
 export default [
   {

@@ -1,5 +1,6 @@
 import {
   filterSupportedAttributes,
+  processDataset,
   classForSize,
   createUid,
 } from "polythene-core";
@@ -108,6 +109,7 @@ export const _SelectionControl = ({
   const componentProps = Object.assign(
     {},
     filterSupportedAttributes(props, { remove: ["style"] }), // Set style on view control
+    processDataset(props),
     props.testId && { "data-test-id": props.testId },
     {
       className: [
@@ -130,7 +132,7 @@ export const _SelectionControl = ({
       {},
       {
         className: classes.formLabel,
-        [a.onclick]: viewControlClickHandler,
+        [a.onclick]: props.disabled ? undefined : viewControlClickHandler,
       }
     ),
     [
@@ -140,10 +142,12 @@ export const _SelectionControl = ({
         Object.assign({}, props, {
           inactive,
           checked: isChecked,
-          events: {
-            // Only use key down event; click events are handled by input element
-            [a.onkeydown]: viewControlKeyDownHandler,
-          },
+          events: props.disabled
+            ? undefined
+            : {
+                // Only use key down event; click events are handled by input element
+                [a.onkeydown]: viewControlKeyDownHandler,
+              },
           aria,
         })
       ),

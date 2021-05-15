@@ -241,8 +241,8 @@ var deprecation = function deprecation(component, _ref) {
 
 /**
  * Reducer helper function.
- * @param {object} acc 
- * @param {string} p 
+ * @param {object} acc
+ * @param {string} p
  * @returns {object}
  */
 var r = function r(acc, p) {
@@ -262,9 +262,9 @@ var defaultAttrs = [// Universal
 "tabIndex", // Mithril
 "tabindex", "oninit", "oncreate", "onupdate", "onbeforeremove", "onremove", "onbeforeupdate"];
 /**
- * 
- * @param {{[s: string]: string}} attrs 
- * @param {object} [modifications] 
+ *
+ * @param {{[s: string]: string}} attrs
+ * @param {object} [modifications]
  * @param {Array<string>} [modifications.add]
  * @param {Array<string>} [modifications.remove]
  * @returns {object}
@@ -276,11 +276,11 @@ var filterSupportedAttributes = function filterSupportedAttributes(attrs) {
       remove = _ref.remove;
 
   /**
-   * @type {{[s: string]: string}} removeLookup 
+   * @type {{[s: string]: string}} removeLookup
    */
   var removeLookup = remove ? remove.reduce(r, {}) : {};
   /**
-   * @type {Array<string>} attrsList 
+   * @type {Array<string>} attrsList
    */
 
   var attrsList = add ? defaultAttrs.concat(add) : defaultAttrs;
@@ -293,12 +293,26 @@ var filterSupportedAttributes = function filterSupportedAttributes(attrs) {
    * @param {string} key
    */
   function (acc, key) {
-    return supported[key] ? acc[key] = attrs[key] : null, acc;
+    if (supported[key]) {
+      return _objectSpread2(_objectSpread2({}, acc), {}, _defineProperty({}, key, attrs[key]));
+    } else {
+      return acc;
+    }
   }, {});
 };
 /**
- * 
- * @param {object|function} attrs 
+ * Process attrs.dataSet
+ * @param {{[s: string]: string}} attrs
+ */
+
+var processDataset = function processDataset(attrs) {
+  return attrs.dataSet ? Object.keys(attrs.dataSet).reduce(function (acc, key) {
+    return _objectSpread2(_objectSpread2({}, acc), {}, _defineProperty({}, "data-".concat(key), attrs.dataSet[key]));
+  }, {}) : undefined;
+};
+/**
+ *
+ * @param {object|function} attrs
  * @returns {object}
  */
 
@@ -306,8 +320,8 @@ var unpackAttrs = function unpackAttrs(attrs) {
   return typeof attrs === "function" ? attrs() : attrs;
 };
 /**
- * 
- * @param {{[s: string]: string}} classes 
+ *
+ * @param {{[s: string]: string}} classes
  * @returns {{[s: string]: string}}
  */
 
@@ -321,9 +335,9 @@ var sizeClasses = function sizeClasses(classes) {
   };
 };
 /**
- * 
- * @param {{[s: string]: string}} classes 
- * @param {string} [size] 
+ *
+ * @param {{[s: string]: string}} classes
+ * @param {string} [size]
  * @returns {object}
  */
 
@@ -1118,4 +1132,4 @@ var transitionComponent = function transitionComponent(_ref) {
 
 var createUid = nanoid;
 
-export { Multi, _Conditional, classForSize, createUid, deprecation, emit, filterSupportedAttributes, getAnimationEndEvent, getStyle, hide, iconDropdownDown, iconDropdownUp, initialTransitionState, isClient, isRTL, isServer, isTouch, pointerEndDownEvent, pointerEndEvent, pointerMoveEvent, pointerStartDownEvent, pointerStartEvent, show, styleDurationToMs, stylePropCompare, subscribe, throttle, transitionComponent, transitionStateReducer, unpackAttrs, unsubscribe };
+export { Multi, _Conditional, classForSize, createUid, deprecation, emit, filterSupportedAttributes, getAnimationEndEvent, getStyle, hide, iconDropdownDown, iconDropdownUp, initialTransitionState, isClient, isRTL, isServer, isTouch, pointerEndDownEvent, pointerEndEvent, pointerMoveEvent, pointerStartDownEvent, pointerStartEvent, processDataset, show, styleDurationToMs, stylePropCompare, subscribe, throttle, transitionComponent, transitionStateReducer, unpackAttrs, unsubscribe };

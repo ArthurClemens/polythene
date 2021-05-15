@@ -4,14 +4,15 @@ Form control to select one or more options from a set. Generates a styled checkb
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Main features](#main-features)
-- [Usage](#usage)
-- [Keyboard control](#keyboard-control)
-- [Options](#options)
-  - [Checkbox specific](#checkbox-specific)
-  - [Common component options](#common-component-options)
-- [Composition](#composition)
-- [CSS classes](#css-classes)
+- [Checkbox](#checkbox)
+  - [Main features](#main-features)
+  - [Usage](#usage)
+  - [Keyboard control](#keyboard-control)
+  - [Options](#options)
+    - [Checkbox specific](#checkbox-specific)
+    - [Common component options](#common-component-options)
+  - [Composition](#composition)
+  - [CSS classes](#css-classes)
 
 <!-- /MarkdownTOC -->
 
@@ -72,6 +73,7 @@ Press TAB to navigate to a button - it will show a highlight. Press ENTER to exe
 | **after**     | optional       | String, hyperscript or component |      | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **before**    | optional       | String, hyperscript or component |      | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **className** | optional       | String   |             | Extra CSS class appended to `pe-checkbox-control` |
+| **dataSet** | optional | Object |  | Custom data attributes: `dataSet: { count: "0" }` creates `data-count="0"` (note that the key should be a lowercase string) |
 | **element**   | optional       | String   | "div"       | HTML element tag for the checkbox container |
 | **events**    | optional       | Object   |             | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
 | **id**        | optional       | String   |             | HTML element id for the checkbox container |

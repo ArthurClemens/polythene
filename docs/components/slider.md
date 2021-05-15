@@ -4,16 +4,17 @@ Select a value from a continuous or discrete range of values by moving the slide
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Main features](#main-features)
-- [Usage](#usage)
-- [Keyboard control](#keyboard-control)
-- [Options](#options)
-  - [Slider specific options](#slider-specific-options)
-  - [Common component options](#common-component-options)
-- [Composition](#composition)
-- [CSS classes](#css-classes)
-- [Design considerations](#design-considerations)
-- [Future](#future)
+- [Slider](#slider)
+  - [Main features](#main-features)
+  - [Usage](#usage)
+  - [Keyboard control](#keyboard-control)
+  - [Options](#options)
+    - [Slider specific options](#slider-specific-options)
+    - [Common component options](#common-component-options)
+  - [Composition](#composition)
+  - [CSS classes](#css-classes)
+  - [Design considerations](#design-considerations)
+  - [Future](#future)
 
 <!-- /MarkdownTOC -->
 
@@ -94,6 +95,7 @@ The amount of change depends on the step size. This can be set with option `step
 | **after**     | optional       | String, hyperscript or component |      | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **before**    | optional       | String, hyperscript or component |      | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **className** | optional       | String   |             | Extra CSS class appended to `pe-slider` |
+| **dataSet** | optional | Object |  | Custom data attributes: `dataSet: { count: "0" }` creates `data-count="0"` (note that the key should be a lowercase string) |
 | **element**   | optional       | String   | "div"       | HTML element tag |
 | **events** | optional | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
 | **id**        | optional       | String   |             | HTML element id |

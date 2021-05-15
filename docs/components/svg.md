@@ -6,10 +6,11 @@ This is a low-level and simple module for handling SVGs. If you want to use SVG 
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Usage](#usage)
-- [Options](#options)
-  - [Common component options](#common-component-options)
-- [CSS classes](#css-classes)
+- [SVG](#svg)
+  - [Usage](#usage)
+  - [Options](#options)
+    - [Common component options](#common-component-options)
+  - [CSS classes](#css-classes)
 
 <!-- /MarkdownTOC -->
 
@@ -35,6 +36,7 @@ This is a low-level and simple module for handling SVGs. If you want to use SVG 
 | **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **className** | optional       | String   |       | Extra CSS class appended to `pe-svg` |
 | **content**   | use `content` or children | String, hyperscript or component |  | SVG content |
+| **dataSet** | optional | Object |  | Custom data attributes: `dataSet: { count: "0" }` creates `data-count="0"` (note that the key should be a lowercase string) |
 | **element**   | optional       | String   | "div" | HTML element tag |
 | **id**        | optional       | String   |       | HTML element id |
 | **style**     | optional       | Object   |       | For setting simple style attributes |

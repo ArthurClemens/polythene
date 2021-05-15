@@ -4,14 +4,15 @@ Search field with optional icons and buttons that respond to the input state.
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Main features](#main-features)
-- [Usage](#usage)
-- [Options](#options)
-  - [Search specific options](#search-specific-options)
-  - [Common component options](#common-component-options)
-- [Composition](#composition)
-- [CSS classes](#css-classes)
-- [Future](#future)
+- [Search](#search)
+  - [Main features](#main-features)
+  - [Usage](#usage)
+  - [Options](#options)
+    - [Search specific options](#search-specific-options)
+    - [Common component options](#common-component-options)
+  - [Composition](#composition)
+  - [CSS classes](#css-classes)
+  - [Future](#future)
 
 <!-- /MarkdownTOC -->
 
@@ -55,6 +56,7 @@ Search field with optional icons and buttons that respond to the input state.
 | **after**     | optional       | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **className** | optional | String |  | Extra CSS class appended to `pe-search` |
+| **dataSet** | optional | Object |  | Custom data attributes: `dataSet: { count: "0" }` creates `data-count="0"` (note that the key should be a lowercase string) |
 | **element**   | optional | String | "div" | HTML element tag for the checkbox container |
 | **id** | optional | String | | HTML element id for the search field |
 | **style**     | optional       | Object   |             | For setting simple style attributes |

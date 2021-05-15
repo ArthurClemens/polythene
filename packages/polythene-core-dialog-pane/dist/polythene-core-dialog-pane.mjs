@@ -268,7 +268,8 @@ var _DialogPane = function _DialogPane(_ref) {
 
   var componentContent = h("div", {
     className: [classes.content, props.menu ? classes.menuContent : null].join(" "),
-    style: props.style
+    style: props.style,
+    role: "dialog"
   }, [props.header ? props.header : props.title ? h("div", {
     className: [classes.header, classes.headerWithTitle].join(" ")
   }, h("div", {

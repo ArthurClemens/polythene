@@ -4,15 +4,16 @@ Displays a list element as part of a [List](list.md).
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Main features](#main-features)
-- [Usage](#usage)
-- [Options](#options)
-  - [List tile content options](#list-tile-content-options)
-  - [List tile primary content options](#list-tile-primary-content-options)
-  - [List tile secondary content options](#list-tile-secondary-content-options)
-  - [Common component options](#common-component-options)
-- [Composition](#composition)
-- [CSS classes](#css-classes)
+- [List Tile](#list-tile)
+  - [Main features](#main-features)
+  - [Usage](#usage)
+  - [Options](#options)
+    - [List tile content options](#list-tile-content-options)
+    - [List tile primary content options](#list-tile-primary-content-options)
+    - [List tile secondary content options](#list-tile-secondary-content-options)
+    - [Common component options](#common-component-options)
+  - [Composition](#composition)
+  - [CSS classes](#css-classes)
 
 <!-- /MarkdownTOC -->
 
@@ -102,6 +103,7 @@ Displays a list element as part of a [List](list.md).
 | **after** | optional | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **before** | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **className** | optional | String |  | Extra CSS class appended to `pe-list-tile` |
+| **dataSet** | optional | Object |  | Custom data attributes: `dataSet: { count: "0" }` creates `data-count="0"` (note that the key should be a lowercase string) |
 | **element** | optional | String | "div" | HTML element tag |
 | **events** | optional | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
 | **id** | optional | String | | HTML element id |

@@ -441,7 +441,8 @@ var _Slider = function _Slider(_ref) {
   var flexRestValue = 1 - fraction;
   var flexRestCss = flexRestValue + " 1 0%";
   var content = [props.before, h("div", _extends({}, {
-    className: classes.track
+    className: classes.track,
+    role: interactiveTrack ? "button" : undefined
   }, interactiveTrack && !props.disabled && pointerStartDownEvent.reduce(function (acc, evt) {
     return acc[a["on".concat(evt)]] = onStartTrack, acc;
   }, {})), [h("div", {
@@ -459,7 +460,9 @@ var _Slider = function _Slider(_ref) {
     className: classes.control
   }, props.disabled ? {
     disabled: true
-  } : (_ref3 = {}, _defineProperty(_ref3, a.tabindex, props[a.tabindex] || 0), _defineProperty(_ref3, a.onfocus, function () {
+  } : (_ref3 = {
+    role: "button"
+  }, _defineProperty(_ref3, a.tabindex, props[a.tabindex] || 0), _defineProperty(_ref3, a.onfocus, function () {
     return focus(controlElRef.current);
   }), _defineProperty(_ref3, a.onblur, function () {
     return deFocus();

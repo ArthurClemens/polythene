@@ -105,9 +105,8 @@ var _ListTile = function _ListTile(_ref) {
       Icon = _ref.Icon,
       props = _objectWithoutProperties(_ref, ["h", "a", "Ripple", "Icon"]);
 
-  // Remove unused props
+  // Remove unused prop
   delete props.key;
-  var hasTabIndex = !props.header && !props.url && !(props.secondary && props.secondary.url);
   var heightClass = props.subtitle ? classes.hasSubtitle : props.highSubtitle ? classes.hasHighSubtitle : props.front || props.indent ? classes.hasFront : null;
 
   var componentProps = _extends({}, filterSupportedAttributes(props, {
@@ -116,8 +115,9 @@ var _ListTile = function _ListTile(_ref) {
   props.testId && {
     "data-test-id": props.testId
   }, {
-    className: [classes.component, props.selected ? classes.selected : null, props.disabled ? classes.disabled : null, props.sticky ? classes.sticky : null, props.compact ? classes.compact : null, props.hoverable ? classes.hoverable : null, props.selectable ? classes.selectable : null, props.highlight ? classes.highlight : null, props.rounded ? classes.rounded : null, props.header ? classes.header : null, props.inset || props.insetH ? classes.insetH : null, props.inset || props.insetV ? classes.insetV : null, props.navigation ? classes.navigation : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, heightClass, props.className || props[a["class"]]].join(" ")
-  }, hasTabIndex && _defineProperty({}, a.tabindex, props[a.tabindex] || 0) // events and url are attached to primary content to not interfere with controls
+    className: [classes.component, props.selected ? classes.selected : null, props.disabled ? classes.disabled : null, props.sticky ? classes.sticky : null, props.compact ? classes.compact : null, props.hoverable ? classes.hoverable : null, props.selectable ? classes.selectable : null, props.highlight ? classes.highlight : null, props.rounded ? classes.rounded : null, props.header ? classes.header : null, props.inset || props.insetH ? classes.insetH : null, props.inset || props.insetV ? classes.insetV : null, props.navigation ? classes.navigation : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, heightClass, props.className || props[a["class"]]].join(" "),
+    role: props.url ? "link" : props.hoverable || props.selectable ? "button" : "listitem"
+  } // events and url are attached to primary content to not interfere with controls
   );
 
   var primaryProps = props;
@@ -138,10 +138,12 @@ var _ListTile = function _ListTile(_ref) {
   componentProps, content);
 };
 
-var primaryContent = function primaryContent(_ref3) {
-  var h = _ref3.h,
-      a = _ref3.a,
-      props = _ref3.props;
+var primaryContent = function primaryContent(_ref2) {
+  var _ref3;
+
+  var h = _ref2.h,
+      a = _ref2.a,
+      props = _ref2.props;
   var url = props.keyboardControl ? null : props.url;
   var element = props.element ? props.element : url ? "a" : "div";
   var contentFrontClass = [classes.content, classes.contentFront, props.compactFront ? classes.compactFront : null].join(" ");
@@ -153,7 +155,7 @@ var primaryContent = function primaryContent(_ref3) {
   var elementProps = _extends({}, filterSupportedAttributes(props), props.events, {
     className: classes.primary,
     style: null
-  }, hasTabIndex && _defineProperty({}, a.tabindex, props[a.tabindex] || 0), url);
+  }, hasTabIndex && (_ref3 = {}, _defineProperty(_ref3, a.tabindex, props[a.tabindex] || 0), _defineProperty(_ref3, "role", props.role || url ? "link" : "button"), _ref3), url);
 
   var content = props.content ? props.content : [frontComp, h("div", {
     className: classes.content,
@@ -170,18 +172,20 @@ var primaryContent = function primaryContent(_ref3) {
   return h(element, elementProps, content);
 };
 
-var secondaryContent = function secondaryContent(_ref5) {
-  var h = _ref5.h,
-      a = _ref5.a,
-      Icon = _ref5.Icon,
-      _ref5$props = _ref5.props,
-      props = _ref5$props === void 0 ? {} : _ref5$props;
+var secondaryContent = function secondaryContent(_ref4) {
+  var _ref5;
+
+  var h = _ref4.h,
+      a = _ref4.a,
+      Icon = _ref4.Icon,
+      _ref4$props = _ref4.props,
+      props = _ref4$props === void 0 ? {} : _ref4$props;
   var url = props.keyboardControl ? null : props.url;
   var element = props.element ? props.element : url ? "a" : "div";
   var hasTabIndex = props.url;
   return h(element, _extends({}, url, {
     className: classes.secondary
-  }, props.events, filterSupportedAttributes(props), hasTabIndex && _defineProperty({}, a.tabindex, props[a.tabindex] || 0)), h("div", {
+  }, props.events, filterSupportedAttributes(props), hasTabIndex && (_ref5 = {}, _defineProperty(_ref5, a.tabindex, props[a.tabindex] || 0), _defineProperty(_ref5, "role", props.role || url ? "link" : "button"), _ref5)), h("div", {
     className: classes.content
   }, [props.icon ? h(Icon, props.icon) : null, props.content ? props.content : null]));
 };

@@ -1,37 +1,53 @@
-import m from "mithril";
+import h from "mithril";
 import { addLayoutStyles, addTypography } from "polythene-css";
 import Page from "./page";
 import { List, ListTile } from "polythene-mithril";
 import routes from "./routes";
 import "./app.css";
+import "./tests.css";
 
 addLayoutStyles();
 addTypography();
 
-const index = {
+const TITLE = "Polythene for Mithril";
+const SECTION_TITLE = "Test specifications";
+
+const Index = {
   view: () =>
-    m(
-      List,
-      routes.map((route) =>
-        m(ListTile, {
-          element: m.route.Link,
-          title: route.name,
-          hoverable: true,
-          url: {
-            href: route.path,
+    h(".page", null, [
+      h("nav", "Home"),
+      h("h1.page__title", TITLE),
+      h(
+        ".page__content.page__content__list",
+        null,
+        h(
+          List,
+          {
+            className: "page__content__navigation",
+            header: { title: SECTION_TITLE },
           },
-        })
-      )
-    ),
+          routes.map((route) =>
+            h(ListTile, {
+              element: h.route.Link,
+              title: route.name,
+              hoverable: true,
+              url: {
+                href: route.path,
+              },
+            })
+          )
+        )
+      ),
+    ]),
 };
 
-m.route.prefix = "#";
+h.route.prefix = "#";
 
 const mountNode = document.querySelector("#app");
 const routeData = {
   "/": {
     onmatch: () => {
-      return index;
+      return Index;
     },
   },
 };
@@ -43,4 +59,4 @@ routes.forEach(
       },
     })
 );
-m.route(mountNode, "/", routeData);
+h.route(mountNode, "/", routeData);

@@ -22,6 +22,11 @@ export function filterSupportedAttributes(
 ): void;
 
 /**
+ * Process attrs.dataSet and return an object with keys 'data-xxxx': 'value'
+ */
+export function processDataset(attrs: object): object | undefined;
+
+/**
  * Unpacks the `attrs` object if it is wrapped in a stream function.
  */
 export function unpackAttrs(attrs: object | (() => object)): object;

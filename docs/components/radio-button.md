@@ -4,13 +4,14 @@ Form control to select a single option from a set. Generates a styled radio butt
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Main features](#main-features)
-- [Usage](#usage)
-- [Options](#options)
-  - [Radio button specific](#radio-button-specific)
-  - [Common component options](#common-component-options)
-- [Composition](#composition)
-- [CSS classes](#css-classes)
+- [Radio Button](#radio-button)
+  - [Main features](#main-features)
+  - [Usage](#usage)
+  - [Options](#options)
+    - [Radio button specific](#radio-button-specific)
+    - [Common component options](#common-component-options)
+  - [Composition](#composition)
+  - [CSS classes](#css-classes)
 
 <!-- /MarkdownTOC -->
 
@@ -65,6 +66,7 @@ Form control to select a single option from a set. Generates a styled radio butt
 | **after**     | optional       | String, hyperscript or component |      | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **before**    | optional       | String, hyperscript or component |      | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **className** | optional       | String   |         | Extra CSS class appended to `pe-radio-control` |
+| **dataSet** | optional | Object |  | Custom data attributes: `dataSet: { count: "0" }` creates `data-count="0"` (note that the key should be a lowercase string) |
 | **element**   | optional       | String   | "div"       | HTML element tag for the Radio Button container |
 | **events**    | optional       | Object   |             | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
 | **id**        | optional       | String   |             | HTML element id for the radio button container |

@@ -4,12 +4,13 @@ Adds a configurable shadow to an element.
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Main features](#main-features)
-- [Usage](#usage)
-- [Options](#options)
-  - [Shadow options](#shadow-options)
-  - [Common component options](#common-component-options)
-- [CSS classes](#css-classes)
+- [Shadow](#shadow)
+  - [Main features](#main-features)
+  - [Usage](#usage)
+  - [Options](#options)
+    - [Shadow options](#shadow-options)
+    - [Common component options](#common-component-options)
+  - [CSS classes](#css-classes)
 
 <!-- /MarkdownTOC -->
 
@@ -52,6 +53,7 @@ Adds a configurable shadow to an element.
 | **before**    | optional | String, hyperscript or component | | Extra content before main content; this content is placed left of subsequent elements with a lower stacking depth |
 | **className** | optional | String |  | Extra CSS class appended to `pe-shadow` |
 | **content**   | optional | String, hyperscript or component |  | Any content; replaces children  |
+| **dataSet** | optional | Object |  | Custom data attributes: `dataSet: { count: "0" }` creates `data-count="0"` (note that the key should be a lowercase string) |
 | **element**   | optional | String | "div" | HTML element tag |
 | **id** | optional | String | | HTML element id |
 

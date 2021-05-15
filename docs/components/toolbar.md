@@ -6,14 +6,15 @@ See [Material Design Toolbars](https://material.io/guidelines/layout/structure.h
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Main features](#main-features)
-- [Usage](#usage)
-- [Options](#options)
-  - [Toolbar options](#toolbar-options)
-  - [ToolbarTitle options](#toolbartitle-options)
-  - [Common component options](#common-component-options)
-- [Composition](#composition)
-- [CSS classes](#css-classes)
+- [Toolbar](#toolbar)
+  - [Main features](#main-features)
+  - [Usage](#usage)
+  - [Options](#options)
+    - [Toolbar options](#toolbar-options)
+    - [ToolbarTitle options](#toolbartitle-options)
+    - [Common component options](#common-component-options)
+  - [Composition](#composition)
+  - [CSS classes](#css-classes)
 
 <!-- /MarkdownTOC -->
 
@@ -70,6 +71,7 @@ See [Material Design Toolbars](https://material.io/guidelines/layout/structure.h
 | **before** | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **className** | optional | String |  | Extra CSS class appended to `pe-toolbar` |
 | **content** | either a bar or `content` must be passed | String, hyperscript or component | | Alternative content; replaces children |
+| **dataSet** | optional | Object |  | Custom data attributes: `dataSet: { count: "0" }` creates `data-count="0"` (note that the key should be a lowercase string) |
 | **element**   | optional | String | "div" | HTML element tag |
 | **events** | optional | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
 | **id** | optional | String | | HTML element id |

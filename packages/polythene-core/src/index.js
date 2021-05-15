@@ -1,6 +1,11 @@
 export { _Conditional } from "./Conditional";
 export { deprecation } from "./developer";
-export { filterSupportedAttributes, unpackAttrs, classForSize } from "./attrs";
+export {
+  filterSupportedAttributes,
+  unpackAttrs,
+  classForSize,
+  processDataset,
+} from "./attrs";
 export { getAnimationEndEvent } from "./animation-event";
 export { getStyle, stylePropCompare, isRTL, styleDurationToMs } from "./style";
 export { iconDropdownUp, iconDropdownDown } from "./icons";

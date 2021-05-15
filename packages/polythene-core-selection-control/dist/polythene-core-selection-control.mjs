@@ -1,4 +1,4 @@
-import { createUid, classForSize, filterSupportedAttributes } from 'polythene-core';
+import { createUid, classForSize, processDataset, filterSupportedAttributes } from 'polythene-core';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -245,7 +245,7 @@ var _SelectionControl = function _SelectionControl(_ref) {
   var componentProps = _extends({}, filterSupportedAttributes(props, {
     remove: ["style"]
   }), // Set style on view control
-  props.testId && {
+  processDataset(props), props.testId && {
     "data-test-id": props.testId
   }, {
     className: [classes.component, props.instanceClass, // for instance pe-checkbox-control
@@ -254,10 +254,10 @@ var _SelectionControl = function _SelectionControl(_ref) {
 
   var content = h("label", _extends({}, _defineProperty({
     className: classes.formLabel
-  }, a.onclick, viewControlClickHandler)), [props.before, h(ViewControl, _extends({}, props, {
+  }, a.onclick, props.disabled ? undefined : viewControlClickHandler)), [props.before, h(ViewControl, _extends({}, props, {
     inactive: inactive,
     checked: isChecked,
-    events: _defineProperty({}, a.onkeydown, viewControlKeyDownHandler),
+    events: props.disabled ? undefined : _defineProperty({}, a.onkeydown, viewControlKeyDownHandler),
     aria: aria
   })), props.label ? h(".".concat(classes.label), {
     id: uidRef.current

@@ -1,40 +1,46 @@
-import { filterSupportedAttributes, isTouch, subscribe, unsubscribe, isRTL } from "polythene-core";
+import {
+  filterSupportedAttributes,
+  processDataset,
+  isTouch,
+  subscribe,
+  unsubscribe,
+  isRTL,
+} from "polythene-core";
 import { scrollTo } from "polythene-utilities";
 import classes from "polythene-css-classes/tabs";
 
-const SCROLL_SPEED                 = 600; // px per second
-const SCROLL_DELAY                 = .15; // seconds
-const SCROLL_MIN_DURATION          = .5; // seconds
-const INDICATOR_SLIDE_MIN_DURATION = .25; // seconds
+const SCROLL_SPEED = 600; // px per second
+const SCROLL_DELAY = 0.15; // seconds
+const SCROLL_MIN_DURATION = 0.5; // seconds
+const INDICATOR_SLIDE_MIN_DURATION = 0.25; // seconds
 
-const getButtons = props => {
+const getButtons = (props) => {
   return props.content
     ? props.content
     : props.tabs
-      ? props.tabs
-      : props.children || [];
+    ? props.tabs
+    : props.children || [];
 };
 
-const getIndex = props => {
+const getIndex = (props) => {
   const buttons = getButtons(props);
   const selectedIndex = Array.isArray(buttons)
-    ? buttons.reduce((acc, tab, index) => (
-      acc === undefined && !tab.disabled && tab.selected  
-        ? index
-        : acc
-    ), undefined)
+    ? buttons.reduce(
+        (acc, tab, index) =>
+          acc === undefined && !tab.disabled && tab.selected ? index : acc,
+        undefined
+      )
     : undefined;
   if (selectedIndex !== undefined) {
     return selectedIndex;
   }
-  const attrsSelectedTabIndex = props.selectedTabIndex !== undefined
-    ? props.selectedTabIndex
-    : props.selectedTab !== undefined // deprecated
+  const attrsSelectedTabIndex =
+    props.selectedTabIndex !== undefined
+      ? props.selectedTabIndex
+      : props.selectedTab !== undefined // deprecated
       ? props.selectedTab
       : undefined;
-  return attrsSelectedTabIndex !== undefined
-    ? attrsSelectedTabIndex
-    : 0;
+  return attrsSelectedTabIndex !== undefined ? attrsSelectedTabIndex : 0;
 };
 
 const scrollButtonGetNewIndex = (index, tabs) => {
@@ -42,18 +48,23 @@ const scrollButtonGetNewIndex = (index, tabs) => {
   const maxTabIndex = tabs.length - 1;
   return {
     backward: Math.max(index - 1, minTabIndex),
-    forward: Math.min(index + 1, maxTabIndex)
+    forward: Math.min(index + 1, maxTabIndex),
   };
 };
 
-const sortByLargestWidth = (a, b) =>
-  a < b
-    ? 1
-    : a > b
-      ? -1
-      : 0;
+const sortByLargestWidth = (a, b) => (a < b ? 1 : a > b ? -1 : 0);
 
-export const _Tabs = ({ h, a, getRef, useRef, useState, useEffect, ScrollButton, Tab, ...props }) => {
+export const _Tabs = ({
+  h,
+  a,
+  getRef,
+  useRef,
+  useState,
+  useEffect,
+  ScrollButton,
+  Tab,
+  ...props
+}) => {
   const buttons = getButtons(props);
   if (buttons.length === 0) {
     throw new Error("No tabs specified");
@@ -69,31 +80,34 @@ export const _Tabs = ({ h, a, getRef, useRef, useState, useEffect, ScrollButton,
   const [previousSelectedTabIndex, setPreviousSelectedTabIndex] = useState();
 
   const managesScroll = props.scrollable && !isTouch;
-  const tabRowElement = domElement && domElement.querySelector(`.${classes.tabRow}`);
-  const tabIndicatorElement = domElement && domElement.querySelector(`.${classes.indicator}`);
+  const tabRowElement =
+    domElement && domElement.querySelector(`.${classes.tabRow}`);
+  const tabIndicatorElement =
+    domElement && domElement.querySelector(`.${classes.indicator}`);
   const isTabsInited = !!domElement && tabs.length === buttons.length;
-  
-  useEffect(
-    () => {
-      if (!tabRowElement) return;
-      const tabRowTabs = [...tabRowElement.querySelectorAll("[data-index]")].map(dom => {
+
+  useEffect(() => {
+    if (!tabRowElement) return;
+    const tabRowTabs = [...tabRowElement.querySelectorAll("[data-index]")].map(
+      (dom) => {
         const index = parseInt(dom.getAttribute("data-index"), 10);
         return {
           dom,
-          options: buttons[index]
+          options: buttons[index],
         };
-      });
-      if (tabRowTabs) {
-        setTabs(tabRowTabs);
       }
-    },
-    [tabRowElement]
-  );
+    );
+    if (tabRowTabs) {
+      setTabs(tabRowTabs);
+    }
+  }, [tabRowElement]);
 
-  const handleScrollButtonClick = (e, direction ) => {
+  const handleScrollButtonClick = (e, direction) => {
     e.stopPropagation();
     e.preventDefault();
-    const newIndex = scrollButtonGetNewIndex(selectedTabIndexRef.current, tabs)[direction];
+    const newIndex = scrollButtonGetNewIndex(selectedTabIndexRef.current, tabs)[
+      direction
+    ];
     if (newIndex !== selectedTabIndexRef.current) {
       updateWithTabIndex({ index: newIndex, animate: true });
     } else {
@@ -105,8 +119,14 @@ export const _Tabs = ({ h, a, getRef, useRef, useState, useEffect, ScrollButton,
     const scrollLeft = tabRowElement.scrollLeft;
     const minTabIndex = 0;
     const maxTabIndex = tabs.length - 1;
-    const isAtStart = (tabRowElement.scrollLeft === 0) && (selectedTabIndexRef.current === minTabIndex);
-    const isAtEnd = (scrollLeft >= (tabRowElement.scrollWidth - domElement.getBoundingClientRect().width - 1)) && (selectedTabIndexRef.current === maxTabIndex);
+    const isAtStart =
+      tabRowElement.scrollLeft === 0 &&
+      selectedTabIndexRef.current === minTabIndex;
+    const isAtEnd =
+      scrollLeft >=
+        tabRowElement.scrollWidth -
+          domElement.getBoundingClientRect().width -
+          1 && selectedTabIndexRef.current === maxTabIndex;
     setIsScrollButtonAtStart(isAtStart);
     setIsScrollButtonAtEnd(isAtEnd);
   };
@@ -121,24 +141,27 @@ export const _Tabs = ({ h, a, getRef, useRef, useState, useEffect, ScrollButton,
     const translateX = RTL
       ? rect.right - parentRect.right + tabRowElement.scrollLeft + buttonSize
       : rect.left - parentRect.left + tabRowElement.scrollLeft - buttonSize;
-    const scaleX = 1 / (parentRect.width - 2 * buttonSize) * rect.width;
+    const scaleX = (1 / (parentRect.width - 2 * buttonSize)) * rect.width;
     const transformCmd = `translate(${translateX}px, 0) scaleX(${scaleX})`;
-    const duration = animate
-      ? INDICATOR_SLIDE_MIN_DURATION
-      : 0;
+    const duration = animate ? INDICATOR_SLIDE_MIN_DURATION : 0;
     const style = tabIndicatorElement.style;
     style["transition-duration"] = duration + "s";
     style.opacity = 1;
     style.transform = transformCmd;
   };
 
-  const scrollToTab = tabIndex => {
+  const scrollToTab = (tabIndex) => {
     const scroller = tabRowElement;
     // Scroll to position of selected tab
-    const tabLeft = tabs.slice(0, tabIndex).reduce((totalWidth, tabData) =>
-      totalWidth + tabData.dom.getBoundingClientRect().width, 0);
+    const tabLeft = tabs
+      .slice(0, tabIndex)
+      .reduce(
+        (totalWidth, tabData) =>
+          totalWidth + tabData.dom.getBoundingClientRect().width,
+        0
+      );
     // Tabs at the far right will not fully move to the left
-    // because the scrollable row will stick to the right 
+    // because the scrollable row will stick to the right
     // to get the max scroll left, we subtract the visible viewport from the scroll width
     const scrollerWidth = scroller.getBoundingClientRect().width; // frame width
     const scrollingWidth = scroller.scrollWidth;
@@ -155,7 +178,7 @@ export const _Tabs = ({ h, a, getRef, useRef, useState, useEffect, ScrollButton,
           element: scroller,
           to: left,
           duration: Math.max(SCROLL_MIN_DURATION, duration),
-          direction: "horizontal"
+          direction: "horizontal",
         }).then(updateScrollButtons);
       }, delaySeconds * 1000);
     }
@@ -178,54 +201,49 @@ export const _Tabs = ({ h, a, getRef, useRef, useState, useEffect, ScrollButton,
       props.onChange({
         index,
         options: tabs[index].options,
-        el: selectedTabElement
+        el: selectedTabElement,
       });
     }
   };
 
-  useEffect(
-    () => {
-      if (!isTabsInited) {
-        return;
+  useEffect(() => {
+    if (!isTabsInited) {
+      return;
+    }
+    setRTL(isRTL({ element: domElement }));
+
+    const redrawLargestWidth = () => {
+      if (props.largestWidth) {
+        const widths = tabs.map(({ dom }) => dom.getBoundingClientRect().width);
+        const largest = widths.sort(sortByLargestWidth)[0];
+        tabs.forEach(({ dom }) => (dom.style.width = largest + "px"));
       }
-      setRTL(isRTL({ element: domElement }));
-      
-      const redrawLargestWidth = () => {
-        if (props.largestWidth) {
-          const widths = tabs.map(({ dom }) => dom.getBoundingClientRect().width);
-          const largest = widths.sort(sortByLargestWidth)[0];
-          tabs.forEach(({ dom }) => dom.style.width = largest + "px");
-        }
-      };
-    
-      const redraw = () => {
-        redrawLargestWidth();
-        updateWithTabIndex({ index: selectedTabIndexRef.current, animate: false });
-      };
-    
-      const handleFontEvent = ({ name }) =>
-        name === "active" || name === "inactive"
-          ? redraw()
-          : null;
-    
-      subscribe("resize", redraw);
-      subscribe("webfontloader", handleFontEvent);
-            
-      redraw();
+    };
 
-      return () => {
-        unsubscribe("resize", redraw);
-        unsubscribe("webfontloader", handleFontEvent);
-      };
-    },
-    [isTabsInited]
-  );
+    const redraw = () => {
+      redrawLargestWidth();
+      updateWithTabIndex({
+        index: selectedTabIndexRef.current,
+        animate: false,
+      });
+    };
 
-  const autofit = props.scrollable || props.centered
-    ? false
-    : props.autofit
-      ? true
-      : false;
+    const handleFontEvent = ({ name }) =>
+      name === "active" || name === "inactive" ? redraw() : null;
+
+    subscribe("resize", redraw);
+    subscribe("webfontloader", handleFontEvent);
+
+    redraw();
+
+    return () => {
+      unsubscribe("resize", redraw);
+      unsubscribe("webfontloader", handleFontEvent);
+    };
+  }, [isTabsInited]);
+
+  const autofit =
+    props.scrollable || props.centered ? false : props.autofit ? true : false;
 
   // Keep selected tab up to date
   if (tabIndex !== undefined && previousSelectedTabIndex !== tabIndex) {
@@ -237,10 +255,14 @@ export const _Tabs = ({ h, a, getRef, useRef, useState, useEffect, ScrollButton,
 
   const componentProps = Object.assign(
     {},
-    getRef(dom => dom && !domElement && (
-      setTimeout(() => setDomElement(dom), 0) // delay for Mithril 1.x
-    )),
+    getRef(
+      (dom) =>
+        dom &&
+        !domElement &&
+        setTimeout(() => setDomElement(dom), 0) // delay for Mithril 1.x
+    ),
     filterSupportedAttributes(props),
+    processDataset(props),
     props.testId && { "data-test-id": props.testId },
     {
       className: [
@@ -255,7 +277,7 @@ export const _Tabs = ({ h, a, getRef, useRef, useState, useEffect, ScrollButton,
         props.tone === "dark" ? "pe-dark-tone" : null,
         props.tone === "light" ? "pe-light-tone" : null,
         props.className || props[a.class],
-      ].join(" ")
+      ].join(" "),
     }
   );
 
@@ -266,84 +288,82 @@ export const _Tabs = ({ h, a, getRef, useRef, useState, useEffect, ScrollButton,
       {
         // These options can be overridden by `all`
         selected: index === selectedTabIndexRef.current,
-        animateOnTap: (props.animateOnTap !== false) ? true : false
+        animateOnTap: props.animateOnTap !== false ? true : false,
       },
       props.all,
       {
         // Internal options, should not get overridden
         index,
-        onSelect: () => 
+        onSelect: () =>
           updateWithTabIndex({
             index,
-            animate: props.noIndicatorSlide
-              ? false
-              : true
+            animate: props.noIndicatorSlide ? false : true,
           }),
       }
     );
     return h(Tab, buttonOptsCombined);
   });
 
-  let scrollButtonAtStart = null, scrollButtonAtEnd = null;
+  let scrollButtonAtStart = null,
+    scrollButtonAtEnd = null;
   if (props.scrollable) {
-    scrollButtonAtStart = h(ScrollButton, Object.assign(
-      {},
-      {
-        icon: props.scrollIconBackward,
-        className: classes.scrollButtonAtStart,
-        position: "start",
-        events: {
-          [a.onclick]: e => handleScrollButtonClick(e, "backward")
-        },
-        isRTL: RTL
-      }
-    ));
-    scrollButtonAtEnd = h(ScrollButton, Object.assign(
-      {},
-      {
-        icon: props.scrollIconForward,
-        className: classes.scrollButtonAtEnd,
-        position: "end",
-        events: {
-          [a.onclick]: e => handleScrollButtonClick(e, "forward")
-        },
-        isRTL: RTL
-      }
-    ));
+    scrollButtonAtStart = h(
+      ScrollButton,
+      Object.assign(
+        {},
+        {
+          icon: props.scrollIconBackward,
+          className: classes.scrollButtonAtStart,
+          position: "start",
+          events: {
+            [a.onclick]: (e) => handleScrollButtonClick(e, "backward"),
+          },
+          isRTL: RTL,
+        }
+      )
+    );
+    scrollButtonAtEnd = h(
+      ScrollButton,
+      Object.assign(
+        {},
+        {
+          icon: props.scrollIconForward,
+          className: classes.scrollButtonAtEnd,
+          position: "end",
+          events: {
+            [a.onclick]: (e) => handleScrollButtonClick(e, "forward"),
+          },
+          isRTL: RTL,
+        }
+      )
+    );
   }
 
   const tabIndicator = props.hideIndicator
     ? null
-    : h("div",
-      {
-        className: classes.indicator
-      }
-    );
+    : h("div", {
+        className: classes.indicator,
+      });
 
   const componentContent = [
     scrollButtonAtStart,
-    h("div",
+    h(
+      "div",
       {
         className: [
           classes.tabRow,
           props.centered ? classes.tabRowCentered : null,
-          props.scrollable ? classes.tabRowIndent : null
-        ].join(" ")
+          props.scrollable ? classes.tabRowIndent : null,
+        ].join(" "),
       },
-      [
-        ...tabRow,
-        tabIndicator
-      ]
+      [...tabRow, tabIndicator]
     ),
     scrollButtonAtEnd,
   ];
 
-  return h("div",
-    componentProps,
-    [
-      props.before,
-      ...componentContent,
-      props.after
-    ]
-  );
+  return h("div", componentProps, [
+    props.before,
+    ...componentContent,
+    props.after,
+  ]);
 };

@@ -4,13 +4,14 @@ Displays an icon (image or [SVG](svg.md)).
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Main features](#main-features)
-- [Usage](#usage)
-- [Options](#options)
-  - [Icon options](#icon-options)
-  - [Common component options](#common-component-options)
-- [Composition](#composition)
-- [CSS classes](#css-classes)
+- [Icon](#icon)
+  - [Main features](#main-features)
+  - [Usage](#usage)
+  - [Options](#options)
+    - [Icon options](#icon-options)
+    - [Common component options](#common-component-options)
+  - [Composition](#composition)
+  - [CSS classes](#css-classes)
 
 <!-- /MarkdownTOC -->
 
@@ -56,6 +57,7 @@ Displays an icon (image or [SVG](svg.md)).
 | **before**    | optional | String, hyperscript or component | | Extra content before main content; this content is placed left of subsequent elements with a lower stacking depth |
 | **className** | optional | String |       | Extra CSS class appended to `pe-icon` |
 | **content**   | optional | String, hyperscript or component |  | Any content; replaces children and ignores `svg`  |
+| **dataSet** | optional | Object |  | Custom data attributes: `dataSet: { count: "0" }` creates `data-count="0"` (note that the key should be a lowercase string) |
 | **element**   | optional | String | "div" | HTML element tag |
 | **id**        | optional | String |       | HTML element id |
 | **style**     | optional | Object |       | For setting simple style attributes |

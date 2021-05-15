@@ -1,4 +1,8 @@
-import { filterSupportedAttributes, iconDropdownDown } from "polythene-core";
+import {
+  filterSupportedAttributes,
+  iconDropdownDown,
+  processDataset,
+} from "polythene-core";
 import classes from "polythene-css-classes/button";
 import shadowClasses from "polythene-css-classes/shadow";
 import { getDepthClass } from "polythene-core-shadow";
@@ -70,6 +74,7 @@ export const _Button = ({
       add: [a.formaction, "type"],
       remove: ["style"],
     }), // Set style on content, not on component
+    processDataset(props),
     getRef((dom) => {
       if (!dom || domElement) {
         return;
@@ -91,10 +96,10 @@ export const _Button = ({
         props.raised && animateOnTap
           ? shadowClasses.with_active_shadow
           : undefined,
-        // props.raised && animateOnTap
-        //   ? getDepthClass(shadowDepth + 1)
-        //   : undefined,
-        //
+        // Current depth; used for interactive shadow
+        props.raised && animateOnTap
+          ? getDepthClass(shadowDepth + 1)
+          : undefined,
         hasHover ? classes.hasHover : undefined,
         props.selected ? classes.selected : undefined,
         props.highLabel ? classes.highLabel : undefined,
@@ -152,7 +157,7 @@ export const _Button = ({
           },
         },
     props.url,
-    disabled ? { disabled: true } : undefined,
+    // to keep this button accessible: do not set `disabled`
     aria
   );
 

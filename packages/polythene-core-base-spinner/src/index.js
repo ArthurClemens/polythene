@@ -1,10 +1,16 @@
-import { filterSupportedAttributes, transitionComponent, classForSize, transitionStateReducer } from "polythene-core";
+import {
+  filterSupportedAttributes,
+  processDataset,
+  transitionComponent,
+  classForSize,
+  transitionStateReducer,
+} from "polythene-core";
 import classes from "polythene-css-classes/base-spinner";
 
-const showSpinner = opts =>
+const showSpinner = (opts) =>
   transitionComponent({
     ...opts,
-    isShow: true
+    isShow: true,
   });
 
 // const hideSpinner = opts =>
@@ -19,8 +25,20 @@ const initialTransitionState = {
   isHiding: false,
 };
 
-export const _BaseSpinner = ({ h, a, useReducer, useState, useEffect, getRef, Shadow, ...props }) => {
-  const [transitionState, dispatchTransitionState] = useReducer(transitionStateReducer, initialTransitionState);
+export const _BaseSpinner = ({
+  h,
+  a,
+  useReducer,
+  useState,
+  useEffect,
+  getRef,
+  Shadow,
+  ...props
+}) => {
+  const [transitionState, dispatchTransitionState] = useReducer(
+    transitionStateReducer,
+    initialTransitionState
+  );
   const [domElement, setDomElement] = useState();
 
   const isVisible = (transitionState || initialTransitionState).isVisible;
@@ -31,35 +49,33 @@ export const _BaseSpinner = ({ h, a, useReducer, useState, useEffect, getRef, Sh
     domElements: {
       el: domElement,
     },
-    showClass: classes.visible
+    showClass: classes.visible,
   };
 
-  useEffect(
-    () => {
-      if (!domElement) {
-        return;
-      }
-      if (!props.permanent) {
-        showSpinner(transitionOptions);
-      }
-    },
-    [domElement]
-  );
+  useEffect(() => {
+    if (!domElement) {
+      return;
+    }
+    if (!props.permanent) {
+      showSpinner(transitionOptions);
+    }
+  }, [domElement]);
 
   const componentProps = Object.assign(
-    {}, 
+    {},
     filterSupportedAttributes(props),
-    getRef(dom => dom && !domElement && (
-      setDomElement(dom),
-      props.ref && props.ref(dom)
-    )),
+    processDataset(props),
+    getRef(
+      (dom) =>
+        dom && !domElement && (setDomElement(dom), props.ref && props.ref(dom))
+    ),
     props.testId && { "data-test-id": props.testId },
     {
       className: [
         classes.component,
         props.instanceClass,
         classForSize(classes, props.size),
-        props.singleColor ? classes.singleColor: null,
+        props.singleColor ? classes.singleColor : null,
         props.raised ? classes.raised : null,
         props.animated ? classes.animated : null,
         props.permanent ? classes.permanent : null,
@@ -70,18 +86,11 @@ export const _BaseSpinner = ({ h, a, useReducer, useState, useEffect, getRef, Sh
     props.events
   );
 
-  const content = [
-    props.before,
-    props.content,
-    props.after
-  ];
+  const content = [props.before, props.content, props.after];
 
   if (props.raised && content.length > 0) {
-    content.push(h(Shadow, { shadowDepth: props.shadowDepth }))
+    content.push(h(Shadow, { shadowDepth: props.shadowDepth }));
   }
 
-  return h("div",
-    componentProps,
-    content 
-  );
+  return h("div", componentProps, content);
 };

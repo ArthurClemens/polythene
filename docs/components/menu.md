@@ -4,15 +4,16 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Main features](#main-features)
-- [Usage](#usage)
-- [Options](#options)
-  - [Menu specific options](#menu-specific-options)
-  - [Transition options](#transition-options)
-  - [Common component options](#common-component-options)
-- [Composition](#composition)
-- [CSS classes](#css-classes)
-- [Future](#future)
+- [Menu](#menu)
+  - [Main features](#main-features)
+  - [Usage](#usage)
+  - [Options](#options)
+    - [Menu specific options](#menu-specific-options)
+    - [Transition options](#transition-options)
+    - [Common component options](#common-component-options)
+  - [Composition](#composition)
+  - [CSS classes](#css-classes)
+  - [Future](#future)
 
 <!-- /MarkdownTOC -->
 
@@ -73,6 +74,7 @@ See: [Transitions](../transitions.md)
 | **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **className** | optional       | String   |             | Extra CSS class appended to `pe-menu` |
 | **content**   | use `content` or children | String, hyperscript or component | | Expects a [List](list.md), or an array of lists; replaces children |
+| **dataSet** | optional | Object |  | Custom data attributes: `dataSet: { count: "0" }` creates `data-count="0"` (note that the key should be a lowercase string) |
 | **element**   | optional       | String   | "div"       | HTML element tag |
 | **events**    | optional       | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
 | **id**        | optional       | String   |             | HTML element id |

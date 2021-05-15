@@ -16,7 +16,7 @@
     "cypress:open": "../../node_modules/cypress/bin/cypress open --config baseUrl=http://localhost:3000/#,integrationFolder=../tests-cypress-specs,testFiles=**/*.spec.js,video=false"
   },
   "dependencies": {
-    "cyano-react": "^0.6.8",
+    "cyano-react": "^0.6.9",
     "polythene-css": "1.7.5",
     "polythene-react": "1.7.5",
     "polythene-tests": "1.7.5",

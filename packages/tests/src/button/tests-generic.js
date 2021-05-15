@@ -1,9 +1,9 @@
 import { ButtonCSS } from "polythene-css";
 
-const volumeIconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\"/></svg>";
+const volumeIconSVG =
+  '<svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>';
 
 export default ({ h, Button, Icon }) => {
-  
   ButtonCSS.addStyle(".tests-button-small-button", {
     contained: true,
     border: true,
@@ -15,74 +15,75 @@ export default ({ h, Button, Icon }) => {
   });
 
   ButtonCSS.addStyle(".tests-button-themed-button", {
-    contained:              true,
+    contained: true,
     color_light_background: "#2196F3",
-    color_light_text:       "#fff",
-    color_dark_background:  "#2196F3",
-    letter_spacing:         0
+    color_light_text: "#fff",
+    color_dark_background: "#2196F3",
+    letter_spacing: 0,
   });
 
   ButtonCSS.addStyle(".blue-on-dark-button", {
-    contained:       true,
-    color_dark_text: "#2196F3"
+    contained: true,
+    color_dark_text: "#2196F3",
   });
 
   ButtonCSS.addStyle(".tests-button-themed-wash-button", {
-    color_light_text:            "#673ab7",
-    color_dark_text:             "rgba(255, 255, 255, 1)",
-    color_dark_background:       "rgba(33, 150, 243, 1)",
+    color_light_text: "#673ab7",
+    color_dark_text: "rgba(255, 255, 255, 1)",
+    color_dark_background: "rgba(33, 150, 243, 1)",
     color_light_wash_background: "rgb(103, 58, 183)",
-    color_light_wash_opacity:    0.1,
-    color_dark_wash_background:  "rgb(0, 37, 112)",
-    color_dark_wash_opacity:     0.2,
-
+    color_light_wash_opacity: 0.1,
+    color_dark_wash_background: "rgb(0, 37, 112)",
+    color_dark_wash_opacity: 0.2,
   });
 
   ButtonCSS.addStyle(".tests-button-bordered-button", {
-    border:             true,
-    border_width:       2,
-    color_light_text:   "#673ab7",
-    color_dark_text:    "#2196F3",
+    border: true,
+    border_width: 2,
+    color_light_text: "#673ab7",
+    color_dark_text: "#2196F3",
     color_light_border: "#673ab7",
-    color_dark_border:  "#2196F3",
+    color_dark_border: "#2196F3",
   });
 
   ButtonCSS.addStyle(".tests-button-contained-button", {
-    contained:              true,
+    contained: true,
     color_light_background: "#fff",
   });
 
   ButtonCSS.addStyle(".tests-button-shadow-button", {
-    shadow_depth:           1,
+    shadow_depth: 1,
     color_light_background: "#fff",
   });
 
   ButtonCSS.addStyle(".tests-button-hover-button", {
-    contained:                    true,
-    color_light_hover:            "#fff",
+    contained: true,
+    color_light_hover: "#fff",
     color_light_hover_background: "#673ab7",
-    animation_duration:           "100ms",
+    animation_duration: "100ms",
   });
 
-  ButtonCSS.addStyle(".tests-button-media-query",
+  ButtonCSS.addStyle(
+    ".tests-button-media-query",
     {
-      contained:              true,
+      contained: true,
       color_light_background: "#673ab7",
-      color_light_text:       "#fff",
-      shadow_depth:           1,
+      color_light_text: "#fff",
+      shadow_depth: 1,
     },
     {
-      mediaQuery: "@media all and (max-width: 480px) and (min-width: 360px), (min-width: 760px)"
+      mediaQuery:
+        "@media all and (max-width: 480px) and (min-width: 360px), (min-width: 760px)",
     }
   );
 
   ButtonCSS.addStyle(".tests-button-sentence-case", {
-    contained:              true,
+    contained: true,
     color_light_background: "#6200ee",
-    color_light_text:       "#fff",
-    text_transform:         "none"
+    color_light_text: "#fff",
+    text_transform: "none",
   });
-  
+
   const trustedVolumeIcon = h.trust(volumeIconSVG);
 
   return [
@@ -103,8 +104,8 @@ export default ({ h, Button, Icon }) => {
       name: "Option: label",
       component: Button,
       attrs: {
-        label: "Label"
-      }
+        label: "Label",
+      },
     },
     {
       name: "Option: wash (false)",
@@ -112,8 +113,8 @@ export default ({ h, Button, Icon }) => {
       component: Button,
       attrs: {
         label: "No wash",
-        wash: false
-      }
+        wash: false,
+      },
     },
     {
       name: "Option: ink (false)",
@@ -121,8 +122,8 @@ export default ({ h, Button, Icon }) => {
       component: Button,
       attrs: {
         label: "No ink",
-        ink: false
-      }
+        ink: false,
+      },
     },
     {
       name: "Option: ripple",
@@ -134,26 +135,26 @@ export default ({ h, Button, Icon }) => {
           endOpacity: 1,
           persistent: true,
           style: {
-            color: "#2196F3"
-          }
-        }
-      }
+            color: "#2196F3",
+          },
+        },
+      },
     },
     {
       name: "Option: disabled",
       component: Button,
       attrs: {
         label: "Disabled",
-        disabled: true
-      }
+        disabled: true,
+      },
     },
     {
       name: "Option: selected",
       component: Button,
       attrs: {
         label: "Selected",
-        selected: true
-      }
+        selected: true,
+      },
     },
     {
       name: "Option: dropdown with label (not interactive) -- see Menu examples",
@@ -161,9 +162,9 @@ export default ({ h, Button, Icon }) => {
       attrs: {
         label: "Dropdown",
         dropdown: {
-          open: false
+          open: false,
         },
-      }
+      },
     },
     // {
     //   name: "Option: dropdown without label (not interactive)",
@@ -177,24 +178,22 @@ export default ({ h, Button, Icon }) => {
     {
       name: "Button row",
       component: {
-        view: () => 
-          h(".pe-button-row",
-            [
-              h(Button, {
-                key: "one", // for React
-                label: "One"
-              }),
-              h(Button, {
-                key: "two", // for React
-                label: "Two"
-              }),
-              h(Button, {
-                key: "three", // for React
-                label: "Three"
-              })
-            ]
-          )
-      }
+        view: () =>
+          h(".pe-button-row", [
+            h(Button, {
+              key: "one", // for React
+              label: "One",
+            }),
+            h(Button, {
+              key: "two", // for React
+              label: "Two",
+            }),
+            h(Button, {
+              key: "three", // for React
+              label: "Three",
+            }),
+          ]),
+      },
     },
     // {
     //   name: "Option: formaction",
@@ -219,8 +218,8 @@ export default ({ h, Button, Icon }) => {
       component: Button,
       attrs: {
         label: "Inactive",
-        inactive: true
-      }
+        inactive: true,
+      },
     },
     {
       name: "Option: inactivate (2)",
@@ -228,16 +227,16 @@ export default ({ h, Button, Icon }) => {
       component: Button,
       attrs: {
         label: "Inactivated for 2s",
-        inactivate: 2
-      }
+        inactivate: 2,
+      },
     },
     {
       name: "Option: contained",
       component: Button,
       attrs: {
         label: "Contained",
-        contained: true
-      }
+        contained: true,
+      },
     },
     {
       name: "Option: raised",
@@ -245,7 +244,7 @@ export default ({ h, Button, Icon }) => {
       attrs: {
         label: "Raised",
         raised: true,
-      }
+      },
     },
     {
       name: "Option: border",
@@ -253,7 +252,7 @@ export default ({ h, Button, Icon }) => {
       attrs: {
         label: "Border",
         border: true,
-      }
+      },
     },
     {
       name: "Option: style (colors)",
@@ -262,9 +261,9 @@ export default ({ h, Button, Icon }) => {
         label: "Styled",
         style: {
           backgroundColor: "#EF6C00",
-          color: "#fff"
-        }
-      }
+          color: "#fff",
+        },
+      },
     },
 
     {
@@ -275,16 +274,16 @@ export default ({ h, Button, Icon }) => {
       component: Button,
       attrs: {
         label: "Themed Button",
-        className: "tests-button-themed-button"
-      }
+        className: "tests-button-themed-button",
+      },
     },
     {
       name: "Themed Button (colors, wash)",
       component: Button,
       attrs: {
         label: "Themed wash color",
-        className: "tests-button-themed-wash-button"
-      }
+        className: "tests-button-themed-wash-button",
+      },
     },
     {
       name: "Themed Button (colors, sentence case)",
@@ -292,7 +291,7 @@ export default ({ h, Button, Icon }) => {
       attrs: {
         label: "Sentence case",
         className: "tests-button-sentence-case",
-      }
+      },
     },
     {
       name: "Themed Button (border)",
@@ -300,7 +299,7 @@ export default ({ h, Button, Icon }) => {
       attrs: {
         label: "Border",
         className: "tests-button-bordered-button",
-      }
+      },
     },
     {
       name: "Themed Button (border, small)",
@@ -308,7 +307,7 @@ export default ({ h, Button, Icon }) => {
       attrs: {
         label: "Small",
         className: "tests-button-small-button",
-      }
+      },
     },
     {
       name: "Themed Button (contained)",
@@ -316,7 +315,7 @@ export default ({ h, Button, Icon }) => {
       attrs: {
         label: "Contained",
         className: "tests-button-contained-button",
-      }
+      },
     },
     {
       name: "Themed Button (shadow)",
@@ -324,7 +323,7 @@ export default ({ h, Button, Icon }) => {
       attrs: {
         label: "Shadow",
         className: "tests-button-shadow-button",
-      }
+      },
     },
     {
       name: "Themed Button (hover)",
@@ -332,8 +331,8 @@ export default ({ h, Button, Icon }) => {
       interactive: true,
       attrs: {
         label: "Hover Button",
-        className: "tests-button-hover-button"
-      }
+        className: "tests-button-hover-button",
+      },
     },
     {
       name: "Themed Button (media query - resize screen to see toggled style)",
@@ -341,8 +340,8 @@ export default ({ h, Button, Icon }) => {
       component: Button,
       attrs: {
         label: "Media Query Button",
-        className: "tests-button-media-query"
-      }
+        className: "tests-button-media-query",
+      },
     },
     {
       name: "Themed Button: (disabled)",
@@ -350,8 +349,8 @@ export default ({ h, Button, Icon }) => {
       attrs: {
         label: "Disabled",
         className: "tests-button-bordered-button",
-        disabled: true
-      }
+        disabled: true,
+      },
     },
 
     {
@@ -362,8 +361,8 @@ export default ({ h, Button, Icon }) => {
       className: "pe-dark-tone",
       component: Button,
       attrs: {
-        label: "Label"
-      }
+        label: "Label",
+      },
     },
     {
       name: "Themed Button -- dark tone class",
@@ -371,8 +370,8 @@ export default ({ h, Button, Icon }) => {
       component: Button,
       attrs: {
         label: "Themed Button",
-        className: "tests-button-themed-button"
-      }
+        className: "tests-button-themed-button",
+      },
     },
     {
       name: "Themed Button (colors, wash) -- dark tone class",
@@ -380,8 +379,8 @@ export default ({ h, Button, Icon }) => {
       component: Button,
       attrs: {
         label: "Themed wash color",
-        className: "tests-button-themed-wash-button"
-      }
+        className: "tests-button-themed-wash-button",
+      },
     },
     {
       name: "Themed Button blue on dark -- dark tone class",
@@ -389,8 +388,8 @@ export default ({ h, Button, Icon }) => {
       component: Button,
       attrs: {
         label: "Blue on dark Button",
-        className: "blue-on-dark-button"
-      }
+        className: "blue-on-dark-button",
+      },
     },
     {
       name: "Themed Button (border) -- dark tone class",
@@ -399,7 +398,7 @@ export default ({ h, Button, Icon }) => {
       attrs: {
         label: "Border dark tone",
         className: "tests-button-bordered-button",
-      }
+      },
     },
     {
       name: "Themed Button (border, small) -- dark tone class",
@@ -408,8 +407,7 @@ export default ({ h, Button, Icon }) => {
       attrs: {
         label: "Small dark tone",
         className: "tests-button-small-button",
-      }
+      },
     },
   ];
 };
-

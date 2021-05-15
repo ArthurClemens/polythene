@@ -1,32 +1,54 @@
 import { h } from "polythene-tests/utils/enhanced-renderer";
+import { uiLabels } from "polythene-tests/utils/constants";
 
-const Page = ({ name, tests }) => {
-  return h(
-    "div",
-    {
-      className: "page",
-    },
-    tests.map((test) => {
-      if (test.section) {
-        return h("h3.page__section__title", test.section);
-      }
-      const testName = `test-${test.name}`;
-      return h(
-        "div",
+const Page = ({ history, name, tests }) => {
+  return h(".page", null, [
+    h(
+      "nav",
+      null,
+      h(
+        "a",
         {
-          className: ["page__test", test.className || ""].join(" "),
+          href: "/",
+          onClick: (e) => (e.preventDefault(), history.push("/")),
         },
-        [
-          h("div", { className: "page__test__title" }, test.name),
+        uiLabels.back
+      )
+    ),
+    h("h1.page__title", name),
+    Object.keys(tests).map((key) => {
+      if (tests[key].length === 0) {
+        return null;
+      }
+      return [
+        uiLabels[key]
+          ? h(
+              ".page__content",
+              { key: "section" },
+              h(
+                ".page__content__test",
+                null,
+                h("h2.page__section__title", { key: "title" }, uiLabels[key])
+              )
+            )
+          : null,
+        tests[key].map((test) =>
           h(
-            "div",
-            { className: "page__test__content" },
-            h(test.component, test.attrs, test.children)
-          ),
-        ]
-      );
-    })
-  );
+            ".page__content",
+            { key: test.name },
+            h(".page__content__test", null, [
+              h(".page__test__title", test.name),
+              h(
+                ".page__test__component",
+                null,
+                h(test.component, test.attrs, test.children)
+              ),
+            ])
+          )
+        ),
+      ];
+    }),
+  ]);
 };
 
 export default Page;

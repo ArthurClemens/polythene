@@ -1,59 +1,73 @@
-import { pointerEndEvent, filterSupportedAttributes } from "polythene-core";
+import {
+  pointerEndEvent,
+  filterSupportedAttributes,
+  processDataset,
+} from "polythene-core";
 import rippleAnimation from "./ripple-animation";
 import classes from "polythene-css-classes/ripple";
 
 export { rippleAnimation };
 
-export const _Ripple = ({ h, a, getRef, useRef, useState, useEffect, ...props }) => {
+export const _Ripple = ({
+  h,
+  a,
+  getRef,
+  useRef,
+  useState,
+  useEffect,
+  ...props
+}) => {
   const [domElement, setDomElement] = useState();
   const animationCountRef = useRef();
-  const triggerEl = props.target || (domElement ? domElement.parentElement : undefined);
+  const triggerEl =
+    props.target || (domElement ? domElement.parentElement : undefined);
 
-  const tap = e => {
-    if (props.disabled || !domElement || (!props.multi && animationCountRef.current > 0)) {
+  const tap = (e) => {
+    if (
+      props.disabled ||
+      !domElement ||
+      (!props.multi && animationCountRef.current > 0)
+    ) {
       return;
     }
     if (props.start) {
       props.start(e);
     }
     const id = `ripple_animation_${new Date().getTime()}`;
-    rippleAnimation({ e, id, el: domElement, props, classes })
-      .then(evt => {
-        if (props.end) {
-          props.end(evt);
-        }
-        animationCountRef.current--;
-      });
-      animationCountRef.current++;
+    rippleAnimation({ e, id, el: domElement, props, classes }).then((evt) => {
+      if (props.end) {
+        props.end(evt);
+      }
+      animationCountRef.current--;
+    });
+    animationCountRef.current++;
   };
 
   // count
-  useEffect(
-    () => {
-      animationCountRef.current = 0;
-    },
-    []
-  );
+  useEffect(() => {
+    animationCountRef.current = 0;
+  }, []);
 
   // triggerEl
-  useEffect(
-    () => {
-      if (triggerEl && triggerEl.addEventListener) {
-        pointerEndEvent.forEach(evt =>
-          triggerEl.addEventListener(evt, tap, false));
-      
-        return () => {
-          pointerEndEvent.forEach(evt =>
-            triggerEl.removeEventListener(evt, tap, false));
-        };
-      }
-    },
-    [triggerEl]
-  );
+  useEffect(() => {
+    if (triggerEl && triggerEl.addEventListener) {
+      pointerEndEvent.forEach((evt) =>
+        triggerEl.addEventListener(evt, tap, false)
+      );
 
-  const componentProps = Object.assign({}, 
+      return () => {
+        pointerEndEvent.forEach((evt) =>
+          triggerEl.removeEventListener(evt, tap, false)
+        );
+      };
+    }
+  }, [triggerEl]);
+
+  const componentProps = Object.assign(
+    {},
     filterSupportedAttributes(props),
-    getRef(dom => dom && !domElement && setDomElement(dom)),
+    processDataset(props),
+    getRef((dom) => dom && !domElement && setDomElement(dom)),
     props.testId && { "data-test-id": props.testId },
     {
       className: [
@@ -62,17 +76,11 @@ export const _Ripple = ({ h, a, getRef, useRef, useState, useEffect, ...props })
         props.tone === "dark" ? "pe-dark-tone" : null,
         props.tone === "light" ? "pe-light-tone" : null,
         props.className || props[a.class],
-      ].join(" ")
+      ].join(" "),
     }
   );
 
-  const content = [
-    props.before,
-    props.after,
-  ];
+  const content = [props.before, props.after];
 
-  return h(props.element || "div",
-    componentProps,
-    content
-  );
+  return h(props.element || "div", componentProps, content);
 };

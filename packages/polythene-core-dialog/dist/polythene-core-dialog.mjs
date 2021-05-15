@@ -222,6 +222,8 @@ var createPane = function createPane(_ref) {
 };
 
 var _Dialog = function _Dialog(_ref2) {
+  var _extends2;
+
   var h = _ref2.h,
       a = _ref2.a,
       useState = _ref2.useState,
@@ -367,13 +369,13 @@ var _Dialog = function _Dialog(_ref2) {
   }), // style set in content, and set by show/hide transition
   getRef(function (dom) {
     return dom && !domElement && (setDomElement(dom), props.ref && props.ref(dom));
-  }), _defineProperty({
+  }), (_extends2 = {
     className: [props.parentClassName || classes.component, props.fromMultipleClassName, props.fullScreen ? classes.fullScreen : null, props.modal ? classes.modal : null, props.backdrop ? classes.showBackdrop : null, // classes.visible is set in showDialog though transition
     props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" "),
     "data-spawn-id": props.spawnId,
     // received from Multi
     "data-instance-id": props.instanceId
-  }, a.onclick, function (e) {
+  }, _defineProperty(_extends2, a.onclick, function (e) {
     if (e.target !== domElement && e.target !== backdropElRef.current && e.target !== touchElRef.current) {
       return;
     }
@@ -384,7 +386,7 @@ var _Dialog = function _Dialog(_ref2) {
     }
 
     hideDialog();
-  }));
+  }), _defineProperty(_extends2, "role", "dialog"), _extends2));
 
   var pane = props.panesOptions && props.panesOptions.length ? h(Pane, props.panesOptions[0]) : props.panes && props.panes.length ? props.panes[0] : createPane({
     h: h,

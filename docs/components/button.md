@@ -91,11 +91,12 @@ A raised button is a button with option `raised: true`.
 
 | **Parameter** | **Required** | **Type** | **Default** | **Description** |
 | --- | --- | --- | --- | --- |
-| **aria** | optional | Object | | ARIA attributes, for example "role", "aria-labelledby", etcetera |
 | **after** | optional | String, hyperscript or component |  | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **aria** | optional | Object | | ARIA attributes, for example "role", "aria-labelledby", etcetera |
 | **before** | optional | String, hyperscript or component |  | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **className** | optional | String |  | Extra CSS class appended to `pe-text-button` |
 | **content** | use `label` or `content` | String, hyperscript or component |  | Alternative content; replaces children and ignores `label` |
+| **dataSet** | optional | Object |  | Custom data attributes: `dataSet: { count: "0" }` creates `data-count="0"` (note that the key should be a lowercase string) |
 | **element** | optional | String | "a" | HTML element tag; may also be "button" |
 | **events** | optional | Object |  | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
 | **id** | optional | String |  | HTML element id |
@@ -106,15 +107,23 @@ A raised button is a button with option `raised: true`.
 
 ## Accessibility
 
-ARIA attributes:
+Default ARIA attributes:
 
-* A default Button (a link, or `a` tag) does not contain the attributes "role" or "tabindex".
+* A default Button is a link (option `element: "a"`) so it doesn't contain the attributes "role" or "tabindex".
 * With option `element: "button"`:
   * `role="button"`
   * `tabindex="0"`
 * With options `disabled: true` or `inactive: true`:
   * `aria-disabled: "true"`
 * Custom ARIA properties can be set with option `aria`, for example: `aria: { role: "link" }`
+
+Behavior:
+
+* Default button (a link, or "a" tag:
+  * Enter to activate 
+* With option `element: "button"`:
+  * Enter or Spacebar to activate 
+
 
 <a id="composition"></a>
 ## Composition

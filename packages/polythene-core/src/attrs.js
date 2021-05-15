@@ -2,11 +2,11 @@
 
 /**
  * Reducer helper function.
- * @param {object} acc 
- * @param {string} p 
+ * @param {object} acc
+ * @param {string} p
  * @returns {object}
  */
-const r = (acc, p) => (acc[p] = 1, acc);
+const r = (acc, p) => ((acc[p] = 1), acc);
 
 /**
  * List of default attributes.
@@ -22,7 +22,7 @@ const defaultAttrs = [
   "href",
   "id",
   "data-index",
-  
+
   // React
   "tabIndex",
 
@@ -37,69 +37,86 @@ const defaultAttrs = [
 ];
 
 /**
- * 
- * @param {{[s: string]: string}} attrs 
- * @param {object} [modifications] 
+ *
+ * @param {{[s: string]: string}} attrs
+ * @param {object} [modifications]
  * @param {Array<string>} [modifications.add]
  * @param {Array<string>} [modifications.remove]
  * @returns {object}
  */
-export const filterSupportedAttributes = (attrs, { add, remove} = {}) => {
+export const filterSupportedAttributes = (attrs, { add, remove } = {}) => {
   /**
-   * @type {{[s: string]: string}} removeLookup 
+   * @type {{[s: string]: string}} removeLookup
    */
-  const removeLookup = remove
-    ? remove.reduce(r, {})
-    : {};
+  const removeLookup = remove ? remove.reduce(r, {}) : {};
   /**
-   * @type {Array<string>} attrsList 
+   * @type {Array<string>} attrsList
    */
-  const attrsList = add
-    ? defaultAttrs.concat(add)
-    : defaultAttrs;
-  const supported = attrsList.filter(item => !removeLookup[item]).reduce(r, {});
+  const attrsList = add ? defaultAttrs.concat(add) : defaultAttrs;
+  const supported = attrsList
+    .filter((item) => !removeLookup[item])
+    .reduce(r, {});
+
   return Object.keys(attrs).reduce(
     /**
      * @param {object} acc
      * @param {string} key
      */
-    (acc, key) => (
-      supported[key]
-        ? acc[key] = attrs[key]
-        : null,
-      acc
-    ), {});
+    (acc, key) => {
+      if (supported[key]) {
+        return {
+          ...acc,
+          [key]: attrs[key],
+        };
+      } else {
+        return acc;
+      }
+    },
+    {}
+  );
 };
 
 /**
- * 
- * @param {object|function} attrs 
- * @returns {object}
+ * Process attrs.dataSet
+ * @param {{[s: string]: string}} attrs
  */
-export const unpackAttrs = attrs =>
-  typeof attrs === "function"
-    ? attrs()
-    : attrs;
+export const processDataset = (attrs) =>
+  attrs.dataSet
+    ? Object.keys(attrs.dataSet).reduce(
+        (acc, key) => ({
+          ...acc,
+          [`data-${key}`]: attrs.dataSet[key],
+        }),
+        {}
+      )
+    : undefined;
 
 /**
- * 
- * @param {{[s: string]: string}} classes 
+ *
+ * @param {object|function} attrs
+ * @returns {object}
+ */
+export const unpackAttrs = (attrs) =>
+  typeof attrs === "function" ? attrs() : attrs;
+
+/**
+ *
+ * @param {{[s: string]: string}} classes
  * @returns {{[s: string]: string}}
  */
-const sizeClasses = classes => ({
-  small:   classes.small,
+const sizeClasses = (classes) => ({
+  small: classes.small,
   regular: classes.regular,
-  medium:  classes.medium,
-  large:   classes.large,
-  fab:     classes.fab,
+  medium: classes.medium,
+  large: classes.large,
+  fab: classes.fab,
 });
 
 /**
- * 
- * @param {{[s: string]: string}} classes 
- * @param {string} [size] 
+ *
+ * @param {{[s: string]: string}} classes
+ * @param {string} [size]
  * @returns {object}
  */
 export const classForSize = (classes, size = "regular") =>
   sizeClasses(classes)[size];
-

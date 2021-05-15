@@ -10,15 +10,16 @@ Differences from a Raised [Button](button.md) behavior:
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Main features](#main-features)
-- [Usage](#usage)
-- [Options](#options)
-  - [Button options](#button-options)
-  - [FAB specific options](#fab-specific-options)
-  - [Common component options](#common-component-options)
-- [Composition](#composition)
-- [CSS classes](#css-classes)
-- [Future](#future)
+- [FAB: Floating Action Button](#fab-floating-action-button)
+  - [Main features](#main-features)
+  - [Usage](#usage)
+  - [Options](#options)
+    - [Button options](#button-options)
+    - [FAB specific options](#fab-specific-options)
+    - [Common component options](#common-component-options)
+  - [Composition](#composition)
+  - [CSS classes](#css-classes)
+  - [Future](#future)
 
 <!-- /MarkdownTOC -->
 
@@ -70,6 +71,7 @@ See:
 | **before**    | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **className** | optional | String |       | Extra CSS class appended to `pe-fab` |
 | **content**   | either `icon` or `content` | String, hyperscript or component |  | Alternative content |
+| **dataSet** | optional | Object |  | Custom data attributes: `dataSet: { count: "0" }` creates `data-count="0"` (note that the key should be a lowercase string) |
 | **element**   | optional | String | "div" | HTML element tag |
 | **events**    | optional | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
 | **id**        | optional | String |       | HTML element id |

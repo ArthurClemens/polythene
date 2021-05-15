@@ -207,7 +207,8 @@ var _List = function _List(_ref) {
   var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
     "data-test-id": props.testId
   }, {
-    className: [classes.component, props.border || props.borders ? classes.border : null, props.indentedBorder || props.indentedBorders ? classes.indentedBorder : null, props.header ? classes.hasHeader : null, props.compact ? classes.compact : null, paddingClass(props.padding), props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
+    className: [classes.component, props.border || props.borders ? classes.border : null, props.indentedBorder || props.indentedBorders ? classes.indentedBorder : null, props.header ? classes.hasHeader : null, props.compact ? classes.compact : null, paddingClass(props.padding), props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" "),
+    role: "list"
   });
 
   var headerOpts;

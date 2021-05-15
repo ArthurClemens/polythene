@@ -1,9 +1,9 @@
-import { filterSupportedAttributes } from "polythene-core";
+import { filterSupportedAttributes, processDataset } from "polythene-core";
 import classes from "polythene-css-classes/shadow";
 
 const DEFAULT_SHADOW_DEPTH = 1;
 
-export const getDepthClass = shadowDepth =>
+export const getDepthClass = (shadowDepth) =>
   shadowDepth !== undefined
     ? `${classes.depth_n}${Math.min(5, shadowDepth)}`
     : DEFAULT_SHADOW_DEPTH;
@@ -13,6 +13,7 @@ export const _Shadow = ({ h, a, ...props }) => {
   const componentProps = Object.assign(
     {},
     filterSupportedAttributes(props),
+    processDataset(props),
     props.testId && { "data-test-id": props.testId },
     {
       className: [
@@ -20,27 +21,22 @@ export const _Shadow = ({ h, a, ...props }) => {
         depthClass,
         props.animated && classes.animated,
         props.className || props[a.class],
-      ].join(" ")
+      ].join(" "),
     }
   );
   const content = [
     props.before,
-    props.content
-      ? props.content
-      : props.children,
-    props.after
+    props.content ? props.content : props.children,
+    props.after,
   ];
-  
-  return h(props.element || "div",
-    componentProps,
-    [
-      content,
-      h("div", {
-        className: [classes.bottomShadow].join(" ")
-      }),
-      h("div", {
-        className: [classes.topShadow].join(" ")
-      })
-    ]
-  );
+
+  return h(props.element || "div", componentProps, [
+    content,
+    h("div", {
+      className: [classes.bottomShadow].join(" "),
+    }),
+    h("div", {
+      className: [classes.topShadow].join(" "),
+    }),
+  ]);
 };

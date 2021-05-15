@@ -1,5 +1,5 @@
-import { filterSupportedAttributes, iconDropdownDown } from 'polythene-core';
-import 'polythene-core-shadow';
+import { processDataset, filterSupportedAttributes, iconDropdownDown } from 'polythene-core';
+import { getDepthClass } from 'polythene-core-shadow';
 
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
@@ -290,7 +290,7 @@ var _Button = function _Button(_ref) {
     add: [a.formaction, "type"],
     remove: ["style"]
   }), // Set style on content, not on component
-  getRef(function (dom) {
+  processDataset(props), getRef(function (dom) {
     if (!dom || domElement) {
       return;
     }
@@ -304,11 +304,8 @@ var _Button = function _Button(_ref) {
     "data-test-id": props.testId
   }, _defineProperty({
     className: [classes["super"], props.parentClassName || classes.component, props.contained ? classes.contained : undefined, // Raised button classes
-    props.raised ? classes.contained : undefined, props.raised ? classes.raised : undefined, props.raised && animateOnTap ? shadowClasses.with_active_shadow : undefined, // props.raised && animateOnTap
-    //   ? getDepthClass(shadowDepth + 1)
-    //   : undefined,
-    //
-    hasHover ? classes.hasHover : undefined, props.selected ? classes.selected : undefined, props.highLabel ? classes.highLabel : undefined, props.extraWide ? classes.extraWide : undefined, disabled ? classes.disabled : undefined, inactive ? classes.inactive : undefined, props.separatorAtStart ? classes.separatorAtStart : undefined, props.border || props.borders ? classes.border : undefined, props.dropdown ? classes.hasDropdown : undefined, props.dropdown ? props.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : undefined, props.tone === "dark" ? "pe-dark-tone" : undefined, props.tone === "light" ? "pe-light-tone" : undefined, props.className || props[a["class"]]].join(" ")
+    props.raised ? classes.contained : undefined, props.raised ? classes.raised : undefined, props.raised && animateOnTap ? shadowClasses.with_active_shadow : undefined, // Current depth; used for interactive shadow
+    props.raised && animateOnTap ? getDepthClass(shadowDepth + 1) : undefined, hasHover ? classes.hasHover : undefined, props.selected ? classes.selected : undefined, props.highLabel ? classes.highLabel : undefined, props.extraWide ? classes.extraWide : undefined, disabled ? classes.disabled : undefined, inactive ? classes.inactive : undefined, props.separatorAtStart ? classes.separatorAtStart : undefined, props.border || props.borders ? classes.border : undefined, props.dropdown ? classes.hasDropdown : undefined, props.dropdown ? props.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : undefined, props.tone === "dark" ? "pe-dark-tone" : undefined, props.tone === "light" ? "pe-light-tone" : undefined, props.className || props[a["class"]]].join(" ")
   }, a.tabindex, isAriaButton ? (props[a.tabindex] || 0).toString() : undefined), inactive ? null : _objectSpread2(_objectSpread2({}, events), {}, (_objectSpread2$1 = {}, _defineProperty(_objectSpread2$1, a.onmousedown, function (e) {
     return domElement && domElement.addEventListener && domElement.addEventListener("mouseleave", handleMouseLeave), props.events && props.events[a.onmousedown] && props.events[a.onmousedown](e);
   }), _defineProperty(_objectSpread2$1, a.onclick, function (e) {
@@ -327,9 +324,8 @@ var _Button = function _Button(_ref) {
         props.events[a.onkeyup](e);
       }
     }
-  }), _objectSpread2$1)), props.url, disabled ? {
-    disabled: true
-  } : undefined, aria);
+  }), _objectSpread2$1)), props.url, // to keep this button accessible: do not set `disabled`
+  aria);
 
   var noink = props.ink !== undefined && props.ink === false;
   var buttonContent = props.content ? props.content : props.label !== undefined ? _typeof(props.label) === "object" ? props.label : h("div", {

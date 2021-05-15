@@ -7,24 +7,82 @@ body, html {
   padding: 0 0 40px 0;
 }
 
-.page__section__title {
+.page__title {
   margin: 0;
-  padding: 15px 20px;
+  padding: 0px 16px 20px 16px;
+  font-size: 2.5em;
 }
 
-.page__test {
-  padding: 15px 20px;
-  border-top: 1px solid #ddd;
+  @media screen and (min-width: 460px) {
+    .page__title {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+
+nav {
+  padding: 10px 16px;
+  color: #808080;
+}
+nav a {
+  text-decoration: none;;
+  color: rgb(33, 150, 243);
+  /* click area */
+  margin: -14px;
+  padding: 14px;
+}
+
+  @media screen and (min-width: 460px) {
+    nav {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+
+.page__section__title {
+  margin: 0;
+  padding: 40px 0 16px 0;
+  font-size: 2em;
+}
+
+.page__content {
+  padding: 0 16px;
+  border-top: 1px solid #e6e6e6;
   background: #f9f9f9;
 }
-.page__test:last-child {
-  border-bottom: 1px solid #ddd;
-}
+  .page__content:last-child {
+    border-bottom: 1px solid #e6e6e6;
+  }
+
+  @media screen and (min-width: 460px) {
+    .page__content {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
 
 .page__test__title {
   color: #808080;
+  margin-top: 10px;
 }
 
-.page__test__content {
-  margin-top: 10px;
+.page__content__navigation,
+.page__content__test {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.page__content__list {
+  padding: 0;
+}
+
+  @media screen and (min-width: 460px) {
+    .page__content__list {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+  }
+
+.page__test__component {
+  padding: 20px 0;
 }

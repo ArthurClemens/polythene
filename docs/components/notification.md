@@ -4,17 +4,18 @@ Shows a temporary message.
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Notifications and Snackbars](#notifications-and-snackbars)
-- [Main features](#main-features)
-- [Usage](#usage)
-- [Options](#options)
-  - [Notification specific options](#notification-specific-options)
-  - [Notification appearance options](#notification-appearance-options)
-  - [Spawn options](#spawn-options)
-  - [Transition options](#transition-options)
-  - [Common component options](#common-component-options)
-- [Composition](#composition)
-- [CSS classes](#css-classes)
+- [Notification](#notification)
+  - [Notifications and Snackbars](#notifications-and-snackbars)
+  - [Main features](#main-features)
+  - [Usage](#usage)
+  - [Options](#options)
+    - [Notification specific options](#notification-specific-options)
+    - [Notification appearance options](#notification-appearance-options)
+    - [Spawn options](#spawn-options)
+    - [Transition options](#transition-options)
+    - [Common component options](#common-component-options)
+  - [Composition](#composition)
+  - [CSS classes](#css-classes)
 
 <!-- /MarkdownTOC -->
 
@@ -89,6 +90,7 @@ See: [Transitions](../transitions.md)
 | **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **className** | optional       | String   |             | Extra CSS class appended to `pe-notification` |
 | **content**   | optional       | String, hyperscript or component | | Alternative content; replaces `title` |
+| **dataSet** | optional | Object |  | Custom data attributes: `dataSet: { count: "0" }` creates `data-count="0"` (note that the key should be a lowercase string) |
 | **element**   | optional       | String   | "div"       | HTML element tag |
 | **id**        | optional       | String   |             | HTML element id |
 | **style**     | optional       | Object   |             | For setting simple style attributes |

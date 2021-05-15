@@ -1,28 +1,49 @@
-import { isTouch, pointerStartDownEvent, pointerMoveEvent, pointerEndDownEvent, isClient, filterSupportedAttributes, getStyle } from "polythene-core";
+import {
+  isTouch,
+  pointerStartDownEvent,
+  pointerMoveEvent,
+  pointerEndDownEvent,
+  isClient,
+  filterSupportedAttributes,
+  processDataset,
+  getStyle,
+} from "polythene-core";
 import classes from "polythene-css-classes/slider";
 
 const MAX_TICKS = 100;
 
-const positionFromEvent = (e, isVertical) => (
+const positionFromEvent = (e, isVertical) =>
   // isVertical not yet implemented
   isTouch && e.touches
-    ? isVertical ? e.touches[0].pageY : e.touches[0].pageX
-    : isVertical ? e.pageY : e.pageX);
+    ? isVertical
+      ? e.touches[0].pageY
+      : e.touches[0].pageX
+    : isVertical
+    ? e.pageY
+    : e.pageX;
 
-export const _Slider = ({ h, a, useState, useEffect, useRef, getRef, ...props }) => {
+export const _Slider = ({
+  h,
+  a,
+  useState,
+  useEffect,
+  useRef,
+  getRef,
+  ...props
+}) => {
   const min = props.min !== undefined ? props.min : 0;
   const max = props.max !== undefined ? props.max : 100;
   const range = max - min;
-  const stepSize = props.stepSize !== undefined
-    ? props.stepSize
-    : 1;
+  const stepSize = props.stepSize !== undefined ? props.stepSize : 1;
   const normalizeFactor = 1 / stepSize;
   const hasTicks = props.ticks !== undefined && props.ticks !== false;
-  const interactiveTrack = (props.interactiveTrack !== undefined) ? props.interactiveTrack : true;
+  const interactiveTrack =
+    props.interactiveTrack !== undefined ? props.interactiveTrack : true;
   const stepCount = Math.min(MAX_TICKS, parseInt(range / stepSize, 10));
-  const defaultValue = props.defaultValue !== undefined
-    ? props.defaultValue
-    : props.value !== undefined
+  const defaultValue =
+    props.defaultValue !== undefined
+      ? props.defaultValue
+      : props.value !== undefined
       ? props.value
       : 0;
 
@@ -49,83 +70,95 @@ export const _Slider = ({ h, a, useState, useEffect, useRef, getRef, ...props })
       pinElRef.current.style.left = left + "px";
     }
   };
-  
+
   const generateTickMarks = (h, stepCount, stepSize, value) => {
     const items = [];
     const stepWithValue = value / stepSize;
     let s = 0;
     while (s < stepCount + 1) {
-      items.push(h("div", {
-        className: s <= stepWithValue
-          ? [classes.tick, classes.tickValue].join(" ")
-          : classes.tick,
-        key: `tick-${s}`
-      }));
+      items.push(
+        h("div", {
+          className:
+            s <= stepWithValue
+              ? [classes.tick, classes.tickValue].join(" ")
+              : classes.tick,
+          key: `tick-${s}`,
+        })
+      );
       s++;
     }
     return items;
   };
-  
+
   const readRangeData = () => {
     if (controlElRef.current && isClient) {
       // range is from the far left to the far right minus the thumb width (max x is at the left side of the thumb)
-      controlWidthRef.current = parseFloat(getStyle({ element: controlElRef.current, prop: "width" }));
-      rangeWidthRef.current = trackElRef.current.getBoundingClientRect().width - controlWidthRef.current;
+      controlWidthRef.current = parseFloat(
+        getStyle({ element: controlElRef.current, prop: "width" })
+      );
+      rangeWidthRef.current =
+        trackElRef.current.getBoundingClientRect().width -
+        controlWidthRef.current;
       const styles = window.getComputedStyle(trackElRef.current);
       rangeOffsetRef.current = parseFloat(styles.marginLeft);
     }
   };
-  
+
   const updateClickOffset = (controlOffset = 0) => {
-    clickOffsetRef.current = trackElRef.current.getBoundingClientRect().left - (rangeOffsetRef.current - controlWidthRef.current / 2) + controlOffset;
+    clickOffsetRef.current =
+      trackElRef.current.getBoundingClientRect().left -
+      (rangeOffsetRef.current - controlWidthRef.current / 2) +
+      controlOffset;
   };
-  
-  const initControlEvent = e => {
+
+  const initControlEvent = (e) => {
     const controlPos = controlElRef.current.getBoundingClientRect().left;
     const eventPos = positionFromEvent(e);
     const controlOffset = eventPos - controlPos - controlWidthRef.current / 2;
     updateClickOffset(controlOffset);
   };
-  
-  const initTrackEvent = () =>
-    updateClickOffset(0);
-  
-  const handlePosEvent = e => {
+
+  const initTrackEvent = () => updateClickOffset(0);
+
+  const handlePosEvent = (e) => {
     const pos = positionFromEvent(e) - clickOffsetRef.current;
-    const newValue = min + ((pos - rangeOffsetRef.current) / rangeWidthRef.current) * range;
+    const newValue =
+      min + ((pos - rangeOffsetRef.current) / rangeWidthRef.current) * range;
     updateValue(newValue);
   };
-  
-  const startDrag = e => {
+
+  const startDrag = (e) => {
     if (isDraggingRef.current) return;
     e.preventDefault();
     isDraggingRef.current = true;
     setIsActive(true);
     deFocus();
-  
-    const drag = e => {
+
+    const drag = (e) => {
       if (!isDraggingRef.current) return;
       handlePosEvent(e);
     };
-  
+
     const endDrag = () => {
       if (!isDraggingRef.current) return;
       deFocus();
       if (isClient) {
-        pointerMoveEvent.forEach(evt =>
-          window.removeEventListener(evt, drag));
-        pointerEndDownEvent.forEach(evt =>
-          window.removeEventListener(evt, endDrag));
+        pointerMoveEvent.forEach((evt) =>
+          window.removeEventListener(evt, drag)
+        );
+        pointerEndDownEvent.forEach((evt) =>
+          window.removeEventListener(evt, endDrag)
+        );
       }
       isDraggingRef.current = false;
       setIsActive(false);
     };
-  
+
     if (isClient) {
-      pointerMoveEvent.forEach(evt =>
-        window.addEventListener(evt, drag));
-      pointerEndDownEvent.forEach(evt =>
-        window.addEventListener(evt, endDrag));
+      pointerMoveEvent.forEach((evt) => window.addEventListener(evt, drag));
+      pointerEndDownEvent.forEach((evt) =>
+        window.addEventListener(evt, endDrag)
+      );
     }
     readRangeData();
   };
@@ -141,19 +174,19 @@ export const _Slider = ({ h, a, useState, useEffect, useRef, getRef, ...props })
     setValue(newValue);
     if (shouldNotify && props.onChange) {
       props.onChange({
-        value: newValue
+        value: newValue,
       });
     }
   };
 
-  const updateValue = value => {
+  const updateValue = (value) => {
     handleNewValue({ value, shouldNotify: true });
   };
 
-  const increment = useLargeStep =>
+  const increment = (useLargeStep) =>
     updateValue(value + (useLargeStep ? 10 : 1) * (stepSize || 1));
 
-  const decrement = useLargeStep =>
+  const decrement = (useLargeStep) =>
     updateValue(value - (useLargeStep ? 10 : 1) * (stepSize || 1));
 
   const deFocus = () => {
@@ -163,67 +196,56 @@ export const _Slider = ({ h, a, useState, useEffect, useRef, getRef, ...props })
     focusElementRef.current = undefined;
     setHasFocus(false);
   };
-  
-  const focus = element => {
+
+  const focus = (element) => {
     deFocus();
     focusElementRef.current = element;
     setHasFocus(true);
   };
-  
+
   // State refs
-  useEffect(
-    () => {
-      isDraggingRef.current = false;
-      clickOffsetRef.current = 0;
-      rangeWidthRef.current = 0;
-      rangeOffsetRef.current = 0;
-      controlWidthRef.current = 0;
-    },
-    []
-  );
+  useEffect(() => {
+    isDraggingRef.current = false;
+    clickOffsetRef.current = 0;
+    rangeWidthRef.current = 0;
+    rangeOffsetRef.current = 0;
+    controlWidthRef.current = 0;
+  }, []);
 
   // DOM children
-  useEffect(
-    () => {
-      if (!domElement) {
-        return;
-      }
+  useEffect(() => {
+    if (!domElement) {
+      return;
+    }
 
-      trackElRef.current = domElement.querySelector(`.${classes.track}`);
-      controlElRef.current = domElement.querySelector(`.${classes.control}`);
-      pinElRef.current = domElement.querySelector(`.${classes.pin}`);
+    trackElRef.current = domElement.querySelector(`.${classes.track}`);
+    controlElRef.current = domElement.querySelector(`.${classes.control}`);
+    pinElRef.current = domElement.querySelector(`.${classes.pin}`);
 
-      readRangeData();
-      handleNewValue({ value: defaultValue });
-    },
-    [domElement]
-  );
+    readRangeData();
+    handleNewValue({ value: defaultValue });
+  }, [domElement]);
 
   // Pin position
-  useEffect(
-    () => {
-      if (!props.pin) {
-        return;
-      }
-      updatePinPosition();
-    },
-    [value]
-  );
+  useEffect(() => {
+    if (!props.pin) {
+      return;
+    }
+    updatePinPosition();
+  }, [value]);
 
   // Handle external changes of `value`
-  useEffect(
-    () => {
-      if (previousValue !== props.value) {
-        handleNewValue({ value: props.value });
-      }
-    },
-    [props.value]
-  );
+  useEffect(() => {
+    if (previousValue !== props.value) {
+      handleNewValue({ value: props.value });
+    }
+  }, [props.value]);
 
-
-  const componentProps = Object.assign({}, 
+  const componentProps = Object.assign(
+    {},
     filterSupportedAttributes(props),
-    getRef(dom => dom && !domElement && setDomElement(dom)),
+    processDataset(props),
+    getRef((dom) => dom && !domElement && setDomElement(dom)),
     props.testId && { "data-test-id": props.testId },
     {
       className: [
@@ -238,11 +260,11 @@ export const _Slider = ({ h, a, useState, useEffect, useRef, getRef, ...props })
         props.tone === "dark" ? "pe-dark-tone" : null,
         props.tone === "light" ? "pe-light-tone" : null,
         props.className || props[a.class],
-      ].join(" ")
+      ].join(" "),
     }
   );
-  
-  const onStartTrack = e => {
+
+  const onStartTrack = (e) => {
     e.preventDefault();
     if (isDraggingRef.current) {
       return;
@@ -253,129 +275,150 @@ export const _Slider = ({ h, a, useState, useEffect, useRef, getRef, ...props })
     startDrag(e);
   };
 
-  const onInitDrag = e => {
+  const onInitDrag = (e) => {
     e.preventDefault();
     readRangeData();
     initControlEvent(e);
     startDrag(e);
   };
 
-  const flexValueCss =  fraction + " 1 0%";
+  const flexValueCss = fraction + " 1 0%";
   const flexRestValue = 1 - fraction;
-  const flexRestCss =   flexRestValue + " 1 0%";
+  const flexRestCss = flexRestValue + " 1 0%";
 
   const content = [
     props.before,
-    h("div",
+    h(
+      "div",
       Object.assign(
         {},
-        { className: classes.track },
-        interactiveTrack && !props.disabled && pointerStartDownEvent.reduce((acc, evt) => (
-          acc[a[`on${evt}`]] = onStartTrack,
-          acc
-        ), {})
+        {
+          className: classes.track,
+          role: props.role || (interactiveTrack ? "button" : undefined),
+        },
+        interactiveTrack &&
+          !props.disabled &&
+          pointerStartDownEvent.reduce(
+            (acc, evt) => ((acc[a[`on${evt}`]] = onStartTrack), acc),
+            {}
+          )
       ),
       [
-        h("div",
+        h(
+          "div",
           {
             className: classes.trackPart + " " + classes.trackPartValue,
             style: {
               flex: flexValueCss,
               msFlex: flexValueCss,
-              WebkitFlex: flexValueCss
-            }
+              WebkitFlex: flexValueCss,
+            },
           },
-          h("div", { className: classes.trackBar },
+          h(
+            "div",
+            { className: classes.trackBar },
             h("div", { className: classes.trackBarValue })
           )
         ),
-        h("div", Object.assign(
-          {},
-          {
-            className: classes.control,
-          },
-          props.disabled
-            ? { disabled: true }
-            : {
-              [a.tabindex]: props[a.tabindex] || 0,
-              [a.onfocus]: () => focus(controlElRef.current),
-              [a.onblur]: () => deFocus(),
-              [a.onkeydown]: e => {
-                if (e.key !== "Tab") {
-                  e.preventDefault();
-                }
-                if (e.key === "Escape" || e.key === "Esc") {
-                  controlElRef.current.blur(e);
-                } else if (e.key === "ArrowLeft" || e.key === "ArrowDown" || e.key === "Left" || e.key === "Down") {
-                  decrement(!!e.shiftKey);
-                } else if (e.key === "ArrowRight" || e.key === "ArrowUp" || e.key === "Right" || e.key === "Up") {
-                  increment(!!e.shiftKey);
-                } else if (e.key === "Home") {
-                  updateValue(min);
-                } else if (e.key === "End") {
-                  updateValue(max);
-                } else if (e.key === "PageDown") {
-                  decrement(true);
-                } else if (e.key === "PageUp") {
-                  increment(true);
-                }
-                readRangeData();
-              }
+        h(
+          "div",
+          Object.assign(
+            {},
+            {
+              className: classes.control,
             },
-          !props.disabled &&
-            pointerStartDownEvent.reduce((acc, evt) => (
-              acc[a[`on${evt}`]] = onInitDrag,
-              acc
-            ), {}),
-          props.events
-            ? props.events
-            : null,
-          hasTicks
-            ? { step: stepCount }
+            props.disabled
+              ? { disabled: true }
+              : {
+                  role: props.role || "button",
+                  [a.tabindex]: props[a.tabindex] || 0,
+                  [a.onfocus]: () => focus(controlElRef.current),
+                  [a.onblur]: () => deFocus(),
+                  [a.onkeydown]: (e) => {
+                    if (e.key !== "Tab") {
+                      e.preventDefault();
+                    }
+                    if (e.key === "Escape" || e.key === "Esc") {
+                      controlElRef.current.blur(e);
+                    } else if (
+                      e.key === "ArrowLeft" ||
+                      e.key === "ArrowDown" ||
+                      e.key === "Left" ||
+                      e.key === "Down"
+                    ) {
+                      decrement(!!e.shiftKey);
+                    } else if (
+                      e.key === "ArrowRight" ||
+                      e.key === "ArrowUp" ||
+                      e.key === "Right" ||
+                      e.key === "Up"
+                    ) {
+                      increment(!!e.shiftKey);
+                    } else if (e.key === "Home") {
+                      updateValue(min);
+                    } else if (e.key === "End") {
+                      updateValue(max);
+                    } else if (e.key === "PageDown") {
+                      decrement(true);
+                    } else if (e.key === "PageUp") {
+                      increment(true);
+                    }
+                    readRangeData();
+                  },
+                },
+            !props.disabled &&
+              pointerStartDownEvent.reduce(
+                (acc, evt) => ((acc[a[`on${evt}`]] = onInitDrag), acc),
+                {}
+              ),
+            props.events ? props.events : null,
+            hasTicks ? { step: stepCount } : null
+          ),
+          props.icon
+            ? h(
+                "div",
+                {
+                  className: classes.thumb,
+                },
+                props.icon
+              )
             : null
         ),
-        props.icon
-          ? h("div",
-            {
-              className: classes.thumb,
-            },
-            props.icon
-          )
-          : null
-        ),
-        h("div",
+        h(
+          "div",
           {
             className: classes.trackPart + " " + classes.trackPartRest,
             style: {
               flex: flexRestCss,
               msFlex: flexRestCss,
               WebkitFlex: flexRestCss,
-              maxWidth: (flexRestValue * 100) + "%" // for IE Edge
-            }
+              maxWidth: flexRestValue * 100 + "%", // for IE Edge
+            },
           },
-          h("div", { className: classes.trackBar },
+          h(
+            "div",
+            { className: classes.trackBar },
             h("div", { className: classes.trackBarValue })
           )
         ),
         hasTicks && !props.disabled
-          ? h("div",
-            {
-              className: classes.ticks,
-            },
-            generateTickMarks(h, stepCount, stepSize, value)
-          )
+          ? h(
+              "div",
+              {
+                className: classes.ticks,
+              },
+              generateTickMarks(h, stepCount, stepSize, value)
+            )
           : null,
         hasTicks && props.pin && !props.disabled
-          ? h("div",
-            {
+          ? h("div", {
               className: classes.pin,
-              value
-            }
-          )
-          : null
+              value,
+            })
+          : null,
       ]
     ),
-    props.after
+    props.after,
   ];
 
   return h(props.element || "div", componentProps, content);

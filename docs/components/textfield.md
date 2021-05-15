@@ -4,14 +4,15 @@ Form input field. Generates a styled text input element.
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Main features](#Main-features)
-- [Usage](#Usage)
-- [Options](#Options)
-  - [Text field options](#Text-field-options)
-  - [Input options](#Input-options)
-  - [Validation options](#Validation-options)
-  - [Common component options](#Common-component-options)
-- [CSS classes](#CSS-classes)
+- [Text Field](#text-field)
+  - [Main features](#main-features)
+  - [Usage](#usage)
+  - [Options](#options)
+    - [Text field options](#text-field-options)
+    - [Input options](#input-options)
+    - [Validation options](#validation-options)
+    - [Common component options](#common-component-options)
+  - [CSS classes](#css-classes)
 
 <!-- /MarkdownTOC -->
 
@@ -71,7 +72,7 @@ These options also have effect on the generated HTML input field.
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **autofocus** (React: **autoFocus**) | optional | Boolean | | Set to true to give the input field autofocus. Does not work on iOS; set focus explicitly when an event is fired. |
+| **autofocus** (React: **autoFocus**) | optional | Boolean | | Set to true to give the input field autofocus. This overrides the browser ignoring autofocus with fragments (message "Autofocus processing was blocked because a document's URL has a fragment")  |
 | **defaultValue** | optional | String | | Initial input value |
 | **disabled** | optional | Boolean | false | Creates a disabled input field |
 | **ignoreEvents** | optional | Array | | List of input event names to ignore, for instance `["onblur"]` |
@@ -116,6 +117,7 @@ These options also have effect on the generated HTML input field.
 | **after**     | optional       | String, hyperscript or component |      | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **before**    | optional       | String, hyperscript or component |      | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **className**     | optional       | String   |             | Extra CSS class appended to `pe-textfield` |
+| **dataSet** | optional | Object |  | Custom data attributes: `dataSet: { count: "0" }` creates `data-count="0"` (note that the key should be a lowercase string) |
 | **element**   | optional       | String   | "div"       | HTML element tag |
 | **events** | optional | Object | | Input events; options object containing one or more events; predefined events are (Mithril) `onfocus`, `onblur`, `oninput`, `onfocus`, `onclick`, `onkeydown`, (React) `onFocus`, `onBlur`, `onInput`, `onFocus`, `onClick`, `onKeyDown`; events with the same name that are specified in the `events` option will overwrite the predefined functions; use `ignoreEvents` to ignore specific events  |
 | **id**        | optional       | String   |             | HTML element id |

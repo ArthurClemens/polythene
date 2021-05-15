@@ -5,8 +5,8 @@
   "description": "",
   "sideEffects": false,
   "dependencies": {
-    "cyano-mithril": "^0.6.8",
-    "cyano-react": "^0.6.8",
+    "cyano-mithril": "^0.6.9",
+    "cyano-react": "^0.6.9",
     "polythene-tests": "1.7.5",
     "polythene-css": "1.7.5",
     "polythene-mithril": "1.7.5",

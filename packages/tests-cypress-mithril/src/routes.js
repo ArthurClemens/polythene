@@ -1,6 +1,4 @@
-import Button from "polythene-tests-cypress/Button/tests-mithril";
-import TextField from "polythene-tests-cypress/TextField/tests-mithril";
-import Switch from "polythene-tests-cypress/Switch/tests-mithril";
+import { Button, TextField, Switch } from "polythene-tests-cypress/mithril";
 
 export default [
   {

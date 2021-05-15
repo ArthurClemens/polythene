@@ -15,7 +15,7 @@
     "serve": "http-server -p 5000 dist"
   },
   "dependencies": {
-    "cyano-mithril": "^0.6.8",
+    "cyano-mithril": "^0.6.9",
     "mithril": "2.0.4",
     "polythene-core": "1.7.5",
     "polythene-core-css": "1.7.5",

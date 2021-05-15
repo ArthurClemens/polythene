@@ -4,14 +4,15 @@ Displays a tab row of navigation buttons.
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Main features](#main-features)
-- [Usage](#usage)
-- [Options](#options)
-  - [Tabs options](#tabs-options)
-  - [Tab button options](#tab-button-options)
-  - [Common component options](#common-component-options)
-- [Composition](#composition)
-- [CSS classes](#css-classes)
+- [Tabs](#tabs)
+  - [Main features](#main-features)
+  - [Usage](#usage)
+  - [Options](#options)
+    - [Tabs options](#tabs-options)
+    - [Tab button options](#tab-button-options)
+    - [Common component options](#common-component-options)
+  - [Composition](#composition)
+  - [CSS classes](#css-classes)
 
 <!-- /MarkdownTOC -->
 
@@ -95,6 +96,7 @@ These options can be grouped into `tabsOpts` and applied to all tabs.
 | **before**    | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **className**     | optional       | String |  | Extra CSS class appended to `pe-tabs` |
 | **content**   | use `content` or `tabs` | Array of option objects | | Button row content |
+| **dataSet** | optional | Object |  | Custom data attributes: `dataSet: { count: "0" }` creates `data-count="0"` (note that the key should be a lowercase string) |
 | **element**   | optional       | String | "div" | HTML element tag |
 | **id**        | optional       | String | | HTML element id |
 | **style**     | optional | Object |       | For setting simple style attributes |

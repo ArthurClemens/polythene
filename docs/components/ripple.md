@@ -6,13 +6,14 @@ Adds a touch ripple effect to an element.
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Main features](#main-features)
-- [Usage](#usage)
-- [Options](#options)
-  - [Ripple specific options](#ripple-specific-options)
-  - [Common component options](#common-component-options)
-- [Callback functions](#callback-functions)
-- [CSS classes](#css-classes)
+- [Ripple](#ripple)
+  - [Main features](#main-features)
+  - [Usage](#usage)
+  - [Options](#options)
+    - [Ripple specific options](#ripple-specific-options)
+    - [Common component options](#common-component-options)
+  - [Callback functions](#callback-functions)
+  - [CSS classes](#css-classes)
 
 <!-- /MarkdownTOC -->
 
@@ -72,6 +73,7 @@ Adds a touch ripple effect to an element.
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **className** | optional | String |  | Extra CSS class appended to `pe-ripple` |
+| **dataSet** | optional | Object |  | Custom data attributes: `dataSet: { count: "0" }` creates `data-count="0"` (note that the key should be a lowercase string) |
 | **element**   | optional | String | "div" | HTML element tag |
 | **id** | optional | String | | HTML element id |
 | **style**     | optional | Object |       | For setting simple style attributes |

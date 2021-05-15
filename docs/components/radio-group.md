@@ -4,12 +4,13 @@ Manages a set of [Radio Buttons](radio-button.md).
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Main features](#main-features)
-- [Usage](#usage)
-- [Options](#options)
-  - [Radio Group options](#radio-group-options)
-  - [Common component options](#common-component-options)
-- [CSS classes](#css-classes)
+- [Radio Group](#radio-group)
+  - [Main features](#main-features)
+  - [Usage](#usage)
+  - [Options](#options)
+    - [Radio Group options](#radio-group-options)
+    - [Common component options](#common-component-options)
+  - [CSS classes](#css-classes)
 
 <!-- /MarkdownTOC -->
 
@@ -57,6 +58,7 @@ Described in:
 | **before**    | optional       | String, hyperscript or component |      | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **className** | optional       | String   |             | Extra CSS class appended to `pe-radio-group` |
 | **content** | use `buttons` or `content` | String, hyperscript or component | | See: `buttons` |
+| **dataSet** | optional | Object |  | Custom data attributes: `dataSet: { count: "0" }` creates `data-count="0"` (note that the key should be a lowercase string) |
 | **element**   | optional       | String   | "div"       | HTML element tag for the Radio Button container |
 | **id**        | optional       | String   |             | HTML element id for the radio button container |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |

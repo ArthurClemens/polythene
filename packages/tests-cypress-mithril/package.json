@@ -22,6 +22,7 @@
     "mithril": ">=2.0.4",
     "polythene-css": "1.7.5",
     "polythene-mithril": "1.7.5",
+    "polythene-tests": "1.7.5",
     "polythene-tests-cypress":  "^1.5.4"
   },
   "devDependencies": {
