@@ -46,7 +46,7 @@ m(IconButton, {
 })
 ```
 
-See [Icon](Icon.md) for more Icon options.
+See [Icon](icon.md) for more Icon options.
 
 Alternatively, pass an Icon as child:
 

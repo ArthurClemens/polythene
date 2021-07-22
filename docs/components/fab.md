@@ -10,15 +10,16 @@ Differences from a Raised [Button](button.md) behavior:
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Main features](#main-features)
-- [Usage](#usage)
-- [Options](#options)
-  - [Button options](#button-options)
-  - [FAB specific options](#fab-specific-options)
-  - [Common component options](#common-component-options)
-- [Composition](#composition)
-- [CSS classes](#css-classes)
-- [Future](#future)
+- [FAB: Floating Action Button](#fab-floating-action-button)
+  - [Main features](#main-features)
+  - [Usage](#usage)
+  - [Options](#options)
+    - [Button options](#button-options)
+    - [FAB specific options](#fab-specific-options)
+    - [Common component options](#common-component-options)
+  - [Composition](#composition)
+  - [CSS classes](#css-classes)
+  - [Future](#future)
 
 <!-- /MarkdownTOC -->
 
@@ -57,7 +58,7 @@ See:
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **icon**      | use `icon` or `content` | Object |  | [Icon](Icon.md) options object |
+| **icon**      | use `icon` or `content` | Object |  | [Icon](icon.md) options object |
 | **mini**      | optional | Boolean | false | Set to `true` to display a small button (class name `pe-fab--mini`) |
 
 

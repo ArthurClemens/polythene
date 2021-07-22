@@ -4,15 +4,16 @@ Displays a list element as part of a [List](list.md).
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Main features](#main-features)
-- [Usage](#usage)
-- [Options](#options)
-  - [List tile content options](#list-tile-content-options)
-  - [List tile primary content options](#list-tile-primary-content-options)
-  - [List tile secondary content options](#list-tile-secondary-content-options)
-  - [Common component options](#common-component-options)
-- [Composition](#composition)
-- [CSS classes](#css-classes)
+- [List Tile](#list-tile)
+  - [Main features](#main-features)
+  - [Usage](#usage)
+  - [Options](#options)
+    - [List tile content options](#list-tile-content-options)
+    - [List tile primary content options](#list-tile-primary-content-options)
+    - [List tile secondary content options](#list-tile-secondary-content-options)
+    - [Common component options](#common-component-options)
+  - [Composition](#composition)
+  - [CSS classes](#css-classes)
 
 <!-- /MarkdownTOC -->
 
@@ -50,7 +51,7 @@ Displays a list element as part of a [List](list.md).
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **compact** | optional | Boolean | | Set to `true` to reduce vertical padding |
 | **content**   | -              | -        |             | See below |
-| **disabled** | optional | Boolean | false | Set to `true` to deactivate the url and hover state (in case of [List](List.md) with setting `hoverable`) and show a disabled state |
+| **disabled** | optional | Boolean | false | Set to `true` to deactivate the url and hover state (in case of [List](list.md) with setting `hoverable`) and show a disabled state |
 | **header**    | optional       | Boolean  | false       | Set to `true` to make this a header tile |
 | **highlight** | optional | Boolean | false | Set to `true` to show a highlight state; a selected state always has precedence over a highlight state |
 | **hoverable** | optional | Boolean | false | Set to `true` to show a hover effect (non-touch devices) |
@@ -90,7 +91,7 @@ Displays a list element as part of a [List](list.md).
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **secondary.content** | optional | String, hyperscript or component | | Secondary content |
 | **secondary.element** | optional | String | | HTML element for secondary content |
-| **secondary.icon** | optional | Object |  | [Icon](Icon.md) options object for icon in secondary content; will be placed above secondary.content |
+| **secondary.icon** | optional | Object |  | [Icon](icon.md) options object for icon in secondary content; will be placed above secondary.content |
 | **secondary.url** | optional | Object with `href`, optionally `oncreate` (for Mithril 1.x) or `onClick` (for React) | | URL for secondary content; Mithril 2.x: only use `url.href` and set `element` to `m.route.Link`; Mithril 1.x: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 
 
