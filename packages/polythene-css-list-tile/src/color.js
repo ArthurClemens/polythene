@@ -13,7 +13,7 @@ const selected = (selector, vars, tint) => {
       }
       : undefined
     ),
-    " .pe-list-tile__primary, pe-list-tile__secondary": {
+    " .pe-list-tile__primary, .pe-list-tile__secondary": {
       backgroundColor: vars["color_" + tint + "_selected_background"]
     }
   });
@@ -23,7 +23,7 @@ const generalFns = ({
   general_styles: selector => [
     sel(selector, {
       ".pe-list-tile--header": {
-        " .pe-list-tile__primary, pe-list-tile__secondary": {
+        " .pe-list-tile__primary, .pe-list-tile__secondary": {
           backgroundColor: "inherit"
         }
       },
@@ -95,7 +95,7 @@ const tintFns = tint => ({
   ["color_" + tint + "_highlight_background"]: (selector, vars) => [
     sel(selector, {
       ".pe-list-tile--highlight:not(.pe-list-tile--selected)": {
-        " .pe-list-tile__primary, pe-list-tile__secondary": {
+        " .pe-list-tile__primary, .pe-list-tile__secondary": {
           backgroundColor: vars["color_" + tint + "_highlight_background"]
         }
       },
